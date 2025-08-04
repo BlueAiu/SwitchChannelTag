@@ -3,20 +3,15 @@ using System.Collections;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class Pun_JoinGame : MonoBehaviourPunCallbacks
+public class JoinGame : MonoBehaviourPunCallbacks
 {
+    [SerializeField] bool writeJoinLog = true;
+
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
-        Debug.Log("Start Join Room...");
+        WriteLog("Start Join Room...");
     }
-
-    void OnGUI()
-    {
-        // ログインの状態をGUIに出力
-        //GUILayout.Label(PhotonNetwork.NetworkClientState.ToString());
-    }
-
 
     // ルームに入室前
     public override void OnConnectedToMaster()
@@ -28,7 +23,12 @@ public class Pun_JoinGame : MonoBehaviourPunCallbacks
     // ルームに入室後
     public override void OnJoinedRoom()
     {
-        Debug.Log("Joined Room.");
+        WriteLog("Joined Room.");
+    }
+
+    void WriteLog(string message)
+    {
+        if (writeJoinLog) Debug.Log(message);
     }
 }
 
