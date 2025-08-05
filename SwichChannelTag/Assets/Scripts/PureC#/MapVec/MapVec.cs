@@ -15,8 +15,8 @@ public struct MapVec
     //フィールド
     public int x;//x軸の位置
     public int y;//y軸の位置
-    
-    public MapVec(int x,int y)
+
+    public MapVec(int x, int y)
     {
         this.x = x;
         this.y = y;
@@ -24,21 +24,16 @@ public struct MapVec
 
 
     //方向ベクトルを返す
-    public static MapVec Direction(E_MapDirection direction)
-    {
-        switch(direction)
-        {
-            case E_MapDirection.Up: return new MapVec(0, 1);//上
-            case E_MapDirection.Right: return new MapVec(1, 0);//右
-            case E_MapDirection.Down: return new MapVec(0, -1);//下
-            case E_MapDirection.Left: return new MapVec(-1, 0);//左
-            default: return new MapVec(0,0);
-        }
-    }
+
+    public static MapVec Up { get { return new MapVec(0, 1); } }//上
+    public static MapVec Right { get { return new MapVec(1, 0); } }//右
+    public static MapVec Down { get { return new MapVec(0, -1); } }//下
+    public static MapVec Left { get { return new MapVec(-1, 0); } }//左
+    public static MapVec Zero { get { return new MapVec(0, 0); } }//ゼロ
 
 
     //演算子
-   
+
     public static MapVec operator +(MapVec vec1, MapVec vec2)// + 演算子のオーバーロード
     {
         return new MapVec(vec1.x + vec2.x, vec1.y + vec2.y);
