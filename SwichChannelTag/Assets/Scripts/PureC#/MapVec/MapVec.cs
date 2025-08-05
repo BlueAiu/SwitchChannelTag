@@ -24,14 +24,14 @@ public struct MapVec
 
 
     //方向ベクトルを返す
-    public MapVec Direction(MapDirection direction)
+    public static MapVec Direction(E_MapDirection direction)
     {
         switch(direction)
         {
-            case MapDirection.Up: return new MapVec(0, 1);//上
-            case MapDirection.Right: return new MapVec(1, 0);//右
-            case MapDirection.Down: return new MapVec(0, -1);//下
-            case MapDirection.Left: return new MapVec(-1, 0);//左
+            case E_MapDirection.Up: return new MapVec(0, 1);//上
+            case E_MapDirection.Right: return new MapVec(1, 0);//右
+            case E_MapDirection.Down: return new MapVec(0, -1);//下
+            case E_MapDirection.Left: return new MapVec(-1, 0);//左
             default: return new MapVec(0,0);
         }
     }
