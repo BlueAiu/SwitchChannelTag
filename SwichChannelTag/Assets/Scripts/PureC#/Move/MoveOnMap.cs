@@ -26,19 +26,26 @@ public class MoveOnMap
         set { _target = value; }
     }
 
+    public MapVec CurrentPos { get { return _currentPos; } }//現在の位置
+
     public void Start()//Start関数で呼び出す
     {
         //位置の初期化
         RewritePos(_startPoint);
     }
 
-    public void Move(Vector2 inputVec)//移動
+    public bool Move(Vector2 inputVec)//移動(移動に失敗したらfalseを返す)
     {
         MapVec moveVec;
         moveVec.x = (int)inputVec.x;
         moveVec.y = (int)inputVec.y;
 
-        RewritePos(_currentPos + moveVec);
+        MapVec newPos = _currentPos + moveVec;
+
+        if (!_map.IsInRange(newPos)) return false;//移動できない場合
+
+        RewritePos(newPos);
+        return true;
     }
 
     void RewritePos(MapVec newMapVec)//位置の書き換え

@@ -24,6 +24,6 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.Log(getVec);
 
-        _moveOnMap.Move(getVec);
+        if(!_moveOnMap.Move(getVec)) Debug.Log("ˆÚ“®‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½");
     }
 }
