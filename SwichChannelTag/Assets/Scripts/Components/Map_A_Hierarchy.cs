@@ -1,21 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 //作成者:杉山
 //1階層ごとのマップの管理
+//_centerTrsを[0,0]として+Z方向に_mapSize_Y、+X方向に_mapSize_X分の広さのマップを展開
 
 public class Map_A_Hierarchy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("調整項目")]
+    [Tooltip("マップのサイズ")] [SerializeField] MapVec _mapSize;
+    [Tooltip("一マスごとの間隔")] [SerializeField] float _gapDistance;
+    [Header("非調整項目")]
+    [Tooltip("[0,0]点の位置となるTransform")] [SerializeField] Transform _centerTrs;
+
+    //マップのサイズを教える
+    public int MapSize_X { get { return _mapSize.x; } }
+    public int MapSize_Y { get { return _mapSize.y; } }
+
+    //マス座標が範囲内かを判定
+    public bool IsInRange(MapVec mapVec)
     {
-        
+        if (mapVec.x < 0 || mapVec.x >= _mapSize.x) return false;
+
+        if (mapVec.y < 0 || mapVec.y >= _mapSize.y) return false;
+
+        return true;
     }
 
-    // Update is called once per frame
-    void Update()
+    //マス座標を範囲内に収める
+    public MapVec ClampInRange(MapVec mapVec)
     {
-        
+        mapVec.x = Mathf.Clamp(mapVec.x, 0, _mapSize.x);
+
+        mapVec.y = Mathf.Clamp(mapVec.y, 0, _mapSize.y);
+
+        return mapVec;
+    }
+
+    //マス座標をワールド座標に変換(変換に失敗したらfalseを返す)
+    public bool Transit_FromMapVec_ToWorldVec(MapVec mapVec,out Vector3 ret)
+    {
+        ret = Vector3.zero;
+
+        //範囲外であれば変換失敗
+        if(IsInRange(mapVec))
+        {
+            Debug.Log("座標変換に失敗");
+            return false;
+        }
+
+        Vector3 centerVec = _centerTrs.position;
+        ret = centerVec;
+
+        ret.x += mapVec.x * _gapDistance;//X方向の計算
+        ret.z += mapVec.y * _gapDistance;//Y方向の計算
+
+        return true;
     }
 }
