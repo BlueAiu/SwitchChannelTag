@@ -32,9 +32,9 @@ public class Map_A_Hierarchy : MonoBehaviour
     //ƒ}ƒXÀ•W‚ğ”ÍˆÍ“à‚Éû‚ß‚é
     public MapVec ClampInRange(MapVec mapVec)
     {
-        mapVec.x = Mathf.Clamp(mapVec.x, 0, _mapSize.x);
+        mapVec.x = Mathf.Clamp(mapVec.x, 0, _mapSize.x-1);
 
-        mapVec.y = Mathf.Clamp(mapVec.y, 0, _mapSize.y);
+        mapVec.y = Mathf.Clamp(mapVec.y, 0, _mapSize.y-1);
 
         return mapVec;
     }
