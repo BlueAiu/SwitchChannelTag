@@ -45,7 +45,7 @@ public class Map_A_Hierarchy : MonoBehaviour
         ret = Vector3.zero;
 
         //”ÍˆÍŠO‚Å‚ ‚ê‚Î•ÏŠ·¸”s
-        if(IsInRange(mapVec))
+        if(!IsInRange(mapVec))
         {
             Debug.Log("À•W•ÏŠ·‚É¸”s");
             return false;
