@@ -51,9 +51,7 @@ public class MoveOnMap
     void RewritePos(MapVec newMapVec)//位置の書き換え
     {
         _currentPos = _map.ClampInRange(newMapVec);//範囲外の位置に行かないようにするための処置
-        Vector3 newPos;
-
-        _map.Transit_FromMapVec_ToWorldVec(_currentPos, out newPos);
+        Vector3 newPos = _map.MapToWorld(_currentPos);
         _target.position = newPos;
     }
 }

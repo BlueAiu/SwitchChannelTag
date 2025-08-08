@@ -40,16 +40,12 @@ public class Map_A_Hierarchy : MonoBehaviour
     }
 
     //マス座標をワールド座標に変換(変換に失敗したらfalseを返す)
-    public bool Transit_FromMapVec_ToWorldVec(MapVec mapVec,out Vector3 ret)
+    public Vector3 MapToWorld(MapVec mapVec)
     {
-        ret = Vector3.zero;
+        //範囲外であれば警告する
+        if (!IsInRange(mapVec)) Debug.Log("その座標は範囲外です！");
 
-        //範囲外であれば変換失敗
-        if(!IsInRange(mapVec))
-        {
-            Debug.Log("座標変換に失敗");
-            return false;
-        }
+        Vector3 ret = new();
 
         Vector3 centerVec = _centerTrs.position;
         ret = centerVec;
@@ -57,6 +53,6 @@ public class Map_A_Hierarchy : MonoBehaviour
         ret.x += mapVec.x * _gapDistance;//X方向の計算
         ret.z += mapVec.y * _gapDistance;//Y方向の計算
 
-        return true;
+        return ret;
     }
 }
