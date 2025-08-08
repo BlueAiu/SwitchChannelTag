@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3901238037691451456}
   - component: {fileID: 7362638265056822721}
+  - component: {fileID: 7848788507019473058}
   m_Layer: 0
   m_Name: CapsulePlayer
   m_TagString: Untagged
@@ -55,6 +56,19 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &7848788507019473058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074817731734667574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd2ed2fd56e6014b8e67046dcb1ccd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 7362638265056822721}
 --- !u!1 &8972878540032162334
 GameObject:
   m_ObjectHideFlags: 0

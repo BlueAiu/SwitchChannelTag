@@ -12,5 +12,7 @@ public class CreatePlayer : MonoBehaviourPunCallbacks
         var player = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
 
         // ‚±‚ÌŒãplayer‚ÌComponent‚ğ•ÒW‚Å‚«‚é
+
+        Debug.Log(player.GetComponent<PlayerNumber>().PlayerNum);
     }
 }
