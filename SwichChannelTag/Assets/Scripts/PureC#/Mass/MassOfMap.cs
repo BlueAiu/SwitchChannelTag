@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //作成者:杉山
-//マップごとの情報を格納する
+//マスごとの情報を格納する
 
 
 public class MassOfMap
 {
     private E_Mass[,] _mass;
 
-    public MassOfMap(int size_X,int size_Y)
+    public E_Mass this[MapVec pos]
+    {
+        get { return _mass[pos.y,pos.x]; }
+        set { _mass[pos.y,pos.x] = value; }
+    }
+
+    public MassOfMap(MapVec size)
     {
         //マスのサイズの確定
-        _mass = new E_Mass[size_Y, size_X];
+        _mass = new E_Mass[size.y, size.x];
 
         //全てのマスを空にする
         for(int i=0; i<_mass.GetLength(0) ;i++)
@@ -23,6 +29,8 @@ public class MassOfMap
                 _mass[i, j] = E_Mass.Empty;
             }
         }
+
+        _mass[1,1] = E_Mass.Obstacle;
     }
 
     

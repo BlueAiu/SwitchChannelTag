@@ -6,14 +6,18 @@ using UnityEngine.UIElements;
 //作成者:杉山
 //1階層ごとのマップの管理
 //_centerTrsを[0,0]として-Z方向に_mapSize_Y、+X方向に_mapSize_X分の広さのマップを展開
+//今後の変更予定内容
+//位置を対応させる系のメソッドをクラスとしてまとめる
 
 public class Map_A_Hierarchy : MonoBehaviour
 {
-    [Header("調整項目")]
     [Tooltip("マップのサイズ")] [SerializeField] MapVec _mapSize;
     [Tooltip("一マスごとの間隔")] [SerializeField] float _gapDistance;
-    [Header("非調整項目")]
     [Tooltip("[0,0]点の位置となるTransform")] [SerializeField] Transform _centerTrs;
+
+    MassOfMap _mass;//マスの管理
+
+    public MassOfMap Mass { get { return _mass; } }
 
     //マップのサイズを教える
     public int MapSize_X { get { return _mapSize.x; } }
@@ -44,13 +48,6 @@ public class Map_A_Hierarchy : MonoBehaviour
     {
         ret = Vector3.zero;
 
-        //範囲外であれば変換失敗
-        if(!IsInRange(mapVec))
-        {
-            Debug.Log("座標変換に失敗");
-            return false;
-        }
-
         Vector3 centerVec = _centerTrs.position;
         ret = centerVec;
 
@@ -58,5 +55,13 @@ public class Map_A_Hierarchy : MonoBehaviour
         ret.z -= mapVec.y * _gapDistance;//Y方向の計算
 
         return true;
+    }
+
+
+    //private
+
+    private void Awake()
+    {
+        _mass = new MassOfMap(_mapSize);
     }
 }

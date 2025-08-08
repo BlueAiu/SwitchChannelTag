@@ -30,7 +30,7 @@ public class MoveOnMap
 
     public void Start()//Start関数で呼び出す
     {
-        //位置の初期化
+        //位置の初期化(☆範囲内とそのマスが空であるかを確かめるべき)
         RewritePos(_startPoint);
     }
 
@@ -42,7 +42,7 @@ public class MoveOnMap
 
         MapVec newPos = _currentPos + moveVec;
 
-        if (!_map.IsInRange(newPos)) return false;//移動できない場合
+        if (!_map.IsInRange(newPos) || _map.Mass[newPos] != E_Mass.Empty) return false;//移動できない場合(☆範囲内とそのマスが空であるかを確かめるべき)
 
         RewritePos(newPos);
         return true;
