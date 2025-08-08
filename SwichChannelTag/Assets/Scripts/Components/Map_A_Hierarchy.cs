@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 //作成者:杉山
 //1階層ごとのマップの管理
-//_centerTrsを[0,0]として+Z方向に_mapSize_Y、+X方向に_mapSize_X分の広さのマップを展開
+//_centerTrsを[0,0]として-Z方向に_mapSize_Y、+X方向に_mapSize_X分の広さのマップを展開
 
 public class Map_A_Hierarchy : MonoBehaviour
 {
@@ -55,7 +55,7 @@ public class Map_A_Hierarchy : MonoBehaviour
         ret = centerVec;
 
         ret.x += mapVec.x * _gapDistance;//X方向の計算
-        ret.z += mapVec.y * _gapDistance;//Y方向の計算
+        ret.z -= mapVec.y * _gapDistance;//Y方向の計算
 
         return true;
     }

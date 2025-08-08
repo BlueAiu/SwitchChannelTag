@@ -38,7 +38,7 @@ public class MoveOnMap
     {
         MapVec moveVec;
         moveVec.x = (int)inputVec.x;
-        moveVec.y = (int)inputVec.y;
+        moveVec.y = -(int)inputVec.y;
 
         MapVec newPos = _currentPos + moveVec;
 
