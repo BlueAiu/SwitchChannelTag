@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Numerics;
-using UnityEditor.Experimental.GraphView;
-using UnityEngine;
+
 
 //作成者:杉山
 //マップのベクトル(構造体)の定義
