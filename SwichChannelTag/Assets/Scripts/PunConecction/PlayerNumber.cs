@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class PlayerNumber : MonoBehaviour
 {
-    [SerializeField] PhotonView photonView;
-
-    const int numDigit = 1000;
+    const int masterNum = 1;
+    Photon.Realtime.Player player;
 
     public int PlayerNum
     {
-        get => photonView.ViewID / numDigit;
-        //set { photonView.ViewID = value * numDigit; }
+        get 
+        {
+            if (player == null) SetLocalPlayer();
+            return player.ActorNumber - masterNum;
+        }
+        //set;
+    }
+
+    void SetLocalPlayer()
+    {
+        player = PhotonNetwork.LocalPlayer;
     }
 }

@@ -9,13 +9,13 @@ public class CreatePlayer : MonoBehaviourPunCallbacks
     [SerializeField] Transform WaitingPoint;
     [SerializeField] Vector3 shift;
 
-    const int masterNum = 1;
 
     public override void OnJoinedRoom()
     {
         var player = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
 
         int playerNum = player.GetComponent<PlayerNumber>().PlayerNum;
-        player.transform.position = WaitingPoint.position + (playerNum - masterNum) * shift;
+        Debug.Log(playerNum);
+        player.transform.position = WaitingPoint.position + playerNum * shift;
     }
 }
