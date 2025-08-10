@@ -29,9 +29,5 @@ public class MassOfMap
                 _mass[i, j] = E_Mass.Empty;
             }
         }
-
-        _mass[1,1] = E_Mass.Obstacle;
     }
-
-    
 }
