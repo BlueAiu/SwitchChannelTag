@@ -31,18 +31,20 @@ public class MoveOnMap
     public void Start()//Start関数で呼び出す
     {
         //位置の初期化
-        RewritePos(_startPoint);
+        //(念のため範囲外に出ないようにしておく)
+        MapVec startPoint = _map.ClampInRange(_startPoint);
+        RewritePos(startPoint);
     }
 
     public bool Move(Vector2 inputVec)//移動(移動に失敗したらfalseを返す)
     {
         MapVec moveVec;
         moveVec.x = (int)inputVec.x;
-        moveVec.y = (int)inputVec.y;
+        moveVec.y = -(int)inputVec.y;
 
         MapVec newPos = _currentPos + moveVec;
 
-        if (!_map.IsInRange(newPos)) return false;//移動できない場合
+        if (!_map.IsInRange(newPos) || _map.Mass[newPos] != E_Mass.Empty) return false;//移動できない場合
 
         RewritePos(newPos);
         return true;
@@ -50,7 +52,7 @@ public class MoveOnMap
 
     void RewritePos(MapVec newMapVec)//位置の書き換え
     {
-        _currentPos = _map.ClampInRange(newMapVec);//範囲外の位置に行かないようにするための処置
+        _currentPos = newMapVec;
         Vector3 newPos = _map.MapToWorld(_currentPos);
         _target.position = newPos;
     }
