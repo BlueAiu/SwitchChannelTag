@@ -10,9 +10,7 @@ public class MoveOnMap
 {
     [Tooltip("どのマップ上を動くか")] [SerializeField] Map_A_Hierarchy _map;
     [Tooltip("動かす対象")] [SerializeField] Transform _target;
-    [Tooltip("初期位置")][SerializeField] MapVec _startPoint;
-
-    private MapVec _currentPos;
+    
 
     public Map_A_Hierarchy Map//どのマップ上を動くか
     {
@@ -26,34 +24,24 @@ public class MoveOnMap
         set { _target = value; }
     }
 
-    public MapVec CurrentPos { get { return _currentPos; } }//現在の位置
-
-    public void Start()//Start関数で呼び出す
-    {
-        //位置の初期化
-        //(念のため範囲外に出ないようにしておく)
-        MapVec startPoint = _map.ClampInRange(_startPoint);
-        RewritePos(startPoint);
-    }
-
-    public bool Move(Vector2 inputVec)//移動(移動に失敗したらfalseを返す)
+    public bool Move(ref MapVec currentPos,Vector2 inputVec)//指定方向に移動(移動に失敗したらfalseを返す)
     {
         MapVec moveVec;
         moveVec.x = (int)inputVec.x;
         moveVec.y = -(int)inputVec.y;
 
-        MapVec newPos = _currentPos + moveVec;
+        MapVec newPos = currentPos + moveVec;
 
         if (!_map.IsInRange(newPos) || _map.Mass[newPos] != E_Mass.Empty) return false;//移動できない場合
 
-        RewritePos(newPos);
+        RewritePos(out currentPos,newPos);
         return true;
     }
 
-    void RewritePos(MapVec newMapVec)//位置の書き換え
+    public void RewritePos(out MapVec currentPos,MapVec newMapVec)//位置の書き換え(ワープ的なやつ)
     {
-        _currentPos = newMapVec;
-        Vector3 newPos = _map.MapToWorld(_currentPos);
+        currentPos = _map.ClampInRange(newMapVec);//範囲外にはみ出さない処置だけする(空マスの判定はしない)
+        Vector3 newPos = _map.MapToWorld(currentPos);
         _target.position = newPos;
     }
 }

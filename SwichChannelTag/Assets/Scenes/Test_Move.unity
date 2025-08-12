@@ -765,9 +765,9 @@ MonoBehaviour:
   _moveOnMap:
     _map: {fileID: 1575555652}
     _target: {fileID: 1444045662886228551}
-    _startPoint:
-      x: 2
-      y: 2
+  _startPoint:
+    x: 2
+    y: 2
 --- !u!1 &6252544064853691782
 GameObject:
   m_ObjectHideFlags: 0
