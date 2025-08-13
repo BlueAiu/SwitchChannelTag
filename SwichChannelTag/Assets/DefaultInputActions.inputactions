@@ -13,6 +13,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SwitchHierarchy_Inc",
+                    "type": "Button",
+                    "id": "4492b399-11a3-489d-adf2-9aae439dce3c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchHierarchy_Dec",
+                    "type": "Button",
+                    "id": "e3d6bccf-bf39-4d8d-9281-f68fa020024c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -70,6 +88,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "049f4554-8524-4d1e-bd64-d69dbaf35f2b",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchHierarchy_Inc",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1bbb096f-4068-4569-ab87-150480ddb7f3",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchHierarchy_Dec",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

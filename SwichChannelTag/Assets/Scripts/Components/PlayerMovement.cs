@@ -10,14 +10,23 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Tooltip("ƒ}ƒbƒvã‚ÌˆÚ“®ŠÖŒW")] [SerializeField] MoveOnMap _moveOnMap;
-    [Tooltip("‰ŠúˆÊ’u")][SerializeField] MapVec _startPoint;
+    [Tooltip("ŠK‘w‚ÌˆÚ“®ŠÖŒW")] [SerializeField] ChangeHierarchy _changeHierarchy;
+    [Tooltip("‰ŠúˆÊ’u")] [SerializeField] MapVec _startPoint;
+    [Tooltip("‰ŠúŠK‘w”Ô†")] [SerializeField] int _initHierarchyIndex;
+
     private MapVec _currentPos;//Œ»İ‚ÌˆÊ’uî•ñ
+    private int _currentHierarchyIndex;//Œ»İ‚ÌŠK‘w”Ô†
 
     public MapVec CurrentPos { get { return _currentPos; } }//Œ»İ‚ÌˆÊ’u
 
+    public int CurrentHierarchyIndex { get { return _currentHierarchyIndex; } }
+
     void Start()
     {
-        _moveOnMap.RewritePos(out _currentPos,_startPoint);//Œ»İˆÊ’u‚Ì‰Šú‰»
+        //‰ŠúˆÊ’u‚Ìİ’è
+        Map_A_Hierarchy firstMap = _changeHierarchy.Change_Index(ref _currentHierarchyIndex, _initHierarchyIndex);
+        _moveOnMap.RewritePos(out _currentPos,_startPoint, firstMap);
+        
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -29,5 +38,21 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(getVec);
 
         if(!_moveOnMap.Move(ref _currentPos,getVec)) Debug.Log("ˆÚ“®‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½");
+    }
+
+    public void SwitchHierarchy_Inc(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        Map_A_Hierarchy newMap = _changeHierarchy.Change_Delta(ref _currentHierarchyIndex,1);
+        _moveOnMap.RewritePos(out _currentPos, _currentPos, newMap);
+    }
+
+    public void SwitchHierarchy_Dec(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        Map_A_Hierarchy newMap = _changeHierarchy.Change_Delta(ref _currentHierarchyIndex,-1);
+        _moveOnMap.RewritePos(out _currentPos, _currentPos, newMap);
     }
 }

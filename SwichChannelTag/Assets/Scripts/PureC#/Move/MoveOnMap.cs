@@ -15,13 +15,11 @@ public class MoveOnMap
     public Map_A_Hierarchy Map//どのマップ上を動くか
     {
         get { return _map; }
-        set { _map = value; }
     }
 
     public Transform Target//動かす対象
     {
         get { return _target; }
-        set { _target = value; }
     }
 
     public bool Move(ref MapVec currentPos,Vector2 inputVec)//指定方向に移動(移動に失敗したらfalseを返す)
@@ -36,6 +34,12 @@ public class MoveOnMap
 
         RewritePos(out currentPos,newPos);
         return true;
+    }
+
+    public void RewritePos(out MapVec currentPos, MapVec newMapVec,Map_A_Hierarchy newMap)//位置とマップの書き換え(ワープ的なやつ)
+    {
+        _map = newMap;
+        RewritePos(out currentPos, newMapVec);
     }
 
     public void RewritePos(out MapVec currentPos,MapVec newMapVec)//位置の書き換え(ワープ的なやつ)
