@@ -590,6 +590,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PUNConnectionManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3548682147273756128, guid: 0f044f53e3bbb624f91392b22abaf14c, type: 3}
+      propertyPath: shift.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548682147273756128, guid: 0f044f53e3bbb624f91392b22abaf14c, type: 3}
+      propertyPath: WaitingPoint
+      value: 
+      objectReference: {fileID: 804214040}
     - target: {fileID: 8664932629716479409, guid: 0f044f53e3bbb624f91392b22abaf14c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
