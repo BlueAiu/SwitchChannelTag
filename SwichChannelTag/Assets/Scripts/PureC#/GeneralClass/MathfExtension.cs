@@ -9,6 +9,7 @@ public class MathfExtension
 {
     /// <summary>
     /// 値を範囲内で循環させる
+    /// 範囲最小(rangeMin)以上、範囲最大(rangeMax)以下を範囲とする
     /// </summary>
     public static int CircularWrapping(int num,int rangeMax)//範囲最小が0
     {
@@ -40,13 +41,14 @@ public class MathfExtension
 
     /// <summary>
     /// 値を増加・減少させ、変化後の値を範囲内で循環させる
+    /// /// 範囲最小(rangeMin)以上、範囲最大(rangeMax)以下を範囲とする
     /// </summary>
     public static int CircularWrapping_Delta(int num,int delta,int rangeMax)//範囲最小が0
     {
         return CircularWrapping_Delta(num,delta,0,rangeMax);
     }
 
-    public static int CircularWrapping_Delta(int num,int delta,int rangeMin,int rangeMax)//範囲最小が0
+    public static int CircularWrapping_Delta(int num,int delta,int rangeMin,int rangeMax)//範囲最小も指定可能
     {
         int range = rangeMax - rangeMin + 1;
 
