@@ -28,8 +28,8 @@ public class ChangeHierarchy : MonoBehaviour
     {
         int delta = inc ? 1 : -1;
 
-        int newHierarchyIndex = MathfExtension.CircularWrapping_Delta(_mapTrs.CurrentHierarchyIndex, delta, _mapTrs.Hierarchies.Length - 1);
+        int newHierarchyIndex = MathfExtension.CircularWrapping_Delta(_mapTrs.HierarchyIndex, delta, _mapTrs.Hierarchies.Length - 1);
 
-        _mapTrs.RewritePos(newHierarchyIndex);
+        _mapTrs.HierarchyIndex=newHierarchyIndex;
     }
 }

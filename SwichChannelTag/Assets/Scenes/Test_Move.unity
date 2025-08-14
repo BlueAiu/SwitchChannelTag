@@ -424,7 +424,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 393415782}
-  - component: {fileID: 393415783}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -449,18 +448,6 @@ Transform:
   - {fileID: 1778945989}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &393415783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393415781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da7cbbe66a97b7845870a07250b8f923, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &454450850
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,9 +532,9 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6241321194035320833}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: Move
+      - m_Target: {fileID: 6252544064853691783}
+        m_TargetAssemblyTypeName: MoveOnMap, Assembly-CSharp
+        m_MethodName: MoveControl
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -561,8 +548,8 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6241321194035320833}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 6252544064853691784}
+        m_TargetAssemblyTypeName: ChangeHierarchy, Assembly-CSharp
         m_MethodName: SwitchHierarchy_Dec
         m_Mode: 0
         m_Arguments:
@@ -577,8 +564,8 @@ MonoBehaviour:
     m_ActionName: Player/SwitchHierarchy_Inc[/Keyboard/c]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6241321194035320833}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 6252544064853691784}
+        m_TargetAssemblyTypeName: ChangeHierarchy, Assembly-CSharp
         m_MethodName: SwitchHierarchy_Inc
         m_Mode: 0
         m_Arguments:
@@ -1069,7 +1056,7 @@ Transform:
   m_GameObject: {fileID: 6252544064853691782}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 33.059998, y: 0, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1119,18 +1106,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c3f514a4a3215439a843fa88dc6d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveOnMap:
-    _map: {fileID: 1575555652}
-    _target: {fileID: 1444045662886228551}
-  _changeHierarchy:
-    _maps:
-    - {fileID: 1575555652}
-    - {fileID: 1837054833}
-    - {fileID: 1318852644}
-  _startPoint:
+  _hierarchies:
+  - {fileID: 1575555652}
+  - {fileID: 1837054833}
+  - {fileID: 1318852644}
+  _target: {fileID: 1444045662886228551}
+  _pos:
     x: 2
     y: 2
-  _initHierarchyIndex: 1
+  _hierarchyIndex: 2
 --- !u!1 &6252544064853691782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,6 +1125,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1444045662886228551}
   - component: {fileID: 6241321194035320833}
+  - component: {fileID: 6252544064853691784}
+  - component: {fileID: 6252544064853691783}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1148,6 +1134,32 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6252544064853691783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252544064853691782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4faaa9de41e606948ae0184bb28cc203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mapTrs: {fileID: 6241321194035320833}
+--- !u!114 &6252544064853691784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252544064853691782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf067e5a12612247958a9ed744695ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mapTrs: {fileID: 6241321194035320833}
 --- !u!23 &8186818640378583211
 MeshRenderer:
   m_ObjectHideFlags: 0

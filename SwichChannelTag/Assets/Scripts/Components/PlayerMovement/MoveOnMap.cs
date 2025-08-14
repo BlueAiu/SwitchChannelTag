@@ -25,11 +25,11 @@ public class MoveOnMap : MonoBehaviour
         moveVec.x = (int)inputVec.x;
         moveVec.y = -(int)inputVec.y;
 
-        MapVec newPos = _mapTrs.CurrentPos + moveVec;
+        MapVec newPos = _mapTrs.Pos + moveVec;
 
         if (!_mapTrs.CurrentHierarchy.IsInRange(newPos) || _mapTrs.CurrentHierarchy.Mass[newPos] != E_Mass.Empty) return false;//ˆÚ“®‚Å‚«‚È‚¢ê‡
 
-        _mapTrs.RewritePos(newPos);
+        _mapTrs.Pos=newPos;
         return true;
     }
 }

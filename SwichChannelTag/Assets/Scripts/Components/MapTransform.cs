@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,46 +12,54 @@ public partial class MapTransform : MonoBehaviour
 {
     [Tooltip("ˆÚ“®‚·‚éŠK‘wˆê——")][SerializeField] Map_A_Hierarchy[] _hierarchies;
     [Tooltip("“®‚©‚·‘ÎÛ")][SerializeField] Transform _target;
-    [Tooltip("‰ŠúˆÊ’u")][SerializeField] MapVec _startPoint;
-    [Tooltip("‰ŠúŠK‘w”Ô†")][SerializeField] int _initHierarchyIndex;
-
-    private MapVec _currentPos;//Œ»İ‚ÌˆÊ’uî•ñ
-    private int _currentHierarchyIndex;//Œ»İ‚ÌŠK‘w”Ô†
+    [Tooltip("ˆÊ’u")][SerializeField] MapVec _pos;
+    [Tooltip("ŠK‘w”Ô†")][SerializeField] int _hierarchyIndex;
 
 
     public Transform Target { get { return _target; } }//“®‚©‚·‘ÎÛ
 
-    public MapVec CurrentPos { get { return _currentPos; } }//Œ»İ‚Ìƒ}ƒbƒvã‚ÌˆÊ’u
-    public Vector3 CurrentWorldPos { get { return CurrentHierarchy.MapToWorld(_currentPos); } }//Œ»İ‚Ìƒ[ƒ‹ƒhã‚ÌˆÊ’u
+    public MapVec Pos//Œ»İ‚Ìƒ}ƒbƒvã‚ÌˆÊ’u
+    {
+        get { return _pos; }
+        set { RewritePos(value, _hierarchyIndex); }
+    }
+    public Vector3 CurrentWorldPos { get { return CurrentHierarchy.MapToWorld(_pos); } }//Œ»İ‚Ìƒ[ƒ‹ƒhã‚ÌˆÊ’u
 
-    public int CurrentHierarchyIndex { get { return _currentHierarchyIndex; } }//Œ»İ‚ÌŠK‘w”Ô†
-    public Map_A_Hierarchy CurrentHierarchy { get { return _hierarchies[CurrentHierarchyIndex]; } }//Œ»İ‚ÌŠK‘w
+    public int HierarchyIndex //Œ»İ‚ÌŠK‘w”Ô†
+    {
+        get { return _hierarchyIndex; }
+        set { RewritePos(_pos, value); }
+    }
+    public Map_A_Hierarchy CurrentHierarchy { get { return _hierarchies[_hierarchyIndex]; } }//Œ»İ‚ÌŠK‘w
     public Map_A_Hierarchy[] Hierarchies { get { return _hierarchies; } }//ˆÚ“®‚·‚éŠK‘wˆê——
 
-    public void RewritePos(MapVec newMapVec, int newHierarchyIndex)//ˆÊ’u‚ÆŠK‘w‚Ì‘‚«Š·‚¦
-    {
-        _currentHierarchyIndex = newHierarchyIndex;
-        RewritePos(newMapVec);
-    }
 
-    public void RewritePos(int newHierarchyIndex)//ŠK‘w‚Ì‚İ‚Ì‘‚«Š·‚¦
-    {
-        RewritePos(_currentPos,newHierarchyIndex);
-    }
 
-    public void RewritePos(MapVec newMapVec)//ˆÊ’u‚Ì‚İ‚Ì‘‚«Š·‚¦
-    {
-        _currentPos = newMapVec;
-        Vector3 newPos = CurrentHierarchy.MapToWorld(_currentPos);
-        _target.position = newPos;
-    }
 
 
     //private
 
+    void RewritePos(MapVec newMapVec, int newHierarchyIndex)//ˆÊ’u‚ÆŠK‘w‚Ì‘‚«Š·‚¦
+    {
+        //ˆÊ’u‚ª”ÍˆÍŠO‚¾‚Á‚½‚çŒx
+        if(!CurrentHierarchy.IsInRange(newMapVec)) Debug.Log(newMapVec + "‚Í”ÍˆÍŠO‚ÌˆÊ’u‚Å‚·I");
+
+        //ŠK‘w”Ô†‚ª”ÍˆÍŠO‚¾‚Á‚½‚çŒx•”ÍˆÍ“à‚Éû‚ß‚é
+        if(_hierarchyIndex<0 || _hierarchyIndex>=_hierarchies.Length) Debug.Log(_hierarchyIndex + "‚Í”ÍˆÍŠO‚ÌŠK‘w”Ô†‚Å‚·I");
+
+        _hierarchyIndex = newHierarchyIndex;
+        _pos = newMapVec;
+        Vector3 newPos = CurrentWorldPos;
+        _target.position = newPos;
+    }
+
     void Start()
     {
-        //‰ŠúˆÊ’u‚Ìİ’è
-        RewritePos(_startPoint, _initHierarchyIndex);
+        RewritePos(_pos, _hierarchyIndex);
+    }
+
+    private void OnValidate()
+    {
+        RewritePos(_pos, _hierarchyIndex);
     }
 }
