@@ -41,11 +41,25 @@ public partial class MapTransform : MonoBehaviour
 
     void RewritePos(MapVec newMapVec, int newHierarchyIndex)//位置と階層の書き換え
     {
-        //位置が範囲外だったら警告
-        if(!CurrentHierarchy.IsInRange(newMapVec)) Debug.Log(newMapVec + "は範囲外の位置です！");
+        if(_target==null)
+        {
+            Debug.Log("Targetが設定されていません！");
+            return;
+        }
+
+        //位置が範囲外だったら警告して弾く
+        if (!CurrentHierarchy.IsInRange(newMapVec))
+        {
+            Debug.Log(newMapVec + "は範囲外の位置です！");
+            return;
+        }
 
         //階層番号が範囲外だったら警告＆範囲内に収める
-        if(_hierarchyIndex<0 || _hierarchyIndex>=_hierarchies.Length) Debug.Log(_hierarchyIndex + "は範囲外の階層番号です！");
+        if (_hierarchyIndex < 0 || _hierarchyIndex >= _hierarchies.Length)
+        {
+            Debug.Log(_hierarchyIndex + "は範囲外の階層番号です！");
+            return;
+        }
 
         _hierarchyIndex = newHierarchyIndex;
         _pos = newMapVec;
