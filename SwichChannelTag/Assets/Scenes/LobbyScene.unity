@@ -617,6 +617,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2608962768504819512, guid: 0f044f53e3bbb624f91392b22abaf14c, type: 3}
+      propertyPath: readyButton
+      value: 
+      objectReference: {fileID: 2093833277}
+    - target: {fileID: 2608962768504819512, guid: 0f044f53e3bbb624f91392b22abaf14c, type: 3}
       propertyPath: WaitingPoint
       value: 
       objectReference: {fileID: 804214040}
