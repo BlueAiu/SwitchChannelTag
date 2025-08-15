@@ -7,7 +7,14 @@ public class PlayersManager : MonoBehaviourPunCallbacks
 {
     List<GameObject> players = new();
 
-    public GameObject[] Players { get => players.ToArray(); }
+    public GameObject[] Players 
+    { 
+        get 
+        {
+            ResetPlayersList();
+            return players.ToArray();
+        }
+    }
    
     void ResetPlayersList()
     {
@@ -22,6 +29,8 @@ public class PlayersManager : MonoBehaviourPunCallbacks
     //プレイヤー達のComponentを配列で取得
     public T[] GetComponentsFromPlayers<T>() where T : Component
     {
+        ResetPlayersList();
+
         List<T> ret = new();
 
         foreach (var i in players)
@@ -35,22 +44,5 @@ public class PlayersManager : MonoBehaviourPunCallbacks
         }
 
         return ret.ToArray();
-    }
-
-    // 入室時、他プレイヤーが入った時、他プレイヤーが抜けた時、リストを更新する
-
-    public override void OnJoinedRoom()
-    {
-        ResetPlayersList();
-    }
-
-    public override void OnPlayerEnteredRoom(Player newPlayer)
-    {
-        ResetPlayersList();
-    }
-
-    public override void OnPlayerLeftRoom(Player otherPlayer)
-    {
-        ResetPlayersList();
     }
 }
