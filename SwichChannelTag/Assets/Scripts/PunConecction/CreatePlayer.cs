@@ -6,6 +6,7 @@ using Photon.Realtime;
 public class CreatePlayer : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject playerPrefab;
+    [SerializeField] ReadyButton readyButton;
 
     GameObject player;
 
@@ -15,5 +16,6 @@ public class CreatePlayer : MonoBehaviourPunCallbacks
         player = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
 
         GetComponent<LobbyLocation>().SetPlayer(player);
+        readyButton.OwnPlayer = player;
     }
 }
