@@ -1538,8 +1538,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2063032466}
-        m_TargetAssemblyTypeName: Dice, Assembly-CSharp
-        m_MethodName: DiceRoll
+        m_TargetAssemblyTypeName: DecideMovableStep, Assembly-CSharp
+        m_MethodName: Dicide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1632,6 +1632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxNum: 6
+  _moveOnMap: {fileID: 6252544064853691783}
   _diceResultText: {fileID: 1598713918}
 --- !u!1 &2129538654
 GameObject:
