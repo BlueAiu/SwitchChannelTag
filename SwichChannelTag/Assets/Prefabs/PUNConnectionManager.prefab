@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5408297748983170095}
   - component: {fileID: -5121344591822780999}
   - component: {fileID: -4728115759115661244}
+  - component: {fileID: -7898330441020250072}
   m_Layer: 0
   m_Name: PUNConnectionManager
   m_TagString: Untagged
@@ -115,3 +116,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainSceneName: MainScene
+--- !u!114 &-7898330441020250072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3235853412960603265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e7b6dc3f572a646b412e346d57a83e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPlayer: 2
