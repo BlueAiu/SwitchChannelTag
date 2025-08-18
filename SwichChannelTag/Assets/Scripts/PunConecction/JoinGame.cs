@@ -26,6 +26,11 @@ public class JoinGame : MonoBehaviourPunCallbacks
         WriteLog("Joined Room.");
     }
 
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        WriteLog("JoinFailed : " + message);
+    }
+
     void WriteLog(string message)
     {
         if (writeJoinLog) Debug.Log(message);
