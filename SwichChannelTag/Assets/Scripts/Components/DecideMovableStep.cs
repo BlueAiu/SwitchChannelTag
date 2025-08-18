@@ -11,7 +11,7 @@ public class DecideMovableStep : MonoBehaviour
     [Tooltip("ダイスの最大値(1～MaxNum以下の値が出る)")] [SerializeField] int _maxNum;
     [SerializeField] MoveOnMap _moveOnMap;
     [SerializeField] TextMeshProUGUI _diceResultText;
-    int _minNum=1;
+    const int _minNum=1;
 
     public void Dicide()//動けるマス数を決定(ダイスロールで)
     {
