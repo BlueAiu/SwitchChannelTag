@@ -15,6 +15,7 @@ public class ReadinessManager : MonoBehaviour
         if (IsReadyAll(playerReadis))
         {
             GetComponent<SceneTransition>().LoadScene(mainSceneName);
+            GetComponent<JoinControl>().IsRoomOpened = false;
             enabled = false;
         }
     }
