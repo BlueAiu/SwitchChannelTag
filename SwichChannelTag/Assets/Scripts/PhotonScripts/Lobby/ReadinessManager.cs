@@ -1,10 +1,9 @@
 using Photon.Pun;
-using UnityEditor;
 using UnityEngine;
 
 public class ReadinessManager : MonoBehaviour
 {
-    [SerializeField] SceneAsset mainScene;
+    [SerializeField] string mainSceneName = "MainScene";
 
     public void TryStartGame()
     {
@@ -15,7 +14,7 @@ public class ReadinessManager : MonoBehaviour
 
         if (IsReadyAll(playerReadis))
         {
-            GetComponentInParent<SceneTransition>().LoadScene(mainScene);
+            GetComponentInParent<SceneTransition>().LoadScene(mainSceneName);
             GetComponent<JoinControl>().IsRoomOpened = false;
             enabled = false;
         }
