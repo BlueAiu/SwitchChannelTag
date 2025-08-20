@@ -1,20 +1,21 @@
 using Photon.Pun;
+using UnityEditor;
 using UnityEngine;
 
 public class ReadinessManager : MonoBehaviour
 {
-    [SerializeField] string mainSceneName = "MainScene";
+    [SerializeField] SceneAsset mainScene;
 
     public void TryStartGame()
     {
         if (!PhotonNetwork.IsMasterClient) return;
 
-        var playerReadis = GetComponent<PlayersManager>().
+        var playerReadis = GetComponentInParent<PlayersManager>().
             GetComponentsFromPlayers<GettingReady>();
 
         if (IsReadyAll(playerReadis))
         {
-            GetComponent<SceneTransition>().LoadScene(mainSceneName);
+            GetComponentInParent<SceneTransition>().LoadScene(mainScene);
             GetComponent<JoinControl>().IsRoomOpened = false;
             enabled = false;
         }
