@@ -9,12 +9,12 @@ public class ReadinessManager : MonoBehaviour
     {
         if (!PhotonNetwork.IsMasterClient) return;
 
-        var playerReadis = GetComponent<PlayersManager>().
+        var playerReadis = GetComponentInParent<PlayersManager>().
             GetComponentsFromPlayers<GettingReady>();
 
         if (IsReadyAll(playerReadis))
         {
-            GetComponent<SceneTransition>().LoadScene(mainSceneName);
+            GetComponentInParent<SceneTransition>().LoadScene(mainSceneName);
             GetComponent<JoinControl>().IsRoomOpened = false;
             enabled = false;
         }
