@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 
 public class MoveOnMap : MonoBehaviour
 {
+    [Tooltip("一つのマスの移動にかける時間")] [SerializeField] float _moveDuration;
     [SerializeField] MapTransform _mapTrs;
     int _remainingStep=0;//残り移動可能マス数
 
@@ -20,6 +21,8 @@ public class MoveOnMap : MonoBehaviour
     public void MoveControl(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
+
+        if (_mapTrs.Moving) return;//キャラが移動中であれば無視
 
         if (_remainingStep <= 0) return;//残り移動可能マスが0なら移動できない
 
@@ -45,7 +48,8 @@ public class MoveOnMap : MonoBehaviour
         }
 
         //移動可能な場合
-        _mapTrs.Pos=newPos;
+        _mapTrs.MoveSmoothly(newPos,_moveDuration);
+        //_mapTrs.Pos=newPos;
         return true;
     }
 

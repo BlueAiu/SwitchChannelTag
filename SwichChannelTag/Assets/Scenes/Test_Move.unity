@@ -1901,6 +1901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4faaa9de41e606948ae0184bb28cc203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveDuration: 0.2
   _mapTrs: {fileID: 6241321194035320833}
 --- !u!114 &6252544064853691784
 MonoBehaviour:
