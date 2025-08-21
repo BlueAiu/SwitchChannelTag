@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 //作成者:杉山
 //プレイヤーの階層移動操作
+//enabledをfalseにすれば、ボタンを押しても階層移動を出来なくすることが出来る
 
 public class ChangeHierarchy : MonoBehaviour
 {
@@ -26,10 +27,17 @@ public class ChangeHierarchy : MonoBehaviour
 
     void SwitchHierarchy(bool inc)
     {
+        if (!enabled) return;
+
         int delta = inc ? 1 : -1;
 
         int newHierarchyIndex = MathfExtension.CircularWrapping_Delta(_mapTrs.HierarchyIndex, delta, _mapTrs.Hierarchies.Length - 1);
 
         _mapTrs.HierarchyIndex=newHierarchyIndex;
+    }
+
+    private void Start()//enabledのチェック欄を表示させるため、わざと空のStart関数を置いてる
+    {
+        
     }
 }
