@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 public partial class MapTransform : MonoBehaviour
 {
-    [Tooltip("ˆÚ“®‚Å‚«‚éŠK‘wˆê——")][SerializeField] MapsHierarchies _hierarchies;
+    [Tooltip("ˆÚ“®‚Å‚«‚éŠK‘wˆê——")][SerializeField] Maps_Hierarchies _hierarchies;
     [Tooltip("“®‚©‚·‘ÎÛ")][SerializeField] Transform _target;
     [Tooltip("ˆÊ’u")][SerializeField] MapVec _pos;
     [Tooltip("ŠK‘w”Ô†")][SerializeField] int _hierarchyIndex;
@@ -45,7 +45,7 @@ public partial class MapTransform : MonoBehaviour
         set { RewritePos(_pos, value); }
     }
     public Map_A_Hierarchy CurrentHierarchy { get { return _hierarchies[_hierarchyIndex]; } }//Œ»İ‚ÌŠK‘w
-    public MapsHierarchies Hierarchies { get { return _hierarchies; } }//ˆÚ“®‚·‚éŠK‘wˆê——
+    public Maps_Hierarchies Hierarchies { get { return _hierarchies; } }//ˆÚ“®‚·‚éŠK‘wˆê——
     
 
 

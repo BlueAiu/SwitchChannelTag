@@ -5,7 +5,7 @@ using UnityEngine;
 //ì¬Ò:™R
 //‘S‚Ä‚ÌŠK‘w‚Ìƒ}ƒbƒv‚ÌŠÇ—
 
-public class MapsHierarchies : MonoBehaviour
+public class Maps_Hierarchies : MonoBehaviour
 {
     [Tooltip("ˆÚ“®‚Å‚«‚éŠK‘wˆê——")][SerializeField] Map_A_Hierarchy[] _maps;
 
