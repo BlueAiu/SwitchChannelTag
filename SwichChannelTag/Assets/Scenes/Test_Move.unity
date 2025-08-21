@@ -459,8 +459,10 @@ GameObject:
   m_Component:
   - component: {fileID: 454450852}
   - component: {fileID: 454450851}
+  - component: {fileID: 454450854}
+  - component: {fileID: 454450853}
   m_Layer: 0
-  m_Name: ControllerManager
+  m_Name: ControlManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,7 +535,7 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6252544064853691783}
+      - m_Target: {fileID: 454450853}
         m_TargetAssemblyTypeName: MoveOnMap, Assembly-CSharp
         m_MethodName: MoveControl
         m_Mode: 0
@@ -549,7 +551,7 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6252544064853691784}
+      - m_Target: {fileID: 454450854}
         m_TargetAssemblyTypeName: ChangeHierarchy, Assembly-CSharp
         m_MethodName: SwitchHierarchy_Dec
         m_Mode: 0
@@ -565,7 +567,7 @@ MonoBehaviour:
     m_ActionName: Player/SwitchHierarchy_Inc[/Keyboard/c]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6252544064853691784}
+      - m_Target: {fileID: 454450854}
         m_TargetAssemblyTypeName: ChangeHierarchy, Assembly-CSharp
         m_MethodName: SwitchHierarchy_Inc
         m_Mode: 0
@@ -599,6 +601,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 393415782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &454450853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454450850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4faaa9de41e606948ae0184bb28cc203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveDuration: 0.2
+  _mapTrs: {fileID: 6241321194035320833}
+--- !u!114 &454450854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454450850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf067e5a12612247958a9ed744695ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mapTrs: {fileID: 6241321194035320833}
 --- !u!1 &461476202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,7 +1712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxNum: 6
-  _moveOnMap: {fileID: 6252544064853691783}
+  _moveOnMap: {fileID: 454450853}
   _diceResultText: {fileID: 1598713918}
 --- !u!1 &2129538654
 GameObject:
@@ -1928,8 +1957,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1444045662886228551}
   - component: {fileID: 6241321194035320833}
-  - component: {fileID: 6252544064853691784}
-  - component: {fileID: 6252544064853691783}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1937,33 +1964,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6252544064853691783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6252544064853691782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4faaa9de41e606948ae0184bb28cc203, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveDuration: 0.2
-  _mapTrs: {fileID: 6241321194035320833}
---- !u!114 &6252544064853691784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6252544064853691782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf067e5a12612247958a9ed744695ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mapTrs: {fileID: 6241321194035320833}
 --- !u!23 &8186818640378583211
 MeshRenderer:
   m_ObjectHideFlags: 0
