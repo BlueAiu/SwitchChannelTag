@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 public partial class MapTransform : MonoBehaviour
 {
-    [Tooltip("ˆÚ“®‚·‚éŠK‘wˆê——")][SerializeField] Map_A_Hierarchy[] _hierarchies;
+    [Tooltip("ˆÚ“®‚Å‚«‚éŠK‘wˆê——")][SerializeField] MapsHierarchies _hierarchies;
     [Tooltip("“®‚©‚·‘ÎÛ")][SerializeField] Transform _target;
     [Tooltip("ˆÊ’u")][SerializeField] MapVec _pos;
     [Tooltip("ŠK‘w”Ô†")][SerializeField] int _hierarchyIndex;
@@ -45,7 +45,7 @@ public partial class MapTransform : MonoBehaviour
         set { RewritePos(_pos, value); }
     }
     public Map_A_Hierarchy CurrentHierarchy { get { return _hierarchies[_hierarchyIndex]; } }//Œ»İ‚ÌŠK‘w
-    public Map_A_Hierarchy[] Hierarchies { get { return _hierarchies; } }//ˆÚ“®‚·‚éŠK‘wˆê——
+    public MapsHierarchies Hierarchies { get { return _hierarchies; } }//ˆÚ“®‚·‚éŠK‘wˆê——
     
 
 
@@ -54,9 +54,9 @@ public partial class MapTransform : MonoBehaviour
 
     void RewritePos(MapVec newMapPos, int newHierarchyIndex)//ˆÊ’u‚ÆŠK‘w‚Ì‘‚«Š·‚¦
     {
-        if(_target==null)
+        if(_target==null|| _hierarchies == null)
         {
-            Debug.Log("Target‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI");
+            Debug.Log("ƒCƒ“ƒXƒyƒNƒ^[‚Åİ’è‚³‚ê‚Ä‚¢‚È‚¢‰ÓŠ‚ª‚ ‚é‚æ‚¤‚Å‚·I");
             return;
         }
 
