@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5408297748983170095}
   - component: {fileID: -5121344591822780999}
   - component: {fileID: 6010237202776833210}
+  - component: {fileID: 1104272510429920618}
   m_Layer: 0
   m_Name: PUNConnectionManager
   m_TagString: Untagged
@@ -71,6 +72,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eded31f0ce3cdd42959a20d96b11bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1104272510429920618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3235853412960603265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2aa0f34afad637469700aa6db82dfa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeScriptsInScene:
+    _list:
+    - key: LobbyScene
+      value:
+      - {fileID: 4123784355124194562}
+      - {fileID: 8845206724996346035}
+      - {fileID: 1966034812919126722}
+      - {fileID: 2325844592367869474}
+      - {fileID: 2687846205574671761}
 --- !u!1 &8242827229382144529
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,4 +195,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f5ab4abebf54844e94cc50cfd3ca40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+  mainSceneName: MainScene

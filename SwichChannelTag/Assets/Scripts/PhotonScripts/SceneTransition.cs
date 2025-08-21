@@ -1,5 +1,4 @@
 using Photon.Pun;
-using UnityEditor;
 using UnityEngine;
 
 public class SceneTransition : MonoBehaviour 
@@ -9,11 +8,11 @@ public class SceneTransition : MonoBehaviour
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
-    public void LoadScene(SceneAsset scene)
+    public void LoadScene(string sceneName)
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.LoadLevel(scene.name);
+            PhotonNetwork.LoadLevel(sceneName);
         }
     }
 }
