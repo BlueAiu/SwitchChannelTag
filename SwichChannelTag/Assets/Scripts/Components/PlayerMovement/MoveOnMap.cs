@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 //作成者:杉山
 //プレイヤーのマップ上の移動操作
+//enabledをfalseにすれば、ボタンを押しても移動を出来なくすることが出来る
 
 public class MoveOnMap : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class MoveOnMap : MonoBehaviour
     {
         if (!context.performed) return;
 
+        if (!enabled) return;
+
         if (_mapTrs.Moving) return;//キャラが移動中であれば無視
 
         if (_remainingStep <= 0) return;//残り移動可能マスが0なら移動できない
@@ -32,6 +35,8 @@ public class MoveOnMap : MonoBehaviour
 
         _remainingStep--;//移動出来たなら、残り移動可能マスを減らしておく
     }
+
+
 
     bool Move(Vector2 inputVec)//指定方向に移動(移動に失敗したらfalseを返す)
     {
@@ -59,5 +64,10 @@ public class MoveOnMap : MonoBehaviour
         if (_mapTrs.CurrentHierarchy.Mass[newPos] != E_Mass.Empty) return false;//そのマスが空マスでなければ移動できない
 
         return true;
+    }
+
+    private void Start()//enabledのチェック欄を表示させるため、わざと空のStart関数を置いてる
+    {
+        
     }
 }
