@@ -1387,15 +1387,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba990862545082479f145346005abe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _map: {fileID: 0}
+  _map: {fileID: 407807742}
   _obstacleObject: {fileID: 87842621043002327, guid: 3a530e8944187be4f9bf8f13528acedc, type: 3}
   _obstaclePoses:
-  - x: 1
-    y: 1
-  - x: 4
-    y: 4
-  - x: 2
-    y: 3
+  - _hierarchyIndex: 0
+    _pos:
+      x: 0
+      y: 0
+  - _hierarchyIndex: 0
+    _pos:
+      x: 2
+      y: 3
+  - _hierarchyIndex: 1
+    _pos:
+      x: 0
+      y: 0
 --- !u!1 &1952270296
 GameObject:
   m_ObjectHideFlags: 0

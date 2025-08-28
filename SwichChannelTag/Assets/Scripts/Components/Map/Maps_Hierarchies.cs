@@ -15,4 +15,13 @@ public class Maps_Hierarchies : MonoBehaviour
     }
 
     public int Length { get { return _maps.Length; } }//ŠK‘w‚Ì”
+
+    public bool IsInRange(int hierarchyIndex)//ŠK‘w”Ô†‚Ì‚Ý‚ª”ÍˆÍ“à‚©‚ð”»’è
+    {
+        return hierarchyIndex >= 0 && hierarchyIndex < _maps.Length;
+    }
+    public bool IsInRange(int hierarchyIndex,MapVec mapVec)//ŠK‘w”Ô†‚Æƒ}ƒXÀ•W—¼•û‚ª”ÍˆÍ“à‚©‚ð”»’è
+    {
+        return IsInRange(hierarchyIndex) && _maps[hierarchyIndex].IsInRange(mapVec);
+    }
 }

@@ -7,19 +7,30 @@ using UnityEngine;
 
 public class SetObstacle : MonoBehaviour
 {
-    [SerializeField] Map_A_Hierarchy _map;
+    [SerializeField] Maps_Hierarchies _map;
     [SerializeField] GameObject _obstacleObject;
-    [SerializeField] MapVec[] _obstaclePoses;
+    [SerializeField] MapPosInfo[] _obstaclePoses;
     
     void Start()
     {
         for(int i=0; i<_obstaclePoses.Length ;i++)
         {
-            Vector3 pos = _map.MapToWorld(_obstaclePoses[i]);
+            MapPosInfo _obstaclePos = _obstaclePoses[i];
+
+            //範囲外であれば、生成失敗
+            if (!_map.IsInRange(_obstaclePos.HierarchyIndex,_obstaclePos.Pos))
+            {
+                Debug.Log("範囲外なので生成失敗");
+                continue;
+            }
+            
+            Map_A_Hierarchy map = _map[_obstaclePos.HierarchyIndex];
+
+            Vector3 pos = map.MapToWorld(_obstaclePos.Pos);
             GameObject obstacleInstance = Instantiate(_obstacleObject);//障害物オブジェクトを生成
             obstacleInstance.transform.position = pos;
 
-            _map.Mass[_obstaclePoses[i]] = E_Mass.Obstacle;
+            map.Mass[_obstaclePos.Pos] = E_Mass.Obstacle;
         }
     }
 }
