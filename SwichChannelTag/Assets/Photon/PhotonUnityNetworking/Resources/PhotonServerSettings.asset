@@ -37,6 +37,11 @@ MonoBehaviour:
   - ClickRpc
   - DestroyRpc
   - SetIsReady
+  - Rewrite
+  - Bar
+  - Baz
+  - Foo
+  - RewriteTrs
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

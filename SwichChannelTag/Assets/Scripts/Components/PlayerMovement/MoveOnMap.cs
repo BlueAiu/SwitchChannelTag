@@ -53,7 +53,7 @@ public class MoveOnMap : MonoBehaviour
         }
 
         //ˆÚ“®‰Â”\‚Èê‡
-        _mapTrs.MoveSmoothly(newPos,_moveDuration);
+        _mapTrs.MoveSmoothly(newPos,_moveDuration,true);
         //_mapTrs.Pos=newPos;
         return true;
     }
