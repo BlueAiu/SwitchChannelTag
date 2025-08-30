@@ -33,7 +33,7 @@ public class ChangeHierarchy : MonoBehaviour
 
         int newHierarchyIndex = MathfExtension.CircularWrapping_Delta(_mapTrs.HierarchyIndex, delta, _mapTrs.Hierarchies.Length - 1);
 
-        _mapTrs.HierarchyIndex=newHierarchyIndex;
+        _mapTrs.Rewrite(newHierarchyIndex,true);
     }
 
     private void Start()//enabledのチェック欄を表示させるため、わざと空のStart関数を置いてる
