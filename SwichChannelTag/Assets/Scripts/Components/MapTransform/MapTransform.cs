@@ -80,15 +80,17 @@ public partial class MapTransform : MonoBehaviour
 
         CheckAbleToSync(ref isSync);//同期出来るかチェック(出来ないのであれば、非同期移動に変更)
 
-        if (isSync) _myPhotonView.RPC(nameof(RewriteTrs), RpcTarget.All, newMapPos, newHierarchyIndex);//同期する位置情報書き換え
-        else RewriteTrs(newMapPos, newHierarchyIndex);//同期しない位置情報書き換え
+        if (isSync) _myPhotonView.RPC(nameof(RewriteTrs), RpcTarget.All, newMapPos.x, newMapPos.y, newHierarchyIndex);//同期する位置情報書き換え
+        else RewriteTrs(newMapPos.x,newMapPos.y, newHierarchyIndex);//同期しない位置情報書き換え
     }
 
 
-    //privat
-    [PunRPC]
-    void RewriteTrs(MapVec newMapPos, int newHierarchyIndex)
+    //private
+
+    [PunRPC]//Photonを使った場合、MapVecをそのまま引数に入れるとエラーになるので、intで渡す
+    void RewriteTrs(int newMapPos_X,int newMqpPos_Y, int newHierarchyIndex)
     {
+        MapVec newMapPos=new MapVec(newMapPos_X,newMqpPos_Y);
         _hierarchyIndex = newHierarchyIndex;
         _pos = newMapPos;
         Vector3 newWorldPos = CurrentWorldPos;
