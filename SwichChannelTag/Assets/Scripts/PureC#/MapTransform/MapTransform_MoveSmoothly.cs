@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using UnityEditor.Experimental.GraphView;
 
 //作成者:杉山
 //マップ上を一瞬で移動するのではなく、スムーズに移動
