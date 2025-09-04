@@ -521,8 +521,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveDuration: 0.2
-  _mapTrs: {fileID: 0}
   _scenePlayerManager: {fileID: 2091156295}
+  _mapTrs: {fileID: 0}
 --- !u!114 &722071808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,8 +535,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf067e5a12612247958a9ed744695ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mapTrs: {fileID: 0}
   _scenePlayerManager: {fileID: 2091156295}
+  _mapTrs: {fileID: 0}
 --- !u!114 &722071809
 MonoBehaviour:
   m_ObjectHideFlags: 0
