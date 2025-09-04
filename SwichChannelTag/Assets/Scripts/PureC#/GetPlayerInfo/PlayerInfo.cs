@@ -9,43 +9,18 @@ using Photon.Realtime;
 
 public class PlayerInfo
 {
+    GetPlayerInfo _getPlayerInfo;//プレイヤーのコンポーネントを取得する機能
     GameObject _playerObject;//プレイヤーオブジェクト
     Player _player;//プレイヤーの情報
-    const int _errorNum = -1;
 
-    public PlayerInfo(GameObject playerObject,Player player)
+    public PlayerInfo(GameObject playerObject,Player player, GetPlayerInfo getPlayerInfo)
     {
         _playerObject = playerObject;
         _player = player;
+        _getPlayerInfo = getPlayerInfo;
     }
 
-    public GameObject PlayerObject//プレイヤーオブジェクト
-    {
-        get { return _playerObject; }
-        set { _playerObject = value; }
-    }
-
-    public Player Player//プレイヤーの情報
-    {
-        get { return _player; }
-        set { _player = value; }
-    }
-
-    public int ActorNum//プレイヤーのアクタ―ナンバー(入室した順に並んだプレイヤーごとのIDみたいなもの)、取得に失敗したら_errorNum(-1)を返す
-    {
-        get
-        {
-            if (_player == null) return _errorNum;
-            return _player.ActorNumber;
-        }
-    }
-
-    public string ID//プレイヤーID(文字列型のプレイヤーごとのID)、取得に失敗したらnullを返す
-    {
-        get
-        {
-            if (_player == null) return null;
-            return _player.UserId;
-        }
-    }
+    public GameObject PlayerObject { get { return _playerObject; } }//プレイヤーオブジェクト
+    public Player Player { get { return _player; } }//プレイヤーの情報
+    public T GetComponent<T>() where T:Component { return _getPlayerInfo.GetComponent<T>(); }//プレイヤーのコンポーネントの取得
 }
