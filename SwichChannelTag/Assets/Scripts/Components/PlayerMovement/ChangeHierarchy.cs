@@ -9,7 +9,11 @@ using UnityEngine.InputSystem;
 
 public class ChangeHierarchy : MonoBehaviour
 {
-    [SerializeField] MapTransform _mapTrs;
+    [Tooltip("シーン内のプレイヤーの情報を取得する機能")] [SerializeField] 
+    ScenePlayerManager _scenePlayerManager;
+
+    [Tooltip("マップ上の位置情報")] [SerializeField] 
+    MapTransform _mapTrs;
 
     public void SwitchHierarchy_Inc(InputAction.CallbackContext context)
     {
@@ -25,6 +29,9 @@ public class ChangeHierarchy : MonoBehaviour
         SwitchHierarchy(false);
     }
 
+
+
+    //private
     void SwitchHierarchy(bool inc)
     {
         if (!enabled) return;
@@ -36,8 +43,14 @@ public class ChangeHierarchy : MonoBehaviour
         _mapTrs.Rewrite(newHierarchyIndex,true);
     }
 
-    private void Start()//enabledのチェック欄を表示させるため、わざと空のStart関数を置いてる
+    private void Start()
     {
-        
+        Init();
+    }
+
+    private void Init()//初期化処理
+    {
+        if (_scenePlayerManager != null) _mapTrs = _scenePlayerManager.MyComponent<MapTransform>();
+        else if (_mapTrs == null) Debug.Log("このままだとプレイヤーが動けません！");
     }
 }

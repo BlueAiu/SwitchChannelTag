@@ -14,7 +14,7 @@ using UnityEngine;
 public class ScenePlayerManager : MonoBehaviour
 {
     [Tooltip("プレイヤーのオブジェクトのタグ名")] [SerializeField] string _playerObjectTagName;
-    PlayerInfo[] _playerInfos;//部屋内全てのプレイヤーの情報
+    PlayerInfo[] _playerInfos;//全プレイヤーの情報
     int _myPlayerIndex;//自分のプレイヤーの要素番号
 
     
@@ -90,6 +90,7 @@ public class ScenePlayerManager : MonoBehaviour
 
         _playerInfos = new PlayerInfo[playerObjects.Length];
 
+        //全プレイヤーの情報を取得して格納
         for (int i = 0; i < playerObjects.Length; i++)
         {
             GameObject playerObject = playerObjects[i];
@@ -104,15 +105,21 @@ public class ScenePlayerManager : MonoBehaviour
             if (getPlayerInfo == null) Debug.Log(playerObject.name + "にGetPlayerInfoがついてません！");
 
             _playerInfos[i] = new PlayerInfo(playerObject, player,getPlayerInfo);
-
-            //自分のなら自分のプレイヤー番号を記録
-            if (photonView.IsMine)
-            {
-                _myPlayerIndex = i;
-            }
         }
+
 
         //配列に全て格納した後、actorNumberの小さい順に並べる
         System.Array.Sort(_playerInfos, (a, b) => a.Player.ActorNumber.CompareTo(b.Player.ActorNumber));
+
+
+        //自分のプレイヤーの要素番号を探す
+        for (int i = 0; i < playerObjects.Length; i++)
+        {
+            if (_playerInfos[i].Player == PhotonNetwork.LocalPlayer)
+            {
+                _myPlayerIndex = i;
+                return;
+            }
+        }
     }
 }

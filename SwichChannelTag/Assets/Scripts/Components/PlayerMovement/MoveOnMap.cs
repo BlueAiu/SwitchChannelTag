@@ -9,8 +9,15 @@ using UnityEngine.InputSystem;
 
 public class MoveOnMap : MonoBehaviour
 {
-    [Tooltip("一つのマスの移動にかける時間")] [SerializeField] float _moveDuration;
-    [SerializeField] MapTransform _mapTrs;
+    [Tooltip("一つのマスの移動にかける時間")] [SerializeField]
+    float _moveDuration;
+
+    [Tooltip("シーン内のプレイヤーの情報を取得する機能")] [SerializeField]
+    ScenePlayerManager _scenePlayerManager;
+
+    [Tooltip("マップ上の位置情報")] [SerializeField]
+    MapTransform _mapTrs;
+
     int _remainingStep=0;//残り移動可能マス数
 
     public int RemainingStep
@@ -38,6 +45,7 @@ public class MoveOnMap : MonoBehaviour
 
 
 
+    //private
     bool Move(Vector2 inputVec)//指定方向に移動(移動に失敗したらfalseを返す)
     {
         MapVec moveVec;
@@ -54,7 +62,6 @@ public class MoveOnMap : MonoBehaviour
 
         //移動可能な場合
         _mapTrs.MoveSmoothly(newPos,_moveDuration,true);
-        //_mapTrs.Pos=newPos;
         return true;
     }
 
@@ -66,8 +73,14 @@ public class MoveOnMap : MonoBehaviour
         return true;
     }
 
-    private void Start()//enabledのチェック欄を表示させるため、わざと空のStart関数を置いてる
+    private void Start()
     {
-        
+        Init();
+    }
+
+    private void Init()//初期化処理
+    {
+        if (_scenePlayerManager != null) _mapTrs = _scenePlayerManager.MyComponent<MapTransform>();
+        else if (_mapTrs == null) Debug.Log("このままだとプレイヤーが動けません！");
     }
 }
