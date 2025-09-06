@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,9 @@ public class ChangeHierarchy : MonoBehaviour
 
     [Tooltip("ƒ}ƒbƒvã‚ÌˆÊ’uî•ñ")] [SerializeField] 
     MapTransform _mapTrs;
+
+    public event Action<int> OnSwitchHierarchy_NewIndex;//ŠK‘wØ‚è‘Ö‚¦‚ÉŒÄ‚Î‚ê‚é(ˆø”‚ÉV‚µ‚¢ŠK‘w”Ô†‚ğ“ü‚ê‚éŒ`®)
+    public event Action OnSwitchHierarchy;//ŠK‘wØ‚è‘Ö‚¦‚ÉŒÄ‚Î‚ê‚é(ˆø”‚È‚µ)
 
     public void SwitchHierarchy_Inc(InputAction.CallbackContext context)
     {
@@ -41,6 +45,9 @@ public class ChangeHierarchy : MonoBehaviour
         int newHierarchyIndex = MathfExtension.CircularWrapping_Delta(_mapTrs.HierarchyIndex, delta, _mapTrs.Hierarchies.Length - 1);
 
         _mapTrs.Rewrite(newHierarchyIndex,true);
+
+        OnSwitchHierarchy_NewIndex?.Invoke(newHierarchyIndex);
+        OnSwitchHierarchy?.Invoke();
     }
 
     private void Start()
