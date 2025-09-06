@@ -1,5 +1,6 @@
 using Photon.Pun;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayersManager : MonoBehaviourPunCallbacks
@@ -18,12 +19,21 @@ public class PlayersManager : MonoBehaviourPunCallbacks
     {
         if (players.Contains(player)) return;
         players.Add(player);
+        SortByActorNumber();
     }
 
     public static void RemovePlayer(GameObject player)
     {
         if (!players.Contains(player)) return;
         players.Remove(player);
+        SortByActorNumber();
+    }
+
+    static void SortByActorNumber()
+    {
+        players.Sort((a, b) => 
+        a.GetPhotonView().Owner.ActorNumber.CompareTo(
+            b.GetPhotonView().Owner.ActorNumber));
     }
 
     //プレイヤー達のComponentを配列で取得
