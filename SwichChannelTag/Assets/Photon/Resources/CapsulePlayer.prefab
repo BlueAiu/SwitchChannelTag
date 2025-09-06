@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1753680278575210324}
   - component: {fileID: 2593535734612718532}
   - component: {fileID: 4650887795326452129}
+  - component: {fileID: 1659280601506932932}
   m_Layer: 0
   m_Name: CapsulePlayer
   m_TagString: Player
@@ -144,6 +145,23 @@ MonoBehaviour:
     x: 0
     y: 0
   _hierarchyIndex: 0
+  _myPhotonView: {fileID: 7362638265056822721}
+--- !u!114 &1659280601506932932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074817731734667574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c69b6355ec8334e4286832031b268925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material_PlayerState:
+    _taggerMaterial: {fileID: 2100000, guid: e0645c0d5b7ff9a4bb169a0456a6eea2, type: 2}
+    _runnerMaterial: {fileID: 2100000, guid: e3357b7e5811bcb44b2ac0a6d1001d58, type: 2}
+    _mesh: {fileID: 2761897816912103114}
   _myPhotonView: {fileID: 7362638265056822721}
 --- !u!1 &8972878540032162334
 GameObject:
