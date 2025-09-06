@@ -4,17 +4,18 @@ using UnityEngine;
 public class ReadinessManager : MonoBehaviour
 {
     [SerializeField] string mainSceneName = "MainScene";
+    [SerializeField] PlayersManager playersManager;
+    [SerializeField] SceneTransition sceneTransition;
 
     public void TryStartGame()
     {
         if (!PhotonNetwork.IsMasterClient) return;
 
-        var playerReadis = GetComponentInParent<PlayersManager>().
-            GetComponentsFromPlayers<GettingReady>();
+        var playerReadis = playersManager.GetComponentsFromPlayers<GettingReady>();
 
         if (IsReadyAll(playerReadis))
         {
-            GetComponentInParent<SceneTransition>().LoadScene(mainSceneName);
+            sceneTransition.LoadScene(mainSceneName);
             GetComponent<JoinControl>().IsRoomOpened = false;
             enabled = false;
         }
