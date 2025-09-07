@@ -2,14 +2,14 @@ using Photon.Pun;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayersManager : MonoBehaviourPunCallbacks
+public static class PlayersManager
 {
     static List<GetPlayerInfo> players = new();
 
 
     // --- Getter --- //
 
-    public GameObject[] PlayersGameObject
+    public static GameObject[] PlayersGameObject
     { 
         get 
         {
@@ -26,7 +26,7 @@ public class PlayersManager : MonoBehaviourPunCallbacks
         }
     }
 
-    public Photon.Realtime.Player[] PlayersPhotonPlayer
+    public static Photon.Realtime.Player[] PlayersPhotonPlayer
     {
         get
         {
@@ -43,7 +43,7 @@ public class PlayersManager : MonoBehaviourPunCallbacks
         }
     }
 
-    public T[] GetComponentsFromPlayers<T>() where T : Component
+    public static T[] GetComponentsFromPlayers<T>() where T : Component
     {
         
         List<T> ret = new();
