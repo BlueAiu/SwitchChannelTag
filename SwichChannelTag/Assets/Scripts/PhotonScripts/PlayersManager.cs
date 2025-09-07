@@ -27,6 +27,11 @@ public static class PlayersManager
         return minePlayer.GetComp<T>();
     }
 
+    public static int MinePlayerNumber
+    {
+        get => players.IndexOf(minePlayer);
+    }
+
     // EveryPlayers
 
     public static GameObject[] PlayersGameObject
