@@ -5,9 +5,29 @@ using UnityEngine;
 public static class PlayersManager
 {
     static List<GetPlayerInfo> players = new();
+    static GetPlayerInfo minePlayer = null;
 
 
     // --- Getter --- //
+
+    // MinePlayer
+
+    public static GameObject MinePlayerGameObject
+    {
+        get => minePlayer.gameObject;
+    }
+
+    public static Photon.Realtime.Player MinePlayerPhotonPlayer
+    {
+        get => minePlayer.gameObject.GetPhotonView().Owner;
+    }
+
+    public static T GetComponentFromMinePlayer<T>() where T : Component
+    {
+        return minePlayer.GetComp<T>();
+    }
+
+    // EveryPlayers
 
     public static GameObject[] PlayersGameObject
     { 
@@ -70,6 +90,11 @@ public static class PlayersManager
         if (players.Contains(playerInfo)) return;
         players.Add(playerInfo);
         SortByActorNumber();
+
+        if (player.GetPhotonView().IsMine)
+        {
+            minePlayer = playerInfo;
+        }
     }
 
     public static void RemovePlayer(GameObject player)
@@ -78,7 +103,6 @@ public static class PlayersManager
 
         if (!players.Contains(playerInfo)) return;
         players.Remove(playerInfo);
-        SortByActorNumber();
     }
 
     static void SortByActorNumber()
