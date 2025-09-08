@@ -4,8 +4,8 @@ using UnityEngine;
 
 public static class PlayersManager
 {
-    static List<GetPlayerInfo> players = new();
-    static GetPlayerInfo minePlayer = null;
+    static List<PlayerInfo> players = new();
+    static PlayerInfo minePlayer = null;
 
 
     // --- Getter --- //
@@ -14,17 +14,17 @@ public static class PlayersManager
 
     public static GameObject MinePlayerGameObject
     {
-        get => minePlayer.gameObject;
+        get => minePlayer.PlayerObject;
     }
 
     public static Photon.Realtime.Player MinePlayerPhotonPlayer
     {
-        get => minePlayer.gameObject.GetPhotonView().Owner;
+        get => minePlayer.Player;
     }
 
     public static T GetComponentFromMinePlayer<T>() where T : Component
     {
-        return minePlayer.GetComp<T>();
+        return minePlayer.GetComponent<T>();
     }
 
     public static int MinePlayerNumber
@@ -44,7 +44,7 @@ public static class PlayersManager
             {
                 if(p == null) continue;
 
-                ret.Add(p.gameObject); 
+                ret.Add(p.PlayerObject); 
             }
 
             return ret.ToArray();
@@ -61,7 +61,7 @@ public static class PlayersManager
             {
                 if (p == null) continue;
 
-                ret.Add(p.gameObject.GetPhotonView().Owner);
+                ret.Add(p.Player);
             }
 
             return ret.ToArray();
@@ -77,7 +77,7 @@ public static class PlayersManager
         {
             if (i == null) continue;
 
-            T comp = i.GetComp<T>();
+            T comp = i.GetComponent<T>();
 
             if (comp != null) { ret.Add(comp); }
         }
@@ -90,7 +90,8 @@ public static class PlayersManager
 
     public static void AddPlayer(GameObject player)
     {
-        var playerInfo = player.GetComponent<GetPlayerInfo>();
+        var playerInfo = new PlayerInfo
+            (player, player.GetPhotonView().Owner, player.GetComponent<GetPlayerInfo>());
 
         if (players.Contains(playerInfo)) return;
         players.Add(playerInfo);
@@ -104,7 +105,8 @@ public static class PlayersManager
 
     public static void RemovePlayer(GameObject player)
     {
-        var playerInfo = player.GetComponent<GetPlayerInfo>();
+        var playerInfo = new PlayerInfo
+            (player, player.GetPhotonView().Owner, player.GetComponent<GetPlayerInfo>());
 
         if (!players.Contains(playerInfo)) return;
         players.Remove(playerInfo);
@@ -113,7 +115,7 @@ public static class PlayersManager
     static void SortByActorNumber()
     {
         players.Sort((a, b) => 
-        a.gameObject.GetPhotonView().Owner.ActorNumber.CompareTo(
-            b.gameObject.GetPhotonView().Owner.ActorNumber));
+        a.Player.ActorNumber.CompareTo(
+            b.Player.ActorNumber));
     }
 }
