@@ -1,48 +1,121 @@
 using Photon.Pun;
-using Photon.Realtime;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayersManager : MonoBehaviourPunCallbacks
+public static class PlayersManager
 {
-    List<GameObject> players = new();
+    static List<PlayerInfo> players = new();
+    static PlayerInfo minePlayer = null;
 
-    public GameObject[] Players 
+
+    // --- Getter --- //
+
+    // MinePlayer
+
+    public static GameObject MinePlayerGameObject
+    {
+        get => minePlayer.PlayerObject;
+    }
+
+    public static Photon.Realtime.Player MinePlayerPhotonPlayer
+    {
+        get => minePlayer.Player;
+    }
+
+    public static T GetComponentFromMinePlayer<T>() where T : Component
+    {
+        return minePlayer.GetComponent<T>();
+    }
+
+    public static int MinePlayerNumber
+    {
+        get => players.IndexOf(minePlayer);
+    }
+
+    // EveryPlayers
+
+    public static GameObject[] PlayersGameObject
     { 
         get 
         {
-            ResetPlayersList();
-            return players.ToArray();
+            List<GameObject> ret = new();
+
+            foreach (var p in players) 
+            {
+                if(p == null) continue;
+
+                ret.Add(p.PlayerObject); 
+            }
+
+            return ret.ToArray();
         }
     }
-   
-    void ResetPlayersList()
-    {
-        players.Clear();
 
-        foreach(var i in GameObject.FindGameObjectsWithTag("Player"))
+    public static Photon.Realtime.Player[] PlayersPhotonPlayer
+    {
+        get
         {
-            players.Add(i);
+            List<Photon.Realtime.Player> ret = new();
+
+            foreach (var p in players)
+            {
+                if (p == null) continue;
+
+                ret.Add(p.Player);
+            }
+
+            return ret.ToArray();
         }
     }
 
-    //プレイヤー達のComponentを配列で取得
-    public T[] GetComponentsFromPlayers<T>() where T : Component
+    public static T[] GetComponentsFromPlayers<T>() where T : Component
     {
-        ResetPlayersList();
-
+        
         List<T> ret = new();
 
         foreach (var i in players)
         {
-            if(i == null) continue;
+            if (i == null) continue;
+
             T comp = i.GetComponent<T>();
-            if (comp != null)
-            {
-                ret.Add(comp);
-            }
+
+            if (comp != null) { ret.Add(comp); }
         }
 
         return ret.ToArray();
+    }
+
+
+    // --- Add & Remove --- //
+
+    public static void AddPlayer(GameObject player)
+    {
+        var playerInfo = new PlayerInfo
+            (player, player.GetPhotonView().Owner, player.GetComponent<GetPlayerInfo>());
+
+        if (players.Contains(playerInfo)) return;
+        players.Add(playerInfo);
+        SortByActorNumber();
+
+        if (player.GetPhotonView().IsMine)
+        {
+            minePlayer = playerInfo;
+        }
+    }
+
+    public static void RemovePlayer(GameObject player)
+    {
+        var playerInfo = new PlayerInfo
+            (player, player.GetPhotonView().Owner, player.GetComponent<GetPlayerInfo>());
+
+        if (!players.Contains(playerInfo)) return;
+        players.Remove(playerInfo);
+    }
+
+    static void SortByActorNumber()
+    {
+        players.Sort((a, b) => 
+        a.Player.ActorNumber.CompareTo(
+            b.Player.ActorNumber));
     }
 }

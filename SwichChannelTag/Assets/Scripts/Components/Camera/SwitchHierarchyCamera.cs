@@ -17,7 +17,7 @@ public class SwitchHierarchyCamera : MonoBehaviour
 
     public void Switch(int hierarchyIndex)//é Ç∑äKëwÇÃêÿÇËë÷Ç¶
     {
-        if (!IsNoProblem_MapCentersLength()) return;
+        if (!IsValid_MapCentersLength()) return;
 
         if(!_maps_Hierarchies.IsInRange(hierarchyIndex))
         {
@@ -27,12 +27,6 @@ public class SwitchHierarchyCamera : MonoBehaviour
 
         Transform currentHierarchy=_mapCenters[hierarchyIndex];
 
-        if(currentHierarchy==null)
-        {
-            Debug.Log("ÇÕÅH");
-            return;
-        }
-
         _mapCamera.Follow=currentHierarchy;
         _mapCamera.LookAt=currentHierarchy;
     }
@@ -41,7 +35,7 @@ public class SwitchHierarchyCamera : MonoBehaviour
 
     private void Awake()
     {
-        IsNoProblem_MapCentersLength();
+        IsValid_MapCentersLength();
         _changeHierarchy.OnSwitchHierarchy_NewIndex += Switch;
     }
 
@@ -57,7 +51,7 @@ public class SwitchHierarchyCamera : MonoBehaviour
         Switch(myMapTrs.HierarchyIndex);
     }
 
-    bool IsNoProblem_MapCentersLength()
+    bool IsValid_MapCentersLength()
     {
         if(_mapCenters.Length != _maps_Hierarchies.Length)
         {

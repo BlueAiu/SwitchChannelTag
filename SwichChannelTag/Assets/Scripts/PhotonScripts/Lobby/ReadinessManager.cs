@@ -4,14 +4,13 @@ using UnityEngine;
 public class ReadinessManager : MonoBehaviour
 {
     [SerializeField] string mainSceneName = "MainScene";
-    [SerializeField] PlayersManager playersManager;
     [SerializeField] SceneTransition sceneTransition;
 
     public void TryStartGame()
     {
         if (!PhotonNetwork.IsMasterClient) return;
 
-        var playerReadis = playersManager.GetComponentsFromPlayers<GettingReady>();
+        var playerReadis = PlayersManager.GetComponentsFromPlayers<GettingReady>();
 
         if (IsReadyAll(playerReadis))
         {
