@@ -576,18 +576,6 @@ MonoBehaviour:
   selfText: {fileID: 932813837}
   unReadyText: Ready?
   readyText: Ready!
---- !u!114 &491549347487426926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1357569430491078742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aee92980f9f5bcc42880e8d96853768c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &505988349490921941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,7 +656,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5079787622447448422}
   - component: {fileID: 8444569917695912184}
-  - component: {fileID: 491549347487426926}
   - component: {fileID: 7878950072891773037}
   m_Layer: 0
   m_Name: PUNConnectionManager
@@ -705,7 +692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainSceneName: MainScene
-  playersManager: {fileID: 491549347487426926}
   sceneTransition: {fileID: 7878950072891773037}
 --- !u!114 &2195521215928513269
 MonoBehaviour:
