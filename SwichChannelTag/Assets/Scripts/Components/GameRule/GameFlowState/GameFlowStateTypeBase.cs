@@ -4,6 +4,7 @@ using UnityEngine;
 
 //作成者:杉山
 //ゲームの流れのベースのステート
+//新しくステートを作る際はこのクラスを継承すること
 
 public abstract class GameFlowStateTypeBase : MonoBehaviour
 {
