@@ -22,7 +22,7 @@ public class PlayerState : MonoBehaviour
 
     public void ChangeState(EPlayerState newState,bool isSync=true)//状態の変更、isSync=同期をするかしないか
     {
-        if(Enum.IsDefined(typeof(EPlayerState), newState)||newState==EPlayerState.Length)//値チェック(異常あったら警告して処理を弾く)
+        if(!Enum.IsDefined(typeof(EPlayerState), newState) || newState==EPlayerState.Length)//値チェック(異常あったら警告して処理を弾く)
         {
             Debug.Log("存在しない状態です");
             return;

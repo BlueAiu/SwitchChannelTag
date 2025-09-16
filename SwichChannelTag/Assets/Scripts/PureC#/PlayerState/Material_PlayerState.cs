@@ -21,7 +21,7 @@ public class Material_PlayerState
 
     public void ChangeMaterial(EPlayerState newState)
     {
-        if (Enum.IsDefined(typeof(EPlayerState), newState) || newState == EPlayerState.Length)//値チェック(異常あったら警告して処理を弾く)
+        if (!Enum.IsDefined(typeof(EPlayerState), newState) || newState == EPlayerState.Length)//値チェック(異常あったら警告して処理を弾く)
         {
             Debug.Log("存在しない状態です");
             return;
