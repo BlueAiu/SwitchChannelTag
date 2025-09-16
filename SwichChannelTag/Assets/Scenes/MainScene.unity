@@ -731,9 +731,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mapSize:
-    x: 5
-    y: 5
-  _gapDistance: 2
+    x: 9
+    y: 9
+  _gapDistance: 1
   _centerTrs: {fileID: 896083297}
 --- !u!4 &896083297
 Transform:
@@ -1207,9 +1207,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mapSize:
-    x: 5
-    y: 5
-  _gapDistance: 2
+    x: 9
+    y: 9
+  _gapDistance: 1
   _centerTrs: {fileID: 1621408716}
 --- !u!4 &1621408716
 Transform:
@@ -1406,9 +1406,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mapSize:
-    x: 5
-    y: 5
-  _gapDistance: 2
+    x: 9
+    y: 9
+  _gapDistance: 1
   _centerTrs: {fileID: 1848329216}
 --- !u!4 &1848329216
 Transform:
