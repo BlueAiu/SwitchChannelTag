@@ -13,7 +13,7 @@ public class SwitchHierarchyCamera : MonoBehaviour
     [SerializeField] ChangeHierarchy _changeHierarchy;
     [SerializeField] Maps_Hierarchies _maps_Hierarchies;
     [SerializeField] ScenePlayerManager _scenePlayerManager;
-
+    
 
     public void Switch(int hierarchyIndex)//Ê‚·ŠK‘w‚ÌØ‚è‘Ö‚¦
     {

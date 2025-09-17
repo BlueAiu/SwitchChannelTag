@@ -44,7 +44,7 @@ public class ChangeHierarchy : MonoBehaviour
 
         int newHierarchyIndex = MathfExtension.CircularWrapping_Delta(_mapTrs.HierarchyIndex, delta, _mapTrs.Hierarchies.Length - 1);
 
-        _mapTrs.Rewrite(newHierarchyIndex,true);
+        _mapTrs.Rewrite(newHierarchyIndex);
 
         OnSwitchHierarchy_NewIndex?.Invoke(newHierarchyIndex);
         OnSwitchHierarchy?.Invoke();
