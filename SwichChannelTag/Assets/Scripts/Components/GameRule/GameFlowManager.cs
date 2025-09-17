@@ -37,10 +37,12 @@ public class GameFlowManager : MonoBehaviour
 
     IEnumerator CurrentStateUpdate()//現在のステートの更新処理
     {
+        if (_current != null) yield break;
+
         while (!_current.Finished)
         {
             yield return null;
-            if (_current != null) _current.OnUpdate();
+            _current.OnUpdate();
         }
     }
 
