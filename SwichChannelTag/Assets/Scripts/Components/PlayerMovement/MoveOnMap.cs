@@ -12,9 +12,6 @@ public class MoveOnMap : MonoBehaviour
     [Tooltip("一つのマスの移動にかける時間")] [SerializeField]
     float _moveDuration;
 
-    [Tooltip("シーン内のプレイヤーの情報を取得する機能")] [SerializeField]
-    ScenePlayerManager _scenePlayerManager;
-
     [Tooltip("マップ上の位置情報")] [SerializeField]
     MapTransform _mapTrs;
 
@@ -80,7 +77,6 @@ public class MoveOnMap : MonoBehaviour
 
     private void Init()//初期化処理
     {
-        if (_scenePlayerManager != null) _mapTrs = _scenePlayerManager.MyComponent<MapTransform>();
-        else if (_mapTrs == null) Debug.Log("このままだとプレイヤーが動けません！");
+        _mapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
     }
 }

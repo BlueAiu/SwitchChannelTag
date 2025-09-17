@@ -10,9 +10,6 @@ using UnityEngine.InputSystem;
 
 public class ChangeHierarchy : MonoBehaviour
 {
-    [Tooltip("シーン内のプレイヤーの情報を取得する機能")] [SerializeField] 
-    ScenePlayerManager _scenePlayerManager;
-
     [Tooltip("マップ上の位置情報")] [SerializeField] 
     MapTransform _mapTrs;
 
@@ -57,7 +54,6 @@ public class ChangeHierarchy : MonoBehaviour
 
     private void Init()//初期化処理
     {
-        if (_scenePlayerManager != null) _mapTrs = _scenePlayerManager.MyComponent<MapTransform>();
-        else if (_mapTrs == null) Debug.Log("このままだとプレイヤーが動けません！");
+        _mapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
     }
 }

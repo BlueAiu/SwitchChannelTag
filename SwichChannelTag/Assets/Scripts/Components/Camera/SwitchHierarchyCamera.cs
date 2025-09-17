@@ -12,8 +12,6 @@ public class SwitchHierarchyCamera : MonoBehaviour
     [Tooltip("カメラ")] [SerializeField] CinemachineVirtualCamera _mapCamera;
     [SerializeField] ChangeHierarchy _changeHierarchy;
     [SerializeField] Maps_Hierarchies _maps_Hierarchies;
-    [SerializeField] ScenePlayerManager _scenePlayerManager;
-    
 
     public void Switch(int hierarchyIndex)//写す階層の切り替え
     {
@@ -33,6 +31,7 @@ public class SwitchHierarchyCamera : MonoBehaviour
 
 
 
+    //private
     private void Awake()
     {
         IsValid_MapCentersLength();
@@ -47,7 +46,7 @@ public class SwitchHierarchyCamera : MonoBehaviour
     void InitCamera()//カメラの初期化処理
     {
         //プレイヤーの初期位置にカメラを合わせる
-        MapTransform myMapTrs = _scenePlayerManager.MyComponent<MapTransform>();
+        MapTransform myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
         Switch(myMapTrs.HierarchyIndex);
     }
 
