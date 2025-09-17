@@ -35,6 +35,17 @@ public class GameFlowManager : MonoBehaviour
         //終了演出のステート(実装予定)
     }
 
+    IEnumerator CurrentStateUpdate()//現在のステートの更新処理
+    {
+        if (_current != null) yield break;
+
+        while (!_current.Finished)
+        {
+            yield return null;
+            _current.OnUpdate();
+        }
+    }
+
     void ChangeState(GameFlowStateTypeBase nextState)//ステートの変更
     {
         if(_current!=null) _current.OnExit();
