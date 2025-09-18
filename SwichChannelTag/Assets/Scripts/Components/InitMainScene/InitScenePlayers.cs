@@ -7,9 +7,6 @@ using UnityEngine;
 
 public class InitScenePlayers : MonoBehaviour
 {
-    [Tooltip("シーン内のプレイヤーの情報を取得する機能")] [SerializeField]
-    ScenePlayerManager _scenePlayerManager;
-
     [Tooltip("移動できる階層一覧")][SerializeField] 
     Maps_Hierarchies _hierarchies;
 
@@ -20,7 +17,7 @@ public class InitScenePlayers : MonoBehaviour
 
     void InitMapTrs()//全プレイヤーのMapTransformの初期化
     {
-        MapTransform[] mapTrses = _scenePlayerManager.PlayerComponents<MapTransform>();
+        MapTransform[] mapTrses = PlayersManager.GetComponentsFromPlayers<MapTransform>();
 
         for(int i=0; i<mapTrses.Length;i++)
         {

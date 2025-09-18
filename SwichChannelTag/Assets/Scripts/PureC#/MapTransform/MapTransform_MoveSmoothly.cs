@@ -64,7 +64,7 @@ public partial class MapTransform
         _endMapPos = newMapPos;
         _moveDuration = duration;
         _currentMoveTime = 0;//現在の時間を初期化
-        Rewrite(Pos, HierarchyIndex);//位置を現在の位置に初期化
+        Rewrite(Pos, HierarchyIndex,false);//位置を現在の位置に初期化
 
         //始点、終点のワールド座標を設定
         _startWorldPos = CurrentHierarchy.MapToWorld(Pos);
@@ -81,7 +81,7 @@ public partial class MapTransform
     void ExitProcess()
     {
         _moving = false;
-        Rewrite(_endMapPos, HierarchyIndex);//位置を終点の位置に書き換え
+        Rewrite(_endMapPos, HierarchyIndex,false);//位置を終点の位置に書き換え
     }
 
 }

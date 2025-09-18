@@ -22,7 +22,7 @@ public partial class MapTransform : MonoBehaviour
     public MapVec Pos { get { return _pos; } }//現在のマップ上の位置
     public Vector3 CurrentWorldPos { get { return CurrentHierarchy.MapToWorld(_pos); } }//現在のワールド上の位置
 
-    public void MoveSmoothly(MapVec newMapPos,float duration,bool isSync)//滑らかに新しいマスへ移動
+    public void MoveSmoothly(MapVec newMapPos,float duration,bool isSync=true)//滑らかに新しいマスへ移動
     {
         CheckAbleToSync(ref isSync);//同期出来るかチェック(出来ないのであれば、非同期移動に変更)
 
@@ -46,17 +46,17 @@ public partial class MapTransform : MonoBehaviour
     }
 
     //位置情報の書き換え(isSyncで位置の同期するかも決めれる)
-    public void Rewrite(MapVec newMapPos, bool isSync=false)//位置だけの書き換え(非同期)
+    public void Rewrite(MapVec newMapPos, bool isSync=true)//位置だけの書き換え(非同期)
     {
         Rewrite(newMapPos, _hierarchyIndex, isSync);
     }
 
-    public void Rewrite(int newHierarchyIndex, bool isSync = false)//階層だけの書き換え(非同期)
+    public void Rewrite(int newHierarchyIndex, bool isSync = true)//階層だけの書き換え(非同期)
     {
         Rewrite(_pos, newHierarchyIndex, isSync);
     }
 
-    public void Rewrite(MapVec newMapPos, int newHierarchyIndex, bool isSync=false)//位置と階層両方の書き換え(同期するかを決めれる)
+    public void Rewrite(MapVec newMapPos, int newHierarchyIndex, bool isSync=true)//位置と階層両方の書き換え(同期するかを決めれる)
     {
         if (_target == null || _hierarchies == null)
         {
