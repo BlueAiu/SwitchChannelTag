@@ -1,8 +1,5 @@
 using Photon.Pun;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
 
 //ì¬Ò:™R
