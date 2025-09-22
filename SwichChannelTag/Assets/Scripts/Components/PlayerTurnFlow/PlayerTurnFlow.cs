@@ -9,6 +9,7 @@ public class PlayerTurnFlow : MonoBehaviour
 {
     GameFlowStateTypeBase _current;
     PlayerState _currentState;
+    bool _isLocal;
 
     public EPlayerState PlayerState { get => _currentState.State; }
 
@@ -22,8 +23,9 @@ public class PlayerTurnFlow : MonoBehaviour
     private void Start()
     {
         Player mine = PlayersManager.MinePlayerPhotonPlayer;
+        _isLocal = mine.IsLocal;
 
-        if (!mine.IsLocal) return;//プレイ者以外はこの処理を行わない
+        if (!_isLocal) return;//ローカル以外はこの処理を行わない
 
         StartCoroutine(GameFlow());
     }
@@ -33,13 +35,13 @@ public class PlayerTurnFlow : MonoBehaviour
         //この時点では他のコンポーネントの初期化が終わってない可能性があるため、一旦1フレーム待つ
         yield return null;
 
-        //開始演出のステート(実装予定)
+        //開始演出のステート
 
 
         //
 
 
-        //終了演出のステート(実装予定)
+        //終了演出のステート
     }
 
     IEnumerator CurrentStateUpdate()//現在のステートの更新処理
@@ -65,4 +67,19 @@ public class PlayerTurnFlow : MonoBehaviour
     [PunRPC]
     void SetTurnFinished(bool value)
         => IsTurnFinished = value;
+
+    [PunRPC]
+    public void StartTurn(EPlayerState turnSide)
+    {
+        if(!_isLocal) return;
+
+        if(PlayerState == turnSide)
+        {
+            ChangeState(null);
+        }
+        else
+        {
+            IsTurnFinished = false;
+        }
+    }
 }
