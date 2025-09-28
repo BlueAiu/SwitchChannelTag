@@ -47,7 +47,7 @@ public class SwitchHierarchyCamera : MonoBehaviour
     {
         //プレイヤーの初期位置にカメラを合わせる
         MapTransform myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
-        Switch(myMapTrs.HierarchyIndex);
+        Switch(myMapTrs.Pos.hierarchyIndex);
     }
 
     bool IsValid_MapCentersLength()

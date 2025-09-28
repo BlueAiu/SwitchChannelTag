@@ -22,8 +22,10 @@ public class InitScenePlayers : MonoBehaviour
         for(int i=0; i<mapTrses.Length;i++)
         {
             MapTransform mapTrs = mapTrses[i];
-            if (mapTrs != null) mapTrs.Hierarchies = _hierarchies;
-            mapTrs.Rewrite(mapTrs.Pos, mapTrs.HierarchyIndex, true);//ˆÊ’u‚ð‰Šú‰»
+
+            if(mapTrs==null) continue;
+            mapTrs.Hierarchies = _hierarchies;
+            mapTrs.Rewrite(mapTrs.Pos, true);//ˆÊ’u‚ð‰Šú‰»
         }
     }
 }

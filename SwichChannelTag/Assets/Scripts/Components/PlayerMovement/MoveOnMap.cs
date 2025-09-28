@@ -29,7 +29,7 @@ public class MoveOnMap : MonoBehaviour
 
         if (!enabled) return;
 
-        if (_mapTrs.Moving) return;//キャラが移動中であれば無視
+        //if (_mapTrs.Moving) return;//キャラが移動中であれば無視
 
         if (_remainingStep <= 0) return;//残り移動可能マスが0なら移動できない
 
@@ -49,7 +49,7 @@ public class MoveOnMap : MonoBehaviour
         moveVec.x = (int)inputVec.x;
         moveVec.y = -(int)inputVec.y;
 
-        MapVec newPos = _mapTrs.Pos + moveVec;
+        MapVec newPos = _mapTrs.Pos.gridPos + moveVec;
 
         if (!IsMovableMass(newPos))//移動できない場合
         {
@@ -58,7 +58,7 @@ public class MoveOnMap : MonoBehaviour
         }
 
         //移動可能な場合
-        _mapTrs.MoveSmoothly(newPos,_moveDuration);
+        //_mapTrs.MoveSmoothly(newPos,_moveDuration);
         return true;
     }
 

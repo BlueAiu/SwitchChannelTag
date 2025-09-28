@@ -24,38 +24,38 @@ public class Map_A_Hierarchy : MonoBehaviour
     public int MapSize_Y { get { return _mapSize.y; } }
 
     //マス座標が範囲内かを判定
-    public bool IsInRange(MapVec mapVec)
+    public bool IsInRange(MapVec gridPos)
     {
-        if (mapVec.x < 0 || mapVec.x >= _mapSize.x) return false;
+        if (gridPos.x < 0 || gridPos.x >= _mapSize.x) return false;
 
-        if (mapVec.y < 0 || mapVec.y >= _mapSize.y) return false;
+        if (gridPos.y < 0 || gridPos.y >= _mapSize.y) return false;
 
         return true;
     }
 
     //マス座標を範囲内に収める
-    public MapVec ClampInRange(MapVec mapVec)
+    public MapVec ClampInRange(MapVec gridPos)
     {
-        mapVec.x = Mathf.Clamp(mapVec.x, 0, _mapSize.x-1);
+        gridPos.x = Mathf.Clamp(gridPos.x, 0, _mapSize.x-1);
 
-        mapVec.y = Mathf.Clamp(mapVec.y, 0, _mapSize.y-1);
+        gridPos.y = Mathf.Clamp(gridPos.y, 0, _mapSize.y-1);
 
-        return mapVec;
+        return gridPos;
     }
 
     //マス座標をワールド座標に変換(変換に失敗したらfalseを返す)
-    public Vector3 MapToWorld(MapVec mapVec)
+    public Vector3 MapToWorld(MapVec gridPos)
     {
         //範囲外であれば警告する
-        if (!IsInRange(mapVec)) Debug.Log("その座標は範囲外です！");
+        if (!IsInRange(gridPos)) Debug.Log("その座標は範囲外です！");
 
         Vector3 ret = new();
 
         Vector3 centerVec = _centerTrs.position;
         ret = centerVec;
 
-        ret.x += mapVec.x * _gapDistance;//X方向の計算
-        ret.z -= mapVec.y * _gapDistance;//Y方向の計算
+        ret.x += gridPos.x * _gapDistance;//X方向の計算
+        ret.z -= gridPos.y * _gapDistance;//Y方向の計算
 
         return ret;
     }
