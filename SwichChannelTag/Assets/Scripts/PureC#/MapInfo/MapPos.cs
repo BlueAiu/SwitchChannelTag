@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //作成者:杉山
-//マップの位置情報(位置と階層を構造体としてまとめたもの)
+//マップ上の座標(位置と階層を構造体としてまとめたもの)
 
 [System.Serializable]
 public struct MapPos
 {
     public int hierarchyIndex;//階層番号
-    public MapVec pos;//位置
+    public MapVec gridPos;//盤面上の位置
 
     public MapPos(int hierarchyIndex, MapVec pos)
     {
         this.hierarchyIndex = hierarchyIndex;
-        this.pos = pos;
+        this.gridPos = pos;
     }
 
 
     //演算子
     public static bool operator ==(MapPos pos1, MapPos pos2)//==演算子オーバーロード
     {
-        return (pos1.hierarchyIndex == pos2.hierarchyIndex) && (pos1.pos == pos2.pos);
+        return (pos1.hierarchyIndex == pos2.hierarchyIndex) && (pos1.gridPos == pos2.gridPos);
     }
 
     public static bool operator !=(MapPos pos1, MapPos pos2)//!=演算子オーバーロード
@@ -38,6 +38,6 @@ public struct MapPos
 
     public override int GetHashCode()
     {
-        return System.HashCode.Combine(hierarchyIndex, pos);
+        return System.HashCode.Combine(hierarchyIndex, gridPos);
     }
 }

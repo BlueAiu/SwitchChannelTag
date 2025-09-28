@@ -33,11 +33,8 @@ public class GetOverlapPlayer : MonoBehaviour
         List<GameObject> overlapPlayers = new();
         foreach (var other in otherPlayers)
         {
-            bool compereHierarchy = minePlayer.HierarchyIndex == other.HierarchyIndex;
-            bool comperePosition = minePlayer.Pos == other.Pos;
-
             // MapTransformに==オーバーロードを実装しても良い
-            if (compereHierarchy && comperePosition)
+            if (minePlayer.Pos==other.Pos)
             {
                 overlapPlayers.Add(other.gameObject);
             }

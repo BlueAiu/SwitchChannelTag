@@ -49,7 +49,7 @@ public class MoveOnMap : MonoBehaviour
         moveVec.x = (int)inputVec.x;
         moveVec.y = -(int)inputVec.y;
 
-        MapVec newPos = _mapTrs.Pos + moveVec;
+        MapVec newPos = _mapTrs.Pos.gridPos + moveVec;
 
         if (!IsMovableMass(newPos))//ˆÚ“®‚Å‚«‚È‚¢ê‡
         {

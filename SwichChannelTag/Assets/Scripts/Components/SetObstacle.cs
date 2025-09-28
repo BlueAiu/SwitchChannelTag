@@ -18,7 +18,7 @@ public class SetObstacle : MonoBehaviour
             MapPos _obstaclePos = _obstaclePoses[i];
 
             //範囲外であれば、生成失敗
-            if (!_map.IsInRange(_obstaclePos.hierarchyIndex,_obstaclePos.pos))
+            if (!_map.IsInRange(_obstaclePos))
             {
                 Debug.Log("範囲外なので生成失敗");
                 continue;
@@ -26,11 +26,11 @@ public class SetObstacle : MonoBehaviour
             
             Map_A_Hierarchy map = _map[_obstaclePos.hierarchyIndex];
 
-            Vector3 pos = map.MapToWorld(_obstaclePos.pos);
+            Vector3 pos = map.MapToWorld(_obstaclePos.gridPos);
             GameObject obstacleInstance = Instantiate(_obstacleObject);//障害物オブジェクトを生成
             obstacleInstance.transform.position = pos;
 
-            map.Mass[_obstaclePos.pos] = E_Mass.Obstacle;
+            map.Mass[_obstaclePos.gridPos] = E_Mass.Obstacle;
         }
     }
 }
