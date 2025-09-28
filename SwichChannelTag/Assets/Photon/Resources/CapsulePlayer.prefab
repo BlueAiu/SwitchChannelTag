@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4650887795326452129}
   - component: {fileID: 1659280601506932932}
   - component: {fileID: 5662769695230115391}
+  - component: {fileID: 3693762538781828748}
   m_Layer: 0
   m_Name: CapsulePlayer
   m_TagString: Player
@@ -141,12 +142,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hierarchies: {fileID: 0}
-  _target: {fileID: 3901238037691451456}
-  _pos:
-    x: 0
-    y: 0
-  _hierarchyIndex: 0
   _myPhotonView: {fileID: 7362638265056822721}
+  _pos:
+    hierarchyIndex: 0
+    gridPos:
+      x: 0
+      y: 0
 --- !u!114 &1659280601506932932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +177,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7c8e4aeb0d5d74bbd7e39e19ac1597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3693762538781828748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074817731734667574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3256ccad427422941a65c2a4e39b30ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myPhotonView: {fileID: 7362638265056822721}
+  _myTransform: {fileID: 3901238037691451456}
 --- !u!1 &8972878540032162334
 GameObject:
   m_ObjectHideFlags: 0
