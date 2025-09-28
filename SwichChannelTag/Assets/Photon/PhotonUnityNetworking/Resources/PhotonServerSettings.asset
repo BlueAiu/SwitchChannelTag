@@ -48,6 +48,8 @@ MonoBehaviour:
   - Change
   - SetTurnFinished
   - StartTurn
+  - SetTransformPosition
+  - SetMyTrs
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

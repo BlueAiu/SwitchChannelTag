@@ -503,6 +503,7 @@ GameObject:
   - component: {fileID: 722071809}
   - component: {fileID: 722071808}
   - component: {fileID: 722071807}
+  - component: {fileID: 722071810}
   - component: {fileID: 722071806}
   m_Layer: 0
   m_Name: ControlManager
@@ -553,8 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4faaa9de41e606948ae0184bb28cc203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveDuration: 0.2
-  _mapTrs: {fileID: 0}
+  _playerMoveAnimation: {fileID: 722071810}
 --- !u!114 &722071808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -686,6 +686,19 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &722071810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722071804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abeca977cbc1df645ade7bf23859d2df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveDuration: 0.3
 --- !u!1 &855542022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,18 +1524,18 @@ MonoBehaviour:
   _map: {fileID: 407807742}
   _obstacleObject: {fileID: 87842621043002327, guid: 3a530e8944187be4f9bf8f13528acedc, type: 3}
   _obstaclePoses:
-  - _hierarchyIndex: 0
-    _pos:
-      x: 3
-      y: 3
-  - _hierarchyIndex: 0
-    _pos:
+  - hierarchyIndex: 0
+    gridPos:
       x: 2
       y: 3
-  - _hierarchyIndex: 1
-    _pos:
-      x: 0
-      y: 0
+  - hierarchyIndex: 0
+    gridPos:
+      x: 5
+      y: 6
+  - hierarchyIndex: 1
+    gridPos:
+      x: 1
+      y: 2
 --- !u!224 &2030950526 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 588330080137203881, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
