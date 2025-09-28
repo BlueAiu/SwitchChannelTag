@@ -33,7 +33,6 @@ public class GetOverlapPlayer : MonoBehaviour
         List<GameObject> overlapPlayers = new();
         foreach (var other in otherPlayers)
         {
-            // MapTransformに==オーバーロードを実装しても良い
             if (minePlayer.Pos==other.Pos)
             {
                 overlapPlayers.Add(other.gameObject);
