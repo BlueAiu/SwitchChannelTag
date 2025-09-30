@@ -4,38 +4,59 @@ using UnityEngine;
 
 public class GetOverlapPlayer : MonoBehaviour
 {
+    struct PlayerInfoAndPos
+    {
+        public MapTransform trs;
+        public PlayerInfo playerInfo;
+
+        public PlayerInfoAndPos(MapTransform trs, PlayerInfo playerInfo)
+        {
+            this.trs = trs;
+            this.playerInfo = playerInfo;
+        }
+    }
+
+
+
+
+
     [SerializeField] bool writeLog = false;
 
-    MapTransform minePlayer;
-    MapTransform[] otherPlayers;
+    PlayerInfoAndPos minePlayer;
+    PlayerInfoAndPos[] otherPlayers;
 
     // Start is called before the first frame update
     void Start()
     {
-        minePlayer = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
+        var minePlayerInfo = PlayersManager.MinePlayerInfo;
+        minePlayer = new PlayerInfoAndPos(minePlayerInfo.GetComponent<MapTransform>() , minePlayerInfo);
 
-        var players = PlayersManager.GetComponentsFromPlayers<MapTransform>();
-        List<MapTransform> othersList = new();
+        var players = PlayersManager.PlayerInfos;
+
+        List<PlayerInfoAndPos> othersList = new();
 
         foreach (var player in players)
         {
-            if (player != minePlayer)
+            var trs = player.GetComponent<MapTransform>();
+            var infoAndPos = new PlayerInfoAndPos(trs, player);
+
+            if (player != minePlayerInfo)
             {
-                othersList.Add(player);
+                othersList.Add(infoAndPos);
             }
         }
 
         otherPlayers = othersList.ToArray();
     }
 
-    public GameObject[] GetOverlapPlayers()
+    public PlayerInfo[] GetOverlapPlayers()
     {
-        List<GameObject> overlapPlayers = new();
+        List<PlayerInfo> overlapPlayers = new();
         foreach (var other in otherPlayers)
         {
-            if (minePlayer.Pos==other.Pos)
+            if (minePlayer.trs.Pos==other.trs.Pos)
             {
-                overlapPlayers.Add(other.gameObject);
+                overlapPlayers.Add(other.playerInfo);
             }
         }
 
@@ -43,7 +64,7 @@ public class GetOverlapPlayer : MonoBehaviour
         return overlapPlayers.ToArray();
     }
     
-    void Log(List<GameObject> objects)
+    void Log(List<PlayerInfo> objects)
     {
         string log = "GetOverlapPlayers: ";
         foreach (var obj in objects)
