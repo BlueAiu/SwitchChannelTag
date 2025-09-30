@@ -7,14 +7,12 @@ public static class PlayersManager
     static List<PlayerInfo> players = new();
     static PlayerInfo minePlayer = null;
 
-    static int _myIndex;//©•ª‚Ì—v‘f”Ô†
-
 
     // --- Getter --- //
 
     // MinePlayer
 
-    public static int MyIndex {  get { return _myIndex; } }
+    public static int MyIndex {  get { return players.IndexOf(minePlayer); } }
 
     public static GameObject MinePlayerGameObject
     {
@@ -125,7 +123,6 @@ public static class PlayersManager
             if (player.Player== PhotonNetwork.LocalPlayer)
             {
                 minePlayer = player;
-                _myIndex = i;
                 return;
             }
         }

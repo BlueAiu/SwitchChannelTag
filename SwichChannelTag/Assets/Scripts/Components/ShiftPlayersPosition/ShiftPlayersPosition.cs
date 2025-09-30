@@ -8,24 +8,41 @@ using UnityEngine;
 public class ShiftPlayersPosition : MonoBehaviour
 {
     [Tooltip("マスの中心点からどの位置までずらすか")] [SerializeField]
-    Vector3[] offsets;
+    Vector3[] _offsets;
 
     [Tooltip("重なっているプレイヤーを取得する機能")] [SerializeField]
     GetOverlapPlayer _getOverlapPlayer;
 
-    SetTransform[] _setTransform;
+    SetTransform[] _setTransforms;
 
 
-    public void OnExit()//マスから出ていく時(自分のマスを書き換える前に読んでください)
+    public void OnExit(MapTransform myMapTrs)//マスから出ていく時(自分のマスを書き換える前に呼ぶ)
     {
-        //重なっているプレイヤーを取得
+        int[] overlapPlayersIndexs= { };//重なっているプレイヤーを取得
+        Vector3 massCenterPos = myMapTrs.CurrentWorldPos;//マスの中心点を取得
 
-        //自分以外の同じマスのプレイヤーの位置をずらす
+        int offsetIndex=0;
+
+        for(int i=0; i<overlapPlayersIndexs.Length ;i++)//自分以外の同じマスのプレイヤーの位置をずらす
+        {
+            int overlapIndex=overlapPlayersIndexs[i];
+
+            if (overlapIndex == PlayersManager.MyIndex) continue;//自分だったらずらさない
+
+            if(true)//それ以外の人ならずらしてもいいならずらす
+            {
+                //マスの中心点にoffsetを足す
+
+                //プレイヤーの位置を動かす
+
+                offsetIndex++;
+            }
+        }
     }
 
-    public void OnEnter()//マスに到着した時(自分のマスを書き換えてから読んでください)
+    public void OnEnter()//マスに到着した時(自分のマスを書き換えてから呼ぶ)
     {
-        //重なっているプレイヤーを取得
+        int[] overlapPlayersIndex = { };//重なっているプレイヤーを取得
 
         //自分の位置をずらす
     }
@@ -34,6 +51,6 @@ public class ShiftPlayersPosition : MonoBehaviour
     //private
     private void Awake()
     {
-        _setTransform = PlayersManager.GetComponentsFromPlayers<SetTransform>();
+        _setTransforms = PlayersManager.GetComponentsFromPlayers<SetTransform>();
     }
 }
