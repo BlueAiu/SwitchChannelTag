@@ -16,7 +16,7 @@ public class ShiftPlayersPosition : MonoBehaviour
 
     public void OnExit(MapTransform myMapTrs)//マスから出ていく時(自分のマスを書き換える前に呼ぶ)
     {
-        PlayerInfo[] overlapPlayersInfos= { };//重なっているプレイヤーを取得(☆後に番号を取得するようにする)
+        PlayerInfo[] overlapPlayersInfos= _getOverlapPlayer.GetOverlapPlayers();//重なっているプレイヤーを取得(☆後に番号を取得するようにする)
         Vector3 massCenterPos = myMapTrs.CurrentWorldPos;//マスの中心点を取得
         int offsetIndex=0;
 
@@ -40,7 +40,7 @@ public class ShiftPlayersPosition : MonoBehaviour
 
     public void OnEnter(MapTransform myMapTrs)//マスに到着した時(自分のマスを書き換えてから呼ぶ)
     {
-        PlayerInfo[] overlapPlayersInfos = { };//重なっているプレイヤーを取得(☆後に番号を取得するようにする)
+        PlayerInfo[] overlapPlayersInfos = _getOverlapPlayer.GetOverlapPlayers();//重なっているプレイヤーを取得(☆後に番号を取得するようにする)
         Vector3 massCenterPos = myMapTrs.CurrentWorldPos;//マスの中心点を取得
         int offsetIndex = overlapPlayersInfos.Length-1;
         SetTransform mySetTrs = PlayersManager.GetComponentFromMinePlayer<SetTransform>();
