@@ -32,8 +32,6 @@ public class ChangeHierarchy : MonoBehaviour
         SwitchHierarchy(false);
     }
 
-
-
     //private
     void SwitchHierarchy(bool inc)
     {
