@@ -20,7 +20,7 @@ public class SerializeDice
 
         for (int i = 0; i < diceNum; i++)
         {
-            ret += UnityEngine.Random.Range(diceMin, diceMax - 1);
+            ret += UnityEngine.Random.Range(diceMin, diceMax + 1);
         }
 
         ret = Math.Max(ret - reduceNum, 0);
