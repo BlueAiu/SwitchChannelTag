@@ -41,25 +41,29 @@ public class MoveOnMap : MonoBehaviour
         }
 
         //移動に成功
-        Move(newGridPos);
+        StartCoroutine(Move(newGridPos));
     }
 
 
 
     //private
-    private void Move(MapVec newGridPos)//移動処理
+    IEnumerator Move(MapVec newGridPos)//移動処理
     {
         Vector3 start = _myMapTrs.CurrentWorldPos;//現在のマスの中心点
+        Vector3 destination = _myMapTrs.CurrentHierarchy.MapToWorld(newGridPos);//移動先のマスの中心点
+
+        _remainingStep--;//残り移動可能マスを減らす
+        //ずらす処理
+        _playerMoveAnimation.StartMove(start, destination);//移動アニメーション開始
+
+        yield return new WaitUntil(()=>_playerMoveAnimation.IsMoving);//移動アニメーションが終わるまで待つ
 
         //位置情報の書き換え
         MapPos newPos = _myMapTrs.Pos;
         newPos.gridPos = newGridPos;
         _myMapTrs.Rewrite(newPos);
 
-        Vector3 destination = _myMapTrs.CurrentWorldPos;//移動先のマスの中心点
-
-        _remainingStep--;//残り移動可能マスを減らす
-        _playerMoveAnimation.StartMove(start, destination);//移動アニメーション開始
+        //ずらす処理
     }
 
     bool IsMovable(Vector2 inputVec,out MapVec newGridPos)//指定方向に移動できるか

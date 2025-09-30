@@ -12,6 +12,8 @@ public static class PlayersManager
 
     // MinePlayer
 
+    public static int MyIndex {  get { return players.IndexOf(minePlayer); } }
+
     public static GameObject MinePlayerGameObject
     {
         get => minePlayer.PlayerObject;
@@ -97,10 +99,7 @@ public static class PlayersManager
         players.Add(playerInfo);
         SortByActorNumber();
 
-        if (player.GetPhotonView().IsMine)
-        {
-            minePlayer = playerInfo;
-        }
+        FindMine();//自分を見つける
     }
 
     public static void RemovePlayer(GameObject player)
@@ -110,6 +109,23 @@ public static class PlayersManager
 
         if (!players.Contains(playerInfo)) return;
         players.Remove(playerInfo);
+        SortByActorNumber();
+
+        FindMine();//自分を見つける
+    }
+
+    static void FindMine()//自分を見つける(アクターナンバー順に整列した後に呼ぶ)
+    {
+        for(int i=0; i<players.Count ;i++)
+        {
+            var player = players[i];
+
+            if (player.Player== PhotonNetwork.LocalPlayer)
+            {
+                minePlayer = player;
+                return;
+            }
+        }
     }
 
     static void SortByActorNumber()
