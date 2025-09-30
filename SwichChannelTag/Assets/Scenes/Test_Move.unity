@@ -613,9 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4faaa9de41e606948ae0184bb28cc203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveDuration: 0.2
-  _scenePlayerManager: {fileID: 0}
-  _mapTrs: {fileID: 6241321194035320833}
+  _playerMoveAnimation: {fileID: 0}
 --- !u!114 &454450854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,8 +626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf067e5a12612247958a9ed744695ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scenePlayerManager: {fileID: 0}
-  _mapTrs: {fileID: 6241321194035320833}
 --- !u!114 &454450855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,6 +639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxNum: 6
+  _reduceNum: 0
   _moveOnMap: {fileID: 454450853}
   _diceResultText: {fileID: 1598713918}
 --- !u!1 &461476202
@@ -1361,16 +1358,16 @@ MonoBehaviour:
   _map: {fileID: 0}
   _obstacleObject: {fileID: 87842621043002327, guid: 3a530e8944187be4f9bf8f13528acedc, type: 3}
   _obstaclePoses:
-  - _hierarchyIndex: 0
-    _pos:
+  - hierarchyIndex: 0
+    gridPos:
       x: 0
       y: 0
-  - _hierarchyIndex: 0
-    _pos:
+  - hierarchyIndex: 0
+    gridPos:
       x: 0
       y: 0
-  - _hierarchyIndex: 0
-    _pos:
+  - hierarchyIndex: 0
+    gridPos:
       x: 0
       y: 0
 --- !u!1 &1837054832
@@ -1918,12 +1915,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hierarchies: {fileID: 461476203}
-  _target: {fileID: 1444045662886228551}
-  _pos:
-    x: 3
-    y: 2
-  _hierarchyIndex: 1
   _myPhotonView: {fileID: 0}
+  _pos:
+    hierarchyIndex: 0
+    gridPos:
+      x: 0
+      y: 0
 --- !u!1 &6252544064853691782
 GameObject:
   m_ObjectHideFlags: 0
