@@ -8,20 +8,32 @@ using UnityEngine;
 
 public class DecideMovableStep : MonoBehaviour
 {
-    [Tooltip("ダイスの最大値(1～MaxNum以下の値が出る)")] [SerializeField] int _maxNum;
-    [Tooltip("ダイスの減少値(0未満にはならない)")][SerializeField] int _reduceNum;
+    [SerializeField] SerializeDice _defaultDice;
+    [SerializeField] SerializableDictionary<EPlayerState, SerializeDice> _switchedDice;
     [SerializeField] MoveOnMap _moveOnMap;
     [SerializeField] TextMeshProUGUI _diceResultText;
-    const int _minNum=1;
 
     public void Dicide()//動けるマス数を決定(ダイスロールで)
     {
-        int result=Random.Range(_minNum, _maxNum+1);
+        int result;
 
         bool dummy = true;
+        EPlayerState dummyState = EPlayerState.Runner;
         if (dummy)
         {
-            result = Mathf.Max(0, result - _reduceNum);
+            if(_switchedDice.TryGetValue(dummyState, out var dice))
+            {
+                result = dice.DiceRoll();
+            }
+            else
+            {
+                Debug.LogWarning("Not found switchedDice in " + dummyState);
+                result = 0;
+            }
+        }
+        else
+        {
+            result = _defaultDice.DiceRoll();
         }
 
         _moveOnMap.RemainingStep=result;
