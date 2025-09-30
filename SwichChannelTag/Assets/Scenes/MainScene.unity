@@ -540,6 +540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxNum: 6
+  _reduceNum: 1
   _moveOnMap: {fileID: 722071807}
   _diceResultText: {fileID: 1142387691}
 --- !u!114 &722071807
