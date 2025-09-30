@@ -539,8 +539,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bfce79fcf97c374c9aa173c1a02a75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxNum: 6
-  _reduceNum: 1
+  _defaultDice:
+    diceMax: 6
+    diceNum: 1
+    reduceNum: 0
+  _switchedDice:
+    _list:
+    - key: 0
+      value:
+        diceMax: 6
+        diceNum: 1
+        reduceNum: 3
+    - key: 1
+      value:
+        diceMax: 6
+        diceNum: 2
+        reduceNum: 6
   _moveOnMap: {fileID: 722071807}
   _diceResultText: {fileID: 1142387691}
 --- !u!114 &722071807
