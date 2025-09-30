@@ -13,6 +13,8 @@ public class DecideMovableStep : MonoBehaviour
     [SerializeField] MoveOnMap _moveOnMap;
     [SerializeField] TextMeshProUGUI _diceResultText;
 
+    [SerializeField] ChangeHierarchy _changeHierarchy;
+
     public void Dicide()//動けるマス数を決定(ダイスロールで)
     {
         int result;
@@ -37,6 +39,11 @@ public class DecideMovableStep : MonoBehaviour
         }
 
         _moveOnMap.RemainingStep=result;
+
+        if(_changeHierarchy.IsMoved)
+        {
+            _changeHierarchy.IsMoved = false;
+        }
     }
 
     private void Update()

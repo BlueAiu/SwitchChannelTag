@@ -16,6 +16,8 @@ public class ChangeHierarchy : MonoBehaviour
     public event Action<int> OnSwitchHierarchy_NewIndex;//ŠK‘wØ‚è‘Ö‚¦‚ÉŒÄ‚Î‚ê‚é(ˆø”‚ÉV‚µ‚¢ŠK‘w”Ô†‚ğ“ü‚ê‚éŒ`®)
     public event Action OnSwitchHierarchy;//ŠK‘wØ‚è‘Ö‚¦‚ÉŒÄ‚Î‚ê‚é(ˆø”‚È‚µ)
 
+    public bool IsMoved;
+
     public void SwitchHierarchy_Inc(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
@@ -29,8 +31,6 @@ public class ChangeHierarchy : MonoBehaviour
 
         SwitchHierarchy(false);
     }
-
-
 
     //private
     void SwitchHierarchy(bool inc)
@@ -47,6 +47,8 @@ public class ChangeHierarchy : MonoBehaviour
 
         OnSwitchHierarchy_NewIndex?.Invoke(newHierarchyIndex);
         OnSwitchHierarchy?.Invoke();
+
+        IsMoved = true;
     }
 
     private void Awake()
@@ -58,5 +60,7 @@ public class ChangeHierarchy : MonoBehaviour
     {
         _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
         _mySetTrs=PlayersManager.GetComponentFromMinePlayer<SetTransform>();
+
+        IsMoved = false;
     }
 }
