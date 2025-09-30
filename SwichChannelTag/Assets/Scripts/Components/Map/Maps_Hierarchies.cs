@@ -20,8 +20,8 @@ public class Maps_Hierarchies : MonoBehaviour
     {
         return hierarchyIndex >= 0 && hierarchyIndex < _maps.Length;
     }
-    public bool IsInRange(int hierarchyIndex,MapVec mapVec)//ŠK‘w”Ô†‚Æƒ}ƒXÀ•W—¼•û‚ª”ÍˆÍ“à‚©‚ð”»’è
+    public bool IsInRange(MapPos pos)//ŠK‘w”Ô†‚Æƒ}ƒXÀ•W—¼•û‚ª”ÍˆÍ“à‚©‚ð”»’è
     {
-        return IsInRange(hierarchyIndex) && _maps[hierarchyIndex].IsInRange(mapVec);
+        return IsInRange(pos.hierarchyIndex) && _maps[pos.hierarchyIndex].IsInRange(pos.gridPos);
     }
 }

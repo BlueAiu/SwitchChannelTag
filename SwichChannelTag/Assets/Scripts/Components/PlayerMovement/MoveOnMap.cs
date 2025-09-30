@@ -9,11 +9,10 @@ using UnityEngine.InputSystem;
 
 public class MoveOnMap : MonoBehaviour
 {
-    [Tooltip("一つのマスの移動にかける時間")] [SerializeField]
-    float _moveDuration;
+    [Tooltip("プレイヤーの移動の様子")] [SerializeField]
+    PlayerMoveAnimation _playerMoveAnimation; 
 
-    [Tooltip("マップ上の位置情報")] [SerializeField]
-    MapTransform _mapTrs;
+    MapTransform _myMapTrs;//自分のマップ上の位置情報
 
     int _remainingStep=0;//残り移動可能マス数
 
@@ -29,54 +28,72 @@ public class MoveOnMap : MonoBehaviour
 
         if (!enabled) return;
 
-        if (_mapTrs.Moving) return;//キャラが移動中であれば無視
+        if (_playerMoveAnimation.IsMoving) return;//キャラが移動中であれば無視
 
         if (_remainingStep <= 0) return;//残り移動可能マスが0なら移動できない
 
         Vector2 getVec = context.ReadValue<Vector2>();
 
-        if (!Move(getVec)) return;
+        if (!IsMovable(getVec, out MapVec newGridPos))
+        {
+            Debug.Log("移動に失敗");
+            return;
+        }
 
-        _remainingStep--;//移動出来たなら、残り移動可能マスを減らしておく
+        //移動に成功
+        StartCoroutine(Move(newGridPos));
     }
 
 
 
     //private
-    bool Move(Vector2 inputVec)//指定方向に移動(移動に失敗したらfalseを返す)
+    IEnumerator Move(MapVec newGridPos)//移動処理
+    {
+        Vector3 start = _myMapTrs.CurrentWorldPos;//現在のマスの中心点
+        Vector3 destination = _myMapTrs.CurrentHierarchy.MapToWorld(newGridPos);//移動先のマスの中心点
+
+        _remainingStep--;//残り移動可能マスを減らす
+        //ずらす処理
+        _playerMoveAnimation.StartMove(start, destination);//移動アニメーション開始
+
+        yield return new WaitUntil(()=>_playerMoveAnimation.IsMoving);//移動アニメーションが終わるまで待つ
+
+        //位置情報の書き換え
+        MapPos newPos = _myMapTrs.Pos;
+        newPos.gridPos = newGridPos;
+        _myMapTrs.Rewrite(newPos);
+
+        //ずらす処理
+    }
+
+    bool IsMovable(Vector2 inputVec,out MapVec newGridPos)//指定方向に移動できるか
     {
         MapVec moveVec;
         moveVec.x = (int)inputVec.x;
         moveVec.y = -(int)inputVec.y;
 
-        MapVec newPos = _mapTrs.Pos + moveVec;
+        newGridPos = _myMapTrs.Pos.gridPos + moveVec;
 
-        if (!IsMovableMass(newPos))//移動できない場合
-        {
-            Debug.Log("移動に失敗");
-            return false;
-        }
+        if(!IsMovableMass(newGridPos)) return false;
 
-        //移動可能な場合
-        _mapTrs.MoveSmoothly(newPos,_moveDuration);
         return true;
     }
 
     bool IsMovableMass(MapVec newPos)//移動可能なマスか
     {
-        if (!_mapTrs.CurrentHierarchy.IsInRange(newPos)) return false;//範囲外のマスであれば移動できない
-        if (_mapTrs.CurrentHierarchy.Mass[newPos] != E_Mass.Empty) return false;//そのマスが空マスでなければ移動できない
+        if (!_myMapTrs.CurrentHierarchy.IsInRange(newPos)) return false;//範囲外のマスであれば移動できない
+        if (_myMapTrs.CurrentHierarchy.Mass[newPos] != E_Mass.Empty) return false;//そのマスが空マスでなければ移動できない
 
         return true;
     }
 
-    private void Start()
+    private void Awake()
     {
         Init();
     }
 
     private void Init()//初期化処理
     {
-        _mapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
+        _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
     }
 }

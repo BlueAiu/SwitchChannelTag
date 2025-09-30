@@ -1,3 +1,5 @@
+using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,20 +12,50 @@ public class InitScenePlayers : MonoBehaviour
     [Tooltip("移動できる階層一覧")][SerializeField] 
     Maps_Hierarchies _hierarchies;
 
-    void Start()
+    SetTransform[] _setTransforms;
+    MapTransform[] _mapTrses;
+
+    void Awake()
     {
         InitMapTrs();
+
+        _setTransforms = PlayersManager.GetComponentsFromPlayers<SetTransform>();
+    }
+
+    private void Start()
+    {
+        InitPlayersPos();
     }
 
     void InitMapTrs()//全プレイヤーのMapTransformの初期化
     {
-        MapTransform[] mapTrses = PlayersManager.GetComponentsFromPlayers<MapTransform>();
+        _mapTrses = PlayersManager.GetComponentsFromPlayers<MapTransform>();
 
-        for(int i=0; i<mapTrses.Length;i++)
+        for(int i=0; i<_mapTrses.Length;i++)
         {
-            MapTransform mapTrs = mapTrses[i];
-            if (mapTrs != null) mapTrs.Hierarchies = _hierarchies;
-            mapTrs.Rewrite(mapTrs.Pos, mapTrs.HierarchyIndex, true);//位置を初期化
+            MapTransform mapTrs = _mapTrses[i];
+
+            if(mapTrs==null) continue;
+
+            mapTrs.Hierarchies = _hierarchies;
+        }
+    }
+
+    //これより下は後に変更が加わる可能性大
+
+    void InitPlayersPos()//位置(Transform)の初期化
+    {
+        Player mine = PlayersManager.MinePlayerPhotonPlayer;
+
+        if (!mine.IsMasterClient) return;//ホスト主以外はこの処理を行わない
+
+        for(int i=0; i<_setTransforms.Length ;i++)
+        {
+            MapTransform mapTrs = _mapTrses[i];
+            
+            if (mapTrs == null) continue;
+
+            _setTransforms[i].Position=mapTrs.CurrentWorldPos;
         }
     }
 }

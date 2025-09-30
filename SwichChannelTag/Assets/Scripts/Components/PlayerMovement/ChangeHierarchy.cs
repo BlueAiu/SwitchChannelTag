@@ -10,13 +10,12 @@ using UnityEngine.InputSystem;
 
 public class ChangeHierarchy : MonoBehaviour
 {
-    [Tooltip("マップ上の位置情報")] [SerializeField] 
-    MapTransform _mapTrs;
+    MapTransform _myMapTrs;//自分のマップ上の位置情報
+    SetTransform _mySetTrs;
 
     public event Action<int> OnSwitchHierarchy_NewIndex;//階層切り替え時に呼ばれる(引数に新しい階層番号を入れる形式)
     public event Action OnSwitchHierarchy;//階層切り替え時に呼ばれる(引数なし)
 
-    public bool IsMoved;//
     public void SwitchHierarchy_Inc(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
@@ -40,24 +39,24 @@ public class ChangeHierarchy : MonoBehaviour
 
         int delta = inc ? 1 : -1;
 
-        int newHierarchyIndex = MathfExtension.CircularWrapping_Delta(_mapTrs.HierarchyIndex, delta, _mapTrs.Hierarchies.Length - 1);
+        int newHierarchyIndex = MathfExtension.CircularWrapping_Delta(_myMapTrs.Pos.hierarchyIndex, delta, _myMapTrs.Hierarchies.Length - 1);
 
-        _mapTrs.Rewrite(newHierarchyIndex);
+        _myMapTrs.Rewrite(newHierarchyIndex);
+
+        _mySetTrs.Position = _myMapTrs.CurrentWorldPos;
 
         OnSwitchHierarchy_NewIndex?.Invoke(newHierarchyIndex);
         OnSwitchHierarchy?.Invoke();
-
-        IsMoved = true;
     }
 
-    private void Start()
+    private void Awake()
     {
         Init();
     }
 
     private void Init()//初期化処理
     {
-        _mapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
-        IsMoved = false;
+        _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
+        _mySetTrs=PlayersManager.GetComponentFromMinePlayer<SetTransform>();
     }
 }
