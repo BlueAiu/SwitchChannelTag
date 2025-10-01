@@ -42,7 +42,8 @@ public class ShiftPlayersPosition : MonoBehaviour
     {
         PlayerInfo[] overlapPlayersInfos = _getOverlapPlayer.GetOverlapPlayers();//重なっているプレイヤーを取得(☆後に番号を取得するようにする)
         Vector3 massCenterPos = myMapTrs.CurrentWorldPos;//マスの中心点を取得
-        int offsetIndex = overlapPlayersInfos.Length-1;
+        int offsetIndex = overlapPlayersInfos.Length;
+        Debug.Log(offsetIndex);
         SetTransform mySetTrs = PlayersManager.GetComponentFromMinePlayer<SetTransform>();
 
         //自分の位置をずらす
