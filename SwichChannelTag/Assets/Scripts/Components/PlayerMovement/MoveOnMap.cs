@@ -10,9 +10,13 @@ using UnityEngine.InputSystem;
 public class MoveOnMap : MonoBehaviour
 {
     [Tooltip("プレイヤーの移動の様子")] [SerializeField]
-    PlayerMoveAnimation _playerMoveAnimation; 
+    PlayerMoveAnimation _playerMoveAnimation;
+
+    [Tooltip("プレイヤーの位置をずらす機能")] [SerializeField] 
+    ShiftPlayersPosition _shiftPlayersPosition;
 
     MapTransform _myMapTrs;//自分のマップ上の位置情報
+    CanShift _myCanShift;
 
     int _remainingStep=0;//残り移動可能マス数
 
@@ -53,17 +57,21 @@ public class MoveOnMap : MonoBehaviour
         Vector3 destination = _myMapTrs.CurrentHierarchy.MapToWorld(newGridPos);//移動先のマスの中心点
 
         _remainingStep--;//残り移動可能マスを減らす
-        //ずらす処理
+        _shiftPlayersPosition.OnExit(_myMapTrs);//ずらす処理
+        _myCanShift.IsShiftAllowed = false;//自分がずらされないようにする
+
         _playerMoveAnimation.StartMove(start, destination);//移動アニメーション開始
 
-        yield return new WaitUntil(()=>_playerMoveAnimation.IsMoving);//移動アニメーションが終わるまで待つ
+        yield return new WaitUntil(()=>!_playerMoveAnimation.IsMoving);//移動アニメーションが終わるまで待つ
 
+        _myCanShift.IsShiftAllowed = true;//自分がずれてもいいようにする
+        
         //位置情報の書き換え
         MapPos newPos = _myMapTrs.Pos;
         newPos.gridPos = newGridPos;
         _myMapTrs.Rewrite(newPos);
 
-        //ずらす処理
+        _shiftPlayersPosition.OnEnter(_myMapTrs);//ずらす処理
     }
 
     bool IsMovable(Vector2 inputVec,out MapVec newGridPos)//指定方向に移動できるか
@@ -94,6 +102,7 @@ public class MoveOnMap : MonoBehaviour
 
     private void Init()//初期化処理
     {
+        _myCanShift = PlayersManager.GetComponentFromMinePlayer<CanShift>();
         _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
     }
 }

@@ -13,44 +13,41 @@ public class ShiftPlayersPosition : MonoBehaviour
     [Tooltip("重なっているプレイヤーを取得する機能")] [SerializeField]
     GetOverlapPlayer _getOverlapPlayer;
 
-    SetTransform[] _setTransforms;
-
 
     public void OnExit(MapTransform myMapTrs)//マスから出ていく時(自分のマスを書き換える前に呼ぶ)
     {
-        int[] overlapPlayersIndexs= { };//重なっているプレイヤーを取得
+        PlayerInfo[] overlapPlayersInfos= _getOverlapPlayer.GetOverlapPlayers();//重なっているプレイヤーを取得(☆後に番号を取得するようにする)
         Vector3 massCenterPos = myMapTrs.CurrentWorldPos;//マスの中心点を取得
-
         int offsetIndex=0;
 
-        for(int i=0; i<overlapPlayersIndexs.Length ;i++)//自分以外の同じマスのプレイヤーの位置をずらす
+        //自分以外の同じマスのプレイヤーの位置をずらす
+        for (int i=0; i<overlapPlayersInfos.Length ;i++)
         {
-            int overlapIndex=overlapPlayersIndexs[i];
+            SetTransform setTransform=overlapPlayersInfos[i].GetComponent<SetTransform>();
+            CanShift canShift = overlapPlayersInfos[i].GetComponent<CanShift>();
 
-            if (overlapIndex == PlayersManager.MyIndex) continue;//自分だったらずらさない
+            if (overlapPlayersInfos[i].Player.IsLocal) continue;//自分だったらずらさない
 
-            if(true)//それ以外の人ならずらしてもいいならずらす
+            else if (canShift.IsShiftAllowed)//それ以外の人ならずらしてもいいならずらす
             {
-                //マスの中心点にoffsetを足す
-
-                //プレイヤーの位置を動かす
+                Vector3 pos = massCenterPos + _offsets[offsetIndex];//移動位置
+                setTransform.Position = pos;
 
                 offsetIndex++;
             }
         }
     }
 
-    public void OnEnter()//マスに到着した時(自分のマスを書き換えてから呼ぶ)
+    public void OnEnter(MapTransform myMapTrs)//マスに到着した時(自分のマスを書き換えてから呼ぶ)
     {
-        int[] overlapPlayersIndex = { };//重なっているプレイヤーを取得
+        PlayerInfo[] overlapPlayersInfos = _getOverlapPlayer.GetOverlapPlayers();//重なっているプレイヤーを取得(☆後に番号を取得するようにする)
+        Vector3 massCenterPos = myMapTrs.CurrentWorldPos;//マスの中心点を取得
+        int offsetIndex = overlapPlayersInfos.Length;
+        Debug.Log(offsetIndex);
+        SetTransform mySetTrs = PlayersManager.GetComponentFromMinePlayer<SetTransform>();
 
         //自分の位置をずらす
-    }
-
-
-    //private
-    private void Awake()
-    {
-        _setTransforms = PlayersManager.GetComponentsFromPlayers<SetTransform>();
+        Vector3 pos = massCenterPos + _offsets[offsetIndex];//移動位置
+        mySetTrs.Position = pos;
     }
 }
