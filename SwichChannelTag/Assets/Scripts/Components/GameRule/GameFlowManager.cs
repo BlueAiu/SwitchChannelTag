@@ -11,12 +11,15 @@ using Photon.Realtime;
 public class GameFlowManager : MonoBehaviour
 {
     GameFlowStateTypeBase _current;
+    PlayerTurnFlow[] playerTurnFlows;
 
     private void Start()
     {
         Player mine = PlayersManager.MinePlayerPhotonPlayer;
 
         if (!mine.IsMasterClient) return;//ホスト主以外はこの処理を行わない
+
+        playerTurnFlows = PlayersManager.GetComponentsFromPlayers<PlayerTurnFlow>();
 
         StartCoroutine(GameFlow());
     }
