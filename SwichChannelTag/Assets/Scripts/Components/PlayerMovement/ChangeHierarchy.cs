@@ -10,6 +10,9 @@ using UnityEngine.InputSystem;
 
 public class ChangeHierarchy : MonoBehaviour
 {
+    [Tooltip("プレイヤーの位置をずらす機能")] [SerializeField]
+    ShiftPlayersPosition _shiftPlayersPosition;
+
     MapTransform _myMapTrs;//自分のマップ上の位置情報
     SetTransform _mySetTrs;
 
@@ -41,9 +44,11 @@ public class ChangeHierarchy : MonoBehaviour
 
         int newHierarchyIndex = MathfExtension.CircularWrapping_Delta(_myMapTrs.Pos.hierarchyIndex, delta, _myMapTrs.Hierarchies.Length - 1);
 
+        _shiftPlayersPosition.OnExit(_myMapTrs);
+
         _myMapTrs.Rewrite(newHierarchyIndex);
 
-        _mySetTrs.Position = _myMapTrs.CurrentWorldPos;
+        _shiftPlayersPosition.OnEnter(_myMapTrs);
 
         OnSwitchHierarchy_NewIndex?.Invoke(newHierarchyIndex);
         OnSwitchHierarchy?.Invoke();
