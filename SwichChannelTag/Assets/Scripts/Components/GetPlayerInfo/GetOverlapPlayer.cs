@@ -26,7 +26,7 @@ public class GetOverlapPlayer : MonoBehaviour
     PlayerInfoAndPos[] otherPlayers;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         var minePlayerInfo = PlayersManager.MinePlayerInfo;
         minePlayer = new PlayerInfoAndPos(minePlayerInfo.GetComponent<MapTransform>() , minePlayerInfo);
