@@ -5,10 +5,10 @@ using UnityEngine;
 //作成者:杉山
 //プレイヤーの状態(鬼か逃げか)
 
-public class PlayerState : MonoBehaviour
+public partial class PlayerState : MonoBehaviour
 {
-    [Tooltip("マテリアル関連の設定")] [SerializeField]
-    Material_PlayerState _material_PlayerState;
+    [Tooltip("モデル関連の設定")] [SerializeField]
+    PlayerModel_PlayerState _playerModel_PlayerState;
 
     [SerializeField] PhotonView _myPhotonView;
 
@@ -41,7 +41,7 @@ public class PlayerState : MonoBehaviour
 
         _playerState = newState;
 
-        _material_PlayerState.ChangeMaterial(newState);//マテリアルの変更
+        _playerModel_PlayerState.ChangeMaterial(newState);//マテリアルの変更
     }
 
     void CheckAbleToSync(ref bool isSync)

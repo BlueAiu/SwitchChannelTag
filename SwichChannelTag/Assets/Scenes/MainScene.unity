@@ -505,6 +505,7 @@ GameObject:
   - component: {fileID: 722071807}
   - component: {fileID: 722071810}
   - component: {fileID: 722071806}
+  - component: {fileID: 722071811}
   m_Layer: 0
   m_Name: ControlManager
   m_TagString: Untagged
@@ -699,6 +700,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e3d6bccf-bf39-4d8d-9281-f68fa020024c
     m_ActionName: Player/SwitchHierarchy_Dec[/Keyboard/v]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 722071811}
+        m_TargetAssemblyTypeName: Test_SwitchPlayerState, Assembly-CSharp
+        m_MethodName: Switch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 60161da4-cf96-4f91-babc-cba191821cbc
+    m_ActionName: Player/SwitchState[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -717,6 +734,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveDuration: 0.3
+--- !u!114 &722071811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722071804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d245316a3b04d5c4ba11fbd04f9f615f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &742054141
 GameObject:
   m_ObjectHideFlags: 0
