@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class GameFlowStateTypeTurn : GameFlowStateTypeBase
 {
-    EPlayerState turnSide;
-    PlayerTurnFlow[] players;
+    [SerializeField] EPlayerState turnSide;
 
     List<PlayerTurnFlow> ownPlayers;
 
 
-    public GameFlowStateTypeTurn(EPlayerState turnSide, PlayerTurnFlow[] players)
-    {
-        this.turnSide = turnSide;
-        this.players = players;
-    }
 
     public override void OnEnter()//ステートの開始処理
     {
-        foreach (var player in this.players)
+        var players = PlayersManager.GetComponentsFromPlayers<PlayerTurnFlow>();
+
+        foreach (var player in players)
         {
             player.StartTurn(turnSide);
 
