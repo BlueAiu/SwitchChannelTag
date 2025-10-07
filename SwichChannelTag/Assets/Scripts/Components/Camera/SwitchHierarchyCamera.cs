@@ -8,14 +8,18 @@ using UnityEngine;
 
 public class SwitchHierarchyCamera : MonoBehaviour
 {
-    [Tooltip("ŠK‘w‚²‚Æ‚ÌƒJƒƒ‰’†S“_\nŠK‘w‚ÌŒÂ”•ªİ’è‚µ‚Ä‚­‚¾‚³‚¢")] [SerializeField] Transform[] _mapCenters;
-    [Tooltip("ƒJƒƒ‰")] [SerializeField] CinemachineVirtualCamera _mapCamera;
-    [SerializeField] ChangeHierarchy _changeHierarchy;
-    [SerializeField] Maps_Hierarchies _maps_Hierarchies;
+    [Tooltip("ŠK‘w‚²‚Æ‚Ìƒo[ƒ`ƒƒƒ‹ƒJƒƒ‰\n0ŒÂ–Ú‚©‚ç“V‘->’nã->’n–‚Ì‡‚É“ü‚ê‚Ä‚­‚¾‚³‚¢")] [SerializeField] 
+    CinemachineVirtualCamera[] _mapVCams;
+
+    [SerializeField] 
+    ChangeHierarchy _changeHierarchy;
+
+    [SerializeField]
+    Maps_Hierarchies _maps_Hierarchies;
 
     public void Switch(int hierarchyIndex)//Ê‚·ŠK‘w‚ÌØ‚è‘Ö‚¦
     {
-        if (!IsValid_MapCentersLength()) return;
+        if (!IsValid_VCamLength()) return;
 
         if(!_maps_Hierarchies.IsInRange(hierarchyIndex))
         {
@@ -23,10 +27,10 @@ public class SwitchHierarchyCamera : MonoBehaviour
             return;
         }
 
-        Transform currentHierarchy=_mapCenters[hierarchyIndex];
-
-        _mapCamera.Follow=currentHierarchy;
-        _mapCamera.LookAt=currentHierarchy;
+        for(int i=0; i<_mapVCams.Length ;i++)
+        {
+            _mapVCams[i].enabled = (i == hierarchyIndex);
+        }
     }
 
 
@@ -34,7 +38,7 @@ public class SwitchHierarchyCamera : MonoBehaviour
     //private
     private void Awake()
     {
-        IsValid_MapCentersLength();
+        IsValid_VCamLength();
         _changeHierarchy.OnSwitchHierarchy_NewIndex += Switch;
     }
 
@@ -50,11 +54,11 @@ public class SwitchHierarchyCamera : MonoBehaviour
         Switch(myMapTrs.Pos.hierarchyIndex);
     }
 
-    bool IsValid_MapCentersLength()
+    bool IsValid_VCamLength()
     {
-        if(_mapCenters.Length != _maps_Hierarchies.Length)
+        if(_mapVCams.Length != _maps_Hierarchies.Length)
         {
-            Debug.Log("ŠK‘w‚Ì”•ªA’†S“_‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI");
+            Debug.Log("ŠK‘w‚Ì”•ªAƒJƒƒ‰‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI");
             return false;
         }
 
