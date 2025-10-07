@@ -913,7 +913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e7b6dc3f572a646b412e346d57a83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlayer: 2
+  maxPlayer: 4
 --- !u!4 &5079787622447448422
 Transform:
   m_ObjectHideFlags: 0
