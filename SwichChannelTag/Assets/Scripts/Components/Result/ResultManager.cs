@@ -15,7 +15,7 @@ public class ResultManager : MonoBehaviour
     //Œ‹‰Ê‚ÌŠm’è(ƒQ[ƒ€‚ªI—¹‚µ‚½‚çŒ‹‰Ê‚É‘‚«‚İ‚·‚é)
     public void ConfirmResult()
     {
-
+        _score = new ScoreData();
     }
 
     private void Awake()
