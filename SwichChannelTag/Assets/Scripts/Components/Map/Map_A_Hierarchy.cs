@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 //今後の変更予定内容
 //位置を対応させる系のメソッドをクラスとしてまとめる
 
-public class Map_A_Hierarchy : MonoBehaviour
+public partial class Map_A_Hierarchy : MonoBehaviour
 {
     [Tooltip("マップのサイズ")] [SerializeField] MapVec _mapSize;
     [Tooltip("一マスごとの間隔")] [SerializeField] float _gapDistance;
