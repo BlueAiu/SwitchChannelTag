@@ -83,7 +83,7 @@ public class MoveOnMap : MonoBehaviour
         newGridPos = _myMapTrs.Pos.gridPos + moveVec;
 
         if(!IsMovableMass(newGridPos)) return false;
-        if(!_myMapTrs.CurrentHierarchy.IsBlockedByWall(_myMapTrs.Pos.gridPos, moveVec)) return false;
+        if(_myMapTrs.CurrentHierarchy.IsBlockedByWall(_myMapTrs.Pos.gridPos, moveVec)) return false;
 
         return true;
     }
