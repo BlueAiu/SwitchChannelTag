@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1649,6 +1648,23 @@ MonoBehaviour:
     gridPos:
       x: 1
       y: 2
+  _wallObstacleObject: {fileID: 4223103458514844991, guid: 9c8f29f1c083bb343b588a22c47e7b94, type: 3}
+  _setWalls:
+  - hierarchyIndex: 0
+    pos:
+      x: 1
+      y: 1
+    blockUnder: 1
+  - hierarchyIndex: 0
+    pos:
+      x: 2
+      y: 1
+    blockUnder: 1
+  - hierarchyIndex: 0
+    pos:
+      x: 2
+      y: 1
+    blockUnder: 0
 --- !u!224 &2030950526 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 588330080137203881, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
