@@ -57,4 +57,28 @@ public class MathfExtension
 
         return CircularWrapping(num,rangeMin,rangeMax);
     }
+
+    /// <summary>
+    /// 返り値がalphaの倍数になるように端数を切り捨て
+    /// </summary>
+    public static float FloorByAlpha(float value, float alpha)
+    {
+        return Mathf.Floor(value / alpha) * alpha;
+    }
+
+    /// <summary>
+    /// 返り値がalphaの倍数になるように端数を切り上げ
+    /// </summary>
+    public static float CeilByAlpha(float value, float alpha)
+    {
+        return Mathf.Ceil(value / alpha) * alpha;
+    }
+
+    /// <summary>
+    /// 返り値がalphaの倍数になるように端数を四捨五入（のようにする）
+    /// </summary>
+    public static float RoundByAlpha(float value, float alpha)
+    {
+        return Mathf.Round(value / alpha) * alpha;
+    }
 }
