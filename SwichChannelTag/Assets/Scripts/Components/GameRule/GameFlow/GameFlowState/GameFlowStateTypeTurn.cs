@@ -6,21 +6,19 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
 {
     [SerializeField] EPlayerState turnSide;
 
-    List<PlayerTurnFlow> ownPlayers;
-
-
+    List<TurnIsReady> ownPlayers;
 
     public override void OnEnter()//ステートの開始処理
     {
-        var players = PlayersManager.GetComponentsFromPlayers<PlayerTurnFlow>();
+        var turnIsReadys = PlayersManager.GetComponentsFromPlayers<TurnIsReady>();
+        var playerStates = PlayersManager.GetComponentsFromPlayers<PlayerState>();
 
-        foreach (var player in players)
+        for(int i=0; i<playerStates.Length ;i++)
         {
-            player.StartTurn(turnSide);
-
-            if(player.PlayerState == turnSide)
+            if (playerStates[i].State==turnSide)
             {
-                ownPlayers.Add(player);
+                turnIsReadys[i].IsReady = false;//対象のプレイヤーの行動を開始させる
+                ownPlayers.Add(turnIsReadys[i]);
             }
         }
     }
@@ -30,7 +28,7 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
         bool isFinishAll = true;
         foreach (var player in ownPlayers)
         {
-            isFinishAll &= player.IsTurnFinished;
+            isFinishAll &= player.IsReady;
         }
 
         if (isFinishAll) this._finished = true;

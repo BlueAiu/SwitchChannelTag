@@ -3,30 +3,23 @@ using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
 
+//プレイヤーごとに行うターン行動
 
 
 public class PlayerTurnFlow : MonoBehaviour
 {
     GameFlowStateTypeBase _current;
-    PlayerState _currentState;
-    bool _isLocal;
+    TurnIsReady _myTurnIsReady;
 
-    public EPlayerState PlayerState { get => _currentState.State; }
-
-    bool _isTurnFinished = false;
-    public bool IsTurnFinished
+    private void Awake()
     {
-        get => _isTurnFinished;
-        private set { SetTurnFinished(value); }
+        _myTurnIsReady = PlayersManager.GetComponentFromMinePlayer<TurnIsReady>();
+
+        _myTurnIsReady.OnStartTurn += StartMyTurn;
     }
 
-    private void Start()
+    void StartMyTurn()//自分の行動の許可が出た時に呼び出す
     {
-        Player mine = PlayersManager.MinePlayerPhotonPlayer;
-        _isLocal = mine.IsLocal;
-
-        if (!_isLocal) return;//ローカル以外はこの処理を行わない
-
         StartCoroutine(GameFlow());
     }
 
@@ -35,13 +28,7 @@ public class PlayerTurnFlow : MonoBehaviour
         //この時点では他のコンポーネントの初期化が終わってない可能性があるため、一旦1フレーム待つ
         yield return null;
 
-        //開始演出のステート
-
-
-        //
-
-
-        //終了演出のステート
+        //ここにプレイヤーごとのターンの処理を書いていく
     }
 
     IEnumerator CurrentStateUpdate()//現在のステートの更新処理
@@ -62,24 +49,5 @@ public class PlayerTurnFlow : MonoBehaviour
         _current = nextState;
 
         if (_current != null) _current.OnEnter();
-    }
-
-    [PunRPC]
-    void SetTurnFinished(bool value)
-        => IsTurnFinished = value;
-
-    [PunRPC]
-    public void StartTurn(EPlayerState turnSide)
-    {
-        if(!_isLocal) return;
-
-        if(PlayerState == turnSide)
-        {
-            ChangeState(null);
-        }
-        else
-        {
-            IsTurnFinished = false;
-        }
     }
 }
