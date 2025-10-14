@@ -1662,6 +1662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2061063803}
   - component: {fileID: 2061063804}
+  - component: {fileID: 2061063805}
   m_Layer: 0
   m_Name: SearchPlayerManager
   m_TagString: Untagged
@@ -1696,11 +1697,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18cb05797060c94db665b706c052c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2061063805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061063802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0494dfd2b2816744bbc7a671e330864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  search: {fileID: 2061063804}
+  uiTrs: {fileID: 2113726336}
+  uiImage: {fileID: 2113726337}
+  sprites:
+    _list:
+    - key: 0
+      value:
+      - {fileID: 21300000, guid: b9f966fef45e1e64187300ae18b28c81, type: 3}
+      - {fileID: 21300000, guid: ec09cb0e85cde8c4c97bc40e67288f11, type: 3}
+      - {fileID: 21300000, guid: a82fa1fbc5222ff47a897b47c01931a4, type: 3}
+    - key: 1
+      value:
+      - {fileID: 21300000, guid: 76124dad1c954ce43b636bbfedccbb7d, type: 3}
+      - {fileID: 21300000, guid: 6f85423384ad45443b2f192cfdc25b48, type: 3}
+      - {fileID: 21300000, guid: 957baf92c1d4c0540addff537634a903, type: 3}
+  smallLength: 2
+  lergeLength: 5
+  searchRange: 8
 --- !u!224 &2113726336 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5876760454425699992, guid: e89eaefeef03247408049d3737cf2757, type: 3}
   m_PrefabInstance: {fileID: 6469016516842040888}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2113726337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2307577264659145845, guid: e89eaefeef03247408049d3737cf2757, type: 3}
+  m_PrefabInstance: {fileID: 6469016516842040888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &572824268159914836 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7676533586214841200, guid: 715bdd72bcaf3844493dc62b3e65b9e5, type: 3}
@@ -1829,7 +1871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.173922
+      value: -72.07392
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.z
