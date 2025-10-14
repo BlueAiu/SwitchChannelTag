@@ -6,14 +6,9 @@ public class SearchUI : MonoBehaviour
     [SerializeField] SearchOpponentPlayer search;
     [SerializeField] RectTransform uiTrs;
     [SerializeField] UnityEngine.UI.Image uiImage;
-    [SerializeField] SerializableDictionary<EPlayerState, List<Sprite>> sprites;
+    [SerializeField] ChangeAllowSprite sprites;
 
-    [SerializeField]
-    [Tooltip("距離が小さい時の閾値")] 
-    float smallLength = 2f;
-    [SerializeField]
-    [Tooltip("距離が大きい時の閾値")]
-    float lergeLength = 5f;
+    
     [SerializeField]
     [Tooltip("矢印を出さない時の閾値")]
     float searchRange = 8f;
@@ -52,12 +47,7 @@ public class SearchUI : MonoBehaviour
         }
         else { uiImage.enabled = true; }
 
-        int index;
-        if (sqrDistance > lergeLength * lergeLength) { index = lergeIndex; }
-        else if (sqrDistance > smallLength * smallLength) { index = mediumIndex; }
-        else { index = smallIndex; }
-
-        uiImage.sprite = sprites[mineState.State][index];
+        uiImage.sprite = sprites.GetAllowSprites(mineState.State, sqrDistance);
 
         var angle = Mathf.Atan2(-direction.x, -direction.y);
         angle *= Mathf.Rad2Deg;
