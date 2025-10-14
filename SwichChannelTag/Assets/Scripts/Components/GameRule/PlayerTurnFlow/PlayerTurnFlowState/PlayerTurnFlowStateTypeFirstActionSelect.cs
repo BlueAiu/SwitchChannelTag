@@ -9,16 +9,16 @@ public class PlayerTurnFlowStateTypeFirstActionSelect : PlayerTurnFlowStateTypeB
 {
     public override void OnEnter()
     {
-
+        //UIを表示
     }
 
     public override void OnUpdate()
     {
-
+        //プレイヤーが移動操作を完了したら終了
     }
 
     public override void OnExit()
     {
-
+        
     }
 }
