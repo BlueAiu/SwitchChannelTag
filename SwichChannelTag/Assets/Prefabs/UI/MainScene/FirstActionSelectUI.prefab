@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8644707734251257836}
   - component: {fileID: 2106377252179460264}
   m_Layer: 5
-  m_Name: FirstActionSelect
+  m_Name: FirstActionSelectUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
