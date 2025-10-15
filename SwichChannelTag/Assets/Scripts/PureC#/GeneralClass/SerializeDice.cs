@@ -27,4 +27,12 @@ public class SerializeDice
 
         return ret;
     }
+
+    public string DiceText()
+    {
+        string ret = diceNum.ToString();
+        ret += "d" + diceMax.ToString();
+        ret += "-" + reduceNum.ToString();
+        return ret;
+    }
 }
