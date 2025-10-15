@@ -149,8 +149,8 @@ MonoBehaviour:
   _pos:
     hierarchyIndex: 0
     gridPos:
-      x: 0
-      y: 0
+      x: 3
+      y: 3
 --- !u!114 &1659280601506932932
 MonoBehaviour:
   m_ObjectHideFlags: 0

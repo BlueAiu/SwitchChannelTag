@@ -1568,7 +1568,223 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _map: {fileID: 407807742}
   _obstacleObject: {fileID: 87842621043002327, guid: 3a530e8944187be4f9bf8f13528acedc, type: 3}
-  _obstaclePoses: []
+  _obstaclePoses:
+  - hierarchyIndex: 0
+    gridPos:
+      x: 2
+      y: 0
+  - hierarchyIndex: 1
+    gridPos:
+      x: 2
+      y: 0
+  - hierarchyIndex: 2
+    gridPos:
+      x: 2
+      y: 0
+  - hierarchyIndex: 0
+    gridPos:
+      x: 1
+      y: 1
+  - hierarchyIndex: 1
+    gridPos:
+      x: 1
+      y: 1
+  - hierarchyIndex: 2
+    gridPos:
+      x: 1
+      y: 1
+  - hierarchyIndex: 0
+    gridPos:
+      x: 0
+      y: 2
+  - hierarchyIndex: 1
+    gridPos:
+      x: 0
+      y: 2
+  - hierarchyIndex: 2
+    gridPos:
+      x: 0
+      y: 2
+  - hierarchyIndex: 0
+    gridPos:
+      x: 6
+      y: 0
+  - hierarchyIndex: 1
+    gridPos:
+      x: 6
+      y: 0
+  - hierarchyIndex: 2
+    gridPos:
+      x: 6
+      y: 0
+  - hierarchyIndex: 0
+    gridPos:
+      x: 7
+      y: 1
+  - hierarchyIndex: 1
+    gridPos:
+      x: 7
+      y: 1
+  - hierarchyIndex: 2
+    gridPos:
+      x: 7
+      y: 1
+  - hierarchyIndex: 0
+    gridPos:
+      x: 8
+      y: 2
+  - hierarchyIndex: 1
+    gridPos:
+      x: 8
+      y: 2
+  - hierarchyIndex: 2
+    gridPos:
+      x: 8
+      y: 2
+  - hierarchyIndex: 0
+    gridPos:
+      x: 0
+      y: 6
+  - hierarchyIndex: 1
+    gridPos:
+      x: 0
+      y: 6
+  - hierarchyIndex: 2
+    gridPos:
+      x: 0
+      y: 6
+  - hierarchyIndex: 0
+    gridPos:
+      x: 1
+      y: 7
+  - hierarchyIndex: 1
+    gridPos:
+      x: 1
+      y: 7
+  - hierarchyIndex: 2
+    gridPos:
+      x: 1
+      y: 7
+  - hierarchyIndex: 0
+    gridPos:
+      x: 2
+      y: 8
+  - hierarchyIndex: 1
+    gridPos:
+      x: 2
+      y: 8
+  - hierarchyIndex: 2
+    gridPos:
+      x: 2
+      y: 8
+  - hierarchyIndex: 0
+    gridPos:
+      x: 8
+      y: 6
+  - hierarchyIndex: 1
+    gridPos:
+      x: 8
+      y: 6
+  - hierarchyIndex: 2
+    gridPos:
+      x: 8
+      y: 6
+  - hierarchyIndex: 0
+    gridPos:
+      x: 7
+      y: 7
+  - hierarchyIndex: 1
+    gridPos:
+      x: 7
+      y: 7
+  - hierarchyIndex: 2
+    gridPos:
+      x: 7
+      y: 7
+  - hierarchyIndex: 0
+    gridPos:
+      x: 6
+      y: 8
+  - hierarchyIndex: 1
+    gridPos:
+      x: 6
+      y: 8
+  - hierarchyIndex: 2
+    gridPos:
+      x: 6
+      y: 8
+  - hierarchyIndex: 0
+    gridPos:
+      x: 6
+      y: 8
+  - hierarchyIndex: 1
+    gridPos:
+      x: 6
+      y: 8
+  - hierarchyIndex: 2
+    gridPos:
+      x: 6
+      y: 8
+  - hierarchyIndex: 0
+    gridPos:
+      x: 3
+      y: 4
+  - hierarchyIndex: 1
+    gridPos:
+      x: 3
+      y: 4
+  - hierarchyIndex: 2
+    gridPos:
+      x: 3
+      y: 4
+  - hierarchyIndex: 0
+    gridPos:
+      x: 4
+      y: 3
+  - hierarchyIndex: 1
+    gridPos:
+      x: 4
+      y: 3
+  - hierarchyIndex: 2
+    gridPos:
+      x: 4
+      y: 3
+  - hierarchyIndex: 0
+    gridPos:
+      x: 4
+      y: 5
+  - hierarchyIndex: 1
+    gridPos:
+      x: 4
+      y: 5
+  - hierarchyIndex: 2
+    gridPos:
+      x: 4
+      y: 5
+  - hierarchyIndex: 0
+    gridPos:
+      x: 5
+      y: 4
+  - hierarchyIndex: 1
+    gridPos:
+      x: 5
+      y: 4
+  - hierarchyIndex: 2
+    gridPos:
+      x: 5
+      y: 4
+  - hierarchyIndex: 0
+    gridPos:
+      x: 0
+      y: 0
+  - hierarchyIndex: 1
+    gridPos:
+      x: 1
+      y: 0
+  - hierarchyIndex: 2
+    gridPos:
+      x: 0
+      y: 1
   _wallObstacleObject: {fileID: 4223103458514844991, guid: 9c8f29f1c083bb343b588a22c47e7b94, type: 3}
   _setWalls: []
 --- !u!224 &2030950526 stripped
