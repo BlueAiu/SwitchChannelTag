@@ -562,6 +562,7 @@ MonoBehaviour:
   _diceResultText: {fileID: 1142387691}
   _changeHierarchy: {fileID: 722071808}
   _playerState: {fileID: 0}
+  writeLog: 1
 --- !u!114 &722071807
 MonoBehaviour:
   m_ObjectHideFlags: 0

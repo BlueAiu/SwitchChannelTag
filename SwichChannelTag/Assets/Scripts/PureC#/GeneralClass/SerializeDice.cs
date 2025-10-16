@@ -30,9 +30,6 @@ public class SerializeDice
 
     public string DiceText()
     {
-        string ret = diceNum.ToString();
-        ret += "d" + diceMax.ToString();
-        ret += "-" + reduceNum.ToString();
-        return ret;
+        return String.Format("{0} d {1} - {2}", diceNum, diceMax, reduceNum);
     }
 }
