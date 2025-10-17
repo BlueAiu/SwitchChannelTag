@@ -1713,7 +1713,7 @@ MonoBehaviour:
   uiTrs: {fileID: 2113726336}
   uiImage: {fileID: 2113726337}
   sprites: {fileID: 11400000, guid: 4ddb03ea98d51ec4ca101fc6fba385f0, type: 2}
-  searchRange: 8
+  searchRange: 6
   angleDivision: 8
 --- !u!224 &2113726336 stripped
 RectTransform:
@@ -2083,11 +2083,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5876760454425699992, guid: e89eaefeef03247408049d3737cf2757, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -150
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 5876760454425699992, guid: e89eaefeef03247408049d3737cf2757, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 5876760454425699992, guid: e89eaefeef03247408049d3737cf2757, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
