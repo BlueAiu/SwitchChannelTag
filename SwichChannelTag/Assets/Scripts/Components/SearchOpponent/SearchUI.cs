@@ -38,16 +38,16 @@ public class SearchUI : MonoBehaviour
     public void SetAllow()
     {
         var direction = search.SerchOpponentDirection();
-        float sqrDistance = direction.x * direction.x + direction.y * direction.y;
+        float distance = Mathf.Abs(direction.x) + Mathf.Abs(direction.y);
 
-        if (sqrDistance > searchRange * searchRange)
+        if (distance > searchRange)
         {
             uiImage.enabled = false;
             return;
         }
         else { uiImage.enabled = true; }
 
-        uiImage.sprite = sprites.GetAllowSprites(mineState.State, sqrDistance);
+        uiImage.sprite = sprites.GetAllowSprites(mineState.State, distance);
 
         var angle = Mathf.Atan2(-direction.x, -direction.y);
         angle *= Mathf.Rad2Deg;
