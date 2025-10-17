@@ -49,9 +49,16 @@ public class SearchUI : MonoBehaviour
 
         uiImage.sprite = sprites.GetAllowSprites(mineState.State, distance);
 
-        var angle = Mathf.Atan2(-direction.x, -direction.y);
-        angle *= Mathf.Rad2Deg;
-        angle = MathfExtension.RoundByAlpha(angle, OmniAngle / angleDivision);
-        uiTrs.eulerAngles = new Vector3(0, 0, angle);
+        if (distance < float.Epsilon)
+        {
+            uiTrs.eulerAngles = Vector3.zero;
+        }
+        else
+        {
+            var angle = Mathf.Atan2(-direction.x, -direction.y);
+            angle *= Mathf.Rad2Deg;
+            angle = MathfExtension.RoundByAlpha(angle, OmniAngle / angleDivision);
+            uiTrs.eulerAngles = new Vector3(0, 0, angle);
+        }
     }
 }
