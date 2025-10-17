@@ -46,12 +46,14 @@ public class SearchOpponentPlayer : MonoBehaviour
 
     public MapVec SerchOpponentDirection()
     {
-        MapVec ret = new(int.MaxValue, int.MaxValue);
+        const int farAway = 1000;
+
+        MapVec ret = new(farAway, farAway);
         int minSqrDistance = int.MaxValue;
 
         foreach (var player in otherPlayers)
         {
-            if (player.state == minePlayer.state) continue;
+            if (player.state.State == minePlayer.state.State) continue;
 
             var dir = player.trs.Pos.gridPos - minePlayer.trs.Pos.gridPos;
             int sqrDistance = dir.x * dir.x + dir.y * dir.y;

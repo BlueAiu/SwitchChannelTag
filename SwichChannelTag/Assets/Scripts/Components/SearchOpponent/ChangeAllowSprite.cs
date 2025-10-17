@@ -8,21 +8,23 @@ public class ChangeAllowSprite : ScriptableObject
 
     [SerializeField]
     [Tooltip("‹——£‚ª¬‚³‚¢Žž‚Ìè‡’l")]
-    public float smallLength = 2f;
+    public float nearDistance = 2f;
     [SerializeField]
     [Tooltip("‹——£‚ª‘å‚«‚¢Žž‚Ìè‡’l")]
-    public float lergeLength = 5f;
+    public float farDistance = 5f;
 
-    const int lergeIndex = 0;
+    const int farIndex = 0;
     const int mediumIndex = 1;
-    const int smallIndex = 2;
+    const int nearIndex = 2;
+    const int overLapIndex = 3;
 
-    public Sprite GetAllowSprites(EPlayerState state, float sqrLength)
+    public Sprite GetAllowSprites(EPlayerState state, float distance)
     {
         int index;
-        if (sqrLength > lergeLength * lergeLength) { index = lergeIndex; }
-        else if (sqrLength > smallLength * smallLength) { index = mediumIndex; }
-        else { index = smallIndex; }
+        if (distance > farDistance) { index = farIndex; }
+        else if (distance > nearDistance) { index = mediumIndex; }
+        else if (distance > float.Epsilon) { index = nearIndex; }
+        else { index = overLapIndex; }
 
         return sprites[state][index];
     }
