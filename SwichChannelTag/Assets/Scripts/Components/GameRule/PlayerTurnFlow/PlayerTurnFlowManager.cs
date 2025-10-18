@@ -1,76 +1,85 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 //プレイヤーごとに行うターン行動
 
 public class PlayerTurnFlowManager : MonoBehaviour
 {
-    [Tooltip("世界移動やダイスを選ぶ最初の状態")] [SerializeField]
-    PlayerTurnFlowStateTypeFirstActionSelect _firstActionSelect;
+    //--- ステート関係 ---//
 
-    [Tooltip("世界移動した後の状態(減算verダイスを行える)")] [SerializeField]
-    PlayerTurnFlowStateTypeAfterSwitchHierarchy _afterSwitchHierarchy;
+    [Tooltip("行動選択ステート")] [SerializeField]
+    PlayerTurnFlowStateTypeSelectAction _selectActionState;
 
-    [Tooltip("行動を終えた後の状態")] [SerializeField]
-    PlayerTurnFlowStateTypeFinishAction _finishAction;
+    [Tooltip("ダイスステート")] [SerializeField]
+    PlayerTurnFlowStateTypeDice _diceState;
 
-    PlayerTurnFlowStateTypeBase _current;
+    [Tooltip("移動ステート")] [SerializeField]
+    PlayerTurnFlowStateTypeMove _moveState;
+
+    [Tooltip("階層選択ステート")] [SerializeField]
+    PlayerTurnFlowStateTypeSelectHierarchy _selectHierarchyState;
+
+    [Tooltip("階層移動ステート")] [SerializeField]
+    PlayerTurnFlowStateTypeChangeHierarchy _changeHierarchyState;
+
+    [Tooltip("行動終了ステート")] [SerializeField]
+    PlayerTurnFlowStateTypeFinish _finishState;
+
+    Dictionary<EPlayerTurnState, PlayerTurnFlowStateTypeBase> _playerTurnStateDic=new Dictionary<EPlayerTurnState, PlayerTurnFlowStateTypeBase>();
+
+    EPlayerTurnState _nowEState=EPlayerTurnState.None;
+    EPlayerTurnState _beforeEState=EPlayerTurnState.None;
+
+    PlayerTurnFlowStateTypeBase _currentState=null;
     TurnIsReady _myTurnIsReady;
+
+    public EPlayerTurnState NowState { get { return _nowEState; } }//現在のステート
+
+    public EPlayerTurnState BeforeState { get { return _beforeEState; } }//前のステート
 
     private void Awake()
     {
         _myTurnIsReady = PlayersManager.GetComponentFromMinePlayer<TurnIsReady>();
 
         _myTurnIsReady.OnStartTurn += StartMyTurn;
+
+        //辞書にステートを登録
+        _playerTurnStateDic.Add(EPlayerTurnState.SelectAction, _selectActionState);
+        _playerTurnStateDic.Add(EPlayerTurnState.Dice, _diceState);
+        _playerTurnStateDic.Add(EPlayerTurnState.Move, _moveState);
+        _playerTurnStateDic.Add(EPlayerTurnState.SelectHierarchy, _selectHierarchyState);
+        _playerTurnStateDic.Add(EPlayerTurnState.ChangeHierarchy, _changeHierarchyState);
+        _playerTurnStateDic.Add(EPlayerTurnState.Finish, _finishState);
     }
 
     void StartMyTurn()//自分の行動の許可が出た時に呼び出す
     {
-        StartCoroutine(GameFlow());
+        //最初のステートは行動選択から
+        ChangeState(EPlayerTurnState.SelectAction);
     }
 
-    IEnumerator GameFlow()
+    private void Update()
     {
-        //この時点では他のコンポーネントの初期化が終わってない可能性があるため、一旦1フレーム待つ
-        yield return null;
+        if (_currentState != null) _currentState.OnUpdate(this);
+    }
 
-        //最初の行動選択
-        ChangeState(_firstActionSelect);
-        CurrentStateUpdate();
+    void ChangeState(EPlayerTurnState nextState)//ステートの変更
+    {
+        if (_currentState != null) _currentState.OnExit(this);
 
-        //世界移動後の状態
-        bool dummy = false;//後で世界移動したかを入れる
+        _beforeEState = _nowEState;
 
-        if(dummy)
+        if(!_playerTurnStateDic.TryGetValue(nextState,out PlayerTurnFlowStateTypeBase value))
         {
-            ChangeState(_afterSwitchHierarchy);
-            CurrentStateUpdate();
+            Debug.Log("次のステートの取得に失敗しました");
+            return;
         }
 
-        //行動終了
-        ChangeState(_finishAction);
-        CurrentStateUpdate();
+        _currentState = value;
 
-        _current.OnExit();
-    }
+        _nowEState = nextState;
 
-    IEnumerator CurrentStateUpdate()//現在のステートの更新処理
-    {
-        if (_current != null) yield break;
-
-        while (!_current.Finished)
-        {
-            yield return null;
-            _current.OnUpdate();
-        }
-    }
-
-    void ChangeState(PlayerTurnFlowStateTypeBase nextState)//ステートの変更
-    {
-        if (_current != null) _current.OnExit();
-
-        _current = nextState;
-
-        if (_current != null) _current.OnEnter();
+        if (_currentState != null) _currentState.OnEnter(this);
     }
 }
