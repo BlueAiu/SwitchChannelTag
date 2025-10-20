@@ -7,17 +7,21 @@ using UnityEngine;
 
 public class PlayerTurnFlowStateTypeChangeHierarchy : PlayerTurnFlowStateTypeBase
 {
-    public override void OnEnter(PlayerTurnFlowManager _stateMachine)
+    [Tooltip("ŠK‘wˆÚ“®‚·‚é‹@”\")] [SerializeField]
+    ChangeHierarchy _changeHierarchy;
+
+    public override void OnEnter(PlayerTurnFlowManager stateMachine)
+    {
+        //_changeHierarchy.SwitchHierarchy//ŠK‘wˆÚ“®ˆ—
+        stateMachine.ChangeState(EPlayerTurnState.SelectAction);
+    }
+
+    public override void OnUpdate(PlayerTurnFlowManager stateMachine)
     {
         
     }
 
-    public override void OnUpdate(PlayerTurnFlowManager _stateMachine)
-    {
-        
-    }
-
-    public override void OnExit(PlayerTurnFlowManager _stateMachine)
+    public override void OnExit(PlayerTurnFlowManager stateMachine)
     {
 
     }
