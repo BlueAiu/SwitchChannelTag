@@ -20,6 +20,25 @@ public class PlayerTurnFlowManager : MonoBehaviour
 
     public EPlayerTurnState BeforeState { get { return _beforeEState; } }//前のステート
 
+    public void ChangeState(EPlayerTurnState nextState)//ステートの変更
+    {
+        if (_currentState != null) _currentState.OnExit(this);
+
+        _beforeEState = _nowEState;
+
+        if (!_playerTurnStateDic.TryGetValue(nextState, out PlayerTurnFlowStateTypeBase value))
+        {
+            Debug.Log("次のステートの取得に失敗しました");
+            return;
+        }
+
+        _currentState = value;
+
+        _nowEState = nextState;
+
+        if (_currentState != null) _currentState.OnEnter(this);
+    }
+
     private void Awake()
     {
         _myTurnIsReady = PlayersManager.GetComponentFromMinePlayer<TurnIsReady>();
@@ -36,24 +55,5 @@ public class PlayerTurnFlowManager : MonoBehaviour
     private void Update()
     {
         if (_currentState != null) _currentState.OnUpdate(this);
-    }
-
-    void ChangeState(EPlayerTurnState nextState)//ステートの変更
-    {
-        if (_currentState != null) _currentState.OnExit(this);
-
-        _beforeEState = _nowEState;
-
-        if(!_playerTurnStateDic.TryGetValue(nextState,out PlayerTurnFlowStateTypeBase value))
-        {
-            Debug.Log("次のステートの取得に失敗しました");
-            return;
-        }
-
-        _currentState = value;
-
-        _nowEState = nextState;
-
-        if (_currentState != null) _currentState.OnEnter(this);
     }
 }
