@@ -42,7 +42,7 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
         _stateMachine.ChangeState(EPlayerTurnState.SelectAction);
     }
 
-    public override void OnEnter(PlayerTurnFlowManager stateMachine)
+    public override void OnEnter(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
         _stateMachine=stateMachine;
         _finished = false;
@@ -51,12 +51,12 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
         EventSystem.current.SetSelectedGameObject(_diceButton.gameObject);
     }
 
-    public override void OnUpdate(PlayerTurnFlowManager stateMachine)
+    public override void OnUpdate(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
 
     }
 
-    public override void OnExit(PlayerTurnFlowManager stateMachine)
+    public override void OnExit(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
         _finished = true;
        _hideDiceUI.Hide();

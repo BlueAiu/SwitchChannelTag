@@ -28,7 +28,7 @@ public class PlayerTurnFlowStateTypeMove : PlayerTurnFlowStateTypeBase
         _stateMachine.ChangeState(EPlayerTurnState.Finish);
     }
 
-    public override void OnEnter(PlayerTurnFlowManager stateMachine)
+    public override void OnEnter(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
         _finished = false;
         _stateMachine=stateMachine;
@@ -39,12 +39,12 @@ public class PlayerTurnFlowStateTypeMove : PlayerTurnFlowStateTypeBase
         _moveOnMap.enabled = true;
     }
 
-    public override void OnUpdate(PlayerTurnFlowManager stateMachine)
+    public override void OnUpdate(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
 
     }
 
-    public override void OnExit(PlayerTurnFlowManager stateMachine)
+    public override void OnExit(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
         _finished = true;
 

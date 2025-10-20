@@ -9,17 +9,17 @@ public class PlayerTurnFlowStateTypeFinish : PlayerTurnFlowStateTypeBase
 {
     TurnIsReady _myTurnIsReady;
 
-    public override void OnEnter(PlayerTurnFlowManager _stateMachine)
+    public override void OnEnter(PlayerTurnFlowManager _stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
 
     }
 
-    public override void OnUpdate(PlayerTurnFlowManager _stateMachine)
+    public override void OnUpdate(PlayerTurnFlowManager _stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
 
     }
 
-    public override void OnExit(PlayerTurnFlowManager _stateMachine)
+    public override void OnExit(PlayerTurnFlowManager _stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
         _myTurnIsReady.IsReady = true;//çsìÆèIóπÇµÇΩÇ±Ç∆ÇímÇÁÇπÇÈ
     }

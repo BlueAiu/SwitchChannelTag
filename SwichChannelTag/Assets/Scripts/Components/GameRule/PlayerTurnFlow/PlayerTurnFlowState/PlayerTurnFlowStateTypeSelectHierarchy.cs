@@ -32,7 +32,7 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
         _stateMachine.ChangeState(EPlayerTurnState.ChangeHierarchy);
     }
 
-    public override void OnEnter(PlayerTurnFlowManager stateMachine)
+    public override void OnEnter(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
         _finished = false;
         _stateMachine = stateMachine;
@@ -42,12 +42,12 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
         EventSystem.current.SetSelectedGameObject(_defaultSelectButton.gameObject);
     }
 
-    public override void OnUpdate(PlayerTurnFlowManager stateMachine)
+    public override void OnUpdate(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
 
     }
 
-    public override void OnExit(PlayerTurnFlowManager stateMachine)
+    public override void OnExit(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
         _finished=true;
 

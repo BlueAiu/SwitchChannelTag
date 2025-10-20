@@ -43,7 +43,7 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
     }
 
 
-    public override void OnEnter(PlayerTurnFlowManager stateMachine)
+    public override void OnEnter(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
         _finished = false;
 
@@ -64,12 +64,12 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
         }
     }
 
-    public override void OnUpdate(PlayerTurnFlowManager stateMachine)
+    public override void OnUpdate(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
         
     }
 
-    public override void OnExit(PlayerTurnFlowManager stateMachine)
+    public override void OnExit(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
         _finished = true;
         _hideSelectActionUI.Hide();

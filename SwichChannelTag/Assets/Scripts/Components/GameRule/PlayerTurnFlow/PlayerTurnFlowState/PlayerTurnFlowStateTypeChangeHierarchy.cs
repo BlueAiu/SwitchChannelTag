@@ -10,18 +10,18 @@ public class PlayerTurnFlowStateTypeChangeHierarchy : PlayerTurnFlowStateTypeBas
     [Tooltip("ŠK‘wˆÚ“®‚·‚é‹@”\")] [SerializeField]
     ChangeHierarchy _changeHierarchy;
 
-    public override void OnEnter(PlayerTurnFlowManager stateMachine)
+    public override void OnEnter(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
         //_changeHierarchy.SwitchHierarchy//ŠK‘wˆÚ“®ˆ—
         stateMachine.ChangeState(EPlayerTurnState.SelectAction);
     }
 
-    public override void OnUpdate(PlayerTurnFlowManager stateMachine)
+    public override void OnUpdate(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
         
     }
 
-    public override void OnExit(PlayerTurnFlowManager stateMachine)
+    public override void OnExit(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
     {
 
     }
