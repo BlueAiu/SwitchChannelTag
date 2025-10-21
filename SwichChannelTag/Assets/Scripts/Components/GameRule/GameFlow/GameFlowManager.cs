@@ -23,9 +23,11 @@ public class GameFlowManager : MonoBehaviour
 
     GameFlowStateTypeBase _currentState=null;
 
+    Player mine;
+
     private void Start()
     {
-        Player mine = PlayersManager.MinePlayerPhotonPlayer;
+        mine = PlayersManager.MinePlayerPhotonPlayer;
 
         if (!mine.IsMasterClient) return;//ホスト主以外はこの処理を行わない
 
@@ -54,6 +56,8 @@ public class GameFlowManager : MonoBehaviour
 
     private void Update()
     {
+        if (!mine.IsMasterClient) return;//ホスト主以外はこの処理を行わない
+
         if (_currentState != null) _currentState.OnUpdate();
     }
 }

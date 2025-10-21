@@ -14,7 +14,8 @@ public class GameFlowStateTypeStart : GameFlowStateTypeBase
 
     public override void OnUpdate()//ステートの毎フレーム処理
     {
-
+        //後で何か演出を挟む
+        _stateMachine.ChangeState(EGameState.RunnerTurn);//最初は逃げ側のターン
     }
 
     public override void OnExit()//ステートの終了処理
