@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -614,6 +613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerMoveAnimation: {fileID: 0}
+  _shiftPlayersPosition: {fileID: 0}
 --- !u!114 &454450854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,6 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf067e5a12612247958a9ed744695ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shiftPlayersPosition: {fileID: 0}
 --- !u!114 &454450855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,10 +639,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bfce79fcf97c374c9aa173c1a02a75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxNum: 6
-  _reduceNum: 0
+  _defaultDice:
+    diceMax: 6
+    diceNum: 1
+    reduceNum: 0
+  _switchedDice:
+    _list: []
   _moveOnMap: {fileID: 454450853}
   _diceResultText: {fileID: 1598713918}
+  _changeHierarchy: {fileID: 0}
+  _playerState: {fileID: 0}
+  writeLog: 1
 --- !u!1 &461476202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,19 +1365,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _map: {fileID: 0}
   _obstacleObject: {fileID: 87842621043002327, guid: 3a530e8944187be4f9bf8f13528acedc, type: 3}
-  _obstaclePoses:
-  - hierarchyIndex: 0
-    gridPos:
-      x: 0
-      y: 0
-  - hierarchyIndex: 0
-    gridPos:
-      x: 0
-      y: 0
-  - hierarchyIndex: 0
-    gridPos:
-      x: 0
-      y: 0
+  _wallObstacleObject: {fileID: 0}
+  _obstaclesMaps: []
 --- !u!1 &1837054832
 GameObject:
   m_ObjectHideFlags: 0
