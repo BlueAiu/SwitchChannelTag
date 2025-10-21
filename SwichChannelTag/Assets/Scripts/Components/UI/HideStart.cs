@@ -22,9 +22,11 @@ public class HideStart : MonoBehaviour
 
     void Display_Start()
     {
-        Currentplayer = PhotonNetwork.CountOfPlayersInRooms;
+        Currentplayer = PhotonNetwork.CountOfPlayers;
 
-        if(Currentplayer == Limitvalue)
+        //Debug.Log("åªç›" + Currentplayer + "êl");
+
+        if (Currentplayer == Limitvalue)
         {
             Start_button.SetActive(true);
         }
