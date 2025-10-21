@@ -7,11 +7,17 @@ using UnityEngine;
 
 public class PlayerTurnFlowStateTypeFinish : PlayerTurnFlowStateTypeBase
 {
+    [Tooltip("ターン終了時のUIを表示する機能")] [SerializeField]
+    ShowUITypeBase _showFinishUI;
+
+    [Tooltip("ターン終了時のUIを非表示にする機能")] [SerializeField]
+    HideUITypeBase _hideFinishUI;
+
     TurnIsReady _myTurnIsReady;
 
     public override void OnEnter()
     {
-
+        _showFinishUI.Show();
     }
 
     public override void OnUpdate()
@@ -21,6 +27,7 @@ public class PlayerTurnFlowStateTypeFinish : PlayerTurnFlowStateTypeBase
 
     public override void OnExit()
     {
+        _hideFinishUI.Hide();
         _myTurnIsReady.IsReady = true;//行動終了したことを知らせる
         _stateMachine.SharedData.Reset();//共有データをリセット
     }

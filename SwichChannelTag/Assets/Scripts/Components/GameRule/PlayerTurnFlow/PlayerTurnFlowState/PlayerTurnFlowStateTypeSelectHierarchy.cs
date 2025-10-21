@@ -31,6 +31,15 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
         _stateMachine.ChangeState(EPlayerTurnState.ChangeHierarchy);
     }
 
+    //行動選択ステートに戻る
+    public void BackToActionSelect()
+    {
+        if (_finished) return;
+        if (_stateMachine == null) return;
+
+        _stateMachine.ChangeState(EPlayerTurnState.SelectAction);
+    }
+
     public override void OnEnter()
     {
         _finished = false;
