@@ -10,7 +10,7 @@ public class TurnIsReady : MonoBehaviour
     [SerializeField]
     PhotonView _myPhotonView;
 
-    bool _isReady;
+    bool _isReady=true;
 
     public bool IsReady//ƒ^[ƒ“‚ÌŠ®—¹ó‘Ô
     {
