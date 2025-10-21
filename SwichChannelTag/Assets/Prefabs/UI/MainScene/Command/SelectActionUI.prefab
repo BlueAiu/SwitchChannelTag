@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8644707734251257836}
   - component: {fileID: 2106377252179460264}
   m_Layer: 5
-  m_Name: ActionSelectUI
+  m_Name: SelectActionUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -413,7 +413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5088078919979584729, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
       propertyPath: m_Name
-      value: ChangeHierarchyButton
+      value: SelectHierarchyButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
