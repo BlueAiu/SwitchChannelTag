@@ -21,7 +21,6 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
     [Tooltip("ダイスを振る(動けるマス数を決定する)機能")] [SerializeField]
     DecideMovableStep _decideMovableStep;
 
-    PlayerTurnFlowManager _stateMachine;
     bool _finished = true;
 
     //ダイスを振って、移動ステートに移る
@@ -42,21 +41,20 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
         _stateMachine.ChangeState(EPlayerTurnState.SelectAction);
     }
 
-    public override void OnEnter(PlayerTurnFlowManager stateMachine)
+    public override void OnEnter()
     {
-        _stateMachine=stateMachine;
         _finished = false;
 
         _showDiceUI.Show();
         EventSystem.current.SetSelectedGameObject(_diceButton.gameObject);
     }
 
-    public override void OnUpdate(PlayerTurnFlowManager stateMachine)
+    public override void OnUpdate()
     {
 
     }
 
-    public override void OnExit(PlayerTurnFlowManager stateMachine)
+    public override void OnExit()
     {
         _finished = true;
        _hideDiceUI.Hide();

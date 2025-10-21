@@ -11,10 +11,15 @@ public　abstract class PlayerTurnFlowStateTypeBase : MonoBehaviour
     /// <summary>
     ///・使い方
     ///ステートを変更する時は_stateMachineのChangeStateから変更
+    ///sharedDataからステート間で共有するデータを取得・変更可能
     /// </summary>
 
+    [Tooltip("ステートマシン")] [SerializeField]
+    protected PlayerTurnFlowManager _stateMachine;
 
-    public abstract void OnEnter(PlayerTurnFlowManager _stateMachine);//ステートの開始処理
-    public abstract void OnUpdate(PlayerTurnFlowManager _stateMachine);//ステートの毎フレーム処理
-    public abstract void OnExit(PlayerTurnFlowManager _stateMachine);//ステートの終了処理
+
+
+    public abstract void OnEnter();//ステートの開始処理
+    public abstract void OnUpdate();//ステートの毎フレーム処理
+    public abstract void OnExit();//ステートの終了処理
 }

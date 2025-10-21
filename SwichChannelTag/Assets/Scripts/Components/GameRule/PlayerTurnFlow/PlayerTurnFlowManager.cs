@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//プレイヤーごとに行うターン行動
+//作成者:杉山
+//プレイヤーごとに行うターン行動(実質ステートマシン的な役割を持っている)
 
 public class PlayerTurnFlowManager : MonoBehaviour
 {
     //--- ステート関係 ---//
     [Tooltip("プレイヤーの行動ステート")] [SerializeField]
     SerializableDictionary<EPlayerTurnState, PlayerTurnFlowStateTypeBase> _playerTurnStateDic;
+
+    SharedDataBetweenPlayerTurnFlowState _sharedData=new SharedDataBetweenPlayerTurnFlowState();//ステート間で共有するデータ
 
     EPlayerTurnState _nowEState=EPlayerTurnState.None;
     EPlayerTurnState _beforeEState=EPlayerTurnState.None;
@@ -20,9 +23,11 @@ public class PlayerTurnFlowManager : MonoBehaviour
 
     public EPlayerTurnState BeforeState { get { return _beforeEState; } }//前のステート
 
+    public SharedDataBetweenPlayerTurnFlowState SharedData { get { return _sharedData; } }//ステート間で共有するデータ
+
     public void ChangeState(EPlayerTurnState nextState)//ステートの変更
     {
-        if (_currentState != null) _currentState.OnExit(this);
+        if (_currentState != null) _currentState.OnExit();
 
         _beforeEState = _nowEState;
 
@@ -36,7 +41,7 @@ public class PlayerTurnFlowManager : MonoBehaviour
 
         _nowEState = nextState;
 
-        if (_currentState != null) _currentState.OnEnter(this);
+        if (_currentState != null) _currentState.OnEnter();
     }
 
     private void Awake()
@@ -54,6 +59,6 @@ public class PlayerTurnFlowManager : MonoBehaviour
 
     private void Update()
     {
-        if (_currentState != null) _currentState.OnUpdate(this);
+        if (_currentState != null) _currentState.OnUpdate();
     }
 }
