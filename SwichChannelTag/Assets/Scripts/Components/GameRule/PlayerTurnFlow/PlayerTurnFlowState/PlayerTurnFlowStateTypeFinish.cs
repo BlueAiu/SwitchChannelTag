@@ -22,6 +22,7 @@ public class PlayerTurnFlowStateTypeFinish : PlayerTurnFlowStateTypeBase
     public override void OnExit()
     {
         _myTurnIsReady.IsReady = true;//行動終了したことを知らせる
+        _stateMachine.SharedData.Reset();//共有データをリセット
     }
 
     private void Awake()
