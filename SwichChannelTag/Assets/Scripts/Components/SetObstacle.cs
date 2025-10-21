@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 //作成者:杉山
@@ -9,51 +10,47 @@ using UnityEngine;
 
 public class SetObstacle : MonoBehaviour
 {
-    [Serializable]
-    struct obstaclesMap
-    {
-        public List<string> map;
-    }
 
+    const int mapRows = 9;
 
     [SerializeField] Maps_Hierarchies _map;
     [SerializeField] GameObject _obstacleObject;
     [SerializeField] GameObject _wallObstacleObject;
 
-    [SerializeField]
+    [SerializeField, TextArea(mapRows,mapRows)]
     [Tooltip("文字列のリストで障害物を設定します\n" +
         ". : 何も置かない\n" +
         "_ : 下に壁を置く\n" +
-        "| : 右に壁を置く\n" +
-        "L : 下と右に壁を置く\n" +
+        "| : 左に壁を置く\n" +
+        "L : 下と左に壁を置く\n" +
         "# : 障害物を置く\n" +
         "注意\n" +
         "文字列の長さ、リストのサイズに注意して下さい")]
-    List<obstaclesMap> _obstaclesMaps; 
-    
+    public string[] _obstaclesMaps;
+
     void Start()
     {
-        if (_obstaclesMaps.Count != _map.Length) 
+        if (_obstaclesMaps.Length != _map.Length) 
         { Debug.LogAssertion("ObstacleMapsのサイズを階層の数と揃えてください"); }
 
-        for(int i=0;i<_obstaclesMaps.Count;i++)
+        for(int i=0;i<_obstaclesMaps.Length;i++)
         {
-            var map = _obstaclesMaps[i].map;
-            if(map.Count != _map[i].MapSize_Y)
+            var map = _obstaclesMaps[i].Split('\n');
+            if(map.Length != _map[i].MapSize_Y)
             { Debug.LogAssertionFormat("ObstacleMaps[{0}]のサイズをマップの高さと揃えてください", i); }
 
-            for(int h = 0; h < map.Count; h++)
+            for(int h = 0; h < map.Length; h++)
             {
                 var str = map[h];
                 if(str.Length != _map[i].MapSize_X)
                 { Debug.LogAssertionFormat("ObstacleMaps[{0}][{1}]の文字列の長さをマップの横幅と揃えてください", i, h); }
 
-                for(int w = 0; w < map.Count; w++)
+                for(int w = 0; w < str.Length; w++)
                 {
                     char c = str[w];
                     MapPos pos = new MapPos(i, new MapVec(w, h));
 
-                    PutObstacle(c, pos);
+                    PutObstacle(c, pos); 
                 }
             }
         }
@@ -115,7 +112,7 @@ public class SetObstacle : MonoBehaviour
 
     void PutWallObstacle(MapWall_Obstacle setWall)
     {
-        var wallDir = setWall.blockUnder ? MapVec.Up : MapVec.Right;
+        var wallDir = setWall.blockUnder ? MapVec.Up : MapVec.Left;
 
         MapPos wallPos0 = new(setWall.hierarchyIndex, setWall.pos);
         MapPos wallPos1 = new(setWall.hierarchyIndex, setWall.pos + wallDir);
