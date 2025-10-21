@@ -5,7 +5,7 @@ using UnityEngine;
 //ì¬Ò:™R
 //s“®‚ğI‚¦‚½Œã‚Ìó‘Ô
 
-public class PlayerTurnFlowStateTypeFinishAction : PlayerTurnFlowStateTypeBase
+public class PlayerTurnFlowStateTypeFinish : PlayerTurnFlowStateTypeBase
 {
     TurnIsReady _myTurnIsReady;
 

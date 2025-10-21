@@ -18,6 +18,8 @@ public class DecideMovableStep : MonoBehaviour
     [SerializeField] ChangeHierarchy _changeHierarchy;
     [SerializeField] PlayerState _playerState;
 
+    [SerializeField] bool writeLog = true;
+
     public void Dicide()//動けるマス数を決定(ダイスロールで)
     {
         int result;
@@ -29,16 +31,18 @@ public class DecideMovableStep : MonoBehaviour
             if(_switchedDice.TryGetValue(state, out var dice))
             {
                 result = dice.DiceRoll();
+                if (writeLog) Debug.Log(dice.DiceText() + " = " + result);
             }
             else
             {
-                Debug.Log("Not found switchedDice in " + state);
+                if(writeLog) Debug.Log("Not found switchedDice in " + state);
                 result = 0;
             }
         }
         else
         {
             result = _defaultDice.DiceRoll();
+            if (writeLog) Debug.Log(_defaultDice.DiceText() + " = " + result);
         }
 
         _moveOnMap.RemainingStep=result;

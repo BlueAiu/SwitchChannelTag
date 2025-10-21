@@ -10,12 +10,13 @@ public　abstract class PlayerTurnFlowStateTypeBase : MonoBehaviour
 {
     /// <summary>
     ///・使い方
-    ///ステートを終了したい際は、OnEnterかOnUpdate内で_finishedをtrueにすればステートから抜け出せる
-    ///ステートの開始(OnEnterが呼ばれる)時に_finishedをfalseにすることを推奨する
+    ///ステートを変更する時は_stateMachineのChangeStateから変更
+    ///sharedDataからステート間で共有するデータを取得・変更可能
     /// </summary>
-    protected bool _finished = false;
 
-    public bool Finished { get { return _finished; } }
+    [Tooltip("ステートマシン")] [SerializeField]
+    protected PlayerTurnFlowManager _stateMachine;
+
 
 
     public abstract void OnEnter();//ステートの開始処理

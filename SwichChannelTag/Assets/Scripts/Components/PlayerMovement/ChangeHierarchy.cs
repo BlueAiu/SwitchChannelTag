@@ -14,35 +14,44 @@ public class ChangeHierarchy : MonoBehaviour
     ShiftPlayersPosition _shiftPlayersPosition;
 
     MapTransform _myMapTrs;//©•ª‚Ìƒ}ƒbƒvã‚ÌˆÊ’uî•ñ
-    SetTransform _mySetTrs;
 
     public event Action<int> OnSwitchHierarchy_NewIndex;//ŠK‘wØ‚è‘Ö‚¦‚ÉŒÄ‚Î‚ê‚é(ˆø”‚ÉV‚µ‚¢ŠK‘w”Ô†‚ğ“ü‚ê‚éŒ`®)
     public event Action OnSwitchHierarchy;//ŠK‘wØ‚è‘Ö‚¦‚ÉŒÄ‚Î‚ê‚é(ˆø”‚È‚µ)
 
     public bool IsMoved { get; set; } = false;
 
-    public void SwitchHierarchy_Inc(InputAction.CallbackContext context)
+    public void SwitchHierarchy_Inc(InputAction.CallbackContext context)//ƒL[ƒ{[ƒh‘€ì—p‚Éˆê’Uc‚·
     {
         if (!context.performed) return;
 
-        SwitchHierarchy(true);
-    }
-
-    public void SwitchHierarchy_Dec(InputAction.CallbackContext context)
-    {
-        if (!context.performed) return;
-
-        SwitchHierarchy(false);
-    }
-
-    //private
-    void SwitchHierarchy(bool inc)
-    {
-        if (!enabled) return;
-
-        int delta = inc ? 1 : -1;
-
+        const int delta = 1;
         int newHierarchyIndex = MathfExtension.CircularWrapping_Delta(_myMapTrs.Pos.hierarchyIndex, delta, _myMapTrs.Hierarchies.Length - 1);
+
+        SwitchHierarchy(newHierarchyIndex);
+    }
+
+    public void SwitchHierarchy_Dec(InputAction.CallbackContext context)//ƒL[ƒ{[ƒh‘€ì—p‚Éˆê’Uc‚·
+    {
+        if (!context.performed) return;
+
+        const int delta = -1;
+        int newHierarchyIndex = MathfExtension.CircularWrapping_Delta(_myMapTrs.Pos.hierarchyIndex, delta, _myMapTrs.Hierarchies.Length - 1);
+
+        SwitchHierarchy(newHierarchyIndex);
+    }
+
+    public bool IsAbleToMoveTheHierarchy(int hierarchyIndex)//‚»‚ÌŠK‘w‚ÉˆÚ“®‚Å‚«‚é‚©
+    {
+        //©•ª‚Ì¡‚¢‚éŠK‘w”Ô†‚Æ“¯‚¶‚Å‚ ‚ê‚ÎˆÚ“®‚Å‚«‚È‚¢
+        if (_myMapTrs.Pos.hierarchyIndex == hierarchyIndex) return false;
+        return true;
+    }
+
+    public bool SwitchHierarchy(int newHierarchyIndex)//ŠK‘wˆÚ“®
+    {
+        if (!enabled) return false;
+
+        if (!IsAbleToMoveTheHierarchy(newHierarchyIndex)) return false;
 
         _shiftPlayersPosition.OnExit(_myMapTrs);
 
@@ -54,6 +63,8 @@ public class ChangeHierarchy : MonoBehaviour
         OnSwitchHierarchy?.Invoke();
 
         IsMoved = true;
+
+        return true;
     }
 
     private void Awake()
@@ -64,6 +75,5 @@ public class ChangeHierarchy : MonoBehaviour
     private void Init()//‰Šú‰»ˆ—
     {
         _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
-        _mySetTrs=PlayersManager.GetComponentFromMinePlayer<SetTransform>();
     }
 }

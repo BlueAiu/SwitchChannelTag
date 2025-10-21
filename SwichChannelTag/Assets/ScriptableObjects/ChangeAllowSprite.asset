@@ -16,13 +16,15 @@ MonoBehaviour:
     _list:
     - key: 0
       value:
-      - {fileID: 21300000, guid: b9f966fef45e1e64187300ae18b28c81, type: 3}
-      - {fileID: 21300000, guid: ec09cb0e85cde8c4c97bc40e67288f11, type: 3}
       - {fileID: 21300000, guid: a82fa1fbc5222ff47a897b47c01931a4, type: 3}
+      - {fileID: 21300000, guid: ec09cb0e85cde8c4c97bc40e67288f11, type: 3}
+      - {fileID: 21300000, guid: b9f966fef45e1e64187300ae18b28c81, type: 3}
+      - {fileID: 21300000, guid: e072d03b942da7d49a495c5efb4d0391, type: 3}
     - key: 1
       value:
-      - {fileID: 21300000, guid: 76124dad1c954ce43b636bbfedccbb7d, type: 3}
-      - {fileID: 21300000, guid: 6f85423384ad45443b2f192cfdc25b48, type: 3}
       - {fileID: 21300000, guid: 957baf92c1d4c0540addff537634a903, type: 3}
-  smallLength: 2
-  lergeLength: 5
+      - {fileID: 21300000, guid: 6f85423384ad45443b2f192cfdc25b48, type: 3}
+      - {fileID: 21300000, guid: 76124dad1c954ce43b636bbfedccbb7d, type: 3}
+      - {fileID: 21300000, guid: d3d73992831493a499f5eb1e1d84afdd, type: 3}
+  nearDistance: 2
+  farDistance: 4
