@@ -1568,36 +1568,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _map: {fileID: 407807742}
   _obstacleObject: {fileID: 87842621043002327, guid: 3a530e8944187be4f9bf8f13528acedc, type: 3}
-  _obstaclePoses:
-  - hierarchyIndex: 0
-    gridPos:
-      x: 2
-      y: 3
-  - hierarchyIndex: 0
-    gridPos:
-      x: 5
-      y: 6
-  - hierarchyIndex: 1
-    gridPos:
-      x: 1
-      y: 2
   _wallObstacleObject: {fileID: 4223103458514844991, guid: 9c8f29f1c083bb343b588a22c47e7b94, type: 3}
-  _setWalls:
-  - hierarchyIndex: 0
-    pos:
-      x: 1
-      y: 1
-    blockUnder: 1
-  - hierarchyIndex: 0
-    pos:
-      x: 2
-      y: 1
-    blockUnder: 1
-  - hierarchyIndex: 0
-    pos:
-      x: 2
-      y: 1
-    blockUnder: 0
+  _obstaclesMaps:
+  - '.........
+
+    .........
+
+    ....|....
+
+    ....|__..
+
+    ..__#....
+
+    .....|...
+
+    .....|...
+
+    .........
+
+    .........'
+  - '.........
+
+    .........
+
+    .........
+
+    .........
+
+    .........
+
+    .........
+
+    .........
+
+    .........
+
+    .........'
+  - '.........
+
+    .........
+
+    .........
+
+    .........
+
+    .........
+
+    .........
+
+    .........
+
+    .........
+
+    .........'
 --- !u!224 &2030950526 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 588330080137203881, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
