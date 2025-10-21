@@ -10,48 +10,54 @@ using Photon.Realtime;
 
 public class GameFlowManager : MonoBehaviour
 {
-    GameFlowStateTypeBase _current;
+    //--- ステート関係 ---//
+    [Tooltip("ゲームフローステート")] [SerializeField]
+    SerializableDictionary<EGameState, GameFlowStateTypeBase> _gameFlowStateDic;
+
+    EGameState _nowEState = EGameState.None;
+    EGameState _beforeEState = EGameState.None;
+
+    public EGameState NowState { get { return _nowEState; } }//現在のステート
+
+    public EGameState BeforeState { get { return _beforeEState; } }//前のステート
+
+    GameFlowStateTypeBase _currentState=null;
+
+    Player mine;
 
     private void Start()
     {
-        Player mine = PlayersManager.MinePlayerPhotonPlayer;
+        mine = PlayersManager.MinePlayerPhotonPlayer;
 
         if (!mine.IsMasterClient) return;//ホスト主以外はこの処理を行わない
 
-        StartCoroutine(GameFlow());
+        //最初のステートは開始演出から
+        ChangeState(EGameState.Start);
     }
 
-    IEnumerator GameFlow()
+    public void ChangeState(EGameState nextState)//ステートの変更
     {
-        //この時点では他のコンポーネントの初期化が終わってない可能性があるため、一旦1フレーム待つ
-        yield return null;
+        if (_currentState != null) _currentState.OnExit();
 
-        //開始演出のステート(実装予定)
-        
+        _beforeEState = _nowEState;
 
-        //ゲーム中は逃げる側の行動ステート→ゲーム決着判定→鬼側の行動ステート→ゲーム決着判定を繰り返す(実装予定)
-        
-
-        //終了演出のステート(実装予定)
-    }
-
-    IEnumerator CurrentStateUpdate()//現在のステートの更新処理
-    {
-        if (_current != null) yield break;
-
-        while (!_current.Finished)
+        if (!_gameFlowStateDic.TryGetValue(nextState, out GameFlowStateTypeBase value))
         {
-            yield return null;
-            _current.OnUpdate();
+            Debug.Log("次のステートの取得に失敗しました");
+            return;
         }
+
+        _currentState = value;
+
+        _nowEState = nextState;
+
+        if (_currentState != null) _currentState.OnEnter();
     }
 
-    void ChangeState(GameFlowStateTypeBase nextState)//ステートの変更
+    private void Update()
     {
-        if(_current!=null) _current.OnExit();
+        if (!mine.IsMasterClient) return;//ホスト主以外はこの処理を行わない
 
-        _current = nextState;
-
-        if(_current!=null) _current.OnEnter();
+        if (_currentState != null) _currentState.OnUpdate();
     }
 }

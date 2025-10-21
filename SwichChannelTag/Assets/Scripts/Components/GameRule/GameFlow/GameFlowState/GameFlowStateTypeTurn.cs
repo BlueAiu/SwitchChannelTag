@@ -31,7 +31,12 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
             isFinishAll &= player.IsReady;
         }
 
-        if (isFinishAll) this._finished = true;
+        if (isFinishAll)//ステートを相手のターンに変更(後にゲームが終了したかを取得して終了ステートにも移行するようにする)
+        {
+            EGameState opponentTurn = (turnSide == EPlayerState.Tagger) ? EGameState.RunnerTurn : EGameState.TaggerTurn;
+
+            _stateMachine.ChangeState(opponentTurn);
+        }
     }
 
     public override void OnExit()//ステートの終了処理
