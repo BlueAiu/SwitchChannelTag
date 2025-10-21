@@ -32,7 +32,7 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
     }
 
     //行動選択ステートに戻る
-    public void ToSelectAction()
+    public void BackToActionSelect()
     {
         if (_finished) return;
         if (_stateMachine == null) return;

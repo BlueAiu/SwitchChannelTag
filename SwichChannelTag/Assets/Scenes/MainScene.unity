@@ -961,6 +961,62 @@ PrefabInstance:
       propertyPath: m_Name
       value: SelectActionUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7006365852652472356, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006365852652472356, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006365852652472356, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1509087126}
+    - target: {fileID: 7006365852652472356, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006365852652472356, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToSelectHierarchy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006365852652472356, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerTurnFlowStateTypeSelectAction, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006365852652472356, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460456834982527253, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460456834982527253, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460456834982527253, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1509087126}
+    - target: {fileID: 8460456834982527253, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460456834982527253, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToDice
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460456834982527253, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerTurnFlowStateTypeSelectAction, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460456834982527253, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8579743567420202014, guid: cf58171411f63a34da34b2e1442af5d6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1103,6 +1159,126 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 961089159}
     m_Modifications:
+    - target: {fileID: 1016712783173155053, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016712783173155053, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016712783173155053, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1509087123}
+    - target: {fileID: 1016712783173155053, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016712783173155053, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToActionSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016712783173155053, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerTurnFlowStateTypeSelectHierarchy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016712783173155053, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040192466143790806, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040192466143790806, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040192466143790806, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1509087123}
+    - target: {fileID: 1040192466143790806, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040192466143790806, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToChangeHierarchy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040192466143790806, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerTurnFlowStateTypeSelectHierarchy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040192466143790806, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040192466143790806, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002582336484952106, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002582336484952106, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002582336484952106, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1509087123}
+    - target: {fileID: 2002582336484952106, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002582336484952106, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToChangeHierarchy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002582336484952106, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerTurnFlowStateTypeSelectHierarchy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002582336484952106, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290414354780866112, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290414354780866112, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290414354780866112, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1509087123}
+    - target: {fileID: 3290414354780866112, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290414354780866112, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToChangeHierarchy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290414354780866112, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerTurnFlowStateTypeSelectHierarchy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290414354780866112, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290414354780866112, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6720850432831678654, guid: ea5e58be4040a864abe022105c5e92e6, type: 3}
       propertyPath: m_Name
       value: SelectHierarchyUI
@@ -1373,6 +1549,34 @@ PrefabInstance:
     - target: {fileID: 4049129631503606851, guid: d0cfe8f15be56384fa08540c00c910a2, type: 3}
       propertyPath: m_Alpha
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194616010540919504, guid: d0cfe8f15be56384fa08540c00c910a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194616010540919504, guid: d0cfe8f15be56384fa08540c00c910a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194616010540919504, guid: d0cfe8f15be56384fa08540c00c910a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1509087124}
+    - target: {fileID: 6194616010540919504, guid: d0cfe8f15be56384fa08540c00c910a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194616010540919504, guid: d0cfe8f15be56384fa08540c00c910a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToFinish
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194616010540919504, guid: d0cfe8f15be56384fa08540c00c910a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerTurnFlowStateTypeMove, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194616010540919504, guid: d0cfe8f15be56384fa08540c00c910a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1667,7 +1871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3764080097770017659, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3764080097770017659, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1679,7 +1883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3764080097770017659, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Dicide
+      value: Decide
       objectReference: {fileID: 0}
     - target: {fileID: 3764080097770017659, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1828,6 +2032,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2815207452123320263, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
   m_PrefabInstance: {fileID: 1509087121}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1509087123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7090508747876160583, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+  m_PrefabInstance: {fileID: 1509087121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75bd7defc6b45bd4aa1aa134072172ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1509087124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8883037788068780043, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+  m_PrefabInstance: {fileID: 1509087121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba3b431d160efa48abf5af943f380aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1509087125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4043870235387017260, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+  m_PrefabInstance: {fileID: 1509087121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e064a228028054aa516fa50359c21a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1509087126 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3697850201809665280, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+  m_PrefabInstance: {fileID: 1509087121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2e976f162daf44c8b206a104b3a532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1611873037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2332,6 +2580,62 @@ PrefabInstance:
       propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6194616010540919504, guid: 6b7a61a6e133948408271fe5d525e217, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194616010540919504, guid: 6b7a61a6e133948408271fe5d525e217, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194616010540919504, guid: 6b7a61a6e133948408271fe5d525e217, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1509087125}
+    - target: {fileID: 6194616010540919504, guid: 6b7a61a6e133948408271fe5d525e217, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194616010540919504, guid: 6b7a61a6e133948408271fe5d525e217, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194616010540919504, guid: 6b7a61a6e133948408271fe5d525e217, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerTurnFlowStateTypeDice, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194616010540919504, guid: 6b7a61a6e133948408271fe5d525e217, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018634771718838691, guid: 6b7a61a6e133948408271fe5d525e217, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018634771718838691, guid: 6b7a61a6e133948408271fe5d525e217, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018634771718838691, guid: 6b7a61a6e133948408271fe5d525e217, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1509087125}
+    - target: {fileID: 9018634771718838691, guid: 6b7a61a6e133948408271fe5d525e217, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018634771718838691, guid: 6b7a61a6e133948408271fe5d525e217, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToActionSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018634771718838691, guid: 6b7a61a6e133948408271fe5d525e217, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerTurnFlowStateTypeDice, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018634771718838691, guid: 6b7a61a6e133948408271fe5d525e217, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2741,7 +3045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31.326082
+      value: -17.173922
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.z
