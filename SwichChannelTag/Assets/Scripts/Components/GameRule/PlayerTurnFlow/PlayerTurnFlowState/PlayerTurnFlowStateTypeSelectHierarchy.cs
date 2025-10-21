@@ -26,7 +26,7 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
         if (_finished) return;
         if (_stateMachine == null) return;
 
-        //Œã‚Å‘I‚ñ‚¾ŠK‘w‚ğ‹L˜^‚·‚éƒNƒ‰ƒX‚ğì‚Á‚Ä‚»‚±‚É‹L˜^‚·‚é
+        _stateMachine.SharedData.DestinationHierarchyIndex = hierarchyIndex;//ˆÚ“®æŠK‘w”Ô†‚ğ‹L˜^
 
         _stateMachine.ChangeState(EPlayerTurnState.ChangeHierarchy);
     }

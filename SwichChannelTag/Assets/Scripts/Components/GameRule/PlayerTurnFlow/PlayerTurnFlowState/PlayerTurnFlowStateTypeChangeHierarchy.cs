@@ -12,7 +12,8 @@ public class PlayerTurnFlowStateTypeChangeHierarchy : PlayerTurnFlowStateTypeBas
 
     public override void OnEnter()
     {
-        //_changeHierarchy.SwitchHierarchy//ŠK‘wˆÚ“®ˆ—
+        _changeHierarchy.SwitchHierarchy(_stateMachine.SharedData.DestinationHierarchyIndex);//ŠK‘wˆÚ“®ˆ—
+        _stateMachine.SharedData.ChangedHierarchy();//ŠK‘wˆÚ“®‚ğ‚µ‚½
         _stateMachine.ChangeState(EPlayerTurnState.SelectAction);
     }
 

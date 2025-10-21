@@ -49,16 +49,8 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
         _showSelectActionUI.Show();
         EventSystem.current.SetSelectedGameObject(_defaultSelectButton.gameObject);
 
-        //前のステートが階層移動だったら、階層選択に移れないようにする
-        if(_stateMachine.BeforeState == EPlayerTurnState.ChangeHierarchy)
-        {
-            _selectHierarchyButton.interactable = false;
-        }
-        //前のステートが終了ステートだったら、階層選択が出来るようにする
-        else if(_stateMachine.BeforeState == EPlayerTurnState.Finish)
-        {
-            _selectHierarchyButton.interactable = true;
-        }
+        //階層移動をした後なら、階層移動(選択)が出来ないようにする
+        _selectHierarchyButton.interactable = !(_stateMachine.SharedData.IsChangedHierarchy);
     }
 
     public override void OnUpdate()

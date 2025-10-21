@@ -28,7 +28,7 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
     {
         if (_finished) return;
 
-        _decideMovableStep.Dicide();//ダイスを振る
+        _decideMovableStep.Decide(_stateMachine.SharedData.IsChangedHierarchy);//ダイスを振る
 
         _stateMachine.ChangeState(EPlayerTurnState.Move);
     }
