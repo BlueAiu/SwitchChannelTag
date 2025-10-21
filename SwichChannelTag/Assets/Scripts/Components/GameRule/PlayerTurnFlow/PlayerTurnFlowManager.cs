@@ -23,9 +23,11 @@ public class PlayerTurnFlowManager : MonoBehaviour
 
     public EPlayerTurnState BeforeState { get { return _beforeEState; } }//前のステート
 
+    public SharedDataBetweenPlayerTurnFlowState SharedData { get { return _sharedData; } }//ステート間で共有するデータ
+
     public void ChangeState(EPlayerTurnState nextState)//ステートの変更
     {
-        if (_currentState != null) _currentState.OnExit(this,_sharedData);
+        if (_currentState != null) _currentState.OnExit();
 
         _beforeEState = _nowEState;
 
@@ -39,7 +41,7 @@ public class PlayerTurnFlowManager : MonoBehaviour
 
         _nowEState = nextState;
 
-        if (_currentState != null) _currentState.OnEnter(this, _sharedData);
+        if (_currentState != null) _currentState.OnEnter();
     }
 
     private void Awake()
@@ -57,6 +59,6 @@ public class PlayerTurnFlowManager : MonoBehaviour
 
     private void Update()
     {
-        if (_currentState != null) _currentState.OnUpdate(this, _sharedData);
+        if (_currentState != null) _currentState.OnUpdate();
     }
 }

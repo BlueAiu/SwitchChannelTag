@@ -18,7 +18,6 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
     [Tooltip("階層選択UIを非表示にする機能")] [SerializeField]
     HideUITypeBase _hideSelectHierarchyUI;
 
-    PlayerTurnFlowManager _stateMachine;
     bool _finished=true;
 
     //階層移動ステートに移動
@@ -32,22 +31,21 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
         _stateMachine.ChangeState(EPlayerTurnState.ChangeHierarchy);
     }
 
-    public override void OnEnter(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
+    public override void OnEnter()
     {
         _finished = false;
-        _stateMachine = stateMachine;
 
         _showSelectHierarchyUI.Show();
 
         EventSystem.current.SetSelectedGameObject(_defaultSelectButton.gameObject);
     }
 
-    public override void OnUpdate(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
+    public override void OnUpdate()
     {
 
     }
 
-    public override void OnExit(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
+    public override void OnExit()
     {
         _finished=true;
 

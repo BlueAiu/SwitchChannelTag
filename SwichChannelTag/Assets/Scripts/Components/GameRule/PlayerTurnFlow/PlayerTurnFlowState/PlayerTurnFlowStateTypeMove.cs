@@ -16,7 +16,6 @@ public class PlayerTurnFlowStateTypeMove : PlayerTurnFlowStateTypeBase
     [Tooltip("マス移動時のUIを非表示にする機能")] [SerializeField]
     HideUITypeBase _hideMoveUI;
 
-    PlayerTurnFlowManager _stateMachine;
     bool _finished = true;
 
     //移動を完了して終了ステートに
@@ -28,10 +27,9 @@ public class PlayerTurnFlowStateTypeMove : PlayerTurnFlowStateTypeBase
         _stateMachine.ChangeState(EPlayerTurnState.Finish);
     }
 
-    public override void OnEnter(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
+    public override void OnEnter()
     {
         _finished = false;
-        _stateMachine=stateMachine;
 
         _showMoveUI.Show();
 
@@ -39,12 +37,12 @@ public class PlayerTurnFlowStateTypeMove : PlayerTurnFlowStateTypeBase
         _moveOnMap.enabled = true;
     }
 
-    public override void OnUpdate(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
+    public override void OnUpdate()
     {
 
     }
 
-    public override void OnExit(PlayerTurnFlowManager stateMachine, SharedDataBetweenPlayerTurnFlowState sharedData)
+    public override void OnExit()
     {
         _finished = true;
 
