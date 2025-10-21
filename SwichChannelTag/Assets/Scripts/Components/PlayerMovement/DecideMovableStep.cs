@@ -20,11 +20,11 @@ public class DecideMovableStep : MonoBehaviour
 
     [SerializeField] bool writeLog = true;
 
-    public void Dicide()//動けるマス数を決定(ダイスロールで)
+    public void Decide(bool isChangedHierarchy)//動けるマス数を決定(ダイスロールで)、階層移動したかを受け取る
     {
         int result;
 
-        if (_changeHierarchy.IsMoved)
+        if (isChangedHierarchy)//階層移動をした場合、ダイス減算をする
         {
             var state = _playerState.State;
 
@@ -46,8 +46,6 @@ public class DecideMovableStep : MonoBehaviour
         }
 
         _moveOnMap.RemainingStep=result;
-
-        _changeHierarchy.IsMoved = false;
     }
 
     private void Update()

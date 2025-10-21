@@ -18,7 +18,6 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
     [Tooltip("ŠK‘w‘I‘ğUI‚ğ”ñ•\¦‚É‚·‚é‹@”\")] [SerializeField]
     HideUITypeBase _hideSelectHierarchyUI;
 
-    PlayerTurnFlowManager _stateMachine;
     bool _finished=true;
 
     //ŠK‘wˆÚ“®ƒXƒe[ƒg‚ÉˆÚ“®
@@ -27,27 +26,26 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
         if (_finished) return;
         if (_stateMachine == null) return;
 
-        //Œã‚Å‘I‚ñ‚¾ŠK‘w‚ğ‹L˜^‚·‚éƒNƒ‰ƒX‚ğì‚Á‚Ä‚»‚±‚É‹L˜^‚·‚é
+        _stateMachine.SharedData.DestinationHierarchyIndex = hierarchyIndex;//ˆÚ“®æŠK‘w”Ô†‚ğ‹L˜^
 
         _stateMachine.ChangeState(EPlayerTurnState.ChangeHierarchy);
     }
 
-    public override void OnEnter(PlayerTurnFlowManager stateMachine)
+    public override void OnEnter()
     {
         _finished = false;
-        _stateMachine = stateMachine;
 
         _showSelectHierarchyUI.Show();
 
         EventSystem.current.SetSelectedGameObject(_defaultSelectButton.gameObject);
     }
 
-    public override void OnUpdate(PlayerTurnFlowManager stateMachine)
+    public override void OnUpdate()
     {
 
     }
 
-    public override void OnExit(PlayerTurnFlowManager stateMachine)
+    public override void OnExit()
     {
         _finished=true;
 

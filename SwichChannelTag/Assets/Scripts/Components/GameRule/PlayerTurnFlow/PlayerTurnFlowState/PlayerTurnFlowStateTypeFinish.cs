@@ -9,19 +9,20 @@ public class PlayerTurnFlowStateTypeFinish : PlayerTurnFlowStateTypeBase
 {
     TurnIsReady _myTurnIsReady;
 
-    public override void OnEnter(PlayerTurnFlowManager _stateMachine)
+    public override void OnEnter()
     {
 
     }
 
-    public override void OnUpdate(PlayerTurnFlowManager _stateMachine)
+    public override void OnUpdate()
     {
 
     }
 
-    public override void OnExit(PlayerTurnFlowManager _stateMachine)
+    public override void OnExit()
     {
         _myTurnIsReady.IsReady = true;//行動終了したことを知らせる
+        _stateMachine.SharedData.Reset();//共有データをリセット
     }
 
     private void Awake()
