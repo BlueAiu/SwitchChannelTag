@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class RouteSearch : MonoBehaviour
@@ -7,15 +8,73 @@ public class RouteSearch : MonoBehaviour
     MapTransform _myMapTrs;
     PathOfMap _path;
 
+    int _mapHeight, _mapWidth;
+    [SerializeField] bool writeLog = true;
+
+    readonly MapVec[] direction =
+    {
+        MapVec.Up, MapVec.Down, MapVec.Left, MapVec.Right,
+    };
+
     private void Awake()
     {
         _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
-        _path = new(new MapVec(_myMapTrs.CurrentHierarchy.MapSize_X, _myMapTrs.CurrentHierarchy.MapSize_Y));
+        _mapHeight = _myMapTrs.CurrentHierarchy.MapSize_Y;
+        _mapWidth = _myMapTrs.CurrentHierarchy.MapSize_X;
+        _path = new(new MapVec(_mapWidth, _mapHeight));
     }
 
     public PathOfMap SearchPath(int hierarchy, MapVec start)
     {
+        Queue<MapVec> que = new();
+        que.Enqueue(start);
 
-        return null;
+        _path.Clear();
+        _path[start] = new PathOfMap.PathInfo(0, new MapVec(0, 0));
+
+        while (que.Count > 0)
+        {
+            var cur = que.Dequeue();
+            foreach(var d in direction)
+            {
+                var next = cur + d;
+
+                // canMove
+                var currentHierarchy = _myMapTrs.CurrentHierarchy;
+                if (!currentHierarchy.IsInRange(next)) continue;
+                if (currentHierarchy.Mass[next] != E_Mass.Empty) continue;
+                if (currentHierarchy.IsBlockedByWall(cur,d)) continue;
+
+                que.Enqueue(next);
+                var p = _path[cur];
+                p.step++;
+                p.dir = d;
+                _path[next] = p;
+            }
+        }
+
+        WriteLog();
+
+        return _path;
+    }
+
+    void WriteLog()
+    {
+        if(!writeLog) return;
+
+        string log = "bfs: \n";
+
+        for(int i = 0; i < _mapWidth; i++)
+        {
+            for(int j=0;j<_mapHeight;j++)
+            {
+                MapVec v = new(i, j);
+                int step = _path[v].step;
+                log += step + " ";
+            }
+            log += '\n';
+        }
+
+        Debug.Log(log);
     }
 }
