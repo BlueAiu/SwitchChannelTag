@@ -73,7 +73,13 @@ public class RouteSearch : MonoBehaviour
             {
                 MapVec v = new(j, i);
                 int step = _path[v].step;
-                log += string.Format("{0} ", step);
+                var dir = _path[v].dir;
+                char c_dir = 'o';
+                if (dir == MapVec.Up) c_dir = '^';
+                else if (dir == MapVec.Down) c_dir = 'v';
+                else if (dir == MapVec.Left) c_dir = '>';
+                else if (dir == MapVec.Right) c_dir = '<';
+                log += string.Format("({0},{1}) ", step, c_dir);
             }
             log += '\n';
         }
