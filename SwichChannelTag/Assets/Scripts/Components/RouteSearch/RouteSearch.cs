@@ -45,6 +45,9 @@ public class RouteSearch : MonoBehaviour
                 if (currentHierarchy.Mass[next] != E_Mass.Empty) continue;
                 if (currentHierarchy.IsBlockedByWall(cur,d)) continue;
 
+                // explored
+                if (_path[next].step != -1) continue;
+
                 que.Enqueue(next);
                 var p = _path[cur];
                 p.step++;
@@ -66,11 +69,11 @@ public class RouteSearch : MonoBehaviour
 
         for(int i = 0; i < _mapWidth; i++)
         {
-            for(int j=0;j<_mapHeight;j++)
+            for (int j = 0; j < _mapHeight; j++) 
             {
-                MapVec v = new(i, j);
+                MapVec v = new(j, i);
                 int step = _path[v].step;
-                log += step + " ";
+                log += string.Format("{0} ", step);
             }
             log += '\n';
         }
