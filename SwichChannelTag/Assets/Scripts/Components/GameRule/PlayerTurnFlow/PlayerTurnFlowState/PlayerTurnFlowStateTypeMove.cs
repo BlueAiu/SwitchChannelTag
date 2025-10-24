@@ -51,4 +51,9 @@ public class PlayerTurnFlowStateTypeMove : PlayerTurnFlowStateTypeBase
         //ƒ}ƒXˆÚ“®‚ªo—ˆ‚È‚¢ó‘Ô‚É‚·‚é
         _moveOnMap.enabled = false;
     }
+
+    private void Start()
+    {
+        _hideMoveUI.Hide();
+    }
 }

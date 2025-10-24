@@ -36,4 +36,9 @@ public class PlayerTurnFlowStateTypeFinish : PlayerTurnFlowStateTypeBase
     {
         _myTurnIsReady = PlayersManager.GetComponentFromMinePlayer<TurnIsReady>();
     }
+
+    private void Start()
+    {
+        _hideFinishUI.Hide();//シーン開始時にUIを隠す
+    }
 }
