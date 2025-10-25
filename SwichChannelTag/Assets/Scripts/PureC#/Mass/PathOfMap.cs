@@ -1,6 +1,8 @@
 
 public class PathOfMap
 {
+    public const int unexplored = -1;
+
     public struct PathInfo
     {
         public int step;
@@ -35,7 +37,7 @@ public class PathOfMap
         {
             for (int j = 0; j < _mass.GetLength(1); j++)
             {
-                _mass[i, j].step = -1;
+                _mass[i, j].step = unexplored;
                 _mass[i, j].dir = new MapVec(0, 0);
             }
         }

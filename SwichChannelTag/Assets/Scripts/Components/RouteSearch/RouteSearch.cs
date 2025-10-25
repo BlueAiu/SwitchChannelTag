@@ -46,7 +46,7 @@ public class RouteSearch : MonoBehaviour
                 if (currentHierarchy.IsBlockedByWall(cur,d)) continue;
 
                 // explored
-                if (_path[next].step != -1) continue;
+                if (_path[next].step != PathOfMap.unexplored) continue;
 
                 que.Enqueue(next);
                 var p = _path[cur];
