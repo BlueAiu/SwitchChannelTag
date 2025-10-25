@@ -6,7 +6,7 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
 {
     [SerializeField] EPlayerState turnSide;
 
-    List<TurnIsReady> ownPlayers;
+    List<TurnIsReady> ownPlayers=new List<TurnIsReady>();
 
     public override void OnEnter()//ステートの開始処理
     {
@@ -26,6 +26,7 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
     public override void OnUpdate()//ステートの毎フレーム処理
     {
         bool isFinishAll = true;
+
         foreach (var player in ownPlayers)
         {
             isFinishAll &= player.IsReady;

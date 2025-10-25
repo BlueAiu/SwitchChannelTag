@@ -60,4 +60,9 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
 
         _hideSelectHierarchyUI.Hide();
     }
+
+    private void Start()
+    {
+        _hideSelectHierarchyUI.Hide();//シーン開始時にUIを隠す
+    }
 }

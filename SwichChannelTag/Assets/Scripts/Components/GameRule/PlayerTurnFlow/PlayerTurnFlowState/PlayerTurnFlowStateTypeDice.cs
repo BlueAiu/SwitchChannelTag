@@ -59,4 +59,9 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
         _finished = true;
        _hideDiceUI.Hide();
     }
+
+    private void Start()
+    {
+        _hideDiceUI.Hide();//シーン開始時にUIを隠す
+    }
 }

@@ -18,6 +18,7 @@ public class PlayerTurnFlowStateTypeFinish : PlayerTurnFlowStateTypeBase
     public override void OnEnter()
     {
         _showFinishUI.Show();
+        _myTurnIsReady.IsReady = true;//行動終了したことを知らせる
     }
 
     public override void OnUpdate()
@@ -28,12 +29,16 @@ public class PlayerTurnFlowStateTypeFinish : PlayerTurnFlowStateTypeBase
     public override void OnExit()
     {
         _hideFinishUI.Hide();
-        _myTurnIsReady.IsReady = true;//行動終了したことを知らせる
         _stateMachine.SharedData.Reset();//共有データをリセット
     }
 
     private void Awake()
     {
         _myTurnIsReady = PlayersManager.GetComponentFromMinePlayer<TurnIsReady>();
+    }
+
+    private void Start()
+    {
+        _hideFinishUI.Hide();//シーン開始時にUIを隠す
     }
 }
