@@ -10,6 +10,7 @@ public class GameFlowStateTypeTurnFinish : GameFlowStateTypeBase
     public override void OnEnter()
     {
         //‚±‚±‚ÅŒo‰ßƒ^[ƒ“‚ğ‘‚â‚·
+        GameStatsManager.Instance.SetTurn(GameStatsManager.Instance.GetTurn() + 1);
     }
 
     public override void OnUpdate()
