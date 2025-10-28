@@ -6,7 +6,7 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
 {
     [SerializeField] EPlayerState turnSide;
 
-    List<TurnIsReady> ownPlayers;
+    List<TurnIsReady> ownPlayers=new List<TurnIsReady>();
 
     public override void OnEnter()//ステートの開始処理
     {
@@ -26,12 +26,18 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
     public override void OnUpdate()//ステートの毎フレーム処理
     {
         bool isFinishAll = true;
+
         foreach (var player in ownPlayers)
         {
             isFinishAll &= player.IsReady;
         }
 
-        if (isFinishAll) this._finished = true;
+        if (isFinishAll)//ステートを相手のターンに変更(後にゲームが終了したかを取得して終了ステートにも移行するようにする)
+        {
+            EGameState opponentTurn = (turnSide == EPlayerState.Tagger) ? EGameState.RunnerTurn : EGameState.TaggerTurn;
+
+            _stateMachine.ChangeState(opponentTurn);
+        }
     }
 
     public override void OnExit()//ステートの終了処理

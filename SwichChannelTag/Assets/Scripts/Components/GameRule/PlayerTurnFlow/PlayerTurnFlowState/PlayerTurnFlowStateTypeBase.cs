@@ -10,7 +10,7 @@ public　abstract class PlayerTurnFlowStateTypeBase : MonoBehaviour
 {
     /// <summary>
     ///・使い方
-    ///ステートを変更する時は_stateMachineのChangeStateから変更
+    ///ステートを変更する時は_stateMachineのChangeStateから変更(OnEnter、OnExitで呼ばないようにしてください)
     ///sharedDataからステート間で共有するデータを取得・変更可能
     /// </summary>
 

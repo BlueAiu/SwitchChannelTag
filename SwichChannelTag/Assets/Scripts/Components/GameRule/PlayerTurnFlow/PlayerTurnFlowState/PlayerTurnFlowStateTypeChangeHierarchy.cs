@@ -14,12 +14,11 @@ public class PlayerTurnFlowStateTypeChangeHierarchy : PlayerTurnFlowStateTypeBas
     {
         _changeHierarchy.SwitchHierarchy(_stateMachine.SharedData.DestinationHierarchyIndex);//ŠK‘wˆÚ“®ˆ—
         _stateMachine.SharedData.ChangedHierarchy();//ŠK‘wˆÚ“®‚ğ‚µ‚½
-        _stateMachine.ChangeState(EPlayerTurnState.SelectAction);
     }
 
     public override void OnUpdate()
     {
-        
+        _stateMachine.ChangeState(EPlayerTurnState.SelectAction);
     }
 
     public override void OnExit()

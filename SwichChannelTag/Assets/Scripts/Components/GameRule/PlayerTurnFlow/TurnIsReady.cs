@@ -10,12 +10,18 @@ public class TurnIsReady : MonoBehaviour
     [SerializeField]
     PhotonView _myPhotonView;
 
-    bool _isReady;
+    bool _isReady=true;
 
     public bool IsReady//ターンの完了状態
     {
         get { return _isReady; }
-        set { _myPhotonView.RPC(nameof(SwitchIsReady), RpcTarget.All, value); }
+        set
+        {
+            //変わらない時は無視
+            if (_isReady == value) return;
+
+            _myPhotonView.RPC(nameof(SwitchIsReady), RpcTarget.All, value);
+        }
     }
 
     public event Action OnFinishedTurn;//ターン行動が完了した時に呼ぶ
@@ -26,8 +32,7 @@ public class TurnIsReady : MonoBehaviour
     [PunRPC]
     void SwitchIsReady(bool value)
     {
-        //変わらない時は無視
-        if (_isReady == value) return;
+        _isReady = value;
 
         OnSwitchIsReady?.Invoke();
         OnSwitchIsReady_Bool?.Invoke(value);

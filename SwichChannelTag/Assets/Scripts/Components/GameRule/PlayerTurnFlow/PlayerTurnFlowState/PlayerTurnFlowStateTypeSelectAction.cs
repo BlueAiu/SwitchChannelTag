@@ -63,4 +63,9 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
         _finished = true;
         _hideSelectActionUI.Hide();
     }
+
+    private void Start()
+    {
+        _hideSelectActionUI.Hide();//シーン開始時にUIを隠す
+    }
 }
