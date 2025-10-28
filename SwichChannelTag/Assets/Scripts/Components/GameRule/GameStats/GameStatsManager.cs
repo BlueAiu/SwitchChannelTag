@@ -10,6 +10,7 @@ using UnityEngine;
 public class GameStatsManager : MonoBehaviourPunCallbacks
 {
     private const string TURN_KEY = "TurnNum";
+    const int _defaultTurnNum = 1;
     const int _invalidTurnNum = -1;
 
     public static GameStatsManager Instance { get; private set; }
@@ -20,7 +21,10 @@ public class GameStatsManager : MonoBehaviourPunCallbacks
         else Destroy(gameObject);
     }
 
-
+    public override void OnJoinedRoom()
+    {
+        SetTurn(_defaultTurnNum);
+    }
 
     public void SetTurn(int newTurnNum)//ƒ^[ƒ“”‚ğİ’è
     {
