@@ -1,5 +1,7 @@
+using Photon.Pun;
 using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +9,6 @@ public class MoveScene : MonoBehaviour
 {
     [Tooltip("‘JˆÚ‚Ì‘Ò‚¿ŽžŠÔ")]
     [SerializeField] private float Waittime;
-    DestroyObjects destroy;
 
     public void MoveTitletoLobby()
     {
@@ -21,7 +22,7 @@ public class MoveScene : MonoBehaviour
     {
         StartCoroutine(LoadTime(Waittime, () =>
         {
-            destroy.DestroyObj();
+            Destroyobj();
             SceneManager.LoadScene("TitleScene");
         }));
     }
@@ -30,5 +31,18 @@ public class MoveScene : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         action?.Invoke();
+    }
+
+    private void Destroyobj()
+    {
+        var obj = new GameObject("LobbySceneObj");
+        DontDestroyOnLoad(obj);
+        var dontDestroyScene = obj.scene;
+        DestroyImmediate(obj);
+
+        foreach (var rootObj in dontDestroyScene.GetRootGameObjects())
+        {
+            Destroy(rootObj);
+        }
     }
 }

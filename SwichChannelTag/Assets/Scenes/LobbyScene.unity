@@ -1689,7 +1689,6 @@ GameObject:
   - component: {fileID: 2699841466196407829}
   - component: {fileID: 2195521215928513269}
   - component: {fileID: 1977683175479034182}
-  - component: {fileID: 5502103580055985863}
   - component: {fileID: 5502103580055985864}
   m_Layer: 0
   m_Name: LobbyBehaviour
@@ -1698,18 +1697,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5502103580055985863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5502103580055985862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11b1d61ab201be246a04a0ea7c9c062b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5502103580055985864
 MonoBehaviour:
   m_ObjectHideFlags: 0
