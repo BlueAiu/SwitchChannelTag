@@ -17,12 +17,12 @@ public class JudgeGameSet : MonoBehaviour
         return IsTimeUp() || AllPlayerIsTagger();
     }
 
-    public bool IsTimeUp()//最大ターン数経過したか(時間切れか)
+    bool IsTimeUp()//最大ターン数経過したか(時間切れか)
     {
         return GameStatsManager.Instance.GetTurn() > _maxTurnNum;
     }
 
-    public bool AllPlayerIsTagger()//全てのプレイヤーが鬼か
+    bool AllPlayerIsTagger()//全てのプレイヤーが鬼か
     {
         bool ret = true;
 

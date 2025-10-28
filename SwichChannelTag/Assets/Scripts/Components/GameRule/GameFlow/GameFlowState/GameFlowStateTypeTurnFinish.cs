@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class GameFlowStateTypeTurnFinish : GameFlowStateTypeBase
 {
+    [Tooltip("ゲーム終了かを判定する機能")] [SerializeField]
+    JudgeGameSet _judgeGameSet;
+
     public override void OnEnter()
     {
         //ここで経過ターンを増やす
@@ -15,7 +18,16 @@ public class GameFlowStateTypeTurnFinish : GameFlowStateTypeBase
 
     public override void OnUpdate()
     {
-        //指定ターン経過したらゲーム終了させる
+        //ゲーム終了判定をする
+        bool isGameSet = _judgeGameSet.IsGameSet();
+
+        //ゲーム終了であれば終了ステートへ
+        if(isGameSet)
+        {
+            _stateMachine.ChangeState(EGameState.Finish);
+        }
+
+
         //そうでなければプレイヤーにターンを回す
 
         EGameState nextState = (_stateMachine.SharedData.FirstTurn == EPlayerState.Runner) ? EGameState.RunnerTurn : EGameState.TaggerTurn;

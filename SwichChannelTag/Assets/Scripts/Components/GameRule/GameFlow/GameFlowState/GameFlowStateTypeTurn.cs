@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameFlowStateTypeTurn : GameFlowStateTypeBase
 {
     [SerializeField] EPlayerState turnSide;
+    
+    [Tooltip("ゲーム終了かを判定する機能")] [SerializeField]
+    JudgeGameSet _judgeGameSet;
 
     List<TurnIsReady> ownPlayers=new List<TurnIsReady>();
 
@@ -48,11 +51,9 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
     void ChangeState()//ステートを変更する
     {
         //ゲーム終了判定をする
+        bool isGameSet = _judgeGameSet.IsGameSet();
 
-        //ゲームが終了したなら終了ステートへ
-        bool hoge=false;//後でゲームが終了したかを取得するようにする
-
-        if(hoge)
+        if(isGameSet)
         {
             _stateMachine.ChangeState(EGameState.Finish);
             return;
