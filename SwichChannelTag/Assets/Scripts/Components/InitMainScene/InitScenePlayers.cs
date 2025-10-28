@@ -31,6 +31,8 @@ public class InitScenePlayers : MonoBehaviour
     {
         _mapTrses = PlayersManager.GetComponentsFromPlayers<MapTransform>();
 
+        SetupPlayerState.SelectTagger();
+
         for(int i=0; i<_mapTrses.Length;i++)
         {
             MapTransform mapTrs = _mapTrses[i];
