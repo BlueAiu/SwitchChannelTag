@@ -29,19 +29,48 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
 
         foreach (var player in ownPlayers)
         {
+            if(player==null) continue;
+
             isFinishAll &= player.IsReady;
         }
 
         if (isFinishAll)//ステートを相手のターンに変更(後にゲームが終了したかを取得して終了ステートにも移行するようにする)
         {
-            EGameState opponentTurn = (turnSide == EPlayerState.Tagger) ? EGameState.RunnerTurn : EGameState.TaggerTurn;
-
-            _stateMachine.ChangeState(opponentTurn);
+            ChangeState();
         }
     }
 
     public override void OnExit()//ステートの終了処理
     {
         // Pass
+    }
+
+    void ChangeState()//ステートを変更する
+    {
+        //ゲーム終了判定をする
+
+        //ゲームが終了したなら終了ステートへ
+        bool hoge=false;//後でゲームが終了したかを取得するようにする
+
+        if(hoge)
+        {
+            _stateMachine.ChangeState(EGameState.Finish);
+            return;
+        }
+
+        //まだゲーム終了していないなら
+
+        EGameState opponentTurn = (turnSide == EPlayerState.Tagger) ? EGameState.RunnerTurn : EGameState.TaggerTurn;
+
+        if(_stateMachine.BeforeState==opponentTurn)//前のターンが相手のターンだったらターン終了ステートへ
+        {
+            _stateMachine.ChangeState(EGameState.TurnFinish);
+            return;
+        }
+        else//そうでなければ相手のターンへ
+        {
+            _stateMachine.ChangeState(opponentTurn);
+            return;
+        }
     }
 }
