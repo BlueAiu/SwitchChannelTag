@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 //プレイヤーのマップ上の移動操作
 //enabledをfalseにすれば、ボタンを押しても移動を出来なくすることが出来る
 
-public class MoveOnMap : MonoBehaviour
+public partial class MoveOnMap : MonoBehaviour
 {
     [Tooltip("プレイヤーの移動の様子")] [SerializeField]
     PlayerMoveAnimation _playerMoveAnimation;
@@ -34,8 +34,6 @@ public class MoveOnMap : MonoBehaviour
 
         if (_playerMoveAnimation.IsMoving) return;//キャラが移動中であれば無視
 
-        if (_remainingStep <= 0) return;//残り移動可能マスが0なら移動できない
-
         Vector2 getVec = context.ReadValue<Vector2>();
 
         if (!IsMovable(getVec, out MapVec newGridPos))
@@ -43,6 +41,8 @@ public class MoveOnMap : MonoBehaviour
             Debug.Log("移動に失敗");
             return;
         }
+
+        if (_remainingStep <= 0 && !WhetherUndoMove(newGridPos)) return;    // dont move if no steps remaining
 
         //移動に成功
         StartCoroutine(Move(newGridPos));
@@ -56,7 +56,16 @@ public class MoveOnMap : MonoBehaviour
         Vector3 start = _myMapTrs.CurrentWorldPos;//現在のマスの中心点
         Vector3 destination = _myMapTrs.CurrentHierarchy.MapToWorld(newGridPos);//移動先のマスの中心点
 
-        _remainingStep--;//残り移動可能マスを減らす
+        //移動を戻したかに基づき残り移動可能マスを更新する
+        if (UpdateMoveHistory(_myMapTrs.Pos.gridPos, newGridPos))
+        {
+            _remainingStep++;
+        }
+        else
+        {
+            _remainingStep--;
+        }
+
         _shiftPlayersPosition.OnExit(_myMapTrs);//ずらす処理
         _myCanShift.IsShiftAllowed = false;//自分がずらされないようにする
 
