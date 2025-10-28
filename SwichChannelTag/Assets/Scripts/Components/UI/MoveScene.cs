@@ -23,6 +23,7 @@ public class MoveScene : MonoBehaviour
         StartCoroutine(LoadTime(Waittime, () =>
         {
             Destroyobj();
+            PhotonNetwork.LeaveRoom();
             SceneManager.LoadScene("TitleScene");
         }));
     }
