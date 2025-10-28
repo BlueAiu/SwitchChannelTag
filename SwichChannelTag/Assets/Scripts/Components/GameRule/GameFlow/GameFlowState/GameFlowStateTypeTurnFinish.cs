@@ -27,7 +27,6 @@ public class GameFlowStateTypeTurnFinish : GameFlowStateTypeBase
             _stateMachine.ChangeState(EGameState.Finish);
         }
 
-
         //そうでなければプレイヤーにターンを回す
 
         EGameState nextState = (_stateMachine.SharedData.FirstTurn == EPlayerState.Runner) ? EGameState.RunnerTurn : EGameState.TaggerTurn;
