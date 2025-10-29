@@ -50,18 +50,7 @@ public class InitScenePlayers : MonoBehaviour
 
             mapTrs.Hierarchies = _hierarchies;
         }
-
-        _posTemp = new MapPos[_mapTrses.Length];
-        InitMapHierarchy();
-        InitMapVec();
-
-        for(int i=0;i<_posTemp.Length;i++)
-        {
-            _mapTrses[i].Rewrite(_posTemp[i]);
-        }
     }
-
-    //これより下は後に変更が加わる可能性大
 
     void InitPlayersPos()//位置(Transform)の初期化
     {
@@ -69,7 +58,16 @@ public class InitScenePlayers : MonoBehaviour
 
         if (!mine.IsMasterClient) return;//ホスト主以外はこの処理を行わない
 
-        for(int i=0; i<_setTransforms.Length ;i++)
+        _posTemp = new MapPos[_mapTrses.Length];
+        InitMapHierarchy();
+        InitMapVec();
+
+        for (int i = 0; i < _posTemp.Length; i++)
+        {
+            _mapTrses[i].Rewrite(_posTemp[i]);
+        }
+
+        for (int i=0; i<_setTransforms.Length ;i++)
         {
             MapTransform mapTrs = _mapTrses[i];
             

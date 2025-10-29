@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 708274833}
   - component: {fileID: 708274834}
   m_Layer: 0
-  m_Name: GameSetupManager
+  m_Name: SetupManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -747,9 +747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hierarchies: {fileID: 407807742}
-  initPlayersPosList:
-  - x: 0
-    y: 0
+  playersGap: 3
 --- !u!1001 &721530395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3950,7 +3948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31.326082
+      value: -17.173922
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.z
