@@ -14,6 +14,11 @@ public class GameFlowManager : MonoBehaviour
     [Tooltip("ゲームフローステート")] [SerializeField]
     SerializableDictionary<EGameState, GameFlowStateTypeBase> _gameFlowStateDic;
 
+    [Tooltip("最初に動くプレイヤー")] [SerializeField]
+    EPlayerState _firstTurn=EPlayerState.Runner;
+
+    SharedDataBetweenGameFlowState _sharedData;//ステート間で共有するデータ
+
     EGameState _nowEState = EGameState.None;
     EGameState _beforeEState = EGameState.None;
 
@@ -21,9 +26,22 @@ public class GameFlowManager : MonoBehaviour
 
     public EGameState BeforeState { get { return _beforeEState; } }//前のステート
 
-    GameFlowStateTypeBase _currentState=null;
+    public SharedDataBetweenGameFlowState SharedData { get { return _sharedData; } }//ステート間で共有するデータ
+
+    GameFlowStateTypeBase _currentState =null;
 
     Player mine;
+
+    private void Awake()
+    {
+        if(_firstTurn==EPlayerState.Length)
+        {
+            Debug.Log("Length以外を指定してください！");
+            return;
+        }
+
+        _sharedData = new SharedDataBetweenGameFlowState(_firstTurn);
+    }
 
     private void Start()
     {

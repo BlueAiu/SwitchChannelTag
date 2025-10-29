@@ -12,6 +12,7 @@ public enum EGameState
     Start,//開始演出ステート
     TaggerTurn,//鬼ターンステート
     RunnerTurn,//逃げターンステート
+    TurnFinish,//(お互いの)ターン終了ステート
     Finish,//終了演出ステート
 
     Length
