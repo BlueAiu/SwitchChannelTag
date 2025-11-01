@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 
 //作成者:杉山
-//マップ上に障害物を置く(テスト用)
+//マップ上に障害物を置く
 
 public class SetObstacle : MonoBehaviour
 {
@@ -106,6 +106,7 @@ public class SetObstacle : MonoBehaviour
         Vector3 pos = map.MapToWorld(_obstaclePos.gridPos);
         GameObject obstacleInstance = Instantiate(_obstacleObject);//障害物オブジェクトを生成
         obstacleInstance.transform.position = pos;
+        obstacleInstance.GetComponent<ObstacleModel>().ChangeModel(_obstaclePos.hierarchyIndex);
 
         map.Mass[_obstaclePos.gridPos] = E_Mass.Obstacle;
     }
@@ -128,7 +129,8 @@ public class SetObstacle : MonoBehaviour
 
         Vector3 worldPos = (map.MapToWorld(wallPos0.gridPos) + map.MapToWorld(wallPos1.gridPos)) / 2.0f;
         Quaternion rotation = Quaternion.LookRotation(new Vector3(wallDir.x, 0, wallDir.y));
-        Instantiate(_wallObstacleObject, worldPos, rotation);
+        var i_wall = Instantiate(_wallObstacleObject, worldPos, rotation);
+        i_wall.GetComponent<ObstacleModel>().ChangeModel(setWall.hierarchyIndex);
     }
 
 }
