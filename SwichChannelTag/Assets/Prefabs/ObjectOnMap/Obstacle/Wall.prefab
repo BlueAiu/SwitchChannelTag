@@ -423,7 +423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 060036f70af4f7046b0f7c9f6f151077, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 060036f70af4f7046b0f7c9f6f151077, type: 3}
       propertyPath: m_LocalPosition.z
@@ -431,19 +431,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 060036f70af4f7046b0f7c9f6f151077, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99406177
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 060036f70af4f7046b0f7c9f6f151077, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 060036f70af4f7046b0f7c9f6f151077, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.1088174
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 060036f70af4f7046b0f7c9f6f151077, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 060036f70af4f7046b0f7c9f6f151077, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -451,12 +451,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 060036f70af4f7046b0f7c9f6f151077, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 12.494
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 060036f70af4f7046b0f7c9f6f151077, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 060036f70af4f7046b0f7c9f6f151077, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 060036f70af4f7046b0f7c9f6f151077, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 68c2b44a873087642832a704558e399b, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 060036f70af4f7046b0f7c9f6f151077, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: cbc16dbccda9e0c408b781c466ae6eb4, type: 2}
     - target: {fileID: 919132149155446097, guid: 060036f70af4f7046b0f7c9f6f151077, type: 3}
       propertyPath: m_Name
       value: wallHeaven (1)
