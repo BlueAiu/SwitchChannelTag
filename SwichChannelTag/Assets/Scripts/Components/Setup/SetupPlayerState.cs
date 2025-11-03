@@ -7,14 +7,10 @@ using Photon.Realtime;
 //プレイヤーの鬼・逃げの初期化
 //今のところ、プレイヤーの中からランダムに鬼を一人選出
 
-public class SetupPlayerState : MonoBehaviour
+public static class SetupPlayerState
 {
-    void Start()
-    {
-        SelectTagger();
-    }
 
-    void SelectTagger()//鬼を決める
+    public static void SelectTagger()//鬼を決める
     {
         Player mine = PlayersManager.MinePlayerPhotonPlayer;
 

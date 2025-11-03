@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 6935719118298266417}
   - component: {fileID: 7612852423838665752}
   m_Layer: 0
-  m_Name: CapsulePlayer
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
