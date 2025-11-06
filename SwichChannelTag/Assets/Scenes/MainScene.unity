@@ -888,6 +888,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMoveAnimation: {fileID: 722071810}
   _shiftPlayersPosition: {fileID: 742054144}
+  _pathObject:
+    _list:
+    - key: 0
+      value: {fileID: 4075456461077803855, guid: 46b024c82db08934891304e53b9cb5bd, type: 3}
+    - key: 1
+      value: {fileID: 4075456461077803855, guid: e4bd3467b00cab34dae9bba3223830ce, type: 3}
 --- !u!114 &722071808
 MonoBehaviour:
   m_ObjectHideFlags: 0
