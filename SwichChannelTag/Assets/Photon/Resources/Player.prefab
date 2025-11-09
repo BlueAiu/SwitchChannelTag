@@ -20,7 +20,8 @@ GameObject:
   - component: {fileID: 5662769695230115391}
   - component: {fileID: 3693762538781828748}
   - component: {fileID: 6935719118298266417}
-  - component: {fileID: 7612852423838665752}
+  - component: {fileID: 7173035444070256611}
+  - component: {fileID: 8055072001867100083}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -206,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myPhotonView: {fileID: 7362638265056822721}
---- !u!114 &7612852423838665752
+--- !u!114 &7173035444070256611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,7 +216,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 2074817731734667574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ff8511076ec7fa46abb72303f9d1ea8, type: 3}
+  m_Script: {fileID: 11500000, guid: eddce751e74958a42a320d69f09401db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _receiver: {fileID: 8055072001867100083}
+--- !u!114 &8055072001867100083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074817731734667574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83465c8ca7a5b3342b60c490f9ebc9c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _myPhotonView: {fileID: 7362638265056822721}

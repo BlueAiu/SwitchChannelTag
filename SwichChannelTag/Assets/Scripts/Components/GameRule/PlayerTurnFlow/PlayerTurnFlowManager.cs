@@ -17,7 +17,7 @@ public class PlayerTurnFlowManager : MonoBehaviour
     EPlayerTurnFlowState _beforeEState=EPlayerTurnFlowState.None;
 
     PlayerTurnFlowStateTypeBase _currentState=null;
-    TurnIsReady _myTurnIsReady;
+    PlayerTurnStateReceiver _myTurnReceiver;
 
     public EPlayerTurnFlowState NowState { get { return _nowEState; } }//現在のステート
 
@@ -46,9 +46,9 @@ public class PlayerTurnFlowManager : MonoBehaviour
 
     private void Awake()
     {
-        _myTurnIsReady = PlayersManager.GetComponentFromMinePlayer<TurnIsReady>();
+        _myTurnReceiver = PlayersManager.GetComponentFromMinePlayer<PlayerTurnStateReceiver>();
 
-        _myTurnIsReady.OnStartTurn += StartMyTurn;
+        _myTurnReceiver.OnStartTurn += StartMyTurn;
     }
 
     void StartMyTurn()//自分の行動の許可が出た時に呼び出す
