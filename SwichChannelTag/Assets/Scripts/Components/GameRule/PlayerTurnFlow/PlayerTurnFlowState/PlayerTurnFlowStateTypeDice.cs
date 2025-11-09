@@ -30,7 +30,7 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
 
         _decideMovableStep.Decide(_stateMachine.SharedData.IsChangedHierarchy);//ダイスを振る
 
-        _stateMachine.ChangeState(EPlayerTurnState.Move);
+        _stateMachine.ChangeState(EPlayerTurnFlowState.Move);
     }
 
     //行動選択ステートに戻る
@@ -38,7 +38,7 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
     {
         if (_finished) return;
 
-        _stateMachine.ChangeState(EPlayerTurnState.SelectAction);
+        _stateMachine.ChangeState(EPlayerTurnFlowState.SelectAction);
     }
 
     public override void OnEnter()

@@ -55,17 +55,17 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
 
         if(isGameSet)
         {
-            _stateMachine.ChangeState(EGameState.Finish);
+            _stateMachine.ChangeState(EGameFlowState.Finish);
             return;
         }
 
         //まだゲーム終了していないなら
 
-        EGameState opponentTurn = (turnSide == EPlayerState.Tagger) ? EGameState.RunnerTurn : EGameState.TaggerTurn;
+        EGameFlowState opponentTurn = (turnSide == EPlayerState.Tagger) ? EGameFlowState.RunnerTurn : EGameFlowState.TaggerTurn;
 
         if(_stateMachine.BeforeState==opponentTurn)//前のターンが相手のターンだったらターン終了ステートへ
         {
-            _stateMachine.ChangeState(EGameState.TurnFinish);
+            _stateMachine.ChangeState(EGameFlowState.TurnFinish);
             return;
         }
         else//そうでなければ相手のターンへ

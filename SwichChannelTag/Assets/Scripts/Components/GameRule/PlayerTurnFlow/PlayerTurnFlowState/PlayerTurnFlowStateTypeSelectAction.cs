@@ -29,7 +29,7 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
         if (_finished) return; 
         if (_stateMachine == null) return;
 
-        _stateMachine.ChangeState(EPlayerTurnState.Dice);
+        _stateMachine.ChangeState(EPlayerTurnFlowState.Dice);
     }
 
     //階層選択ステートに移るボタンに登録するメソッド
@@ -38,7 +38,7 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
         if (_finished) return;
         if (_stateMachine == null) return;
 
-        _stateMachine.ChangeState(EPlayerTurnState.SelectHierarchy);
+        _stateMachine.ChangeState(EPlayerTurnFlowState.SelectHierarchy);
     }
 
 
