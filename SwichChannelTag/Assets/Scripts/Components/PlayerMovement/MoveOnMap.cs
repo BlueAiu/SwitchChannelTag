@@ -63,10 +63,12 @@ public partial class MoveOnMap : MonoBehaviour
         if (UpdateMoveHistory(_myMapTrs.Pos.gridPos, newGridPos))
         {
             _remainingStep++;
+            UndoPath();
         }
         else
         {
             _remainingStep--;
+            InstancePath(destination - start);
         }
 
         _shiftPlayersPosition.OnExit(_myMapTrs);//Ç∏ÇÁÇ∑èàóù
@@ -118,5 +120,6 @@ public partial class MoveOnMap : MonoBehaviour
     {
         _myCanShift = PlayersManager.GetComponentFromMinePlayer<CanShift>();
         _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
+        _state = PlayersManager.GetComponentFromMinePlayer<PlayerState>();
     }
 }
