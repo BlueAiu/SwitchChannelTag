@@ -18,7 +18,7 @@ public class PlayerTurnFlowStateTypeChangeHierarchy : PlayerTurnFlowStateTypeBas
 
     public override void OnUpdate()
     {
-        _stateMachine.ChangeState(EPlayerTurnState.SelectAction);
+        _stateMachine.ChangeState(EPlayerTurnFlowState.SelectAction);
     }
 
     public override void OnExit()

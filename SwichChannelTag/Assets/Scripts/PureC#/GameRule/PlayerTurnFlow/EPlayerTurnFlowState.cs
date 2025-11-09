@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //作成者:杉山
-//プレイヤーのターン状態(Enum型)
+//プレイヤーのターンフローの状態(Enum型)
 
-public enum EPlayerTurnState
+public enum EPlayerTurnFlowState
 {
     None=-1,//実質nullの扱い
 

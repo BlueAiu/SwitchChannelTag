@@ -888,12 +888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMoveAnimation: {fileID: 722071810}
   _shiftPlayersPosition: {fileID: 742054144}
-  _pathObject:
-    _list:
-    - key: 0
-      value: {fileID: 4075456461077803855, guid: 46b024c82db08934891304e53b9cb5bd, type: 3}
-    - key: 1
-      value: {fileID: 4075456461077803855, guid: e4bd3467b00cab34dae9bba3223830ce, type: 3}
+  _catchRunner: {fileID: 742054145}
 --- !u!114 &722071808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1077,8 +1072,9 @@ GameObject:
   - component: {fileID: 742054142}
   - component: {fileID: 742054144}
   - component: {fileID: 742054143}
+  - component: {fileID: 742054145}
   m_Layer: 0
-  m_Name: ShiftPosManager
+  m_Name: OverlapManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1130,6 +1126,19 @@ MonoBehaviour:
   - {x: -0.5, y: 0, z: 0.5}
   - {x: 0.5, y: 0, z: -0.5}
   - {x: -0.5, y: 0, z: -0.5}
+  _getOverlapPlayer: {fileID: 742054143}
+--- !u!114 &742054145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742054141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa63a0e3a069e31488667c41c0918660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _getOverlapPlayer: {fileID: 742054143}
 --- !u!1001 &773714038
 PrefabInstance:

@@ -24,12 +24,12 @@ public class GameFlowStateTypeTurnFinish : GameFlowStateTypeBase
         //ゲーム終了であれば終了ステートへ
         if(isGameSet)
         {
-            _stateMachine.ChangeState(EGameState.Finish);
+            _stateMachine.ChangeState(EGameFlowState.Finish);
         }
 
         //そうでなければプレイヤーにターンを回す
 
-        EGameState nextState = (_stateMachine.SharedData.FirstTurn == EPlayerState.Runner) ? EGameState.RunnerTurn : EGameState.TaggerTurn;
+        EGameFlowState nextState = (_stateMachine.SharedData.FirstTurn == EPlayerState.Runner) ? EGameFlowState.RunnerTurn : EGameFlowState.TaggerTurn;
 
         _stateMachine.ChangeState(nextState);
     }

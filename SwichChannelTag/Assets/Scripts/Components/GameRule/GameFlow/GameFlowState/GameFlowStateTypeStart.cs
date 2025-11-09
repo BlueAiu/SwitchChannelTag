@@ -17,7 +17,7 @@ public class GameFlowStateTypeStart : GameFlowStateTypeBase
         //Œã‚Å‰½‚©‰‰o‚ğ‹²‚Ş
 
         //ƒ^[ƒ“‚ğ‰ñ‚·
-        EGameState nextState = (_stateMachine.SharedData.FirstTurn == EPlayerState.Runner) ? EGameState.RunnerTurn : EGameState.TaggerTurn;
+        EGameFlowState nextState = (_stateMachine.SharedData.FirstTurn == EPlayerState.Runner) ? EGameFlowState.RunnerTurn : EGameFlowState.TaggerTurn;
 
         _stateMachine.ChangeState(nextState);
     }

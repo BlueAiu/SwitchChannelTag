@@ -24,7 +24,7 @@ public class PlayerTurnFlowStateTypeMove : PlayerTurnFlowStateTypeBase
         if (_finished) return;
         if (_stateMachine == null) return;
 
-        _stateMachine.ChangeState(EPlayerTurnState.Finish);
+        _stateMachine.ChangeState(EPlayerTurnFlowState.Finish);
     }
 
     public override void OnEnter()
