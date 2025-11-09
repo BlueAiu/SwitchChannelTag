@@ -50,7 +50,7 @@ public class SwitchHierarchyCamera : MonoBehaviour
 
     IEnumerator InitCamera()
     {
-        yield return null; // wait InitPlayersPos
+        yield return new WaitUntil(CheckIsInitManager.Instance.GetIsInited); // wait InitPlayersPos
         MapTransform myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
         Switch(myMapTrs.Pos.hierarchyIndex);
     }
