@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //作成者:杉山
-//ゲームの状態(Enum)
+//ゲームフローの状態(Enum)
 
-public enum EGameState
+public enum EGameFlowState
 {
     None = -1,//実質nullの扱い
 
