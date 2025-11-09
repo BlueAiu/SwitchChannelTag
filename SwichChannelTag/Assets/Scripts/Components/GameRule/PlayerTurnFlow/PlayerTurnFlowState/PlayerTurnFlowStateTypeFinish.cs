@@ -13,12 +13,12 @@ public class PlayerTurnFlowStateTypeFinish : PlayerTurnFlowStateTypeBase
     [Tooltip("ターン終了時のUIを非表示にする機能")] [SerializeField]
     HideUITypeBase _hideFinishUI;
 
-    TurnIsReady _myTurnIsReady;
+    PlayerTurnCommunicator _myTurnCommunicator;
 
     public override void OnEnter()
     {
         _showFinishUI.Show();
-        _myTurnIsReady.IsReady = true;//行動終了したことを知らせる
+        _myTurnCommunicator.FinishedTurn();//行動終了したことを知らせる
     }
 
     public override void OnUpdate()
@@ -34,7 +34,7 @@ public class PlayerTurnFlowStateTypeFinish : PlayerTurnFlowStateTypeBase
 
     private void Awake()
     {
-        _myTurnIsReady = PlayersManager.GetComponentFromMinePlayer<TurnIsReady>();
+        _myTurnCommunicator = PlayersManager.GetComponentFromMinePlayer<PlayerTurnCommunicator>();
     }
 
     private void Start()

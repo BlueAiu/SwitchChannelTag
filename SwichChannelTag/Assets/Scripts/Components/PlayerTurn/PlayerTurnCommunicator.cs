@@ -8,15 +8,20 @@ using UnityEngine;
 
 public class PlayerTurnCommunicator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    PlayerTurnStateReceiver _receiver;
+
+    //☆ホスト側の操作
+    //プレイヤーに待ち時間かターン開始かを伝える(ターン開始であればisPlayerTurnにtrueを入れる)
+    public void StartTurn(bool isPlayerTurn)
     {
-        
+        _receiver.CurrentState = isPlayerTurn ? EPlayerTurnState.TurnInProgress : EPlayerTurnState.Waiting; 
     }
 
-    // Update is called once per frame
-    void Update()
+    //☆プレイヤー側の操作
+    //自分のターンが完了したことを伝える
+    public void FinishedTurn()
     {
-        
+        _receiver.CurrentState = EPlayerTurnState.TurnIsFinished;
     }
 }

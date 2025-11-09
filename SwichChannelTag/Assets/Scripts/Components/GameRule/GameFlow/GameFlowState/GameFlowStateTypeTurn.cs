@@ -9,19 +9,26 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
     [Tooltip("ゲーム終了かを判定する機能")] [SerializeField]
     JudgeGameSet _judgeGameSet;
 
-    List<TurnIsReady> ownPlayers=new List<TurnIsReady>();
+    List<PlayerTurnStateReceiver> ownPlayers=new List<PlayerTurnStateReceiver>();
 
     public override void OnEnter()//ステートの開始処理
     {
-        var turnIsReadys = PlayersManager.GetComponentsFromPlayers<TurnIsReady>();
+        var playerTurnStateReceivers = PlayersManager.GetComponentsFromPlayers<PlayerTurnStateReceiver>();
+        var playerTurnCommunicators = PlayersManager.GetComponentsFromPlayers<PlayerTurnCommunicator>();
+
         var playerStates = PlayersManager.GetComponentsFromPlayers<PlayerState>();
 
         for(int i=0; i<playerStates.Length ;i++)
         {
-            if (playerStates[i].State==turnSide)
+            bool isTurnSide = playerStates[i].State == turnSide;
+
+            //対象のプレイヤーの行動を開始させる
+            //そうでないプレイヤーは待ち状態にする
+            playerTurnCommunicators[i].StartTurn(isTurnSide);
+
+            if (isTurnSide)
             {
-                turnIsReadys[i].IsReady = false;//対象のプレイヤーの行動を開始させる
-                ownPlayers.Add(turnIsReadys[i]);
+                ownPlayers.Add(playerTurnStateReceivers[i]);
             }
         }
     }
@@ -34,7 +41,7 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
         {
             if(player==null) continue;
 
-            isFinishAll &= player.IsReady;
+            isFinishAll &= (player.CurrentState == EPlayerTurnState.TurnIsFinished);
         }
 
         if (isFinishAll)//ステートを相手のターンに変更(後にゲームが終了したかを取得して終了ステートにも移行するようにする)
