@@ -16,6 +16,9 @@ public class GameFlowStateTypeStart : GameFlowStateTypeBase
     {
         //後で何か演出を挟む
 
+        //初期化処理が終わるまで待つ
+        if (!CheckIsInitManager.Instance.GetIsInited()) return;
+
         //ターンを回す
         EGameFlowState nextState = (_stateMachine.SharedData.FirstTurn == EPlayerState.Runner) ? EGameFlowState.RunnerTurn : EGameFlowState.TaggerTurn;
 

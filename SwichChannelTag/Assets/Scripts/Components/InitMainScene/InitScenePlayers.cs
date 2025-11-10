@@ -75,6 +75,8 @@ public class InitScenePlayers : MonoBehaviour
 
             _setTransforms[i].Position=mapTrs.CurrentWorldPos;
         }
+
+        CheckIsInitManager.Instance.CompletedInit();//‰Šú‰»ˆ—‚ğŠ®—¹‚µ‚½‚±‚Æ‚ğ“`‚¦‚é
     }
 
     void InitMapHierarchy()
