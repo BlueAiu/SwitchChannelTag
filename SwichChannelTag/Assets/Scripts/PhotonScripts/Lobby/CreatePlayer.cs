@@ -18,9 +18,4 @@ public class CreatePlayer : MonoBehaviourPunCallbacks
         GetComponent<LobbyLocation>().SetPlayer(player);
         readyButton.OwnPlayer = player;
     }
-
-    public override void OnLeftRoom() 
-    {
-        PhotonNetwork.Destroy(player);
-    }
 }

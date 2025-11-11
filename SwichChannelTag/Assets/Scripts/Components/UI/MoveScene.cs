@@ -23,7 +23,7 @@ public class MoveScene : MonoBehaviourPunCallbacks
         StartCoroutine(LoadTime(Waittime, () =>
         {
             
-            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.Disconnect();
             
         }));
     }
@@ -52,7 +52,7 @@ public class MoveScene : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         Debug.Log("Left room");
-        Destroyobj();
+        //Destroyobj();
         SceneManager.LoadScene("TitleScene");
     }
 }

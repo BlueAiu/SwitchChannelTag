@@ -1710,6 +1710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Start_button: {fileID: 2076666379}
+  Ready_button: {fileID: 2093833273}
 --- !u!114 &7878950072891773037
 MonoBehaviour:
   m_ObjectHideFlags: 0

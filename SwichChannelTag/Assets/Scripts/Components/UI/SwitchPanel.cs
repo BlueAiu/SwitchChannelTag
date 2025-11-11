@@ -14,6 +14,7 @@ public class SwitchPanel : MonoBehaviour
         {
             Debug.LogError("The object is not attached!");
         }
+        Panel.SetActive(false);
     }
 
     public void SignPanel()
