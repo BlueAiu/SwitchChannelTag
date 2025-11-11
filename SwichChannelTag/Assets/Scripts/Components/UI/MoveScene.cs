@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MoveScene : MonoBehaviour
+public class MoveScene : MonoBehaviourPunCallbacks
 {
     [Tooltip("‘JˆÚ‚Ì‘Ò‚¿ŽžŠÔ")]
     [SerializeField] private float Waittime;
@@ -22,9 +22,9 @@ public class MoveScene : MonoBehaviour
     {
         StartCoroutine(LoadTime(Waittime, () =>
         {
-            Destroyobj();
+            
             PhotonNetwork.LeaveRoom();
-            SceneManager.LoadScene("TitleScene");
+            
         }));
     }
 
@@ -45,5 +45,14 @@ public class MoveScene : MonoBehaviour
         {
             Destroy(rootObj);
         }
+
+        Debug.Log("Destroyed");
+    }
+
+    public override void OnLeftRoom()
+    {
+        Debug.Log("Left room");
+        Destroyobj();
+        SceneManager.LoadScene("TitleScene");
     }
 }
