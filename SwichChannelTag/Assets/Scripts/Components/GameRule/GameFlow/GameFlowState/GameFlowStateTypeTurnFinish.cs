@@ -19,12 +19,14 @@ public class GameFlowStateTypeTurnFinish : GameFlowStateTypeBase
     public override void OnUpdate()
     {
         //ゲーム終了判定をする
-        bool isGameSet = _judgeGameSet.IsGameSet();
+        bool isGameSet = _judgeGameSet.IsGameSet(out EPlayerState? winner);
 
         //ゲーム終了であれば終了ステートへ
         if(isGameSet)
         {
+            //ゲームの統計情報にどちらの勝利かを書き込む
             _stateMachine.ChangeState(EGameFlowState.Finish);
+            return;
         }
 
         //そうでなければプレイヤーにターンを回す

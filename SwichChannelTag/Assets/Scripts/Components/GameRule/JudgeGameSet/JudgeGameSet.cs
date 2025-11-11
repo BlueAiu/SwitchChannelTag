@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //作成者:杉山
-//ゲーム終了を判断する
+//ゲーム終了と勝敗を判断する
 
 public class JudgeGameSet : MonoBehaviour
 {
@@ -12,9 +12,23 @@ public class JudgeGameSet : MonoBehaviour
 
     PlayerState[] _playerStates;
 
-    public bool IsGameSet()//ゲーム終了かの判定
+    public bool IsGameSet(out EPlayerState? winner)//ゲーム終了かの判定、勝敗がついた時はどちらが勝ちかも伝える
     {
-        return IsTimeUp() || AllPlayerIsTagger();
+        winner = null;
+
+        if(AllPlayerIsTagger())
+        {
+            winner = EPlayerState.Tagger;
+            return true;
+        }
+
+        if(IsTimeUp())//全員鬼でないことは確定している
+        {
+            winner = EPlayerState.Runner;
+            return true;
+        }
+
+        return false;
     }
 
     bool IsTimeUp()//最大ターン数経過したか(時間切れか)

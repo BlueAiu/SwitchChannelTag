@@ -58,10 +58,11 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
     void ChangeState()//ステートを変更する
     {
         //ゲーム終了判定をする
-        bool isGameSet = _judgeGameSet.IsGameSet();
+        bool isGameSet = _judgeGameSet.IsGameSet(out EPlayerState? winner);
 
         if(isGameSet)
         {
+            //ゲームの統計情報にどちらの勝利かを書き込む
             _stateMachine.ChangeState(EGameFlowState.Finish);
             return;
         }
