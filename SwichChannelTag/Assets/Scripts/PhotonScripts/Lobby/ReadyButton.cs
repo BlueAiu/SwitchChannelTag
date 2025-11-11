@@ -22,8 +22,6 @@ public class ReadyButton : MonoBehaviour
         {
             selfText = GetComponentsInChildren<TMP_Text>()[0];
         }
-
-        this.gameObject.SetActive(false);
     }
 
     public void SwitchReady()

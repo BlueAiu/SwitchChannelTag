@@ -10,9 +10,12 @@ public class HideStart : MonoBehaviour
     private const int Limitvalue = 4;
     private int Currentplayer;
 
+    ReadyButton readyButton;
+
     private void Start()
     {
-        Start_button.SetActive(false);  
+        Start_button.SetActive(false); 
+        Ready_button.SetActive(false);
     }
 
     // Update is called once per frame
@@ -36,4 +39,6 @@ public class HideStart : MonoBehaviour
             Start_button.SetActive(false);
         }
     }
+
+    
 }

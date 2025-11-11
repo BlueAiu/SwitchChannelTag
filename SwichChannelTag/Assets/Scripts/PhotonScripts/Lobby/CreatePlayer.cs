@@ -21,7 +21,6 @@ public class CreatePlayer : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom() 
     {
-        readyButton.OwnPlayer = null;
         PhotonNetwork.Destroy(player);
     }
 }
