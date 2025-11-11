@@ -42,8 +42,6 @@ public class SetObstacle : MonoBehaviour
             for(int h = 0; h < map.Length; h++)
             {
                 var str = map[h];
-                if(str.Length != _map[i].MapSize_X)
-                { Debug.LogAssertionFormat("ObstacleMaps[{0}][{1}]の文字列の長さをマップの横幅と揃えてください", i, h); }
 
                 for(int w = 0; w < str.Length; w++)
                 {
@@ -78,7 +76,9 @@ public class SetObstacle : MonoBehaviour
                 isWall = false;
                 break;
 
-            default: break;
+            default:
+                Debug.LogWarning("指定以外の文字が確認されました \nこの文字は'.'とみなします");
+                break;
         }
 
         if (!isWall)
