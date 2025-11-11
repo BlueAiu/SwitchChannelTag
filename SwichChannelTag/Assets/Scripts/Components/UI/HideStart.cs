@@ -6,6 +6,7 @@ using UnityEngine;
 public class HideStart : MonoBehaviour
 {
     [SerializeField] GameObject Start_button;
+    [SerializeField] GameObject Ready_button;
     private const int Limitvalue = 4;
     private int Currentplayer;
 
