@@ -28,7 +28,7 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
 
         _stateMachine.SharedData.DestinationHierarchyIndex = hierarchyIndex;//移動先階層番号を記録
 
-        _stateMachine.ChangeState(EPlayerTurnState.ChangeHierarchy);
+        _stateMachine.ChangeState(EPlayerTurnFlowState.ChangeHierarchy);
     }
 
     //行動選択ステートに戻る
@@ -37,7 +37,7 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
         if (_finished) return;
         if (_stateMachine == null) return;
 
-        _stateMachine.ChangeState(EPlayerTurnState.SelectAction);
+        _stateMachine.ChangeState(EPlayerTurnFlowState.SelectAction);
     }
 
     public override void OnEnter()

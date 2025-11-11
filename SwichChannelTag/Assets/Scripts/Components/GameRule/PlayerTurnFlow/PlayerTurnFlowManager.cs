@@ -9,23 +9,23 @@ public class PlayerTurnFlowManager : MonoBehaviour
 {
     //--- ステート関係 ---//
     [Tooltip("プレイヤーの行動ステート")] [SerializeField]
-    SerializableDictionary<EPlayerTurnState, PlayerTurnFlowStateTypeBase> _playerTurnStateDic;
+    SerializableDictionary<EPlayerTurnFlowState, PlayerTurnFlowStateTypeBase> _playerTurnStateDic;
 
     SharedDataBetweenPlayerTurnFlowState _sharedData=new SharedDataBetweenPlayerTurnFlowState();//ステート間で共有するデータ
 
-    EPlayerTurnState _nowEState=EPlayerTurnState.None;
-    EPlayerTurnState _beforeEState=EPlayerTurnState.None;
+    EPlayerTurnFlowState _nowEState=EPlayerTurnFlowState.None;
+    EPlayerTurnFlowState _beforeEState=EPlayerTurnFlowState.None;
 
     PlayerTurnFlowStateTypeBase _currentState=null;
-    TurnIsReady _myTurnIsReady;
+    PlayerTurnStateReceiver _myTurnReceiver;
 
-    public EPlayerTurnState NowState { get { return _nowEState; } }//現在のステート
+    public EPlayerTurnFlowState NowState { get { return _nowEState; } }//現在のステート
 
-    public EPlayerTurnState BeforeState { get { return _beforeEState; } }//前のステート
+    public EPlayerTurnFlowState BeforeState { get { return _beforeEState; } }//前のステート
 
     public SharedDataBetweenPlayerTurnFlowState SharedData { get { return _sharedData; } }//ステート間で共有するデータ
 
-    public void ChangeState(EPlayerTurnState nextState)//ステートの変更
+    public void ChangeState(EPlayerTurnFlowState nextState)//ステートの変更
     {
         if (_currentState != null) _currentState.OnExit();
 
@@ -46,15 +46,22 @@ public class PlayerTurnFlowManager : MonoBehaviour
 
     private void Awake()
     {
-        _myTurnIsReady = PlayersManager.GetComponentFromMinePlayer<TurnIsReady>();
+        _myTurnReceiver = PlayersManager.GetComponentFromMinePlayer<PlayerTurnStateReceiver>();
 
-        _myTurnIsReady.OnStartTurn += StartMyTurn;
+        _myTurnReceiver.OnStartTurn += StartMyTurn;
+        _myTurnReceiver.OnWaiting += SwitchWaiting;
     }
 
     void StartMyTurn()//自分の行動の許可が出た時に呼び出す
     {
         //最初のステートは行動選択から
-        ChangeState(EPlayerTurnState.SelectAction);
+        ChangeState(EPlayerTurnFlowState.SelectAction);
+    }
+
+    void SwitchWaiting()//待ち時間
+    {
+        //待ち時間ステート
+        ChangeState(EPlayerTurnFlowState.Waiting);
     }
 
     private void Update()

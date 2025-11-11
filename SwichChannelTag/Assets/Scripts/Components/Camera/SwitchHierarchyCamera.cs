@@ -1,4 +1,5 @@
 using Cinemachine;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,12 +45,12 @@ public class SwitchHierarchyCamera : MonoBehaviour
 
     private void Start()
     {
-        InitCamera();
+        StartCoroutine(nameof(InitCamera));
     }
 
-    void InitCamera()//カメラの初期化処理
+    IEnumerator InitCamera()
     {
-        //プレイヤーの初期位置にカメラを合わせる
+        yield return new WaitUntil(CheckIsInitManager.Instance.GetIsInited); // wait InitPlayersPos
         MapTransform myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
         Switch(myMapTrs.Pos.hierarchyIndex);
     }

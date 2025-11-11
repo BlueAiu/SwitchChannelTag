@@ -9,8 +9,11 @@ public class JoinGame : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        PhotonNetwork.ConnectUsingSettings();
-        WriteLog("Start Join Room...");
+        if (!PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.ConnectUsingSettings();
+            WriteLog("Join Server...");
+        }
     }
 
     // ルームに入室前
@@ -18,6 +21,7 @@ public class JoinGame : MonoBehaviourPunCallbacks
     {
         // "room"という名前のルームに参加する（ルームが無ければ作成してから参加する）
         PhotonNetwork.JoinOrCreateRoom("room", new RoomOptions(), TypedLobby.Default);
+        WriteLog("Start Join Room...");
     }
 
     // ルームに入室後

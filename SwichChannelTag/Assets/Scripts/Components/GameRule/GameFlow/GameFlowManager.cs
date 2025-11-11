@@ -12,18 +12,36 @@ public class GameFlowManager : MonoBehaviour
 {
     //--- ステート関係 ---//
     [Tooltip("ゲームフローステート")] [SerializeField]
-    SerializableDictionary<EGameState, GameFlowStateTypeBase> _gameFlowStateDic;
+    SerializableDictionary<EGameFlowState, GameFlowStateTypeBase> _gameFlowStateDic;
 
-    EGameState _nowEState = EGameState.None;
-    EGameState _beforeEState = EGameState.None;
+    [Tooltip("最初に動くプレイヤー")] [SerializeField]
+    EPlayerState _firstTurn=EPlayerState.Runner;
 
-    public EGameState NowState { get { return _nowEState; } }//現在のステート
+    SharedDataBetweenGameFlowState _sharedData;//ステート間で共有するデータ
 
-    public EGameState BeforeState { get { return _beforeEState; } }//前のステート
+    EGameFlowState _nowEState = EGameFlowState.None;
+    EGameFlowState _beforeEState = EGameFlowState.None;
 
-    GameFlowStateTypeBase _currentState=null;
+    public EGameFlowState NowState { get { return _nowEState; } }//現在のステート
+
+    public EGameFlowState BeforeState { get { return _beforeEState; } }//前のステート
+
+    public SharedDataBetweenGameFlowState SharedData { get { return _sharedData; } }//ステート間で共有するデータ
+
+    GameFlowStateTypeBase _currentState =null;
 
     Player mine;
+
+    private void Awake()
+    {
+        if(_firstTurn==EPlayerState.Length)
+        {
+            Debug.Log("Length以外を指定してください！");
+            return;
+        }
+
+        _sharedData = new SharedDataBetweenGameFlowState(_firstTurn);
+    }
 
     private void Start()
     {
@@ -32,10 +50,10 @@ public class GameFlowManager : MonoBehaviour
         if (!mine.IsMasterClient) return;//ホスト主以外はこの処理を行わない
 
         //最初のステートは開始演出から
-        ChangeState(EGameState.Start);
+        ChangeState(EGameFlowState.Start);
     }
 
-    public void ChangeState(EGameState nextState)//ステートの変更
+    public void ChangeState(EGameFlowState nextState)//ステートの変更
     {
         if (_currentState != null) _currentState.OnExit();
 

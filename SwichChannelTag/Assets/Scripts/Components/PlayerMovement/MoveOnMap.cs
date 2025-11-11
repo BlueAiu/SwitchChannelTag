@@ -15,6 +15,9 @@ public partial class MoveOnMap : MonoBehaviour
     [Tooltip("プレイヤーの位置をずらす機能")] [SerializeField] 
     ShiftPlayersPosition _shiftPlayersPosition;
 
+    [Tooltip("プレイヤーを捕まえる機能")] [SerializeField]
+    CatchRunner _catchRunner;
+
     MapTransform _myMapTrs;//自分のマップ上の位置情報
     CanShift _myCanShift;
 
@@ -60,10 +63,12 @@ public partial class MoveOnMap : MonoBehaviour
         if (UpdateMoveHistory(_myMapTrs.Pos.gridPos, newGridPos))
         {
             _remainingStep++;
+            UndoPath();
         }
         else
         {
             _remainingStep--;
+            InstancePath(destination - start);
         }
 
         _shiftPlayersPosition.OnExit(_myMapTrs);//ずらす処理
@@ -81,6 +86,7 @@ public partial class MoveOnMap : MonoBehaviour
         _myMapTrs.Rewrite(newPos);
 
         _shiftPlayersPosition.OnEnter(_myMapTrs);//ずらす処理
+        _catchRunner.TryCatching();
     }
 
     bool IsMovable(Vector2 inputVec,out MapVec newGridPos)//指定方向に移動できるか
@@ -114,5 +120,6 @@ public partial class MoveOnMap : MonoBehaviour
     {
         _myCanShift = PlayersManager.GetComponentFromMinePlayer<CanShift>();
         _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
+        _state = PlayersManager.GetComponentFromMinePlayer<PlayerState>();
     }
 }
