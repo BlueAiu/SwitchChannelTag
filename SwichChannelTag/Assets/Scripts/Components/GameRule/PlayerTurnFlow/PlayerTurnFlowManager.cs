@@ -60,7 +60,8 @@ public class PlayerTurnFlowManager : MonoBehaviour
 
     void SwitchWaiting()//待ち時間
     {
-        Debug.Log("待ち時間");
+        //待ち時間ステート
+        ChangeState(EPlayerTurnFlowState.Waiting);
     }
 
     private void Update()
