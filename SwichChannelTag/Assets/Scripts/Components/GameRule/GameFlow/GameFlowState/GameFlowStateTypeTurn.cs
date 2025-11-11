@@ -52,7 +52,7 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
 
     public override void OnExit()//ステートの終了処理
     {
-        // Pass
+        ownPlayers.Clear();
     }
 
     void ChangeState()//ステートを変更する
