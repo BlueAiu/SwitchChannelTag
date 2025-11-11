@@ -31,4 +31,17 @@ public class ReadyButton : MonoBehaviour
         ownPlayerReady.SwitchReady();
         selfText.text = ownPlayerReady.IsReady ? readyText : unReadyText;
     }
+
+    /*private void Update()
+    {
+        ShowReady();
+    }
+
+    private void ShowReady()
+    {
+        if(ownPlayerReady != null)
+        {
+            this.gameObject.SetActive(true);
+        }
+    }*/
 }
