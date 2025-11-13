@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HideStart : MonoBehaviour
+public class HideStart : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject Start_button;
     [SerializeField] GameObject Ready_button;
-    private const int Limitvalue = 4;
+    [SerializeField] int Limitvalue = 4;
     private int Currentplayer;
 
     ReadyButton readyButton;
@@ -30,7 +30,7 @@ public class HideStart : MonoBehaviour
 
         //Debug.Log("Œ»Ý" + Currentplayer + "l");
 
-        if (Currentplayer == Limitvalue)
+        if (Currentplayer >= Limitvalue)
         {
             Start_button.SetActive(true);
         }
@@ -40,5 +40,8 @@ public class HideStart : MonoBehaviour
         }
     }
 
-    
+    public override void OnJoinedRoom()
+    {
+        Ready_button.SetActive(true);
+    }
 }
