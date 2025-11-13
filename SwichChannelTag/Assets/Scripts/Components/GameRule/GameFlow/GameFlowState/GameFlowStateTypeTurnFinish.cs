@@ -13,7 +13,7 @@ public class GameFlowStateTypeTurnFinish : GameFlowStateTypeBase
     public override void OnEnter()
     {
         //ここで経過ターンを増やす
-        GameStatsManager.Instance.SetTurn(GameStatsManager.Instance.GetTurn() + 1);
+        GameStatsManager.Instance.Turn.SetTurn(GameStatsManager.Instance.Turn.GetTurn() + 1);
     }
 
     public override void OnUpdate()
@@ -24,7 +24,7 @@ public class GameFlowStateTypeTurnFinish : GameFlowStateTypeBase
         //ゲーム終了であれば終了ステートへ
         if(isGameSet)
         {
-            //ゲームの統計情報にどちらの勝利かを書き込む
+            GameStatsManager.Instance.Winner.SetWinner(winner);//ゲームの統計情報にどちらの勝利かを書き込む
             _stateMachine.ChangeState(EGameFlowState.Finish);
             return;
         }

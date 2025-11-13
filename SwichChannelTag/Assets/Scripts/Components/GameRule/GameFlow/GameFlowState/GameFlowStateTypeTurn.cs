@@ -62,7 +62,7 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
 
         if(isGameSet)
         {
-            //ゲームの統計情報にどちらの勝利かを書き込む
+            GameStatsManager.Instance.Winner.SetWinner(winner);//ゲームの統計情報にどちらの勝利かを書き込む
             _stateMachine.ChangeState(EGameFlowState.Finish);
             return;
         }

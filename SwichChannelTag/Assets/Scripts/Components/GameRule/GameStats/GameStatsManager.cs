@@ -1,4 +1,5 @@
 using Photon.Pun;
+using System;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 using UnityEngine;
@@ -9,38 +10,40 @@ using UnityEngine;
 
 public class GameStatsManager : MonoBehaviourPunCallbacks
 {
-    private const string TURN_KEY = "TurnNum";
-    const int _defaultTurnNum = 1;
-    const int _invalidTurnNum = -1;
-
     public static GameStatsManager Instance { get; private set; }
+
+    Turn_GameStats _turn=new Turn_GameStats();
+    Winner_GameStats _winner =new Winner_GameStats();
+
+    public Turn_GameStats Turn
+    {
+        get { return _turn; }
+    }
+
+    public Winner_GameStats Winner
+    {
+        get { return _winner; }
+    }
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public override void OnJoinedRoom()
     {
-        SetTurn(_defaultTurnNum);
+        _turn.OnJoinedRoom();
     }
 
-    public void SetTurn(int newTurnNum)//ターン数を設定
+    public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
     {
-        Hashtable props = new Hashtable();
-        props[TURN_KEY] = newTurnNum;
-        PhotonNetwork.CurrentRoom.SetCustomProperties(props);
-    }
-
-    public int GetTurn()//ターン数を取得
-    {
-        if (PhotonNetwork.CurrentRoom != null && PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(TURN_KEY))
-        {
-            return (int)PhotonNetwork.CurrentRoom.CustomProperties[TURN_KEY];
-        }
-
-        Debug.Log("ターン数の取得に失敗");
-        return _invalidTurnNum;
+        _winner.OnRoomPropertiesUpdate(propertiesThatChanged);
     }
 }

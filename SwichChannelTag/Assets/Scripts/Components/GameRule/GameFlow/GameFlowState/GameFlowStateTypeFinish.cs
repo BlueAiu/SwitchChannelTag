@@ -9,7 +9,7 @@ public class GameFlowStateTypeFinish : GameFlowStateTypeBase
 {
     public override void OnEnter()//ステートの開始処理
     {
-        Debug.Log("ゲーム終了！");
+        Debug.Log("ゲーム終了");
     }
 
     public override void OnUpdate()//ステートの毎フレーム処理
@@ -20,5 +20,15 @@ public class GameFlowStateTypeFinish : GameFlowStateTypeBase
     public override void OnExit()//ステートの終了処理
     {
 
+    }
+
+    private void Awake()
+    {
+        GameStatsManager.Instance.Winner.OnUpdateWinner += LogWinner;
+    }
+
+    void LogWinner(EPlayerState winner)
+    {
+        Debug.Log("Winner is..." + winner);
     }
 }
