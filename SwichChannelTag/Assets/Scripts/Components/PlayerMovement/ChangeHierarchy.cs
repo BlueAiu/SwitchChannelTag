@@ -8,10 +8,12 @@ using UnityEngine.InputSystem;
 //プレイヤーの階層移動操作
 //enabledをfalseにすれば、ボタンを押しても階層移動を出来なくすることが出来る
 
-public class ChangeHierarchy : MonoBehaviour
+public partial class ChangeHierarchy : MonoBehaviour
 {
     [Tooltip("プレイヤーの位置をずらす機能")] [SerializeField]
     ShiftPlayersPosition _shiftPlayersPosition;
+    [Tooltip("階層移動のクールダウン")] [SerializeField]
+    CoolDown_ChangeHierarchy _coolDown;
 
     MapTransform _myMapTrs;//自分のマップ上の位置情報
 
@@ -50,6 +52,10 @@ public class ChangeHierarchy : MonoBehaviour
         if (!enabled) return false;
 
         if (!IsAbleToMoveTheHierarchy(newHierarchyIndex)) return false;
+
+        if(!_coolDown.CanChangeHierarchy) return false;
+
+        _coolDown.SetLastChangedTurn();
 
         _shiftPlayersPosition.OnExit(_myMapTrs);
 
