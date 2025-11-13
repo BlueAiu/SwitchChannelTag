@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -15,11 +16,17 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
     [Tooltip("階層選択に移るボタン")] [SerializeField]
     Button _selectHierarchyButton;
 
+    [Tooltip("階層移動のクールダウン中のUI")] [SerializeField]
+    TMP_Text _coolDownText;
+
     [Tooltip("行動選択UIを表示する機能")] [SerializeField]
     ShowUITypeBase _showSelectActionUI;
 
     [Tooltip("行動選択UIを非表示にする機能")] [SerializeField]
     HideUITypeBase _hideSelectActionUI;
+
+    [Tooltip("階層移動のクールダウン")] [SerializeField]
+    CoolDown_ChangeHierarchy _coolDown;
 
     bool _finished = true;
 
@@ -49,8 +56,17 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
         _showSelectActionUI.Show();
         EventSystem.current.SetSelectedGameObject(_defaultSelectButton.gameObject);
 
-        //階層移動をした後なら、階層移動(選択)が出来ないようにする
-        _selectHierarchyButton.interactable = !(_stateMachine.SharedData.IsChangedHierarchy);
+        //階層移動をした直後かつ、階層移動のクールダウン中は、階層移動(選択)が出来ないようにする
+        _selectHierarchyButton.interactable = !(_stateMachine.SharedData.IsChangedHierarchy) & _coolDown.CanChangeHierarchy;
+
+        if (!_coolDown.CanChangeHierarchy)
+        {
+            _coolDownText.text = _coolDown.CoolDownLeft.ToString() + " turns left";
+        }
+        else
+        {
+            _coolDownText.text = string.Empty;
+        }
     }
 
     public override void OnUpdate()
