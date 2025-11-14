@@ -26,4 +26,14 @@ public class GameFlowStateTypeFinish : GameFlowStateTypeBase
     {
 
     }
+
+    private void Awake()
+    {
+        GameStatsManager.Instance.Winner.OnUpdateWinner += LogWinner;
+    }
+
+    void LogWinner(EPlayerState winner)
+    {
+        Debug.Log("Winner is..." + winner);
+    }
 }
