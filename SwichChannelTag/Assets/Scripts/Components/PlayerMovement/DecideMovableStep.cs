@@ -8,12 +8,12 @@ using UnityEngine;
 
 public class DecideMovableStep : MonoBehaviour
 {
-    [Tooltip("階層移動しないときのダイス")]
-    [SerializeField] SerializeDice _defaultDice;
-    [Tooltip("階層移動した後のダイス")]
-    [SerializeField] SerializableDictionary<EPlayerState, SerializeDice> _switchedDice;
+    [Tooltip("階層移動しないときのルーレット")]
+    [SerializeField] SerializableDictionary<EPlayerState, SerializeRoulette> _defaultRoulette;
+    [Tooltip("階層移動した後のルーレット")]
+    [SerializeField] SerializableDictionary<EPlayerState, SerializeRoulette> _switchedRoulette;
     [SerializeField] MoveOnMap _moveOnMap;
-    [SerializeField] TextMeshProUGUI _diceResultText;
+    [SerializeField] TextMeshProUGUI _rouletteResultText;
 
     [SerializeField] ChangeHierarchy _changeHierarchy;
     [SerializeField] PlayerState _playerState;
@@ -23,26 +23,33 @@ public class DecideMovableStep : MonoBehaviour
     public void Decide(bool isChangedHierarchy)//動けるマス数を決定(ダイスロールで)、階層移動したかを受け取る
     {
         int result;
+        var state = _playerState.State;
 
         if (isChangedHierarchy)//階層移動をした場合、ダイス減算をする
         {
-            var state = _playerState.State;
-
-            if(_switchedDice.TryGetValue(state, out var dice))
+            if(_switchedRoulette.TryGetValue(state, out var roulette))
             {
-                result = dice.DiceRoll();
-                if (writeLog) Debug.Log(dice.DiceText() + " = " + result);
+                result = roulette.RouletteRoll();
+                if (writeLog) Debug.Log("roulette = " + result);
             }
             else
             {
-                if(writeLog) Debug.Log("Not found switchedDice in " + state);
+                if(writeLog) Debug.Log("Not found switchedRoulette in " + state);
                 result = 0;
             }
         }
         else
         {
-            result = _defaultDice.DiceRoll();
-            if (writeLog) Debug.Log(_defaultDice.DiceText() + " = " + result);
+            if (_defaultRoulette.TryGetValue(state, out var roulette))
+            {
+                result = roulette.RouletteRoll();
+                if (writeLog) Debug.Log("roulette = " + result);
+            }
+            else
+            {
+                if (writeLog) Debug.Log("Not found defaultRoulette in " + state);
+                result = 0;
+            }
         }
 
         _moveOnMap.RemainingStep=result;
@@ -50,7 +57,7 @@ public class DecideMovableStep : MonoBehaviour
 
     private void Update()
     {
-        _diceResultText.text = _moveOnMap.RemainingStep.ToString();//テキストに残り移動可能マス数を表示
+        _rouletteResultText.text = _moveOnMap.RemainingStep.ToString();//テキストに残り移動可能マス数を表示
     }
 
     private void Start()
