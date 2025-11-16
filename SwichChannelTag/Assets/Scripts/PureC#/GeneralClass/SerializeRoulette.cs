@@ -42,13 +42,11 @@ public class SerializeRoulette
     {
         var ret = new List<int>(list);
 
-        for (int i = list.Count - 1; i > 0; i--)
+        for (int i = ret.Count - 1; i > 0; i--)
         {
             int j = UnityEngine.Random.Range(0, i + 1);
 
-            var temp = list[j];
-            list[j] = list[i];
-            list[i] = temp;
+            (ret[i], ret[j]) = (ret[j], ret[i]);
         }
 
         return ret;
