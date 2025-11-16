@@ -754,24 +754,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bfce79fcf97c374c9aa173c1a02a75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultDice:
-    diceMax: 6
-    diceNum: 1
-    reduceNum: 0
-  _switchedDice:
+  _defaultRoulette:
     _list:
     - key: 0
       value:
-        diceMax: 6
-        diceNum: 1
-        reduceNum: 3
+        restoreAtEnd: 0
+        distribution:
+        - {x: 1, y: 1}
+        - {x: 2, y: 1}
+        - {x: 3, y: 1}
+        - {x: 4, y: 1}
+        - {x: 5, y: 1}
+        - {x: 6, y: 1}
     - key: 1
       value:
-        diceMax: 6
-        diceNum: 2
-        reduceNum: 6
+        restoreAtEnd: 0
+        distribution:
+        - {x: 1, y: 1}
+        - {x: 2, y: 1}
+        - {x: 3, y: 1}
+        - {x: 4, y: 1}
+        - {x: 5, y: 1}
+        - {x: 6, y: 1}
+  _switchedRoulette:
+    _list:
+    - key: 0
+      value:
+        restoreAtEnd: 0
+        distribution:
+        - {x: 0, y: 3}
+        - {x: 1, y: 1}
+        - {x: 2, y: 1}
+        - {x: 3, y: 1}
+    - key: 1
+      value:
+        restoreAtEnd: 0
+        distribution:
+        - {x: 0, y: 15}
+        - {x: 1, y: 6}
+        - {x: 2, y: 5}
+        - {x: 3, y: 4}
+        - {x: 4, y: 3}
+        - {x: 5, y: 2}
+        - {x: 6, y: 1}
   _moveOnMap: {fileID: 722071807}
-  _diceResultText: {fileID: 1142387691}
+  _rouletteResultText: {fileID: 1142387691}
   _changeHierarchy: {fileID: 722071808}
   _playerState: {fileID: 0}
   writeLog: 1
@@ -3113,7 +3140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.173922
+      value: 31.326082
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.z
