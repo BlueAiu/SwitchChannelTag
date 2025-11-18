@@ -5,7 +5,7 @@ using UnityEngine;
 //作成者:杉山
 //マス移動ステート
 
-public class PlayerTurnFlowStateTypeMove : PlayerTurnFlowStateTypeBase
+public class PlayerTurnFlowStateTypePlayerMove : PlayerTurnFlowStateTypeBase
 {
     [Tooltip("マップ上を移動する機能")] [SerializeField]
     MoveOnMap _moveOnMap;
