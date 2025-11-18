@@ -17,6 +17,8 @@ public class SetObstacle : MonoBehaviour
     [SerializeField] GameObject _obstacleObject;
     [SerializeField] GameObject _wallObstacleObject;
 
+    [SerializeField] float _wallTiltAngle = 15f;
+
     [SerializeField, TextArea(mapRows,mapRows)]
     [Tooltip("ï∂éöóÒÇÃÉäÉXÉgÇ≈è·äQï®Çê›íËÇµÇ‹Ç∑\n" +
         ". : âΩÇ‡íuÇ©Ç»Ç¢\n" +
@@ -131,6 +133,9 @@ public class SetObstacle : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(new Vector3(wallDir.x, 0, wallDir.y));
         var i_wall = Instantiate(_wallObstacleObject, worldPos, rotation);
         i_wall.GetComponent<ObstacleModel>().ChangeModel(setWall.hierarchyIndex);
+
+        bool isGridEven = (wallPos0.gridPos.x + wallPos0.gridPos.y) % 2 == 0;
+        i_wall.transform.Rotate(Vector3.up * (isGridEven ? _wallTiltAngle : -_wallTiltAngle));
     }
 
 }
