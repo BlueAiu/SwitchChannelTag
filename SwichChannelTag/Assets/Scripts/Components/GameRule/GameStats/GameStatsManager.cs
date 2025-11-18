@@ -14,6 +14,7 @@ public class GameStatsManager : MonoBehaviourPunCallbacks
 
     Turn_GameStats _turn=new Turn_GameStats();
     Winner_GameStats _winner =new Winner_GameStats();
+    CaptureHistory_GameStats _captureHistory = new CaptureHistory_GameStats();
 
     public Turn_GameStats Turn
     {
@@ -23,6 +24,11 @@ public class GameStatsManager : MonoBehaviourPunCallbacks
     public Winner_GameStats Winner
     {
         get { return _winner; }
+    }
+
+    public CaptureHistory_GameStats CaptureHistory
+    {
+        get { return _captureHistory; }
     }
 
     void Awake()
@@ -40,10 +46,12 @@ public class GameStatsManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         _turn.OnJoinedRoom();
+        _captureHistory.OnJoinedRoom();
     }
 
     public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
     {
         _winner.OnRoomPropertiesUpdate(propertiesThatChanged);
+        _captureHistory.OnRoomPropertiesUpdate(propertiesThatChanged);
     }
 }
