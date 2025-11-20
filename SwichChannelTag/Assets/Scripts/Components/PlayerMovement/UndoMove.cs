@@ -31,7 +31,7 @@ public partial class MoveOnMap : MonoBehaviour
         }
     }
 
-    public void ClearMoveHistory()
+    void ClearMoveHistory()
     {
         moveHistory.Clear();
         ClearPath();

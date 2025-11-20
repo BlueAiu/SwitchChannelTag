@@ -56,7 +56,7 @@ public partial class MoveOnMap
         else
         {
             _remainingStep--;
-            InstancePath(destination - start);
+            InstancePath(newGridPos, destination - start);
         }
 
         _cursor.transform.position = destination;

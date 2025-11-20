@@ -1138,6 +1138,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e749fd2a64621164892f20803b7493b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &782628375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7604015475919847619, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+  m_PrefabInstance: {fileID: 1509087121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df99dc57b8ae1b54eb2df41d49e0a919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &782628376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4306973834652676575, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+  m_PrefabInstance: {fileID: 1509087121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af84f8c345ef5b449007d8d612139f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &782628377 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1371814805856891794, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+  m_PrefabInstance: {fileID: 1509087121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0565560d3ed45024380781198fa570c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &782628378 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1010882305209889061, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+  m_PrefabInstance: {fileID: 1509087121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c59c88750fc92a40b790a76f083cc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &803646007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1089576035461545160, guid: 78e2f6485ddeeda46b5856f397a8f753, type: 3}
@@ -1706,6 +1750,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1302053222}
     m_Modifications:
+    - target: {fileID: 1010882305209889061, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _moveOnMap
+      value: 
+      objectReference: {fileID: 722071807}
     - target: {fileID: 1371814805856891794, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _changeHierarchy
       value: 
@@ -1798,6 +1846,50 @@ PrefabInstance:
       propertyPath: _showFinishUI
       value: 
       objectReference: {fileID: 45282472}
+    - target: {fileID: 5064959589472756117, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _playerTurnStateDic._list.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064959589472756117, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _playerTurnStateDic._list.Array.data[3].key
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064959589472756117, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _playerTurnStateDic._list.Array.data[4].key
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064959589472756117, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _playerTurnStateDic._list.Array.data[5].key
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064959589472756117, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _playerTurnStateDic._list.Array.data[6].key
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064959589472756117, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _playerTurnStateDic._list.Array.data[7].key
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064959589472756117, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _playerTurnStateDic._list.Array.data[3].value
+      value: 
+      objectReference: {fileID: 782628378}
+    - target: {fileID: 5064959589472756117, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _playerTurnStateDic._list.Array.data[4].value
+      value: 
+      objectReference: {fileID: 1509087123}
+    - target: {fileID: 5064959589472756117, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _playerTurnStateDic._list.Array.data[5].value
+      value: 
+      objectReference: {fileID: 782628377}
+    - target: {fileID: 5064959589472756117, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _playerTurnStateDic._list.Array.data[6].value
+      value: 
+      objectReference: {fileID: 782628376}
+    - target: {fileID: 5064959589472756117, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _playerTurnStateDic._list.Array.data[7].value
+      value: 
+      objectReference: {fileID: 782628375}
     - target: {fileID: 6696930033419992062, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: m_Name
       value: TurnFlowManager

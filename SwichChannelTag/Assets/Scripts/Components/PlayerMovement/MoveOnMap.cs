@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,17 +21,29 @@ public partial class MoveOnMap : MonoBehaviour
 
     MapTransform _myMapTrs;//自分のマップ上の位置情報
     CanShift _myCanShift;
+    bool _isMoving = false;
+
+    public bool IsMoving { get => _isMoving; }
 
 
+    public IEnumerator MoveOnPath()
+    {
+        _isMoving = true;
 
+        foreach(var p in MovePath)
+        {
+            yield return Move(p);
+        }
+
+        _isMoving = false;
+        ClearMoveHistory();
+    }
 
     //private
     IEnumerator Move(MapVec newGridPos)//移動処理
     {
         Vector3 start = _myMapTrs.CurrentWorldPos;//現在のマスの中心点
         Vector3 destination = _myMapTrs.CurrentHierarchy.MapToWorld(newGridPos);//移動先のマスの中心点
-
-        
 
         _shiftPlayersPosition.OnExit(_myMapTrs);//ずらす処理
         _myCanShift.IsShiftAllowed = false;//自分がずらされないようにする

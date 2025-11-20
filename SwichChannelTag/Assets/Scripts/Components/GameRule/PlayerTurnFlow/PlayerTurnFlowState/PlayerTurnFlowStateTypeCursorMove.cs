@@ -18,13 +18,12 @@ public class PlayerTurnFlowStateTypeCursorMove : PlayerTurnFlowStateTypeBase
 
     bool _finished = true;
 
-    //移動を完了して終了ステートに
     public void ToFinish()
     {
         if (_finished) return;
         if (_stateMachine == null) return;
 
-        _stateMachine.ChangeState(EPlayerTurnFlowState.Finish);
+        _stateMachine.ChangeState(EPlayerTurnFlowState.MovePlayer);
     }
 
     public override void OnEnter()
@@ -47,8 +46,6 @@ public class PlayerTurnFlowStateTypeCursorMove : PlayerTurnFlowStateTypeBase
         _finished = true;
 
         _hideMoveUI.Hide();
-
-        _moveOnMap.ClearMoveHistory();
 
         //マス移動が出来ない状態にする
         _moveOnMap.enabled = false;
