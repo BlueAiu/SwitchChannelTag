@@ -12,7 +12,7 @@ public partial class MoveOnMap : MonoBehaviour
     void InstancePath(Vector3 dir)
     {
         var rotation = Quaternion.LookRotation(dir);
-        var o = Instantiate(_pathObject[_state.State], _myMapTrs.CurrentWorldPos, rotation);
+        var o = Instantiate(_pathObject[_state.State], _cursor.transform.position, rotation);
         _path.Push(o);
     }
 

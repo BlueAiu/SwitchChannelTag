@@ -809,11 +809,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722071804}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4faaa9de41e606948ae0184bb28cc203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cursorPrefab: {fileID: 4859577855487797688, guid: 692648c97daf2264288aa0b2c7803009, type: 3}
   _playerMoveAnimation: {fileID: 722071810}
   _shiftPlayersPosition: {fileID: 742054144}
   _catchRunner: {fileID: 742054145}
