@@ -68,6 +68,7 @@ public class GameFlowManager : MonoBehaviour
         _currentState = value;
 
         _nowEState = nextState;
+        ObserveGameStateManager.Instance.State = _nowEState;//他プレイヤーにも通知
 
         if (_currentState != null) _currentState.OnEnter();
     }
