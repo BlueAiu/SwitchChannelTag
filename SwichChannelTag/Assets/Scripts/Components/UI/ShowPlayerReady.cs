@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class ShowPlayerReady : MonoBehaviour
 {
+    [SerializeField] GameObject Ready_Massage;
     // Start is called before the first frame update
-
-    [SerializeField] GameObject ReadyText;
-    void Start()
+    private void Start()
     {
-        
+        Ready_Massage.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Show_ReadyMassage()
     {
-        
+        Ready_Massage.SetActive(true);
+    }
+
+    public void Hide_ReadyMassage()
+    {
+        Ready_Massage.SetActive(false);
     }
 }
