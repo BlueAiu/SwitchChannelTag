@@ -9,13 +9,6 @@ public class ShowPlayerTag : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        if(photonView.IsMine)
-        {
-            Text_PlayerTag.SetActive(true);
-        }
-        else
-        {
-            Text_PlayerTag.SetActive(false);
-        }
+        Text_PlayerTag.SetActive(photonView.IsMine);
     }
 }
