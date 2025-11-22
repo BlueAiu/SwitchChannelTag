@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 358219227852352278}
   - component: {fileID: 8883037788068780043}
   m_Layer: 0
-  m_Name: Move
+  m_Name: CursorMove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,6 +189,54 @@ MonoBehaviour:
   _defaultSelectButton: {fileID: 0}
   _showSelectHierarchyUI: {fileID: 0}
   _hideSelectHierarchyUI: {fileID: 0}
+--- !u!1 &2349616606176939396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7883960843455765312}
+  - component: {fileID: 1010882305209889061}
+  m_Layer: 0
+  m_Name: PlayerMove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7883960843455765312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349616606176939396}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2815207452123320263}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1010882305209889061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349616606176939396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c59c88750fc92a40b790a76f083cc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateMachine: {fileID: 5064959589472756117}
+  _moveOnMap: {fileID: 0}
+  _showMoveUI: {fileID: 0}
+  _hideMoveUI: {fileID: 0}
 --- !u!1 &3116420650964525531
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +366,7 @@ Transform:
   - {fileID: 6096780844590758191}
   - {fileID: 4016928481793590369}
   - {fileID: 358219227852352278}
+  - {fileID: 7883960843455765312}
   - {fileID: 8582972705758146715}
   - {fileID: 7404749616625140600}
   - {fileID: 8391434417208120347}
@@ -399,5 +448,7 @@ MonoBehaviour:
   _stateMachine: {fileID: 5064959589472756117}
   _defaultSelectButton: {fileID: 0}
   _selectHierarchyButton: {fileID: 0}
+  _coolDownText: {fileID: 0}
   _showSelectActionUI: {fileID: 0}
   _hideSelectActionUI: {fileID: 0}
+  _coolDown: {fileID: 0}
