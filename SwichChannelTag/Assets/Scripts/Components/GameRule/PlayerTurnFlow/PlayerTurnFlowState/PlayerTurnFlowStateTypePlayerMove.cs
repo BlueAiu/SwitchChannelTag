@@ -12,7 +12,7 @@ public class PlayerTurnFlowStateTypePlayerMove : PlayerTurnFlowStateTypeBase
 
     public override void OnEnter()
     {
-        StartCoroutine(_moveOnMap.MoveOnPath());
+        _moveOnMap.StartMoveOnPath();
     }
 
     public override void OnUpdate()

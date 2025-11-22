@@ -26,7 +26,12 @@ public partial class MoveOnMap : MonoBehaviour
     public bool IsMoving { get => _isMoving; }
 
 
-    public IEnumerator MoveOnPath()
+    public void StartMoveOnPath()
+    {
+        StartCoroutine(MoveOnPath());
+    }
+
+    IEnumerator MoveOnPath()
     {
         _isMoving = true;
 
