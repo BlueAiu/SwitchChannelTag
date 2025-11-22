@@ -43,15 +43,27 @@ public class GameStatsManager : MonoBehaviourPunCallbacks
         }
     }
 
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        _captureHistory.OnEnable();
+    }
+
+    public override void OnDisable()
+    {
+        _captureHistory.OnDisable();
+        base.OnDisable();
+    }
+
     public override void OnJoinedRoom()
     {
         _turn.OnJoinedRoom();
+        _winner.OnJoinedRoom();
         _captureHistory.OnJoinedRoom();
     }
 
     public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
     {
         _winner.OnRoomPropertiesUpdate(propertiesThatChanged);
-        _captureHistory.OnRoomPropertiesUpdate(propertiesThatChanged);
     }
 }

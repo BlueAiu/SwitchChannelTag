@@ -1,18 +1,20 @@
 using ExitGames.Client.Photon;
+using ExitGames.Client.Photon.StructWrapping;
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections.Generic;
 using UnityEngine;
 
 //作成者:杉山
 //ゲーム統計情報の捕まえた履歴
+//追加する要素を全員に送って、リストへの追加は各々する
 
 public class CaptureHistory_GameStats
 {
-    private const string HISTORY_KEY = "History";
+    const byte EVENTCODE_CAPTURECORD = 1;//同じプロジェクト内で被らないようにする(値は0～255まで)
     private const string CAPTURE_TURN_KEY = "CaptureTurn";
     private const string CAUGHT_RUNNER_ACTOR_NUM_KEY = "CaughtRunnerActorNum";
     private const string CAUGHT_TAGGER_ACTOR_NUM_KEY = "CaughtTaggerActorNum";
-
 
     List<CaptureRecord> _history;
 
@@ -25,58 +27,88 @@ public class CaptureHistory_GameStats
     {
         CaptureRecord newRecord = new CaptureRecord(captureTurn, caughtRunnerActorNum, caughtTaggerActorNum);
 
-        _history.Add(newRecord);
+        Hashtable hash = CaptureRecordToHash(newRecord);
 
-        var tableList = new Hashtable[_history.Count];
-
-        for (int i = 0; i < _history.Count; i++)
-        {
-            var t = new Hashtable();
-            t[CAPTURE_TURN_KEY] = _history[i].CaptureTurn;
-            t[CAUGHT_RUNNER_ACTOR_NUM_KEY] = _history[i].CaughtRunnerActorNum;
-            t[CAUGHT_TAGGER_ACTOR_NUM_KEY] = _history[i].CaughtTaggerActorNum;
-            tableList[i] = t;
-        }
-
-        var roomProps = new Hashtable();
-        roomProps[HISTORY_KEY] = tableList;
-        PhotonNetwork.CurrentRoom.SetCustomProperties(roomProps);
+        PhotonNetwork.RaiseEvent(
+        EVENTCODE_CAPTURECORD,       // イベントコード
+        hash,                 // 送るデータ
+        new RaiseEventOptions { Receivers = ReceiverGroup.All },
+        SendOptions.SendReliable
+        );
     }
+
+    //以下はGameStatsManager以外のクラスは使用禁止
 
     public void OnJoinedRoom()
     {
         _history = new List<CaptureRecord>();
     }
 
-    public void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
+    public void OnEnable()
     {
-        // 履歴部分が変更されてなければ無視
-        if (!propertiesThatChanged.ContainsKey(HISTORY_KEY)) return;
+        PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+    }
 
-        // 履歴データを受け取る
-        var tableList = propertiesThatChanged[HISTORY_KEY] as Hashtable[];
+    public void OnDisable()
+    {
+        PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
+    }
+
+    void OnEvent(EventData photonEvent)
+    {
+        if (photonEvent.Code != EVENTCODE_CAPTURECORD) return;
+
+        Hashtable hash = photonEvent.CustomData as Hashtable;
+
+        // 復元できるならデコード
+        var data = HashToCaptureRecord(hash);
+
+        if (data == null) return;
         
-        if (tableList == null) return;
+        _history.Add(data);
+    }
 
-        var newHistory = new List<CaptureRecord>();
+    //HashとCaptureRecordの変換系
 
-        foreach (var t in tableList)
+    Hashtable CaptureRecordToHash(CaptureRecord record)
+    {
+        var hash = new Hashtable();
+
+        hash[CAPTURE_TURN_KEY] = record.CaptureTurn;
+        hash[CAUGHT_RUNNER_ACTOR_NUM_KEY] = record.CaughtRunnerActorNum;
+        hash[CAUGHT_TAGGER_ACTOR_NUM_KEY] = record.CaughtTaggerActorNum;
+
+        return hash;
+    }
+
+    CaptureRecord HashToCaptureRecord(Hashtable hash)
+    {
+        try
         {
-            // 個々の値を取り出し
-            int captureTurn = (int)t[CAPTURE_TURN_KEY];
-            int caughtRunnerActorNum = (int)t[CAUGHT_RUNNER_ACTOR_NUM_KEY];
-            int[] caughtTaggerActorNum = t[CAUGHT_TAGGER_ACTOR_NUM_KEY] as int[];
+            if (hash == null)
+            {
+                Debug.Log("変換に失敗");
+                return null;
+            }
 
-            // CaptureRecord へ復元
-            var record = new CaptureRecord(
-                captureTurn,
-                caughtRunnerActorNum,
-                caughtTaggerActorNum
-            );
+            // 必須キーが揃っているかチェック（任意）
+            if (!hash.TryGetValue(CAPTURE_TURN_KEY,out object value1) ||
+                !hash.TryGetValue(CAUGHT_RUNNER_ACTOR_NUM_KEY,out object value2) ||
+                !hash.TryGetValue(CAUGHT_TAGGER_ACTOR_NUM_KEY,out object value3))
+            {
+                Debug.Log("変換に失敗");
+                return null;
+            }
 
-            newHistory.Add(record);
+            int captureTurn = (int)value1;
+
+            return new CaptureRecord((int)value1, (int)value2, (int[])value3);
         }
-
-        _history = newHistory;
+        catch
+        {
+            // キャスト失敗した場合などは null を返す
+            Debug.Log("変換に失敗");
+            return null;
+        }
     }
 }
