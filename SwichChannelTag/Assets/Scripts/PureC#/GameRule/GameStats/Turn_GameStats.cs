@@ -13,7 +13,7 @@ public class Turn_GameStats
 
     public void OnJoinedRoom()
     {
-        SetTurn(_defaultTurnNum);
+        Init();
     }
 
     public void SetTurn(int newTurnNum)//ターン数を設定
@@ -32,5 +32,12 @@ public class Turn_GameStats
 
         Debug.Log("ターン数の取得に失敗");
         return _invalidTurnNum;
+    }
+
+    void Init()//初期化
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        SetTurn(_defaultTurnNum);
     }
 }
