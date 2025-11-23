@@ -1,7 +1,8 @@
 using ExitGames.Client.Photon;
 using ExitGames.Client.Photon.StructWrapping;
-using System;
 using Photon.Pun;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 //作成者:杉山
@@ -15,8 +16,6 @@ public class Winner_GameStats
 
     public void SetWinner(EPlayerState? winner)
     {
-        if (winner == null) return;
-
         Hashtable props = new Hashtable();
         props[WINNER_KEY] = winner;
         PhotonNetwork.CurrentRoom.SetCustomProperties(props);
@@ -41,6 +40,11 @@ public class Winner_GameStats
         }
     }
 
+    public void OnJoinedRoom()
+    {
+        Init();
+    }
+
     //値変更を通知
     public void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
     {
@@ -48,5 +52,12 @@ public class Winner_GameStats
         {
             OnUpdateWinner?.Invoke((EPlayerState)value);
         }
+    }
+
+    void Init()//初期化
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        SetWinner(null);
     }
 }
