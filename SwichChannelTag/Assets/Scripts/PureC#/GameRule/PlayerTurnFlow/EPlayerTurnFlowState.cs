@@ -11,7 +11,8 @@ public enum EPlayerTurnFlowState
 
     SelectAction,//行動選択ステート
     Dice,//ダイスステート
-    Move,//マス移動ステート
+    MoveCursor,//カーソル移動ステート
+    MovePlayer,//プレイヤー移動ステート
     SelectHierarchy,//階層選択ステート
     ChangeHierarchy,//階層移動ステート
     Finish,//行動終了ステート
