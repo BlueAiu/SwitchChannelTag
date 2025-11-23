@@ -11,7 +11,6 @@ using UnityEngine;
 
 public class CaptureHistory_GameStats
 {
-    const byte EVENTCODE_CAPTURECORD = 1;//同じプロジェクト内で被らないようにする(値は0～255まで)
     private const string CAPTURE_TURN_KEY = "CaptureTurn";
     private const string CAUGHT_RUNNER_ACTOR_NUM_KEY = "CaughtRunnerActorNum";
     private const string CAUGHT_TAGGER_ACTOR_NUM_KEY = "CaughtTaggerActorNum";
@@ -30,7 +29,7 @@ public class CaptureHistory_GameStats
         Hashtable hash = CaptureRecordToHash(newRecord);
 
         PhotonNetwork.RaiseEvent(
-        EVENTCODE_CAPTURECORD,       // イベントコード
+        EventCodeDictionary.EVENTCODE_CAPTURECORD,       // イベントコード
         hash,                 // 送るデータ
         new RaiseEventOptions { Receivers = ReceiverGroup.All },
         SendOptions.SendReliable
@@ -56,7 +55,7 @@ public class CaptureHistory_GameStats
 
     void OnEvent(EventData photonEvent)
     {
-        if (photonEvent.Code != EVENTCODE_CAPTURECORD) return;
+        if (photonEvent.Code != EventCodeDictionary.EVENTCODE_CAPTURECORD) return;
 
         Hashtable hash = photonEvent.CustomData as Hashtable;
 
