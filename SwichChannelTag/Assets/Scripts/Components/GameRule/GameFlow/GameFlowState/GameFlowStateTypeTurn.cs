@@ -57,12 +57,12 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
 
     void ChangeState()//ステートを変更する
     {
-        //ゲーム終了判定をする
-        bool isGameSet = _judgeGameSet.IsGameSet(out EPlayerState? winner);
+        //全員鬼になった場合、ゲーム終了
+        bool isGameSet = _judgeGameSet.AllPlayerIsTagger();
 
         if(isGameSet)
         {
-            GameStatsManager.Instance.Winner.SetWinner(winner);//ゲームの統計情報にどちらの勝利かを書き込む
+            GameStatsManager.Instance.Winner.SetWinner(EPlayerState.Tagger);//ゲームの統計情報に鬼の勝利と書き込む
             _stateMachine.ChangeState(EGameFlowState.Finish);
             return;
         }
