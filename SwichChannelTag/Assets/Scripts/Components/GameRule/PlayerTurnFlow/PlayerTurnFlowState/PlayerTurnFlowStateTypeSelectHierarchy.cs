@@ -9,14 +9,21 @@ using UnityEngine.UI;
 
 public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBase
 {
-    [Tooltip("最初に選択状態になるボタン")] [SerializeField]
-    Button _defaultSelectButton;
+    [Tooltip("最初に選択状態になる階層番号(のボタン)")] [SerializeField]
+    int _defaultSelectButtonIndex;
+
+    [Tooltip("階層移動ボタン\n要素番号が移動先階層番号になる")] [SerializeField]
+    Button[] _buttons;
 
     [Tooltip("階層選択UIを表示する機能")] [SerializeField]
     ShowUITypeBase _showSelectHierarchyUI;
 
     [Tooltip("階層選択UIを非表示にする機能")] [SerializeField]
     HideUITypeBase _hideSelectHierarchyUI;
+
+    SelectHierarchyButton[] _selectHierarchyButtons;
+
+    MapTransform _myMapTrs;
 
     bool _finished=true;
 
@@ -46,7 +53,17 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
 
         _showSelectHierarchyUI.Show();
 
-        EventSystem.current.SetSelectedGameObject(_defaultSelectButton.gameObject);
+        _selectHierarchyButtons[_myMapTrs.Pos.hierarchyIndex].Button.interactable = false;
+
+        if(MathfExtension.IsInRange(_defaultSelectButtonIndex,0,_selectHierarchyButtons.Length-1))
+        {
+            EventSystem.current.SetSelectedGameObject(_selectHierarchyButtons[_defaultSelectButtonIndex].Button.gameObject);
+        }
+        else
+        {
+            Debug.Log("最初に選択状態になる階層番号が範囲外です！");
+        }
+        
     }
 
     public override void OnUpdate()
@@ -61,6 +78,20 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
         _hideSelectHierarchyUI.Hide();
 
         _selectHierarchyButtons[_myMapTrs.Pos.hierarchyIndex].Button.interactable = true;
+    }
+
+    private void Awake()
+    {
+        _selectHierarchyButtons = new SelectHierarchyButton[_buttons.Length];
+
+        for(int i=0; i<_selectHierarchyButtons.Length ;i++)
+        {
+            _selectHierarchyButtons[i]=new SelectHierarchyButton(i, _buttons[i]);
+            _selectHierarchyButtons[i].OnSubmittedButton += ToChangeHierarchy;
+        }
+
+
+        _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
     }
 
     private void Start()
