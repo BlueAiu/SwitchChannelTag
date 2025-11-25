@@ -59,6 +59,8 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
         _finished=true;
 
         _hideSelectHierarchyUI.Hide();
+
+        _selectHierarchyButtons[_myMapTrs.Pos.hierarchyIndex].Button.interactable = true;
     }
 
     private void Start()
