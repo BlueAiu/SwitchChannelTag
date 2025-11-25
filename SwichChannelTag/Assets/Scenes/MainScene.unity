@@ -1899,9 +1899,25 @@ PrefabInstance:
       value: TurnFlowManager
       objectReference: {fileID: 0}
     - target: {fileID: 7090508747876160583, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _buttons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090508747876160583, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _defaultSelectButton
       value: 
       objectReference: {fileID: 814977556}
+    - target: {fileID: 7090508747876160583, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _buttons.Array.data[0]
+      value: 
+      objectReference: {fileID: 814977556}
+    - target: {fileID: 7090508747876160583, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _buttons.Array.data[1]
+      value: 
+      objectReference: {fileID: 5712567717612244243}
+    - target: {fileID: 7090508747876160583, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _buttons.Array.data[2]
+      value: 
+      objectReference: {fileID: 5712567717612244244}
     - target: {fileID: 7090508747876160583, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _hideSelectHierarchyUI
       value: 
@@ -3379,9 +3395,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1509087126}
+    - target: {fileID: 2595223977439500254, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595223977439500254, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2837434070836790416, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
       propertyPath: m_Name
       value: CommandUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305327609011519217, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5305327609011519217, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3396,9 +3424,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1509087125}
     - target: {fileID: 6630799301068304397, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630799301068304397, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1509087123}
+    - target: {fileID: 7666860218431749735, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666860218431749735, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3516,6 +3552,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e749fd2a64621164892f20803b7493b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5712567717612244243 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5305327609011519217, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+  m_PrefabInstance: {fileID: 5712567717612244240}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5712567717612244244 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7666860218431749735, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+  m_PrefabInstance: {fileID: 5712567717612244240}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6233029115392453306
