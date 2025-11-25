@@ -12,17 +12,16 @@ public class GameFlowStateTypeTurnFinish : GameFlowStateTypeBase
 
     public override void OnEnter()
     {
-        //ここで経過ターンを増やす
-        GameStatsManager.Instance.Turn.SetTurn(GameStatsManager.Instance.Turn.GetTurn() + 1);
+        
     }
 
-    public override void OnUpdate()
+    public override void OnUpdate()//すぐにステート遷移されるので、実質的にはこのステートに入るたびに1度しか呼ばれない
     {
-        //ゲーム終了判定をする
-        bool isGameSet = _judgeGameSet.IsGameSet(out EPlayerState? winner);
+        //タイムアップでゲーム終了
+        bool isGameSet = _judgeGameSet.IsTimeUp(out EPlayerState? winner);
 
         //ゲーム終了であれば終了ステートへ
-        if(isGameSet)
+        if (isGameSet)
         {
             GameStatsManager.Instance.Winner.SetWinner(winner);//ゲームの統計情報にどちらの勝利かを書き込む
             _stateMachine.ChangeState(EGameFlowState.Finish);
@@ -30,6 +29,7 @@ public class GameFlowStateTypeTurnFinish : GameFlowStateTypeBase
         }
 
         //そうでなければプレイヤーにターンを回す
+        GameStatsManager.Instance.Turn.SetTurn(GameStatsManager.Instance.Turn.GetTurn() + 1);//経過ターンを増やす
 
         EGameFlowState nextState = (_stateMachine.SharedData.FirstTurn == EPlayerState.Runner) ? EGameFlowState.RunnerTurn : EGameFlowState.TaggerTurn;
 
