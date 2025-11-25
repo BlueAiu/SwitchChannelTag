@@ -1,23 +1,20 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShowPlayerReady : MonoBehaviour
+public class ShowPlayerReady : MonoBehaviourPunCallbacks
 {
-    [SerializeField] GameObject Ready_Massage;
+    [SerializeField] GameObject[] Ready_Massage;
     // Start is called before the first frame update
-    private void Start()
+
+    public override void OnJoinedRoom()
     {
-        Ready_Massage.SetActive(false);
+        for(int i = 0; i < Ready_Massage.Length; i++)
+        {
+            Ready_Massage[i].SetActive(false);
+        }
     }
 
-    public void Show_ReadyMassage()
-    {
-        Ready_Massage.SetActive(true);
-    }
 
-    public void Hide_ReadyMassage()
-    {
-        Ready_Massage.SetActive(false);
-    }
 }
