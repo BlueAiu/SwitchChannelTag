@@ -12,31 +12,21 @@ public class JudgeGameSet : MonoBehaviour
 
     PlayerState[] _playerStates;
 
-    public bool IsGameSet(out EPlayerState? winner)//ゲーム終了かの判定、勝敗がついた時はどちらが勝ちかも伝える
+    public bool IsTimeUp(out EPlayerState? winner)//最大ターン数経過したか(時間切れか)、経過ターン数が最大ターン数以上になっていたらゲーム終了
     {
         winner = null;
 
-        if(AllPlayerIsTagger())
+        bool isGameSet = GameStatsManager.Instance.Turn.GetTurn() >= _maxTurnNum;
+
+        if(isGameSet)//決着がついてるなら勝者を決める
         {
-            winner = EPlayerState.Tagger;
-            return true;
+            winner = AllPlayerIsTagger() ? EPlayerState.Tagger : EPlayerState.Runner; 
         }
 
-        if(IsTimeUp())//全員鬼でないことは確定している
-        {
-            winner = EPlayerState.Runner;
-            return true;
-        }
-
-        return false;
+        return isGameSet;
     }
 
-    bool IsTimeUp()//最大ターン数経過したか(時間切れか)
-    {
-        return GameStatsManager.Instance.Turn.GetTurn() > _maxTurnNum;
-    }
-
-    bool AllPlayerIsTagger()//全てのプレイヤーが鬼か
+    public bool AllPlayerIsTagger()//全てのプレイヤーが鬼か
     {
         bool ret = true;
 
