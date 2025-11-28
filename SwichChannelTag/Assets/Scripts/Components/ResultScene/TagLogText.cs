@@ -18,9 +18,13 @@ public class TagLogText : MonoBehaviour
         {
             int turn = capture.CaptureTurn;
             int runnerNum = capture.CaughtRunnerActorNum;
-            var taggerNums = capture.CaughtTaggerActorNum.ToString();
+            var taggerNums = capture.CaughtTaggerActorNum;
 
-            _text.text += string.Format("{0}Turn : {2} => {1} \n", turn, runnerNum, taggerNums);
+            string taggerText = "[";
+            foreach (var tagger in taggerNums) taggerText += tagger.ToString() + ", ";
+            taggerText += "]";
+
+            _text.text += string.Format("{0}Turn : {2} => {1} \n", turn, runnerNum, taggerText);
         }
 
         if (captureHistory.Length == 0)
