@@ -53,6 +53,10 @@ MonoBehaviour:
   - SetIsShiftAllowed
   - SwitchIsReady
   - SwitchTurnState
+  - ClearRunnerInfo
+  - SetRunnerInfo
+  - ClearRunnerInfo_RPC
+  - SetRunnerInfo_RPC
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
