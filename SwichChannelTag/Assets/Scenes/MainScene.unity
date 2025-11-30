@@ -144,6 +144,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e749fd2a64621164892f20803b7493b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &317900439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 317900442}
+  - component: {fileID: 317900441}
+  - component: {fileID: 317900440}
+  m_Layer: 0
+  m_Name: CatchRunner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &317900440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317900439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba91fa247f125f45bb704600ddf046e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _getRunnerInfoOnPath: {fileID: 317900441}
+--- !u!114 &317900441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317900439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0899b3df6c2d1ba47837a82e4dc18a33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveOnMap: {fileID: 722071807}
+  _changeHierarchy: {fileID: 722071808}
+  _getOverlapPlayer: {fileID: 742054143}
+--- !u!4 &317900442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317900439}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1302053222}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &407807741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,6 +1618,7 @@ Transform:
   - {fileID: 2054258051}
   - {fileID: 742054142}
   - {fileID: 2061063803}
+  - {fileID: 317900442}
   - {fileID: 1509087122}
   - {fileID: 415914684}
   m_Father: {fileID: 0}
@@ -1850,6 +1912,14 @@ PrefabInstance:
       propertyPath: _showFinishUI
       value: 
       objectReference: {fileID: 45282472}
+    - target: {fileID: 4306973834652676575, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _getRunnerInfoOnPath
+      value: 
+      objectReference: {fileID: 317900441}
+    - target: {fileID: 4306973834652676575, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _setCaughtRunnerInfo
+      value: 
+      objectReference: {fileID: 317900440}
     - target: {fileID: 5064959589472756117, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _playerTurnStateDic._list.Array.size
       value: 8
