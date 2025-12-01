@@ -20,26 +20,6 @@ public partial class ChangeHierarchy : MonoBehaviour
     public event Action<int> OnSwitchHierarchy_NewIndex;//階層切り替え時に呼ばれる(引数に新しい階層番号を入れる形式)
     public event Action OnSwitchHierarchy;//階層切り替え時に呼ばれる(引数なし)
 
-    public void SwitchHierarchy_Inc(InputAction.CallbackContext context)//キーボード操作用に一旦残す
-    {
-        if (!context.performed) return;
-
-        const int delta = 1;
-        int newHierarchyIndex = MathfExtension.CircularWrapping_Delta(_myMapTrs.Pos.hierarchyIndex, delta, _myMapTrs.Hierarchies.Length - 1);
-
-        SwitchHierarchy(newHierarchyIndex);
-    }
-
-    public void SwitchHierarchy_Dec(InputAction.CallbackContext context)//キーボード操作用に一旦残す
-    {
-        if (!context.performed) return;
-
-        const int delta = -1;
-        int newHierarchyIndex = MathfExtension.CircularWrapping_Delta(_myMapTrs.Pos.hierarchyIndex, delta, _myMapTrs.Hierarchies.Length - 1);
-
-        SwitchHierarchy(newHierarchyIndex);
-    }
-
     public bool IsAbleToMoveTheHierarchy(int hierarchyIndex)//その階層に移動できるか
     {
         //自分の今いる階層番号と同じであれば移動できない

@@ -13,11 +13,17 @@ public class PlayerTurnFlowStateTypeFinish : PlayerTurnFlowStateTypeBase
     [Tooltip("ターン終了時のUIを非表示にする機能")] [SerializeField]
     HideUITypeBase _hideFinishUI;
 
+    [SerializeField] SetCaughtRunnerInfo _setCaughtRunnerInfo;
+
     PlayerTurnCommunicator _myTurnCommunicator;
+
 
     public override void OnEnter()
     {
         _showFinishUI.Show();
+
+        _setCaughtRunnerInfo.Set();//自分が鬼である場合捕まえた逃げの情報を登録
+
         _myTurnCommunicator.FinishedTurn();//行動終了したことを知らせる
     }
 
@@ -28,6 +34,7 @@ public class PlayerTurnFlowStateTypeFinish : PlayerTurnFlowStateTypeBase
 
     public override void OnExit()
     {
+        _setCaughtRunnerInfo.Clear();
         _hideFinishUI.Hide();
         _stateMachine.SharedData.Reset();//共有データをリセット
     }
