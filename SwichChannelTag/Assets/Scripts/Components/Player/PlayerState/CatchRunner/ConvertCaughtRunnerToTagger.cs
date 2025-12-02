@@ -11,43 +11,27 @@ public class ConvertCaughtRunnerToTagger : MonoBehaviour
 
     public void Convert(int turn)
     {
-        Dictionary<int, List<int>> caughtRunnerDic = new();//‘æ1ˆø”:•ß‚Ü‚Á‚½“¦‚°‚ÌActorNumberA‘æ2ˆø”:•ß‚Ü‚¦‚½‹S‚ÌActorNumber
+        Dictionary<int, List<int>> caughtRunner_TaggersDic = SetCaughtRunner_TaggersDic();//‘æ1ˆø”:•ß‚Ü‚Á‚½“¦‚°‚ÌActorNumberA‘æ2ˆø”:‚»‚ê‚ğ•ß‚Ü‚¦‚½‹S’B‚ÌActorNumber
 
-        foreach(var info in _taggerCaughtRunnerInfos)
+        int[] keys = new int[caughtRunner_TaggersDic.Keys.Count];
+        caughtRunner_TaggersDic.Keys.CopyTo(keys, 0);
+
+        for (int i = 0; i < keys.Length; i++)
         {
-            if(info.Item2==null) continue;
+            int caughtRunnerActorNum = keys[i];
 
-            int taggerActorNum=info.Item1;
-            int[] caughtRunnerActorNums = info.Item2.CaughtRunnerActorNumbers;
+            if (!caughtRunner_TaggersDic.TryGetValue(caughtRunnerActorNum, out var value)) continue;
+            int[] taggerActorNums = value.ToArray();
 
-            //•ß‚Ü‚¦‚½—š—ğ‚É“o˜^
+            //“¦‚°¨‹S‚É‚·‚é
+            var runnerState=PlayersManager.ActorNumberPlayerInfo(caughtRunnerActorNum).GetComponent<PlayerState>();
+            runnerState.ChangeState(EPlayerState.Tagger);
 
-            //•ß‚Ü‚Á‚½“¦‚°‚ÌƒŠƒXƒg‚É•ß‚Ü‚¦‚½‹S‚ğ“o˜^
-            for(int i=0; i < caughtRunnerActorNums.Length; i++)
-            {
-                int key=caughtRunnerActorNums[i];
-                
-                if(!caughtRunnerDic.TryGetValue(key,out List<int> caughtTaggerActorNums))
-                {
-                    //‚Ü‚¾List‚ª“ü‚Á‚Ä‚¢‚È‚©‚Á‚½‚çì‚é
-                    caughtTaggerActorNums=new List<int>();
-                    caughtRunnerDic.Add(key, caughtTaggerActorNums);
-                }
-
-                caughtTaggerActorNums.Add(taggerActorNum);
-            }
-
-            int[] keys= new int[caughtRunnerDic.Keys.Count];
-            caughtRunnerDic.Keys.CopyTo(keys, 0);
-
-            for(int i=0; i<keys.Length ;i++)
-            {
-                int caughtRunnerActorNum=keys[i];
-
-            }
-
-            //GameStatsManager.Instance.CaptureHistory.AddHistory
+            //—š—ğ‚É’Ç‰Á
+            GameStatsManager.Instance.CaptureHistory.AddHistory(turn, caughtRunnerActorNum, taggerActorNums);
         }
+
+        //GameStatsManager.Instance.CaptureHistory.AddHistory
     }
 
     public void OnEnter()//ƒ^[ƒ“ŠJn‚ÉŒÄ‚Ô
@@ -67,6 +51,36 @@ public class ConvertCaughtRunnerToTagger : MonoBehaviour
     public void OnExit()//ƒ^[ƒ“I—¹‚ÉŒÄ‚Ô
     {
         _taggerCaughtRunnerInfos.Clear();
+    }
+
+    Dictionary<int, List<int>> SetCaughtRunner_TaggersDic()//‘æ1ˆø”:•ß‚Ü‚Á‚½“¦‚°‚ÌActorNumberA‘æ2ˆø”:‚»‚ê‚ğ•ß‚Ü‚¦‚½‹S’B‚ÌActorNumber‚ğ“ü‚ê‚½«‘Œ^‚ğ•Ô‚·
+    {
+        Dictionary<int, List<int>> ret=new();
+
+        foreach (var info in _taggerCaughtRunnerInfos)
+        {
+            if (info.Item2 == null) continue;
+
+            int taggerActorNum = info.Item1;
+            int[] caughtRunnerActorNums = info.Item2.CaughtRunnerActorNumbers;
+
+            //•ß‚Ü‚Á‚½“¦‚°‚ÌƒŠƒXƒg‚É•ß‚Ü‚¦‚½‹S‚ğ“o˜^
+            for (int i = 0; i < caughtRunnerActorNums.Length; i++)
+            {
+                int key = caughtRunnerActorNums[i];
+
+                if (!ret.TryGetValue(key, out List<int> caughtTaggerActorNums))
+                {
+                    //‚Ü‚¾List‚ª“ü‚Á‚Ä‚¢‚È‚©‚Á‚½‚çì‚é
+                    caughtTaggerActorNums = new List<int>();
+                    ret.Add(key, caughtTaggerActorNums);
+                }
+
+                caughtTaggerActorNums.Add(taggerActorNum);
+            }
+        }
+
+        return ret;
     }
 
     void AddCaughtRunnerInfo(PlayerInfo playerInfo)
