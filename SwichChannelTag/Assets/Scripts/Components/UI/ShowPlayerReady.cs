@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class ShowPlayerReady : MonoBehaviourPunCallbacks
 {
-    [SerializeField] GameObject[] Ready_Massage;
+    /*[SerializeField] GameObject[] Ready_Massage;
 
     private int Player_Number;
     private int index;
@@ -117,7 +117,37 @@ public class ShowPlayerReady : MonoBehaviourPunCallbacks
         Left_count = PhotonNetwork.PlayerList.Count(p => p.ActorNumber < myActor);
 
         index = Left_count;
+    }*/
+
+    [SerializeField] GameObject[] Ready_Massage;
+
+    private bool Isactive = false;
+
+    private void Start()
+    {
+        if(Ready_Massage == null)
+        {
+            Debug.LogError("The text is not attached.");
+            return;
+        }
+
+        for(int i = 0; i < Ready_Massage.Length; i++)
+        {
+            Ready_Massage[i].SetActive(false);
+        }
     }
 
-    
+    private void Update()
+    {
+        
+    }
+
+    private void ShowReady()
+    {
+        var gettingReady = PlayersManager.GetComponentsFromPlayers<GettingReady>();
+        
+        
+    }
+
+
 }
