@@ -119,9 +119,9 @@ public class ShowPlayerReady : MonoBehaviourPunCallbacks
         index = Left_count;
     }*/
 
-    [SerializeField] GameObject[] Ready_Massage;
+    [SerializeField] GameObject Ready_Massage;
 
-    private bool Isactive = false;
+    private bool Is_active = false;
 
     private void Start()
     {
@@ -131,23 +131,43 @@ public class ShowPlayerReady : MonoBehaviourPunCallbacks
             return;
         }
 
-        for(int i = 0; i < Ready_Massage.Length; i++)
+        Ready_Massage.SetActive(false);
+
+        if(!photonView.IsMine)
         {
-            Ready_Massage[i].SetActive(false);
+            Ready_Massage.SetActive(false);
+            enabled = false;
+            return;
         }
     }
 
     private void Update()
     {
-        
+        ShowReady();
     }
 
     private void ShowReady()
     {
         var gettingReady = PlayersManager.GetComponentsFromPlayers<GettingReady>();
+        if (gettingReady == null)
+        {
+            return;
+        }
+
+        var myGettingReady = gettingReady.FirstOrDefault(g => g.photonView.IsMine);
+
+        Is_active = myGettingReady.IsReady;
         
-        
+        if(Is_active)
+        {
+            Debug.Log("Ready!");
+        }
+        photonView.RPC(nameof(RPC_ShowReady), RpcTarget.AllBuffered, Is_active);
     }
 
-
+    [PunRPC]
+    private void RPC_ShowReady(bool active)
+    {
+       Ready_Massage.SetActive(active);
+    }
 }
