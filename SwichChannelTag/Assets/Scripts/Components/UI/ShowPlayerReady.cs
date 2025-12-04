@@ -22,11 +22,8 @@ public class ShowPlayerReady : MonoBehaviourPunCallbacks
             return;
         }
 
-        Ready_Massage.SetActive(false);
-
         if(!photonView.IsMine)
         {
-            Ready_Massage.SetActive(false);
             enabled = false;
             return;
         }
@@ -42,7 +39,6 @@ public class ShowPlayerReady : MonoBehaviourPunCallbacks
         }
 
         Active_State = mygettingReady != null && mygettingReady.IsReady;
-        Ready_Massage.SetActive(Active_State);
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -72,6 +68,11 @@ public class ShowPlayerReady : MonoBehaviourPunCallbacks
     private void OnSceneLoaded(Scene nextScene, LoadSceneMode mode)
     {
         photonView.RPC(nameof(RPC_ShowReady), RpcTarget.AllBuffered, false);
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     [PunRPC]
