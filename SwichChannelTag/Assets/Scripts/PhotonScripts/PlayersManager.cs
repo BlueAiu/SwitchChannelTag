@@ -7,6 +7,8 @@ public static class PlayersManager
     static List<PlayerInfo> players = new();
     static PlayerInfo minePlayer = null;
 
+    static Dictionary<int, PlayerInfo> _actorNumberPlayresDict=new();
+
 
     // --- Getter --- //
 
@@ -32,11 +34,6 @@ public static class PlayersManager
     public static PlayerInfo MinePlayerInfo
     {
         get => minePlayer;
-    }
-
-    public static int MinePlayerNumber
-    {
-        get => players.IndexOf(minePlayer);
     }
 
     // EveryPlayers
@@ -98,6 +95,15 @@ public static class PlayersManager
     }
 
 
+    // --- actorNumberからプレイヤーの情報を取得 ---//
+
+    public static PlayerInfo ActorNumberPlayerInfo(int actorNumber)//actorNumberに対応したプレイヤーの情報を取得(見つからなかったらnullを返す)
+    {
+        _actorNumberPlayresDict.TryGetValue(actorNumber, out PlayerInfo ret);
+        return ret;
+    }
+
+
     // --- Add & Remove --- //
 
     public static void AddPlayer(GameObject player)
@@ -107,6 +113,7 @@ public static class PlayersManager
 
         if (players.Contains(playerInfo)) return;
         players.Add(playerInfo);
+        _actorNumberPlayresDict.Add(playerInfo.Player.ActorNumber, playerInfo);
         SortByActorNumber();
 
         if (playerInfo.Player.IsLocal)
@@ -117,11 +124,14 @@ public static class PlayersManager
 
     public static void RemovePlayer(GameObject player)
     {
-        var playerInfo = new PlayerInfo
-            (player, player.GetPhotonView().Owner, player.GetComponent<GetPlayerInfo>());
+        int actorNumber = player.GetPhotonView().Owner.ActorNumber;
 
+        _actorNumberPlayresDict.TryGetValue(actorNumber,out PlayerInfo playerInfo);
+
+        if (playerInfo == null) return;
         if (!players.Contains(playerInfo)) return;
         players.Remove(playerInfo);
+        _actorNumberPlayresDict.Remove(playerInfo.Player.ActorNumber);
         SortByActorNumber();
 
         if (playerInfo.Player.IsLocal)

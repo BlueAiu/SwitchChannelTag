@@ -55,6 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2317379926475169083}
   - component: {fileID: 2908243882907033055}
+  - component: {fileID: 7910576524469416362}
   m_Layer: 0
   m_Name: Tagger
   m_TagString: Untagged
@@ -91,7 +92,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stateMachine: {fileID: 3406287022847630555}
   turnSide: 1
-  _judgeGameSet: {fileID: 5697977699458795627}
+  _judgeNextState: {fileID: 2798110668252064698}
+  _judgeIsTurnFinishAllPlayer: {fileID: 7910576524469416362}
+--- !u!114 &7910576524469416362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4056030020481262831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ae01f8b23c59a48903fcc8e423feb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4140387465426731471
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7818997815791212083}
+  - component: {fileID: 2798110668252064698}
   m_Layer: 0
   m_Name: Turn
   m_TagString: Untagged
@@ -125,6 +140,19 @@ Transform:
   - {fileID: 4316465505990051460}
   m_Father: {fileID: 7805010986841324682}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2798110668252064698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4140387465426731471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6033004a6c37dde46ab653ff14cf1b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _judgeGameSet: {fileID: 5697977699458795627}
 --- !u!1 &5749252724817472419
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4316465505990051460}
   - component: {fileID: 1520395927591732537}
+  - component: {fileID: 7633462099488231391}
   m_Layer: 0
   m_Name: Runner
   m_TagString: Untagged
@@ -171,7 +200,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stateMachine: {fileID: 3406287022847630555}
   turnSide: 0
-  _judgeGameSet: {fileID: 5697977699458795627}
+  _judgeNextState: {fileID: 2798110668252064698}
+  _judgeIsTurnFinishAllPlayer: {fileID: 7633462099488231391}
+--- !u!114 &7633462099488231391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5749252724817472419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ae01f8b23c59a48903fcc8e423feb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5839781319796782583
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stateMachine: {fileID: 3406287022847630555}
+  resultSceneName: ResultScene
 --- !u!1 &8219878679217338388
 GameObject:
   m_ObjectHideFlags: 0
