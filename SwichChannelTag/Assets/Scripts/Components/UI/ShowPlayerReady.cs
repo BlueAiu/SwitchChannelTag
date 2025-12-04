@@ -121,7 +121,8 @@ public class ShowPlayerReady : MonoBehaviourPunCallbacks
 
     [SerializeField] GameObject Ready_Massage;
 
-    private bool Is_active = false;
+    private GettingReady mygettingReady;
+    private bool Active_State;
 
     private void Start()
     {
@@ -139,30 +140,45 @@ public class ShowPlayerReady : MonoBehaviourPunCallbacks
             enabled = false;
             return;
         }
+
+        mygettingReady = null;
+        try
+        {
+            mygettingReady = PlayersManager.GetComponentFromMinePlayer<GettingReady>();
+        }
+        catch
+        {
+            //Debug.LogError("Null");
+            return;
+        }
+
+        Active_State = mygettingReady != null && mygettingReady.IsReady;
+        Ready_Massage.SetActive(Active_State);
     }
 
     private void Update()
     {
-        ShowReady();
+        if (Active_State != mygettingReady.IsReady)
+        {
+            ShowReady();
+            Active_State = mygettingReady.IsReady;
+        }
     }
 
     private void ShowReady()
     {
-        var gettingReady = PlayersManager.GetComponentsFromPlayers<GettingReady>();
-        if (gettingReady == null)
-        {
-            return;
-        }
+        bool Is_Ready = mygettingReady.IsReady;
 
-        var myGettingReady = gettingReady.FirstOrDefault(g => g.photonView.IsMine);
-
-        Is_active = myGettingReady.IsReady;
-        
-        if(Is_active)
+        /*if(Is_Ready)
         {
             Debug.Log("Ready!");
-        }
-        photonView.RPC(nameof(RPC_ShowReady), RpcTarget.AllBuffered, Is_active);
+        }*/
+        photonView.RPC(nameof(RPC_ShowReady), RpcTarget.AllBuffered, Is_Ready);
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        photonView.RPC(nameof(RPC_ShowReady), RpcTarget.AllBuffered, Active_State);
     }
 
     [PunRPC]
