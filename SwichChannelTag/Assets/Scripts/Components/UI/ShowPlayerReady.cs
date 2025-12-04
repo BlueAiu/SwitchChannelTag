@@ -181,9 +181,9 @@ public class ShowPlayerReady : MonoBehaviourPunCallbacks
         photonView.RPC(nameof(RPC_ShowReady), RpcTarget.AllBuffered, Active_State);
     }
 
-    [PunRPC]
+    /*[PunRPC]
     private void RPC_ShowReady(bool active)
     {
        Ready_Massage.SetActive(active);
-    }
+    }*/
 }
