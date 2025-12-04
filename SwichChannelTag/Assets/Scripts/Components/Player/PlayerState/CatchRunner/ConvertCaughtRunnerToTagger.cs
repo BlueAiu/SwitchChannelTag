@@ -9,8 +9,10 @@ public class ConvertCaughtRunnerToTagger : MonoBehaviour
 {
     List<(int taggerActorNumber,CaughtRunnerInfo caughttRunnerInfo)> _taggerCaughtRunnerInfos=new List<(int, CaughtRunnerInfo)>();//鬼のactorNumberとCaughtRunnerInfoを格納するリスト
 
-    public void Convert(int turn)
+    public void Convert()//捕まった逃げを鬼に変える
     {
+        int turn=GameStatsManager.Instance.Turn.GetTurn();
+
         Dictionary<int, List<int>> caughtRunner_TaggersDic = SetCaughtRunner_TaggersDic();//第1引数:捕まった逃げのActorNumber、第2引数:それを捕まえた鬼達のActorNumber
 
         int[] keys = new int[caughtRunner_TaggersDic.Keys.Count];
@@ -30,8 +32,6 @@ public class ConvertCaughtRunnerToTagger : MonoBehaviour
             //履歴に追加
             GameStatsManager.Instance.CaptureHistory.AddHistory(turn, caughtRunnerActorNum, taggerActorNums);
         }
-
-        //GameStatsManager.Instance.CaptureHistory.AddHistory
     }
 
     public void OnEnter()//ターン開始時に呼ぶ

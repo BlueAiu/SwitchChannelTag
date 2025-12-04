@@ -155,8 +155,9 @@ GameObject:
   - component: {fileID: 317900442}
   - component: {fileID: 317900441}
   - component: {fileID: 317900440}
+  - component: {fileID: 317900443}
   m_Layer: 0
-  m_Name: CatchRunner
+  m_Name: CatchRunnerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,6 +206,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1302053222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &317900443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317900439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247e9403d2278ca46a720b12a99b6b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &407807741
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +277,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1302053222}
     m_Modifications:
+    - target: {fileID: 1520395927591732537, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
+      propertyPath: _convertCaughtRunnerToTagger
+      value: 
+      objectReference: {fileID: 317900443}
+    - target: {fileID: 2908243882907033055, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
+      propertyPath: _convertCaughtRunnerToTagger
+      value: 
+      objectReference: {fileID: 317900443}
     - target: {fileID: 5697977699458795627, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
       propertyPath: _maxTurnNum
       value: 20
@@ -881,7 +902,7 @@ MonoBehaviour:
   _cursorPrefab: {fileID: 4859577855487797688, guid: 692648c97daf2264288aa0b2c7803009, type: 3}
   _playerMoveAnimation: {fileID: 722071810}
   _shiftPlayersPosition: {fileID: 742054144}
-  _catchRunner: {fileID: 742054145}
+  _catchRunner: {fileID: 0}
   _pathObject:
     _list:
     - key: 1
@@ -1030,7 +1051,6 @@ GameObject:
   - component: {fileID: 742054142}
   - component: {fileID: 742054144}
   - component: {fileID: 742054143}
-  - component: {fileID: 742054145}
   m_Layer: 0
   m_Name: OverlapManager
   m_TagString: Untagged
@@ -1084,19 +1104,6 @@ MonoBehaviour:
   - {x: -0.5, y: 0, z: 0.5}
   - {x: 0.5, y: 0, z: -0.5}
   - {x: -0.5, y: 0, z: -0.5}
-  _getOverlapPlayer: {fileID: 742054143}
---- !u!114 &742054145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 742054141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa63a0e3a069e31488667c41c0918660, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   _getOverlapPlayer: {fileID: 742054143}
 --- !u!114 &773714040 stripped
 MonoBehaviour:

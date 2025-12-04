@@ -12,19 +12,23 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
     [Tooltip("全プレイヤーの行動が終了したかを判断する機能")] [SerializeField]
     JudgeIsTurnFinishAllPlayer _judgeIsTurnFinishAllPlayer;
 
+    [Tooltip("逃げ→鬼に変える機能")] [SerializeField]
+    ConvertCaughtRunnerToTagger _convertCaughtRunnerToTagger;
+
+    bool IsTagger { get { return turnSide == EPlayerState.Tagger; } }
+
     public override void OnEnter()//ステートの開始処理
     {
         _judgeIsTurnFinishAllPlayer.OnEnter(turnSide);
+
+        if (IsTagger) _convertCaughtRunnerToTagger.OnEnter();
     }
 
     public override void OnUpdate()//ステートの毎フレーム処理
     {
         if (!_judgeIsTurnFinishAllPlayer.IsFinishAll()) return;
-        
-        if(turnSide==EPlayerState.Tagger)
-        {
-            //この辺に捕まった逃げを鬼にする機能を追加
-        }
+
+        if (IsTagger) _convertCaughtRunnerToTagger.Convert();
 
         _stateMachine.ChangeState(_judgeNextState.NextState(_stateMachine.SharedData.FirstTurn, turnSide));
     }
@@ -32,5 +36,6 @@ public class GameFlowStateTypeTurn : GameFlowStateTypeBase
     public override void OnExit()//ステートの終了処理
     {
         _judgeIsTurnFinishAllPlayer.OnExit();
+        if (IsTagger) _convertCaughtRunnerToTagger.OnExit();
     }
 }
