@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 8055072001867100083}
   - component: {fileID: 5516214620050076136}
   - component: {fileID: 6349367999625727372}
+  - component: {fileID: 7290278978019891868}
   - component: {fileID: 3826059625345711012}
   m_Layer: 0
   m_Name: Player
@@ -263,6 +264,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myPhotonView: {fileID: 7362638265056822721}
+--- !u!114 &7290278978019891868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074817731734667574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf6a827c4389424792c65ad2c7dd8b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator:
+    _list:
+    - key: 0
+      value: {fileID: 0}
+    - key: 1
+      value: {fileID: 0}
+  _state: {fileID: 1659280601506932932}
 --- !u!114 &3826059625345711012
 MonoBehaviour:
   m_ObjectHideFlags: 0
