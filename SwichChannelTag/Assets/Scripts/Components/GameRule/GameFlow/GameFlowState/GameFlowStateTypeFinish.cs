@@ -10,11 +10,13 @@ public class GameFlowStateTypeFinish : GameFlowStateTypeBase
 {
     [SerializeField] string resultSceneName = "ResultScene";
 
+    [SerializeField] float _delayDuration = 1f;
+
     public override void OnEnter()//ステートの開始処理
     {
         Debug.Log("ゲーム終了！");
 
-        PhotonNetwork.LoadLevel(resultSceneName);
+        StartCoroutine(LoadResultScene());
     }
 
     public override void OnUpdate()//ステートの毎フレーム処理
@@ -25,6 +27,13 @@ public class GameFlowStateTypeFinish : GameFlowStateTypeBase
     public override void OnExit()//ステートの終了処理
     {
 
+    }
+
+    IEnumerator LoadResultScene()
+    {
+        yield return new WaitForSeconds(_delayDuration);
+
+        PhotonNetwork.LoadLevel(resultSceneName);
     }
 
     private void Awake()
