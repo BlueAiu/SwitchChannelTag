@@ -17,9 +17,6 @@ public partial class MoveOnMap : MonoBehaviour
     [Tooltip("プレイヤーの位置をずらす機能")] [SerializeField] 
     ShiftPlayersPosition _shiftPlayersPosition;
 
-    [Tooltip("プレイヤーを捕まえる機能")] [SerializeField]
-    CatchRunner _catchRunner;
-
     MapTransform _myMapTrs;//自分のマップ上の位置情報
     CanShift _myCanShift;
     bool _isMoving = false;
@@ -67,8 +64,6 @@ public partial class MoveOnMap : MonoBehaviour
         _shiftPlayersPosition.OnEnter(_myMapTrs);//ずらす処理
 
         OnFinishMove?.Invoke(_myMapTrs.Pos);//移動終了時のコールバックを呼び出す
-
-        _catchRunner.TryCatching();
     }
 
     void RewriteMyMapPos(MapVec newGridPos)
