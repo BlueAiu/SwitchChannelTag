@@ -7,7 +7,8 @@ using UnityEngine;
 
 public class GetRunnerInfoOnPath : MonoBehaviour
 {
-    [SerializeField] MoveOnMap _moveOnMap;
+    [Tooltip("åoòHè„Çà⁄ìÆÇ∑ÇÈã@î\")] [SerializeField]
+    MoveOnPath _moveOnPath;
     [SerializeField] ChangeHierarchy _changeHierarchy;
     [SerializeField] GetOverlapPlayer _getOverlapPlayer;
     PlayerState _myPlayerState;
@@ -27,7 +28,7 @@ public class GetRunnerInfoOnPath : MonoBehaviour
     {
         _myPlayerState = PlayersManager.GetComponentFromMinePlayer<PlayerState>();
 
-        _moveOnMap.OnFinishMove += OnFinishMove;
+        _moveOnPath.OnFinishMove += OnFinishMove;
         _changeHierarchy.OnSwitchHierarchy += OnSwitchHierarchy;
     }
 

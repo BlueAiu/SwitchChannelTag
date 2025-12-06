@@ -4,11 +4,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public partial class MoveOnMap
+public partial class DecidePath : MonoBehaviour
 {
-    [SerializeField] GameObject _cursorPrefab;
-    GameObject _cursor;
-    MapVec _cursorPos;
+    [SerializeField] PathUI _pathUI;
+    [SerializeField] PathWay _pathWay;
+    [SerializeField] MoveCurcorUI _moveCursorUI;
+    MapTransform _myMapTrs;
+    MapVec _currentPos;
 
     int _remainingStep = 0;//残り移動可能マス数
 
@@ -24,8 +26,6 @@ public partial class MoveOnMap
 
         if (!enabled) return;
 
-        //if (_playerMoveAnimation.IsMoving) return;//キャラが移動中であれば無視
-
         Vector2 getVec = context.ReadValue<Vector2>();
 
         if (!IsMovable(getVec, out MapVec newGridPos))
@@ -34,33 +34,36 @@ public partial class MoveOnMap
             return;
         }
 
-        if (_remainingStep <= 0 && !WhetherUndoMove(newGridPos)) return;    // dont move if no steps remaining
+        bool isUndo = _pathWay.IsOneStepBefore(newGridPos);//来た道を戻っているか
+        Debug.Log(isUndo);
+
+        if (_remainingStep <= 0 && !isUndo) return;    // dont move if no steps remaining
 
         //移動に成功
-        MoveCursor(newGridPos);
+        MoveCursor(newGridPos,isUndo);
     }
 
-    void MoveCursor(MapVec newGridPos)
+    void MoveCursor(MapVec newGridPos,bool isUndo)
     {
-        if (_cursor == null) return;
-
-        Vector3 start = _cursor.transform.position;  //現在のマスの中心点
+        Vector3 start = _myMapTrs.CurrentHierarchy.MapToWorld(_currentPos);  //現在のマスの中心点
         Vector3 destination = _myMapTrs.CurrentHierarchy.MapToWorld(newGridPos);    //移動先のマスの中心点
 
         //移動を戻したかに基づき残り移動可能マスを更新する
-        if (UpdateMoveHistory(_cursorPos, newGridPos))
+        if (isUndo)//来た道を戻っている
         {
+            _pathWay.Pop();
             _remainingStep++;
-            UndoPath();
+            _pathUI.UndoPath();
         }
         else
         {
+            _pathWay.Push(_currentPos);//移動前の位置を入れる
             _remainingStep--;
-            InstancePath(newGridPos, destination - start);
+            _pathUI.InstancePath(destination - start,start);
         }
 
-        _cursor.transform.position = destination;
-        _cursorPos = newGridPos;
+        _moveCursorUI.MoveCursor(destination);
+        _currentPos = newGridPos;
     }
 
 
@@ -71,10 +74,10 @@ public partial class MoveOnMap
         moveVec.x = (int)inputVec.x;
         moveVec.y = -(int)inputVec.y;
 
-        newGridPos = _cursorPos + moveVec;
+        newGridPos = _currentPos + moveVec;
 
         if (!IsMovableMass(newGridPos)) return false;
-        if (_myMapTrs.CurrentHierarchy.IsBlockedByWall(_cursorPos, moveVec)) return false;
+        if (_myMapTrs.CurrentHierarchy.IsBlockedByWall(_currentPos, moveVec)) return false;
 
         return true;
     }
@@ -87,15 +90,20 @@ public partial class MoveOnMap
         return true;
     }
 
-    private void OnEnable()
+    public void OnStart()
     {
-        _cursorPos = _myMapTrs.Pos.gridPos;
-        _cursor = Instantiate(_cursorPrefab, _myMapTrs.CurrentHierarchy.MapToWorld(_cursorPos), Quaternion.identity);
+        _currentPos = _myMapTrs.Pos.gridPos;
+        _moveCursorUI.OnStartDecide(_myMapTrs.CurrentHierarchy.MapToWorld(_currentPos));
     }
 
-    private void OnDisable()
+    public void OnFinish()
     {
-        Destroy(_cursor);
-        _cursor = null;
+        _moveCursorUI.OnFinishDecide();
+        _pathWay.Push(_currentPos);//最終位置を入れる
+    }
+
+    private void Awake()
+    {
+        _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
     }
 }

@@ -12,7 +12,7 @@ public class DecideMovableStep : MonoBehaviour
     [SerializeField] SerializableDictionary<EPlayerState, SerializeRoulette> _defaultRoulette;
     [Tooltip("階層移動した後のルーレット")]
     [SerializeField] SerializableDictionary<EPlayerState, SerializeRoulette> _switchedRoulette;
-    [SerializeField] MoveOnMap _moveOnMap;
+    [SerializeField] DecidePath _decidePath;
     [SerializeField] TextMeshProUGUI _rouletteResultText;
 
     [SerializeField] ChangeHierarchy _changeHierarchy;
@@ -52,12 +52,12 @@ public class DecideMovableStep : MonoBehaviour
             }
         }
 
-        _moveOnMap.RemainingStep=result;
+        _decidePath.RemainingStep=result;
     }
 
     private void Update()
     {
-        _rouletteResultText.text = _moveOnMap.RemainingStep.ToString();//テキストに残り移動可能マス数を表示
+        _rouletteResultText.text = _decidePath.RemainingStep.ToString();//テキストに残り移動可能マス数を表示
     }
 
     private void Start()

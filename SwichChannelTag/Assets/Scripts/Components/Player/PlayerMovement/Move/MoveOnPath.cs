@@ -1,20 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 //作成者:杉山
-//プレイヤーのマップ上の移動操作
-//enabledをfalseにすれば、ボタンを押しても移動を出来なくすることが出来る
+//受け取った経路を元にプレイヤーを移動させる
 
-public partial class MoveOnMap : MonoBehaviour
+public class MoveOnPath : MonoBehaviour
 {
     [Tooltip("プレイヤーの移動の様子")] [SerializeField]
     PlayerMoveAnimation _playerMoveAnimation;
 
-    [Tooltip("プレイヤーの位置をずらす機能")] [SerializeField] 
+    [Tooltip("プレイヤーの位置をずらす機能")] [SerializeField]
     ShiftPlayersPosition _shiftPlayersPosition;
 
     MapTransform _myMapTrs;//自分のマップ上の位置情報
@@ -26,27 +23,26 @@ public partial class MoveOnMap : MonoBehaviour
 
     public bool IsMoving { get => _isMoving; }
 
-
-    public void StartMoveOnPath()
+    public void StartMove(MapVec[] path)//移動開始、pathは移動経路
     {
-        StartCoroutine(MoveOnPath());
-    }
-
-    IEnumerator MoveOnPath()
-    {
-        _isMoving = true;
-
-        foreach(var p in MovePath)
-        {
-            yield return Move(p);
-        }
-
-        _isMoving = false;
-        ClearMoveHistory();
+        StartCoroutine(Move(path));
     }
 
     //private
-    IEnumerator Move(MapVec newGridPos)//移動処理
+
+    IEnumerator Move(MapVec[] path)
+    {
+        _isMoving = true;
+
+        foreach (var p in path)
+        {
+            yield return MoveOneStep(p);
+        }
+
+        _isMoving = false;
+    }
+
+    IEnumerator MoveOneStep(MapVec newGridPos)//1マス移動
     {
         Vector3 start = _myMapTrs.CurrentWorldPos;//現在のマスの中心点
         Vector3 destination = _myMapTrs.CurrentHierarchy.MapToWorld(newGridPos);//移動先のマスの中心点
@@ -57,7 +53,7 @@ public partial class MoveOnMap : MonoBehaviour
         OnStartMove?.Invoke(_myMapTrs.Pos);//移動開始時のコールバックを呼ぶ
 
         _playerMoveAnimation.StartMove(start, destination);//移動アニメーション開始
-        yield return new WaitUntil(()=>!_playerMoveAnimation.IsMoving);//移動アニメーションが終わるまで待つ
+        yield return new WaitUntil(() => !_playerMoveAnimation.IsMoving);//移動アニメーションが終わるまで待つ
 
         _myCanShift.IsShiftAllowed = true;//自分がずれてもいいようにする
         RewriteMyMapPos(newGridPos);//位置情報の書き換え(移動アニメーションが終わった後に)
@@ -72,7 +68,6 @@ public partial class MoveOnMap : MonoBehaviour
         newPos.gridPos = newGridPos;
         _myMapTrs.Rewrite(newPos);
     }
-    
 
     private void Awake()
     {
@@ -83,6 +78,5 @@ public partial class MoveOnMap : MonoBehaviour
     {
         _myCanShift = PlayersManager.GetComponentFromMinePlayer<CanShift>();
         _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
-        _state = PlayersManager.GetComponentFromMinePlayer<PlayerState>();
     }
 }
