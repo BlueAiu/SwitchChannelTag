@@ -87,13 +87,13 @@ public partial class MoveOnMap
         return true;
     }
 
-    private void OnEnable()
+    public void OnStart()
     {
         _cursorPos = _myMapTrs.Pos.gridPos;
         _cursor = Instantiate(_cursorPrefab, _myMapTrs.CurrentHierarchy.MapToWorld(_cursorPos), Quaternion.identity);
     }
 
-    private void OnDisable()
+    public void OnFinish()
     {
         Destroy(_cursor);
         _cursor = null;

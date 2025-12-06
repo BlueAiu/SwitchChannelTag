@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 //作成者:杉山
 //マス移動ステート
 
 public class PlayerTurnFlowStateTypeCursorMove : PlayerTurnFlowStateTypeBase
 {
-    [Tooltip("マップ上を移動する機能")] [SerializeField]
+    [SerializeField]
     MoveOnMap _moveOnMap;
+
+    [SerializeField]
+    PlayerInput _playerInput;
 
     [Tooltip("マス移動時のUIを表示する機能")] [SerializeField]
     ShowUITypeBase _showMoveUI;
@@ -33,7 +37,8 @@ public class PlayerTurnFlowStateTypeCursorMove : PlayerTurnFlowStateTypeBase
         _showMoveUI.Show();
 
         //マス移動が可能な状態にする
-        _moveOnMap.enabled = true;
+        _moveOnMap.OnStart();
+        _playerInput.SwitchCurrentActionMap(ActionMapNameDictionary.move);
     }
 
     public override void OnUpdate()
@@ -48,7 +53,8 @@ public class PlayerTurnFlowStateTypeCursorMove : PlayerTurnFlowStateTypeBase
         _hideMoveUI.Hide();
 
         //マス移動が出来ない状態にする
-        _moveOnMap.enabled = false;
+        _moveOnMap.OnFinish();
+        _playerInput.SwitchCurrentActionMap(ActionMapNameDictionary.unControllable);
     }
 
     private void Start()
