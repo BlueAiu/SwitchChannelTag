@@ -14,6 +14,9 @@ public class MoveOnPath : MonoBehaviour
     [Tooltip("プレイヤーの位置をずらす機能")] [SerializeField]
     ShiftPlayersPosition _shiftPlayersPosition;
 
+    [Tooltip("自キャラを元の向きに直す機能")] [SerializeField]
+    LookDefaultDirection _lookDefaultDirection;
+
     MapTransform _myMapTrs;//自分のマップ上の位置情報
     CanShift _myCanShift;
     bool _isMoving = false;
@@ -58,6 +61,7 @@ public class MoveOnPath : MonoBehaviour
         _myCanShift.IsShiftAllowed = true;//自分がずれてもいいようにする
         RewriteMyMapPos(newGridPos);//位置情報の書き換え(移動アニメーションが終わった後に)
         _shiftPlayersPosition.OnEnter(_myMapTrs);//ずらす処理
+        _lookDefaultDirection.LookDefault();//自キャラを元の向きに戻す
 
         OnFinishMove?.Invoke(_myMapTrs.Pos);//移動終了時のコールバックを呼び出す
     }
