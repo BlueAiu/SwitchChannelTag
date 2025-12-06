@@ -7,32 +7,31 @@ using UnityEngine;
 
 public class PlayerTurnFlowStateTypePlayerMove : PlayerTurnFlowStateTypeBase
 {
-    [Tooltip("移動経路を決める機能")] [SerializeField]
-    DecidePath _decidePath;
+    [Tooltip("移動経路")] [SerializeField]
+    PathWay _pathWay;
+
+    [Tooltip("移動経路UI")] [SerializeField]
+    PathUI _pathUI;
 
     [Tooltip("経路上を移動する機能")] [SerializeField]
     MoveOnPath _moveOnPath;
 
     public override void OnEnter()
     {
-        _moveOnPath.StartMove(_decidePath.MovePath);
+        _moveOnPath.StartMove(_pathWay.MovePath);
     }
 
     public override void OnUpdate()
     {
         if (!_moveOnPath.IsMoving)
         {
-            _decidePath.ClearMoveHistory();
+            _pathWay.ClearPath();
+            _pathUI.ClearPath();
             _stateMachine.ChangeState(EPlayerTurnFlowState.Finish);
         }
     }
 
     public override void OnExit()
-    {
-
-    }
-
-    private void Start()
     {
 
     }

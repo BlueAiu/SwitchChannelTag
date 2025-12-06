@@ -864,6 +864,9 @@ GameObject:
   - component: {fileID: 722071809}
   - component: {fileID: 722071808}
   - component: {fileID: 722071814}
+  - component: {fileID: 722071817}
+  - component: {fileID: 722071816}
+  - component: {fileID: 722071815}
   - component: {fileID: 722071813}
   - component: {fileID: 722071810}
   - component: {fileID: 722071806}
@@ -1103,13 +1106,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b2c97c55b93074ba5c2944a85e8cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cursorPrefab: {fileID: 4859577855487797688, guid: 692648c97daf2264288aa0b2c7803009, type: 3}
+  _pathUI: {fileID: 722071816}
+  _pathWay: {fileID: 722071815}
+  _moveCursorUI: {fileID: 722071817}
+--- !u!114 &722071815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722071804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649ffeb293bc2494295d34fd6fc34011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &722071816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722071804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a736998079f5b3145b0fbb3dfcb019ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _pathObject:
     _list:
     - key: 1
       value: {fileID: 4075456461077803855, guid: e4bd3467b00cab34dae9bba3223830ce, type: 3}
     - key: 0
       value: {fileID: 4075456461077803855, guid: 46b024c82db08934891304e53b9cb5bd, type: 3}
+--- !u!114 &722071817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722071804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f79dbb95aeafc3c4b93b6bd9870343c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cursorPrefab: {fileID: 4859577855487797688, guid: 692648c97daf2264288aa0b2c7803009, type: 3}
 --- !u!1 &742054141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1967,6 +2009,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1302053222}
     m_Modifications:
+    - target: {fileID: 1010882305209889061, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _pathUI
+      value: 
+      objectReference: {fileID: 722071816}
+    - target: {fileID: 1010882305209889061, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _pathWay
+      value: 
+      objectReference: {fileID: 722071815}
     - target: {fileID: 1010882305209889061, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _moveOnMap
       value: 
