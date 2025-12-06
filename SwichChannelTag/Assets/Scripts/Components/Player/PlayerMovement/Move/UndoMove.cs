@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class MoveOnMap : MonoBehaviour
+public partial class DecidePath
 {
     Stack<MapVec> moveHistory = new();
 
@@ -13,6 +13,12 @@ public partial class MoveOnMap : MonoBehaviour
     {
         if (moveHistory.Count == 0) return false;
         return moveHistory.Peek() == newGridPos;
+    }
+
+    public void ClearMoveHistory()
+    {
+        moveHistory.Clear();
+        ClearPath();
     }
 
     // ˆê‚Â‚à‚Ç‚é‘€ì‚ğ‚µ‚½‚©‚Ì‰Â”Û‚ğ•Ô‚·
@@ -29,11 +35,5 @@ public partial class MoveOnMap : MonoBehaviour
             moveHistory.Push(curGridPos);
             return false;
         }
-    }
-
-    void ClearMoveHistory()
-    {
-        moveHistory.Clear();
-        ClearPath();
     }
 }

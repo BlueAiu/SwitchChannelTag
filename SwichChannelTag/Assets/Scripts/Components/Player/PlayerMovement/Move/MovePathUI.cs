@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public partial class MoveOnMap : MonoBehaviour
+public partial class DecidePath
 {
     [SerializeField] SerializableDictionary<EPlayerState, GameObject> _pathObject;
 

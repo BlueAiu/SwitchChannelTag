@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 public class PlayerTurnFlowStateTypeCursorMove : PlayerTurnFlowStateTypeBase
 {
     [SerializeField]
-    MoveOnMap _moveOnMap;
+    DecidePath _decidePath;
 
     [SerializeField]
     PlayerInput _playerInput;
@@ -37,7 +37,7 @@ public class PlayerTurnFlowStateTypeCursorMove : PlayerTurnFlowStateTypeBase
         _showMoveUI.Show();
 
         //マス移動が可能な状態にする
-        _moveOnMap.OnStart();
+        _decidePath.OnStart();
         _playerInput.SwitchCurrentActionMap(ActionMapNameDictionary.move);
     }
 
@@ -53,7 +53,7 @@ public class PlayerTurnFlowStateTypeCursorMove : PlayerTurnFlowStateTypeBase
         _hideMoveUI.Hide();
 
         //マス移動が出来ない状態にする
-        _moveOnMap.OnFinish();
+        _decidePath.OnFinish();
         _playerInput.SwitchCurrentActionMap(ActionMapNameDictionary.unControllable);
     }
 

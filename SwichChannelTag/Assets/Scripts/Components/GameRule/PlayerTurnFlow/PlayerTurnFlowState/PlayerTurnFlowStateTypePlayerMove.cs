@@ -7,18 +7,22 @@ using UnityEngine;
 
 public class PlayerTurnFlowStateTypePlayerMove : PlayerTurnFlowStateTypeBase
 {
-    [Tooltip("マップ上を移動する機能")] [SerializeField]
-    MoveOnMap _moveOnMap;
+    [Tooltip("移動経路を決める機能")] [SerializeField]
+    DecidePath _decidePath;
+
+    [Tooltip("経路上を移動する機能")] [SerializeField]
+    MoveOnPath _moveOnPath;
 
     public override void OnEnter()
     {
-        _moveOnMap.StartMoveOnPath();
+        _moveOnPath.StartMove(_decidePath.MovePath);
     }
 
     public override void OnUpdate()
     {
-        if (!_moveOnMap.IsMoving)
+        if (!_moveOnPath.IsMoving)
         {
+            _decidePath.ClearMoveHistory();
             _stateMachine.ChangeState(EPlayerTurnFlowState.Finish);
         }
     }

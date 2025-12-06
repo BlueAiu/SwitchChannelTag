@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0899b3df6c2d1ba47837a82e4dc18a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveOnMap: {fileID: 722071807}
+  _moveOnPath: {fileID: 722071813}
   _changeHierarchy: {fileID: 722071808}
   _getOverlapPlayer: {fileID: 742054143}
 --- !u!4 &317900442
@@ -863,7 +863,8 @@ GameObject:
   - component: {fileID: 722071805}
   - component: {fileID: 722071809}
   - component: {fileID: 722071808}
-  - component: {fileID: 722071807}
+  - component: {fileID: 722071814}
+  - component: {fileID: 722071813}
   - component: {fileID: 722071810}
   - component: {fileID: 722071806}
   - component: {fileID: 722071812}
@@ -940,32 +941,11 @@ MonoBehaviour:
         - {x: 2, y: 4}
         - {x: 3, y: 2}
         - {x: 4, y: 1}
-  _moveOnMap: {fileID: 722071807}
+  _decidePath: {fileID: 722071814}
   _rouletteResultText: {fileID: 1142387691}
   _changeHierarchy: {fileID: 722071808}
   _playerState: {fileID: 0}
   writeLog: 1
---- !u!114 &722071807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722071804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4faaa9de41e606948ae0184bb28cc203, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cursorPrefab: {fileID: 4859577855487797688, guid: 692648c97daf2264288aa0b2c7803009, type: 3}
-  _playerMoveAnimation: {fileID: 722071810}
-  _shiftPlayersPosition: {fileID: 742054144}
-  _pathObject:
-    _list:
-    - key: 1
-      value: {fileID: 4075456461077803855, guid: e4bd3467b00cab34dae9bba3223830ce, type: 3}
-    - key: 0
-      value: {fileID: 4075456461077803855, guid: 46b024c82db08934891304e53b9cb5bd, type: 3}
 --- !u!114 &722071808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1047,8 +1027,8 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 722071807}
-        m_TargetAssemblyTypeName: MoveOnMap, Assembly-CSharp
+      - m_Target: {fileID: 722071814}
+        m_TargetAssemblyTypeName: DecidePath, Assembly-CSharp
         m_MethodName: MoveControl
         m_Mode: 0
         m_Arguments:
@@ -1097,6 +1077,39 @@ MonoBehaviour:
       value: 3
     - key: 1
       value: 0
+--- !u!114 &722071813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722071804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd2f6596cd00ac44b71c7900bf56eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMoveAnimation: {fileID: 722071810}
+  _shiftPlayersPosition: {fileID: 742054144}
+--- !u!114 &722071814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722071804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01b2c97c55b93074ba5c2944a85e8cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cursorPrefab: {fileID: 4859577855487797688, guid: 692648c97daf2264288aa0b2c7803009, type: 3}
+  _pathObject:
+    _list:
+    - key: 1
+      value: {fileID: 4075456461077803855, guid: e4bd3467b00cab34dae9bba3223830ce, type: 3}
+    - key: 0
+      value: {fileID: 4075456461077803855, guid: 46b024c82db08934891304e53b9cb5bd, type: 3}
 --- !u!1 &742054141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,7 +1970,15 @@ PrefabInstance:
     - target: {fileID: 1010882305209889061, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _moveOnMap
       value: 
-      objectReference: {fileID: 722071807}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010882305209889061, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _decidePath
+      value: 
+      objectReference: {fileID: 722071814}
+    - target: {fileID: 1010882305209889061, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _moveOnPath
+      value: 
+      objectReference: {fileID: 722071813}
     - target: {fileID: 1371814805856891794, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _changeHierarchy
       value: 
@@ -2145,7 +2166,11 @@ PrefabInstance:
     - target: {fileID: 8883037788068780043, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _moveOnMap
       value: 
-      objectReference: {fileID: 722071807}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8883037788068780043, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _decidePath
+      value: 
+      objectReference: {fileID: 722071814}
     - target: {fileID: 8883037788068780043, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _hideMoveUI
       value: 
@@ -3716,7 +3741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -72.07392
+      value: -17.173922
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.z

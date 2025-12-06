@@ -4,10 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public partial class MoveOnMap
+public partial class DecidePath : MonoBehaviour
 {
     [SerializeField] GameObject _cursorPrefab;
     GameObject _cursor;
+    MapTransform _myMapTrs;
     MapVec _cursorPos;
 
     int _remainingStep = 0;//残り移動可能マス数
@@ -97,5 +98,11 @@ public partial class MoveOnMap
     {
         Destroy(_cursor);
         _cursor = null;
+    }
+
+    private void Awake()
+    {
+        _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
+        _state = PlayersManager.GetComponentFromMinePlayer<PlayerState>();
     }
 }
