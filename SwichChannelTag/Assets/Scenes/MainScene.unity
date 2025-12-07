@@ -3952,7 +3952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -72.07392
+      value: -17.173922
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4061,7 +4061,15 @@ PrefabInstance:
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 286366378}
+    - target: {fileID: 895128824115299946, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 286366378}
     - target: {fileID: 1646858276092649882, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 286366378}
+    - target: {fileID: 1858079420522858646, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 286366378}
@@ -4082,6 +4090,10 @@ PrefabInstance:
       value: CommandUI
       objectReference: {fileID: 0}
     - target: {fileID: 2943327584685391048, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 286366378}
+    - target: {fileID: 3434633571646408444, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 286366378}
@@ -4141,7 +4153,15 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1509087123}
+    - target: {fileID: 6894558046192802087, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 286366378}
     - target: {fileID: 7412628027325398593, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 286366378}
+    - target: {fileID: 7623776587108128589, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 286366378}
@@ -4166,6 +4186,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: b4e18531a5320a64789f78cdc336253b, type: 3}
     - target: {fileID: 8942904814922049418, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 286366378}
+    - target: {fileID: 8964419348628543921, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 286366378}

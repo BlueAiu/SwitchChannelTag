@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 0}
-  _playOnlyIsInteractable: 0
+  _playOnlyIsInteractable: 1
   _clip: {fileID: 8300000, guid: ee239b62fd2bf664686c191c06622225, type: 3}
 --- !u!114 &8210307662502177760
 MonoBehaviour:

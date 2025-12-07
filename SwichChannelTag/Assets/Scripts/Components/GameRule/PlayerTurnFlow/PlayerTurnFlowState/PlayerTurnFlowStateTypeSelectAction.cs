@@ -78,6 +78,7 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
     {
         _finished = true;
         _hideSelectActionUI.Hide();
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     private void Start()
