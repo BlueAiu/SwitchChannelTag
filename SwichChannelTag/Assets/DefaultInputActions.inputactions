@@ -2,7 +2,7 @@
     "name": "DefaultInputActions",
     "maps": [
         {
-            "name": "Player",
+            "name": "Move",
             "id": "dc419f01-3e11-45d5-b681-cfca6b59a800",
             "actions": [
                 {
@@ -72,6 +72,12 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "UnControllable",
+            "id": "0ba180db-31c7-483f-95e0-b61b0889e121",
+            "actions": [],
+            "bindings": []
         },
         {
             "name": "UI",
