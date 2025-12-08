@@ -472,9 +472,13 @@ PrefabInstance:
       propertyPath: _convertCaughtRunnerToTagger
       value: 
       objectReference: {fileID: 317900443}
-    - target: {fileID: 5697977699458795627, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
-      propertyPath: _maxTurnNum
-      value: 20
+    - target: {fileID: 4844839192103971793, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
+      propertyPath: _setObs
+      value: 
+      objectReference: {fileID: 1921750926}
+    - target: {fileID: 4844839192103971793, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
+      propertyPath: changeWallTurn
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7805010986841324682, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2217,6 +2221,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3697850201809665280, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _setObs
+      value: 
+      objectReference: {fileID: 1921750926}
+    - target: {fileID: 3697850201809665280, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _coolDown
       value: 
       objectReference: {fileID: 722071812}
@@ -2224,6 +2232,10 @@ PrefabInstance:
       propertyPath: _coolDownText
       value: 
       objectReference: {fileID: 871218131}
+    - target: {fileID: 3697850201809665280, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: changeObsTurn
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3697850201809665280, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _hideSelectActionUI
       value: 
@@ -3200,6 +3212,58 @@ MonoBehaviour:
 
     .....|...
 
+    ...._|...
+
+    ......__.
+
+    .__|..|..
+
+    ...._....
+
+    ....|....
+
+    ....|....
+
+    .........'
+  - '.........
+
+    ....|....
+
+    ....L....
+
+    .__......
+
+    ...|..L_.
+
+    ...._....
+
+    .....|...
+
+    .....|...
+
+    .........'
+  - '.........
+
+    .........
+
+    ....||...
+
+    .._..._..
+
+    .._..._..
+
+    .........
+
+    ....||...
+
+    .........
+
+    .........'
+  _obstaclesMaps_2:
+  - '.........
+
+    .....|...
+
     ...__|...
 
     ...|..__.
@@ -3966,7 +4030,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -72.07392
+      value: 31.326082
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.z

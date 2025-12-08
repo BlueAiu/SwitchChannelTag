@@ -18,4 +18,9 @@ public partial class Map_A_Hierarchy : MonoBehaviour
     {
         return _walls.Contains(new Wall_Obstacle(pos, dir));
     }
+
+    public void ClearWalls()
+    {
+        _walls.Clear();
+    }
 }

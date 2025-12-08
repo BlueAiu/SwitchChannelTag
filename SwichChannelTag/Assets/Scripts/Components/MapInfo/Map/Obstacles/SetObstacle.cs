@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using UnityEngine;
 //作成者:杉山
 //マップ上に障害物を置く
 
-public class SetObstacle : MonoBehaviour
+public class SetObstacle : MonoBehaviourPunCallbacks
 {
 
     const int mapRows = 9;
@@ -30,27 +31,47 @@ public class SetObstacle : MonoBehaviour
         "文字列の長さ、リストのサイズに注意して下さい")]
     public string[] _obstaclesMaps;
 
+    [SerializeField, TextArea(mapRows, mapRows)]
+    public string[] _obstaclesMaps_2;
+
+    List<GameObject> InstanceObs = new();
+
     void Start()
     {
-        if (_obstaclesMaps.Length != _map.Length) 
+        SetObstacleMap(_obstaclesMaps);
+    }
+
+    public void ChangeObstacleMap()
+    {
+        SetObstacleMap(_obstaclesMaps_2);
+    }
+
+    void SetObstacleMap(string[] setMap)
+    {
+        foreach (var i in InstanceObs) Destroy(i);
+        InstanceObs.Clear();
+        for(int i=0;i<_map.Length;i++) _map[i].ClearWalls();
+
+
+        if (setMap.Length != _map.Length)
         { Debug.LogAssertion("ObstacleMapsのサイズを階層の数と揃えてください"); }
 
-        for(int i=0;i<_obstaclesMaps.Length;i++)
+        for (int i = 0; i < _obstaclesMaps.Length; i++)
         {
-            var map = _obstaclesMaps[i].Split('\n');
-            if(map.Length != _map[i].MapSize_Y)
+            var map = setMap[i].Split('\n');
+            if (map.Length != _map[i].MapSize_Y)
             { Debug.LogAssertionFormat("ObstacleMaps[{0}]のサイズをマップの高さと揃えてください", i); }
 
-            for(int h = 0; h < map.Length; h++)
+            for (int h = 0; h < map.Length; h++)
             {
                 var str = map[h];
 
-                for(int w = 0; w < str.Length; w++)
+                for (int w = 0; w < str.Length; w++)
                 {
                     char c = str[w];
                     MapPos pos = new MapPos(i, new MapVec(w, h));
 
-                    PutObstacle(c, pos); 
+                    PutObstacle(c, pos);
                 }
             }
         }
@@ -136,6 +157,8 @@ public class SetObstacle : MonoBehaviour
 
         bool isGridEven = (wallPos0.gridPos.x + wallPos0.gridPos.y) % 2 == 0;
         i_wall.transform.Rotate(Vector3.up * (isGridEven ? _wallTiltAngle : -_wallTiltAngle));
+
+        InstanceObs.Add(i_wall);
     }
 
 }

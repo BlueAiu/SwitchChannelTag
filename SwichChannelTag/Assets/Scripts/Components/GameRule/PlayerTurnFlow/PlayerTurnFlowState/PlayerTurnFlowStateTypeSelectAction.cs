@@ -28,6 +28,9 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
     [Tooltip("階層移動のクールダウン")] [SerializeField]
     CoolDown_ChangeHierarchy _coolDown;
 
+    [SerializeField] SetObstacle _setObs;
+    [SerializeField] int changeObsTurn = 10;
+
     bool _finished = true;
 
     //ダイスステートに移るボタンに登録するメソッド
@@ -67,6 +70,8 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
         {
             _coolDownText.text = string.Empty;
         }
+
+        if (GameStatsManager.Instance.Turn.GetTurn() == changeObsTurn) _setObs.ChangeObstacleMap();
     }
 
     public override void OnUpdate()
