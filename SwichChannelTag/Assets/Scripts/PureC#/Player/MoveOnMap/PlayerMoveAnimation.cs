@@ -36,6 +36,8 @@ public class PlayerMoveAnimation : MonoBehaviour
         _myTrs.position = start;
         _currentTime = _defaultCurrentTime;
 
+        LookMoveDirection(start,destination);
+
         while(_currentTime<=_moveDuration)
         {
             _currentTime += Time.deltaTime;
@@ -48,6 +50,13 @@ public class PlayerMoveAnimation : MonoBehaviour
 
         _myTrs.position = destination;
         _isMoving = false;
+    }
+
+    void LookMoveDirection(Vector3 start, Vector3 destination)//is•ûŒü‚ÉƒLƒƒƒ‰‚ÌŒü‚«‚ð•Ï‚¦‚é
+    {
+        Vector3 dir = destination - start;
+        Quaternion look=Quaternion.LookRotation(-dir);
+        _myTrs.rotation = look;
     }
 
     private void Awake()

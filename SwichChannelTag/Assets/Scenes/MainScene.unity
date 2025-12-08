@@ -871,6 +871,7 @@ GameObject:
   - component: {fileID: 722071810}
   - component: {fileID: 722071806}
   - component: {fileID: 722071812}
+  - component: {fileID: 722071818}
   m_Layer: 0
   m_Name: ControlManager
   m_TagString: Untagged
@@ -1094,6 +1095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMoveAnimation: {fileID: 722071810}
   _shiftPlayersPosition: {fileID: 742054144}
+  _lookDefaultDirection: {fileID: 722071818}
 --- !u!114 &722071814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1152,6 +1154,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cursorPrefab: {fileID: 4859577855487797688, guid: 692648c97daf2264288aa0b2c7803009, type: 3}
+--- !u!114 &722071818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722071804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f302fd2f04c3c4ca43d850d3c3b929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &742054141
 GameObject:
   m_ObjectHideFlags: 0
@@ -3791,7 +3805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.173922
+      value: -72.07392
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.z
