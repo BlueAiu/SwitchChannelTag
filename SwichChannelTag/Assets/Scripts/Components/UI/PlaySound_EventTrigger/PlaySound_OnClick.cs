@@ -35,14 +35,14 @@ public class PlaySound_OnClick : MonoBehaviour, IPointerClickHandler, ISubmitHan
     {
         if (!IsInteractable()) return;
 
-        _audioSource.PlayOneShot(_clip);
+        if (_audioSource != null && _clip != null) _audioSource.PlayOneShot(_clip);
     }
 
     public void OnSubmit(BaseEventData eventData)
     {
         if (!IsInteractable()) return;
 
-        _audioSource.PlayOneShot(_clip);
+        if (_audioSource != null && _clip != null) _audioSource.PlayOneShot(_clip);
     }
 
     bool IsInteractable()

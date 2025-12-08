@@ -58,6 +58,7 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
     {
         _finished = true;
        _hideDiceUI.Hide();
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     private void Start()

@@ -78,6 +78,8 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
         _hideSelectHierarchyUI.Hide();
 
         _selectHierarchyButtons[_myMapTrs.Pos.hierarchyIndex].Button.interactable = true;
+
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     private void Awake()
