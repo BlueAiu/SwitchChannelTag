@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2078119741523345145}
   - component: {fileID: 2307577264659145845}
   m_Layer: 5
-  m_Name: AllowSprite
+  m_Name: CompassSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

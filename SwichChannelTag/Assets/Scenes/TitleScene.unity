@@ -238,10 +238,6 @@ PrefabInstance:
       value: Start
       objectReference: {fileID: 0}
     - target: {fileID: 1948815747241944279, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
-      propertyPath: m_fontSize
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1948815747241944279, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
       propertyPath: m_fontSizeBase
       value: 10
       objectReference: {fileID: 0}
@@ -570,10 +566,6 @@ PrefabInstance:
     - target: {fileID: 1948815747241944279, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
       propertyPath: m_text
       value: Setting
-      objectReference: {fileID: 0}
-    - target: {fileID: 1948815747241944279, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
-      propertyPath: m_fontSize
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1948815747241944279, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
       propertyPath: m_margin.x
@@ -1084,10 +1076,6 @@ PrefabInstance:
     - target: {fileID: 1948815747241944279, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
       propertyPath: m_text
       value: HowtoPlay
-      objectReference: {fileID: 0}
-    - target: {fileID: 1948815747241944279, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
-      propertyPath: m_fontSize
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1948815747241944279, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
       propertyPath: m_fontSizeBase
