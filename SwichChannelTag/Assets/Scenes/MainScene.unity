@@ -3966,7 +3966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -72.07392
+      value: -17.173922
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4191,6 +4191,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1509087124}
+    - target: {fileID: 8738927985769203094, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8919853690306800242, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4413,7 +4417,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 2ce9e6bf52b10ec449791a754980548e, type: 3}
     - target: {fileID: 4953285648470788780, guid: e89eaefeef03247408049d3737cf2757, type: 3}
       propertyPath: m_Name
-      value: AllowSprite
+      value: CompassSprite
       objectReference: {fileID: 0}
     - target: {fileID: 5876760454425699992, guid: e89eaefeef03247408049d3737cf2757, type: 3}
       propertyPath: m_Pivot.x
