@@ -20,6 +20,8 @@ public class DecideMovableStep : MonoBehaviour
 
     [SerializeField] bool writeLog = true;
 
+    [SerializeField] int taggerBoost = 2;
+
     public void Decide(bool isChangedHierarchy)//動けるマス数を決定(ダイスロールで)、階層移動したかを受け取る
     {
         int result;
@@ -52,7 +54,18 @@ public class DecideMovableStep : MonoBehaviour
             }
         }
 
+        if (state == EPlayerState.Tagger && LonelyTagger()) result += taggerBoost;
+
         _decidePath.RemainingStep=result;
+    }
+
+    bool LonelyTagger()
+    {
+        var players = PlayersManager.GetComponentsFromPlayers<PlayerState>();
+        int cnt = 0;
+        foreach ( var player in players) 
+            if(player.State == EPlayerState.Tagger) cnt++;
+        return cnt == 1;
     }
 
     private void Update()

@@ -1050,10 +1050,10 @@ MonoBehaviour:
         restoreAtEnd: 0
         distribution:
         - {x: 2, y: 1}
-        - {x: 3, y: 2}
-        - {x: 4, y: 4}
-        - {x: 5, y: 6}
-        - {x: 6, y: 2}
+        - {x: 3, y: 3}
+        - {x: 4, y: 6}
+        - {x: 5, y: 3}
+        - {x: 6, y: 1}
   _switchedRoulette:
     _list:
     - key: 0
@@ -1078,6 +1078,7 @@ MonoBehaviour:
   _changeHierarchy: {fileID: 722071808}
   _playerState: {fileID: 0}
   writeLog: 1
+  taggerBoost: 2
 --- !u!114 &722071808
 MonoBehaviour:
   m_ObjectHideFlags: 0
