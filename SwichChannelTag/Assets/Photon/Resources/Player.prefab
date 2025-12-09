@@ -296,7 +296,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ready_Massage: {fileID: 3465217059010002143}
-  _readiness: {fileID: 0}
 --- !u!1001 &1240315800276754999
 PrefabInstance:
   m_ObjectHideFlags: 0
