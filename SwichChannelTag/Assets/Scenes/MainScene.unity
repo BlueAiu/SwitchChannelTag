@@ -2234,7 +2234,7 @@ PrefabInstance:
       objectReference: {fileID: 871218131}
     - target: {fileID: 3697850201809665280, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: changeObsTurn
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3697850201809665280, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _hideSelectActionUI
