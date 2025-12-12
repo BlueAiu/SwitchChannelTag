@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -8455191483189153551}
   - component: {fileID: -577327088021323386}
   - component: {fileID: 7667243815483642269}
+  - component: {fileID: -4264953099838536481}
   m_Layer: 0
   m_Name: Spilit
   m_TagString: Untagged
@@ -106,6 +107,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5df28395de9004fa1a835f50fa99b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4264953099838536481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4259371078016885822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3256ccad427422941a65c2a4e39b30ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myPhotonView: {fileID: 825484042453775653}
+  _myTransform: {fileID: 4594833887867300514}
 --- !u!1 &4728575083503332581
 GameObject:
   m_ObjectHideFlags: 0
