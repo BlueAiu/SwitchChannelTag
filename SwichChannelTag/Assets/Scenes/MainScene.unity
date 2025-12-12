@@ -451,6 +451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnItem: {fileID: 4259371078016885822, guid: d2dff449531f1c0429cef6076d0a62dc, type: 3}
   _hierarchies: {fileID: 407807742}
+  spawnNum: 2
 --- !u!1001 &126770791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -979,6 +980,10 @@ PrefabInstance:
       propertyPath: _convertCaughtRunnerToTagger
       value: 
       objectReference: {fileID: 317900443}
+    - target: {fileID: 4844839192103971793, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
+      propertyPath: _spawner
+      value: 
+      objectReference: {fileID: 93794648}
     - target: {fileID: 5697977699458795627, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
       propertyPath: _maxTurnNum
       value: 20

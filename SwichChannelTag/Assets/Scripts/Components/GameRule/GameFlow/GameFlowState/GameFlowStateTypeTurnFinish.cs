@@ -9,6 +9,7 @@ public class GameFlowStateTypeTurnFinish : GameFlowStateTypeBase
 {
     [Tooltip("ゲーム終了かを判定する機能")] [SerializeField]
     JudgeGameSet _judgeGameSet;
+    [SerializeField] ItemSpawner _spawner;
 
     public override void OnEnter()
     {
@@ -32,6 +33,8 @@ public class GameFlowStateTypeTurnFinish : GameFlowStateTypeBase
         GameStatsManager.Instance.Turn.SetTurn(GameStatsManager.Instance.Turn.GetTurn() + 1);//経過ターンを増やす
 
         EGameFlowState nextState = (_stateMachine.SharedData.FirstTurn == EPlayerState.Runner) ? EGameFlowState.RunnerTurn : EGameFlowState.TaggerTurn;
+
+        _spawner.SpawnItems();
 
         _stateMachine.ChangeState(nextState);
     }
