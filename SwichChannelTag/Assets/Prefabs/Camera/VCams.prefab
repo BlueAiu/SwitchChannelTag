@@ -279,6 +279,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hierarchy_3_VCam
       objectReference: {fileID: 0}
+    - target: {fileID: 3337477283987118403, guid: b458a99625ddf3c4a8065da8ff976147, type: 3}
+      propertyPath: m_XDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337477283987118403, guid: b458a99625ddf3c4a8065da8ff976147, type: 3}
+      propertyPath: m_YDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337477283987118403, guid: b458a99625ddf3c4a8065da8ff976147, type: 3}
+      propertyPath: m_ZDamping
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -341,6 +353,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hierarchy_1_VCam
       objectReference: {fileID: 0}
+    - target: {fileID: 3337477283987118403, guid: b458a99625ddf3c4a8065da8ff976147, type: 3}
+      propertyPath: m_XDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337477283987118403, guid: b458a99625ddf3c4a8065da8ff976147, type: 3}
+      propertyPath: m_YDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337477283987118403, guid: b458a99625ddf3c4a8065da8ff976147, type: 3}
+      propertyPath: m_ZDamping
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -402,6 +426,18 @@ PrefabInstance:
     - target: {fileID: 1158651170674765783, guid: b458a99625ddf3c4a8065da8ff976147, type: 3}
       propertyPath: m_Name
       value: Hierarchy_2_VCam
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337477283987118403, guid: b458a99625ddf3c4a8065da8ff976147, type: 3}
+      propertyPath: m_XDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337477283987118403, guid: b458a99625ddf3c4a8065da8ff976147, type: 3}
+      propertyPath: m_YDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337477283987118403, guid: b458a99625ddf3c4a8065da8ff976147, type: 3}
+      propertyPath: m_ZDamping
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

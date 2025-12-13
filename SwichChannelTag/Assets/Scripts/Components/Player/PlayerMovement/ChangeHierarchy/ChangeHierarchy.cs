@@ -19,6 +19,7 @@ public partial class ChangeHierarchy : MonoBehaviour
 
     MapTransform _myMapTrs;//自分のマップ上の位置情報
     bool _isPlaying=false;
+    int _newHierarchyIndex;
 
     public event Action<int> OnSwitchHierarchy_NewIndex;//階層切り替え時に呼ばれる(引数に新しい階層番号を入れる形式)
     public event Action OnSwitchHierarchy;//階層切り替え時に呼ばれる(引数なし)
@@ -31,20 +32,22 @@ public partial class ChangeHierarchy : MonoBehaviour
 
         if(_isPlaying) return;
 
+        _newHierarchyIndex = newHierarchyIndex;
+
         //イベントを再生
         _changeHierarchyEventDirecter.Play();
         _isPlaying = true;
     }
 
-    public void MoveToDestinationHierarchy(int newHierarchyIndex)//階層移動の処理(フェードアウトが終わった瞬間に呼ぶ)
+    public void MoveToDestinationHierarchy()//階層移動の処理(フェードアウトが終わった瞬間に呼ぶ)
     {
         _shiftPlayersPosition.OnExit(_myMapTrs);
 
-        _myMapTrs.Rewrite(newHierarchyIndex);
+        _myMapTrs.Rewrite(_newHierarchyIndex);
 
         _shiftPlayersPosition.OnEnter(_myMapTrs);
 
-        OnSwitchHierarchy_NewIndex?.Invoke(newHierarchyIndex);
+        OnSwitchHierarchy_NewIndex?.Invoke(_newHierarchyIndex);
         OnSwitchHierarchy?.Invoke();
     }
 
