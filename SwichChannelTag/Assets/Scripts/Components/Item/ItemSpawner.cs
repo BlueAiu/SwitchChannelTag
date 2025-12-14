@@ -35,6 +35,7 @@ public class ItemSpawner : MonoBehaviour
     MapTransform[] players, items;
     hierarchyInfo[] hierarchiesInfo;
     List<MapVec>[] objVecs;
+    PhotonView m_view;
 
     private void Start()
     {
@@ -42,6 +43,7 @@ public class ItemSpawner : MonoBehaviour
         players = PlayersManager.GetComponentsFromPlayers<MapTransform>();
         hierarchiesInfo = new hierarchyInfo[_hierarchies.Length];
         objVecs = new List<MapVec>[_hierarchies.Length];
+        m_view = PlayersManager.GetComponentFromMinePlayer<PhotonView>();
     }
 
     public void SpawnItems()
@@ -144,4 +146,15 @@ public class ItemSpawner : MonoBehaviour
         }
     }
 
+    //public void DestroyItems(GameObject[] items)
+    //{
+    //    m_view.RPC(nameof(ReqestDestroy), RpcTarget.All, items);
+    //}
+
+    //[PunRPC(owner)]
+    //void ReqestDestroy(GameObject[] objects)
+    //{
+    //    if (!mine.IsMasterClient) return;
+    //    foreach (var obj in objects) PhotonNetwork.Destroy(obj);
+    //}
 }

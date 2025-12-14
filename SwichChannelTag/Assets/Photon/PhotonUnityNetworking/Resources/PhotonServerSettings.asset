@@ -58,6 +58,9 @@ MonoBehaviour:
   - ClearRunnerInfo_RPC
   - SetRunnerInfo_RPC
   - RPC_ShowReady
+  - SetSpilitCount
+  - ReqestDestroy
+  - DestroyOwn
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

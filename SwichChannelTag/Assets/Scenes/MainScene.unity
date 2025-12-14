@@ -664,6 +664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 93794647}
   - component: {fileID: 93794648}
+  - component: {fileID: 93794649}
   m_Layer: 0
   m_Name: ItemManager
   m_TagString: Untagged
@@ -701,6 +702,18 @@ MonoBehaviour:
   _spawnItem: {fileID: 4259371078016885822, guid: d2dff449531f1c0429cef6076d0a62dc, type: 3}
   _hierarchies: {fileID: 407807742}
   spawnNum: 2
+--- !u!114 &93794649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93794646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24752029f6f81fc43837f323c9ad0729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &97422771
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,6 +2446,8 @@ MonoBehaviour:
   _playerMoveAnimation: {fileID: 722071810}
   _shiftPlayersPosition: {fileID: 742054144}
   _lookDefaultDirection: {fileID: 722071818}
+  getItems: {fileID: 93794649}
+  ItemSpawner: {fileID: 93794648}
 --- !u!114 &722071814
 MonoBehaviour:
   m_ObjectHideFlags: 0

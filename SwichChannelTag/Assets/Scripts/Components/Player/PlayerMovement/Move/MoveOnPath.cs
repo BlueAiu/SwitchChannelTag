@@ -17,6 +17,9 @@ public class MoveOnPath : MonoBehaviour
     [Tooltip("自キャラを元の向きに直す機能")] [SerializeField]
     LookDefaultDirection _lookDefaultDirection;
 
+    [SerializeField] GetOverLapItems getItems;
+    [SerializeField] ItemSpawner ItemSpawner;
+
     MapTransform _myMapTrs;//自分のマップ上の位置情報
     CanShift _myCanShift;
     bool _isMoving = false;
@@ -62,6 +65,10 @@ public class MoveOnPath : MonoBehaviour
         RewriteMyMapPos(newGridPos);//位置情報の書き換え(移動アニメーションが終わった後に)
         _shiftPlayersPosition.OnEnter(_myMapTrs);//ずらす処理
         _lookDefaultDirection.LookDefault();//自キャラを元の向きに戻す
+
+        var items = getItems.GetItems();
+        PlayersManager.GetComponentFromMinePlayer<PlayerItemManager>().SpilitCount += items.Length;
+        foreach (var item in items) item.GetComponent<ItemEntryAndExit>().RequestDestroy();
 
         OnFinishMove?.Invoke(_myMapTrs.Pos);//移動終了時のコールバックを呼び出す
     }
