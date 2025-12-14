@@ -1587,6 +1587,10 @@ PrefabInstance:
       propertyPath: _spawner
       value: 
       objectReference: {fileID: 93794648}
+    - target: {fileID: 4844839192103971793, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
+      propertyPath: spilitwinCount
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5697977699458795627, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
       propertyPath: _maxTurnNum
       value: 20
