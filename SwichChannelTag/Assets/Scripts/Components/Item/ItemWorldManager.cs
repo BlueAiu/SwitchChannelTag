@@ -12,7 +12,7 @@ public static class ItemWorldManager
 
     // --- Getter --- //
 
-    public static GameObject[] ItemsGameObject
+    public static GameObject[] GetItemsGameObject
     {
         get
         {
@@ -51,6 +51,7 @@ public static class ItemWorldManager
 
     public static void AddItem(GameObject item)
     {
+        if (item == null) return;
         if (itemList.Contains(item)) return;
         itemList.Add(item);
         //SortByInstanceID();

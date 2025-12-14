@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 
 //ì¬Ò:™R
 //ƒvƒŒƒCƒ„[‚ÌŠK‘wˆÚ“®‘€ì
@@ -12,41 +13,49 @@ public partial class ChangeHierarchy : MonoBehaviour
 {
     [Tooltip("ƒvƒŒƒCƒ„[‚ÌˆÊ’u‚ğ‚¸‚ç‚·‹@”\")] [SerializeField]
     ShiftPlayersPosition _shiftPlayersPosition;
-    [Tooltip("ŠK‘wˆÚ“®‚ÌƒN[ƒ‹ƒ_ƒEƒ“")] [SerializeField]
-    CoolDown_ChangeHierarchy _coolDown;
+
+    [Tooltip("ŠK‘wˆÚ“®‚Ì‰‰o")] [SerializeField]
+    PlayableDirector _changeHierarchyEventDirecter;
 
     MapTransform _myMapTrs;//©•ª‚Ìƒ}ƒbƒvã‚ÌˆÊ’uî•ñ
+    bool _isPlaying=false;
+    int _newHierarchyIndex;
 
     public event Action<int> OnSwitchHierarchy_NewIndex;//ŠK‘wØ‚è‘Ö‚¦‚ÉŒÄ‚Î‚ê‚é(ˆø”‚ÉV‚µ‚¢ŠK‘w”Ô†‚ğ“ü‚ê‚éŒ`®)
     public event Action OnSwitchHierarchy;//ŠK‘wØ‚è‘Ö‚¦‚ÉŒÄ‚Î‚ê‚é(ˆø”‚È‚µ)
 
-    public bool IsAbleToMoveTheHierarchy(int hierarchyIndex)//‚»‚ÌŠK‘w‚ÉˆÚ“®‚Å‚«‚é‚©
+    public bool IsPlaying { get { return _isPlaying; } }//ŠK‘wˆÚ“®’†‚©
+
+    public void SwitchHierarchy(int newHierarchyIndex)//ŠK‘wˆÚ“®
     {
-        //©•ª‚Ì¡‚¢‚éŠK‘w”Ô†‚Æ“¯‚¶‚Å‚ ‚ê‚ÎˆÚ“®‚Å‚«‚È‚¢
-        if (_myMapTrs.Pos.hierarchyIndex == hierarchyIndex) return false;
-        return true;
+        if (!enabled) return;
+
+        if(_isPlaying) return;
+
+        _newHierarchyIndex = newHierarchyIndex;
+
+        //ƒCƒxƒ“ƒg‚ğÄ¶
+        _changeHierarchyEventDirecter.Play();
+        _isPlaying = true;
     }
 
-    public bool SwitchHierarchy(int newHierarchyIndex)//ŠK‘wˆÚ“®
+    public void MoveToDestinationHierarchy()//ŠK‘wˆÚ“®‚Ìˆ—(ƒtƒF[ƒhƒAƒEƒg‚ªI‚í‚Á‚½uŠÔ‚ÉŒÄ‚Ô)
     {
-        if (!enabled) return false;
-
-        if (!IsAbleToMoveTheHierarchy(newHierarchyIndex)) return false;
-
-        if(!_coolDown.CanChangeHierarchy) return false;
-
-        _coolDown.SetLastChangedTurn();
-
         _shiftPlayersPosition.OnExit(_myMapTrs);
 
-        _myMapTrs.Rewrite(newHierarchyIndex);
+        _myMapTrs.Rewrite(_newHierarchyIndex);
 
         _shiftPlayersPosition.OnEnter(_myMapTrs);
 
-        OnSwitchHierarchy_NewIndex?.Invoke(newHierarchyIndex);
+        OnSwitchHierarchy_NewIndex?.Invoke(_newHierarchyIndex);
         OnSwitchHierarchy?.Invoke();
+    }
 
-        return true;
+    //private
+
+    void OnEventFinished(PlayableDirector d)
+    {
+        _isPlaying = false;
     }
 
     private void Awake()
@@ -57,5 +66,6 @@ public partial class ChangeHierarchy : MonoBehaviour
     private void Init()//‰Šú‰»ˆ—
     {
         _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
+        _changeHierarchyEventDirecter.stopped += OnEventFinished;
     }
 }

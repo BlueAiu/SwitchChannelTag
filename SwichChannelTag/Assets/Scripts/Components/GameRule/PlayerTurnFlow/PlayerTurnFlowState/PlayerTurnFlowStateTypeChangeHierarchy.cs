@@ -18,7 +18,10 @@ public class PlayerTurnFlowStateTypeChangeHierarchy : PlayerTurnFlowStateTypeBas
 
     public override void OnUpdate()
     {
-        _stateMachine.ChangeState(EPlayerTurnFlowState.SelectAction);
+        if(!_changeHierarchy.IsPlaying)//階層移動処理が終わったら、階層移動ステート終了
+        {
+            _stateMachine.ChangeState(EPlayerTurnFlowState.SelectAction);
+        }
     }
 
     public override void OnExit()

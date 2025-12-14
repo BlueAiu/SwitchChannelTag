@@ -5,14 +5,15 @@ using UnityEngine;
 public class CoolDown_ChangeHierarchy : MonoBehaviour
 {
     [SerializeField] SerializableDictionary<EPlayerState, int> cooldowns;
-    PlayerState _state;
+    [SerializeField] ChangeHierarchy _changeHierarchy;
+    PlayerState _myState;
 
     const int past = int.MinValue / 2;
     int lastChangedHierarckyTurn = past;
 
     public int CoolDownLeft
     {
-        get => Mathf.Max(0, cooldowns[_state.State] - (GameStatsManager.Instance.Turn.GetTurn() - lastChangedHierarckyTurn));
+        get => Mathf.Max(0, cooldowns[_myState.State] - (GameStatsManager.Instance.Turn.GetTurn() - lastChangedHierarckyTurn));
     }
 
     public bool CanChangeHierarchy
@@ -20,13 +21,14 @@ public class CoolDown_ChangeHierarchy : MonoBehaviour
         get => CoolDownLeft == 0; 
     }
 
-    public void SetLastChangedTurn()
+    void SetLastChangedTurn()
     {
         lastChangedHierarckyTurn = GameStatsManager.Instance.Turn.GetTurn();
     }
 
     private void Awake()
     {
-        _state = PlayersManager.GetComponentFromMinePlayer<PlayerState>();
+        _myState = PlayersManager.GetComponentFromMinePlayer<PlayerState>();
+        _changeHierarchy.OnSwitchHierarchy+= SetLastChangedTurn;//ŠK‘wˆÚ“®‚ÉÅŒã‚ÉŠK‘wˆÚ“®‚ğ‚µ‚½ƒ^[ƒ“‚ğ‹L˜^
     }
 }
