@@ -29,62 +29,72 @@ public class ItemSpawner : MonoBehaviour
 
     [SerializeField] GameObject _spawnItem;
     [SerializeField] Maps_Hierarchies _hierarchies;
+    [SerializeField] int spawnNum = 2;
 
     Player mine;
+    MapTransform[] players, items;
+    hierarchyInfo[] hierarchiesInfo;
+    List<MapVec>[] objVecs;
 
     private void Start()
     {
         mine = PlayersManager.MinePlayerPhotonPlayer;
+        players = PlayersManager.GetComponentsFromPlayers<MapTransform>();
+        hierarchiesInfo = new hierarchyInfo[_hierarchies.Length];
+        objVecs = new List<MapVec>[_hierarchies.Length];
     }
 
-    public void SpawnItems(int spawnNum)
+    public void SpawnItems()
     {
         if (!mine.IsMasterClient) return;   // MasterClient only
-        for (int i = 0; i < spawnNum; i++) SpawnItemPrefab();
+
+        InitializeMapInfo();
+
+        int spawnIndex = SelectHierarchy(hierarchiesInfo);
+
+        var spawnGridPos = SelectGridPos(objVecs[spawnIndex].ToArray());
+        
+        InstantiateItem(spawnIndex, spawnGridPos);
     }
 
-    void SpawnItemPrefab()
+    void InitializeMapInfo()
     {
-        // Initialize MapInfo
+        items = ItemWorldManager.GetComponentsItems<MapTransform>();
 
-        var items = ItemWorldManager.GetComponentsItems<MapTransform>();
-        var players = PlayersManager.GetComponentsFromPlayers<MapTransform>();
-
-        hierarchyInfo[] hierarchiesInfo = new hierarchyInfo[_hierarchies.Length];
-        List<MapVec>[] objVecs = new List<MapVec>[_hierarchies.Length];
-
-        for (int i = 0; i < _hierarchies.Length; i++) 
+        for (int i = 0; i < _hierarchies.Length; i++)
         {
             hierarchiesInfo[i] = new hierarchyInfo(i);
             objVecs[i] = new List<MapVec>();
         }
 
-        foreach(var item in items)
+        foreach (var item in items)
         {
             var pos = item.Pos;
             hierarchiesInfo[pos.hierarchyIndex].itemCount++;
             objVecs[pos.hierarchyIndex].Add(pos.gridPos);
         }
 
-        foreach(var p in players)
+        foreach (var p in players)
         {
             var pos = p.Pos;
             hierarchiesInfo[pos.hierarchyIndex].playerCount++;
             objVecs[pos.hierarchyIndex].Add(pos.gridPos);
         }
+    }
 
-        // select hierarchy
-
+    int SelectHierarchy(hierarchyInfo[] hierarchiesInfo)
+    {
         hierarchiesInfo = hierarchiesInfo
-            .OrderBy(h => h.itemCount)
-            .ThenBy(h => h.playerCount)
-            .ThenBy(h => UnityEngine.Random.value) // 同値の中でランダム
-            .ToArray();
+           .OrderBy(h => h.itemCount)
+           .ThenBy(h => h.playerCount)
+           .ThenBy(h => UnityEngine.Random.value) // 同値の中でランダム
+           .ToArray();
 
-        int spawnIndex = hierarchiesInfo[0].index;
+        return hierarchiesInfo[0].index;
+    }
 
-        // select Position
-
+    MapVec[] SelectGridPos(MapVec[] objVecs)
+    {
         List<MapVec> mapVecs = new();
         for (int i = 0; i < _hierarchies[0].MapSize_X; i++)
         {
@@ -94,23 +104,44 @@ public class ItemSpawner : MonoBehaviour
             }
         }
 
-        foreach(var vec in objVecs[spawnIndex])
+        foreach (var vec in objVecs)
         {
-            foreach(var v in aroundVecs)
+            foreach (var v in aroundVecs)
             {
                 var p = vec + v;
                 mapVecs.Remove(p);
             }
         }
 
-        var spawnGridPos = mapVecs[UnityEngine.Random.Range(0, mapVecs.Count)];
+        List<MapVec> ret = new();
 
-        // Instantiate
+        for(int i = 0; i < spawnNum; i++)
+        {
+            var vec = mapVecs[UnityEngine.Random.Range(0, mapVecs.Count)];
+            ret.Add(vec);
 
-        var item_i = PhotonNetwork.Instantiate(_spawnItem.name, Vector3.zero, Quaternion.identity);
-        var item_t = item_i.GetComponent<MapTransform>();
-        item_t.Hierarchies = _hierarchies;
-        item_t.Rewrite(new MapPos(spawnIndex, spawnGridPos));
-        item_i.GetComponent<SetTransform>().Position = item_t.CurrentWorldPos;
+            foreach (var v in aroundVecs)
+            {
+                var p = vec + v;
+                mapVecs.Remove(p);
+            }
+        }
+
+        return ret.ToArray();
     }
+
+    void InstantiateItem(int spawnIndex, MapVec[] spawnVecs)
+    {
+        foreach (var vec in spawnVecs)
+        {
+            var item_i = PhotonNetwork.Instantiate(_spawnItem.name, Vector3.zero, Quaternion.identity);
+
+            var item_t = item_i.GetComponent<MapTransform>();
+            item_t.Hierarchies = _hierarchies;
+            item_t.Rewrite(new MapPos(spawnIndex, vec));
+
+            item_i.GetComponent<SetTransform>().Position = item_t.CurrentWorldPos;
+        }
+    }
+
 }
