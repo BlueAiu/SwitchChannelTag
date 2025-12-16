@@ -143,16 +143,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6454859459524977671}
-  - component: {fileID: 6031801300794944443}
-  - component: {fileID: 8264468742733197355}
-  - component: {fileID: 7123098326312566669}
+  - component: {fileID: 8106960226292405398}
+  - component: {fileID: 3019687217919997038}
   m_Layer: 5
   m_Name: WaitingUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6454859459524977671
 RectTransform:
   m_ObjectHideFlags: 0
@@ -173,19 +172,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!225 &6031801300794944443
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7871124643683183868}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
---- !u!114 &8264468742733197355
+--- !u!114 &8106960226292405398
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,11 +181,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7871124643683183868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee000115f409f054ca1669fde6fe842b, type: 3}
+  m_Script: {fileID: 11500000, guid: 93ed35f17f4ea854fa591d9baf4fc87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hideUIGroup: {fileID: 6031801300794944443}
---- !u!114 &7123098326312566669
+  _showUIObject: {fileID: 7871124643683183868}
+--- !u!114 &3019687217919997038
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,7 +194,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7871124643683183868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e749fd2a64621164892f20803b7493b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f0996c132a6e8345a04f37b5d112259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _showUIGroup: {fileID: 6031801300794944443}
+  _hideUIObject: {fileID: 7871124643683183868}
