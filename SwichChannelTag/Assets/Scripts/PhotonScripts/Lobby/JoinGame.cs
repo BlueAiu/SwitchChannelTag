@@ -2,9 +2,11 @@ using UnityEngine;
 using System.Collections;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 
 public class JoinGame : MonoBehaviourPunCallbacks
 {
+    [SerializeField] TMP_Text join_Text;
     [SerializeField] bool writeJoinLog = true;
 
     void Start()
@@ -32,7 +34,9 @@ public class JoinGame : MonoBehaviourPunCallbacks
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        WriteLog("JoinFailed : " + message);
+        string failedStr = "JoinFailed : " + message;
+        WriteLog(failedStr);
+        join_Text.text = failedStr;
     }
 
     void WriteLog(string message)
