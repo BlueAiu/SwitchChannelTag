@@ -4,9 +4,11 @@ using UnityEngine;
 public class SearchUI : MonoBehaviour
 {
     [SerializeField] SearchOpponentPlayer search;
-    [SerializeField] RectTransform uiTrs;
-    [SerializeField] UnityEngine.UI.Image uiImage;
     [SerializeField] ChangeAllowSprite sprites;
+    [SerializeField] string spritePath = "PlayerCanvas/CompassSprite";
+
+    RectTransform uiTrs;
+    UnityEngine.UI.Image uiImage;
 
     
     [SerializeField]
@@ -29,8 +31,16 @@ public class SearchUI : MonoBehaviour
         mineState = PlayersManager.GetComponentFromMinePlayer<PlayerState>();
     }
 
+    private void Start()
+    {
+        var compassSprite = PlayersManager.MinePlayerGameObject.transform.Find(spritePath);
 
-    private void Update()
+        uiTrs = compassSprite.GetComponent<RectTransform>();
+        uiImage = compassSprite.GetComponent<UnityEngine.UI.Image>();
+    }
+
+
+    private void FixedUpdate()
     {
         SetAllow();
     }
@@ -58,7 +68,7 @@ public class SearchUI : MonoBehaviour
             var angle = Mathf.Atan2(-direction.x, -direction.y);
             angle *= Mathf.Rad2Deg;
             angle = MathfExtension.RoundByAlpha(angle, OmniAngle / angleDivision);
-            uiTrs.eulerAngles = new Vector3(0, 0, angle);
+            uiTrs.localEulerAngles = new Vector3(0, 0, angle);
         }
     }
 }
