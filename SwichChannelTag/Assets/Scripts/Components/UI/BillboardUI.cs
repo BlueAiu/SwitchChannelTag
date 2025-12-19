@@ -6,6 +6,8 @@ public class BillboardUI : MonoBehaviour
 {
     void FixedUpdate()
     {
-        transform.LookAt(transform.position + Vector3.forward);
+        Vector3 cameraForward = Camera.main.transform.forward;
+
+        transform.LookAt(transform.position + cameraForward);
     }
 }
