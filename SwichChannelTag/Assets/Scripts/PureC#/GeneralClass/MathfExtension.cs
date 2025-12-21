@@ -123,4 +123,17 @@ public class MathfExtension
         NormalizeRange(ref min, ref max);
         return value >= min && value <= max;
     }
+
+    /// <summary>
+    /// üŒ`•âŠÔ
+    /// </summary>
+    public static int Lerp(int a, int b, float t)
+    {
+        return (int)(a + (b - a) * t);
+    }
+
+    public static float Lerp(float a, float b, float t)
+    {
+        return a + (b - a) * t;
+    }
 }
