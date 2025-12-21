@@ -15,15 +15,17 @@ public class TagLogGraph : MonoBehaviour
     {
         var captureHistory = GameStatsManager.Instance.CaptureHistory.GetHistory();
         var playerStates = PlayersManager.GetComponentsFromPlayers<PlayerState>();
+        var photonPlayer = PlayersManager.PlayersPhotonPlayer;
 
         int maxTurn = GameStatsManager.Instance.Turn.GetTurn();
 
-        int[] runnerTurn = new int[playerStates.Length];
+        Dictionary<int, int> runnerTurn = new();
 
         // set runnerTurn
         for (int i = 0; i < playerStates.Length; i++)
         {
-            runnerTurn[i] = (playerStates[i].State == EPlayerState.Runner) ? maxTurn : 0;
+            runnerTurn[photonPlayer[i].ActorNumber] = 
+                (playerStates[i].State == EPlayerState.Runner) ? maxTurn : 0;
         }
 
         foreach(var capture in captureHistory)
@@ -32,22 +34,17 @@ public class TagLogGraph : MonoBehaviour
         }
 
         // set bar Transform
-        for(int i = 0;i< blueBar.Length; i++)
+        int idx = 0;
+        foreach(var turn in runnerTurn.Values)
         {
-            if (i >= runnerTurn.Length)
-            {
-                blueBar[i].sizeDelta = Vector2.zero;
-                redBar[i].sizeDelta = Vector2.zero;
-                continue;
-            }
+            float t = (float)turn / maxTurn;
 
-            float t = (float)runnerTurn[i] / maxTurn;
-
-            int blueRight = MathfExtension.Lerp(screenWidth - widthMargin, widthMargin, t);
+            int blueRight = (int)Mathf.Lerp(screenWidth - widthMargin, widthMargin, t);
             int redLeft = screenWidth - blueRight;
 
-            blueBar[i].offsetMax = new Vector2(-blueRight, blueBar[i].offsetMax.y);
-            redBar[i].offsetMin = new Vector2(redLeft, redBar[i].offsetMin.y);
+            blueBar[idx].offsetMax = new Vector2(-blueRight, blueBar[idx].offsetMax.y);
+            redBar[idx].offsetMin = new Vector2(redLeft, redBar[idx].offsetMin.y);
+            idx++;
         }
     }
 }
