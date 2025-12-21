@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c192844d9fe3c429a72fd8202a8c51, type: 3}
+  m_Name: SoundConfig
+  m_EditorClassIdentifier: 
+  _masterVolumeConfig:
+    _minVolume: -80
+    _volumeRange: 80
+    _defaultVolume: 0
+  _seVolumeConfig:
+    _minVolume: -80
+    _volumeRange: 80
+    _defaultVolume: 0
+  _bgmVolumeConfig:
+    _minVolume: -80
+    _volumeRange: 80
+    _defaultVolume: 0
