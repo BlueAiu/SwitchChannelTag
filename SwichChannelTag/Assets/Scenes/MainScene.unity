@@ -3766,6 +3766,10 @@ MonoBehaviour:
   _pathUI: {fileID: 993823711}
   _pathWay: {fileID: 993823718}
   _moveCursorUI: {fileID: 993823712}
+  _cursorMoveSE:
+    _audioSource: {fileID: 286366378}
+    _moveSE: {fileID: 8300000, guid: baca114e4df9e6740b23ece317c2777a, type: 3}
+    _undoSE: {fileID: 8300000, guid: b4e18531a5320a64789f78cdc336253b, type: 3}
 --- !u!4 &993823717
 Transform:
   m_ObjectHideFlags: 0
@@ -8427,7 +8431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -72.07392
+      value: -17.173922
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.z

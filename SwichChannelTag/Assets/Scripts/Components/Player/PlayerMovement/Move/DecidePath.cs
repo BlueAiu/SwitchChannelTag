@@ -11,6 +11,7 @@ public partial class DecidePath : MonoBehaviour
     [SerializeField] PathUI _pathUI;
     [SerializeField] PathWay _pathWay;
     [SerializeField] MoveCurcorUI _moveCursorUI;
+    [Tooltip("カーソル移動時の効果音関係")] [SerializeField] CursorMoveSE _cursorMoveSE;
     JudgeIsMovable _judgeIsMovable=new();//移動方向先のマスに動けるかを判定する機能
     MapTransform _myMapTrs;
     MapVec _currentPos;
@@ -53,6 +54,8 @@ public partial class DecidePath : MonoBehaviour
             _remainingStep--;
             _pathUI.InstancePath(destination - start,start);
         }
+
+        _cursorMoveSE.Play(isUndo);
 
         _moveCursorUI.MoveCursor(destination);
         _currentPos = newGridPos;
