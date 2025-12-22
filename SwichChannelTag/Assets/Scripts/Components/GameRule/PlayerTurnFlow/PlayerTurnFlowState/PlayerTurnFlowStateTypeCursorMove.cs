@@ -14,17 +14,28 @@ public class PlayerTurnFlowStateTypeCursorMove : PlayerTurnFlowStateTypeBase
     [SerializeField]
     PlayerInput _playerInput;
 
+    [Header("UI関係")]
+
     [Tooltip("マス移動時のUIを表示する機能")] [SerializeField]
     ShowUITypeBase _showMoveUI;
 
     [Tooltip("マス移動時のUIを非表示にする機能")] [SerializeField]
     HideUITypeBase _hideMoveUI;
 
+    [Header("効果音関係")]
+
+    [Tooltip("決定時に鳴らす効果音")] [SerializeField]
+    AudioClip _submitSE;
+
+    [SerializeField]
+    AudioSource _audioSource;
+
     public void ToFinish(InputAction.CallbackContext context)
     {
         if (_stateMachine == null) return;
         if (!context.performed) return;
 
+        _audioSource.PlayOneShot(_submitSE);
         _stateMachine.ChangeState(EPlayerTurnFlowState.MovePlayer);
     }
 

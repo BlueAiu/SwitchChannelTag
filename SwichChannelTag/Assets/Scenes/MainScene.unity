@@ -5390,6 +5390,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5712567717612244242}
     - target: {fileID: 8883037788068780043, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _submitSE
+      value: 
+      objectReference: {fileID: 8300000, guid: ee239b62fd2bf664686c191c06622225, type: 3}
+    - target: {fileID: 8883037788068780043, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _moveOnMap
       value: 
       objectReference: {fileID: 0}
@@ -5405,6 +5409,10 @@ PrefabInstance:
       propertyPath: _showMoveUI
       value: 
       objectReference: {fileID: 5712567717612244249}
+    - target: {fileID: 8883037788068780043, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 286366378}
     - target: {fileID: 8883037788068780043, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _playerInput
       value: 
