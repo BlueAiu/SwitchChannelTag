@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public partial class DecidePath : MonoBehaviour
 {
+    [SerializeField] RepeatInputHandler _repeatInputHandler;
     [SerializeField] PathUI _pathUI;
     [SerializeField] PathWay _pathWay;
     [SerializeField] MoveCurcorUI _moveCursorUI;
@@ -20,22 +21,17 @@ public partial class DecidePath : MonoBehaviour
         set { _remainingStep = value; }
     }
 
-    public void MoveControl(InputAction.CallbackContext context)
+    void MoveControl(Vector2 inputVec)
     {
-        if (!context.performed) return;
+        inputVec = DirectionUtility.ToCardinal(inputVec);
 
-        if (!enabled) return;
-
-        Vector2 getVec = context.ReadValue<Vector2>();
-
-        if (!IsMovable(getVec, out MapVec newGridPos))
+        if (!IsMovable(inputVec, out MapVec newGridPos))
         {
             Debug.Log("ˆÚ“®‚ÉŽ¸”s");
             return;
         }
 
         bool isUndo = _pathWay.IsOneStepBefore(newGridPos);//—ˆ‚½“¹‚ð–ß‚Á‚Ä‚¢‚é‚©
-        Debug.Log(isUndo);
 
         if (_remainingStep <= 0 && !isUndo) return;    // dont move if no steps remaining
 
@@ -105,5 +101,15 @@ public partial class DecidePath : MonoBehaviour
     private void Awake()
     {
         _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
+    }
+
+    private void OnEnable()
+    {
+        _repeatInputHandler.OnInputVec2 += MoveControl;
+    }
+
+    private void OnDisable()
+    {
+        _repeatInputHandler.OnInputVec2 -= MoveControl;
     }
 }
