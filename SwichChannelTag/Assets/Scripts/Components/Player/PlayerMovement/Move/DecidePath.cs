@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,8 @@ public partial class DecidePath : MonoBehaviour
     [SerializeField] PathUI _pathUI;
     [SerializeField] PathWay _pathWay;
     [SerializeField] MoveCurcorUI _moveCursorUI;
+    [Tooltip("カーソル移動時の効果音関係")] [SerializeField] CursorMoveSE _cursorMoveSE;
+    JudgeIsMovable _judgeIsMovable=new();//移動方向先のマスに動けるかを判定する機能
     MapTransform _myMapTrs;
     MapVec _currentPos;
 
@@ -21,19 +24,13 @@ public partial class DecidePath : MonoBehaviour
         set { _remainingStep = value; }
     }
 
-    void MoveControl(Vector2 inputVec)
+    void MoveControl(Vector2 inputVec)//入力ベクトルを受け取って移動
     {
-        inputVec = DirectionUtility.ToCardinal(inputVec);
-
-        if (!IsMovable(inputVec, out MapVec newGridPos))
+        if (!_judgeIsMovable.IsSuccessToMove(_currentPos, InputVecToMoveVec(inputVec), _remainingStep, out MapVec newGridPos, out bool isUndo))
         {
             Debug.Log("移動に失敗");
             return;
         }
-
-        bool isUndo = _pathWay.IsOneStepBefore(newGridPos);//来た道を戻っているか
-
-        if (_remainingStep <= 0 && !isUndo) return;    // dont move if no steps remaining
 
         //移動に成功
         MoveCursor(newGridPos,isUndo);
@@ -58,32 +55,20 @@ public partial class DecidePath : MonoBehaviour
             _pathUI.InstancePath(destination - start,start);
         }
 
+        _cursorMoveSE.Play(isUndo);
+
         _moveCursorUI.MoveCursor(destination);
         _currentPos = newGridPos;
     }
 
-
-
-    bool IsMovable(Vector2 inputVec, out MapVec newGridPos)//指定方向に移動できるか
+    MapVec InputVecToMoveVec(Vector2 inputVec)//Vector2の生の入力ベクトルからMapVecの移動方向ベクトルに変換する
     {
+        inputVec = DirectionUtility.ToCardinal(inputVec);
         MapVec moveVec;
         moveVec.x = (int)inputVec.x;
         moveVec.y = -(int)inputVec.y;
 
-        newGridPos = _currentPos + moveVec;
-
-        if (!IsMovableMass(newGridPos)) return false;
-        if (_myMapTrs.CurrentHierarchy.IsBlockedByWall(_currentPos, moveVec)) return false;
-
-        return true;
-    }
-
-    bool IsMovableMass(MapVec newPos)//移動可能なマスか
-    {
-        if (!_myMapTrs.CurrentHierarchy.IsInRange(newPos)) return false;//範囲外のマスであれば移動できない
-        if (_myMapTrs.CurrentHierarchy.Mass[newPos] != E_Mass.Empty) return false;//そのマスが空マスでなければ移動できない
-
-        return true;
+        return moveVec;
     }
 
     public void OnStart()
@@ -101,6 +86,7 @@ public partial class DecidePath : MonoBehaviour
     private void Awake()
     {
         _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
+        _judgeIsMovable.Awake(_myMapTrs, _pathWay);
     }
 
     private void OnEnable()

@@ -7,6 +7,6 @@ public class TurnNumUI : MonoBehaviour
 
     void Update()
     {
-        _text.text = "Turn: " + GameStatsManager.Instance.Turn.GetTurn().ToString();
+        _text.text = GameStatsManager.Instance.Turn.GetTurn().ToString();
     }
 }
