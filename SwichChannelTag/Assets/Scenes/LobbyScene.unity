@@ -2165,9 +2165,10 @@ GameObject:
   - component: {fileID: 1977683175479034182}
   - component: {fileID: 5502103580055985864}
   - component: {fileID: 5502103580055985866}
+  - component: {fileID: 5502103580055985867}
   m_Layer: 0
   m_Name: LobbyBehaviour
-  m_TagString: Untagged
+  m_TagString: LobbyBehaviour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2208,6 +2209,19 @@ MonoBehaviour:
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &5502103580055985867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5502103580055985862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01b47e5d01f65445824c565f305eb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playersFeature: {fileID: 11400000, guid: 1939dffdb602deb41be9e51b89515246, type: 2}
 --- !u!114 &7878950072891773037
 MonoBehaviour:
   m_ObjectHideFlags: 0
