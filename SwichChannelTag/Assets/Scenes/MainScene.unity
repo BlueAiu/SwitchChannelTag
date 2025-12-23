@@ -3864,9 +3864,9 @@ MonoBehaviour:
   lonelyBoost:
     _list:
     - key: 0
-      value: 1
+      value: 2
     - key: 1
-      value: 1
+      value: 2
 --- !u!114 &993823715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7316,7 +7316,7 @@ MonoBehaviour:
     - key: 1
       value: 0
   _changeHierarchy: {fileID: 2004796662}
-  lonelyBoost: 1
+  lonelyBoost: 2
 --- !u!1 &2014837559
 GameObject:
   m_ObjectHideFlags: 0
@@ -8275,7 +8275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31.326082
+      value: -17.173922
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.z
