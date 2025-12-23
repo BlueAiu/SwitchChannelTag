@@ -12,3 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e540ff9e24eb54fbdd8d6ff820ec5c, type: 3}
   m_Name: PlayersFeature
   m_EditorClassIdentifier: 
+  _features:
+  - name: 1P
+    color: {r: 1, g: 0, b: 0, a: 0}
+  - name: 2P
+    color: {r: 0, g: 0.14977837, b: 1, a: 0}
+  - name: 3P
+    color: {r: 1, g: 0.9255589, b: 0, a: 0}
+  - name: 4P
+    color: {r: 0, g: 1, b: 0.12878227, a: 0}
