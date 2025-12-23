@@ -325,6 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playersEntryAndExit: {fileID: 5662769695230115391}
+  _myPhotonView: {fileID: 7362638265056822721}
 --- !u!1001 &1240315800276754999
 PrefabInstance:
   m_ObjectHideFlags: 0
