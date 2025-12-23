@@ -30,7 +30,10 @@ public class AdvancePage : MonoBehaviour
             }
         }
 
+        Currentpage = 0;
         Maxpage = Panels.Length - 1;
+
+        Panels[Currentpage]?.SetActive(true);
     }
 
     public void Next_page()
@@ -92,6 +95,8 @@ public class AdvancePage : MonoBehaviour
         inputActions.UI.Enable();
         inputActions.UI.Navigate.performed += OnMove;
         inputActions.UI.Submit.performed += OnSubmit;
+
+        Panels[Currentpage]?.SetActive(true);
     }
 
     private void OnDisable()

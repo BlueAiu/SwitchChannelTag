@@ -8,7 +8,6 @@ public class SwitchPanel : MonoBehaviour
     [Tooltip("表示、非表示させるパネル")]
     [SerializeField] GameObject Panel;
 
-    AdvancePage advancePage;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +27,10 @@ public class SwitchPanel : MonoBehaviour
         if(!Panel.activeSelf) 
         {
             Panel.SetActive(true);
+        }
+        else if(Panel.activeSelf)
+        {
+            Panel.SetActive(false);
         }
     }
 }
