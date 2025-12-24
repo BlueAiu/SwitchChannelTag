@@ -11,8 +11,11 @@ public class BannerNoticeManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI _bannerText;
 
-    [Tooltip("バナーのアニメーション")] [SerializeField]
+    [Tooltip("バナーのアニメーション関係")] [SerializeField]
     BannerAnimation _bannerAnimation;
+
+    [Tooltip("バナーの効果音関係")] [SerializeField]
+    BannerSE _bannerSE;
 
     [Tooltip("表示のために待つ時間")] [SerializeField]
     float _waitToShowDuration=2f;
@@ -36,6 +39,7 @@ public class BannerNoticeManager : MonoBehaviour
 
     IEnumerator BannerEnterExitCoroutine(string content)
     {
+        _bannerSE.Play();
         _bannerText.text = content;
 
         yield return _bannerAnimation.SlideIn();//スライドイン
