@@ -303,6 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 29064810}
   - component: {fileID: 29064811}
+  - component: {fileID: 29064812}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -352,6 +353,21 @@ MonoBehaviour:
       value: Play
     - key: 2
       value: Fin
+--- !u!114 &29064812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29064809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a51b5ae48a34734382e7b26bad1fd1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapUI: {fileID: 1068710887}
+  mapAction: {fileID: 8294026295522901579, guid: 25ec4fa1968e3454a935e9d33a977e76, type: 3}
+  playerInput: {fileID: 722071809}
 --- !u!1 &50912368
 GameObject:
   m_ObjectHideFlags: 0
@@ -3066,8 +3082,8 @@ MonoBehaviour:
     m_ActionName: Move/Submit[/Keyboard/enter]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 5713890e-600a-45cb-a1cd-3826bd1485fe
-    m_ActionName: UI/ViewMap[/Keyboard/m]
+    m_ActionId: 064f6022-438a-44b2-b698-c7f7a4f211f9
+    m_ActionName: UI/ShowMap[/Keyboard/m]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UnControllable
@@ -4324,7 +4340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1068710888
 RectTransform:
   m_ObjectHideFlags: 0
