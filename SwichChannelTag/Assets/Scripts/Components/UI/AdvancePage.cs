@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class AdvancePage : MonoBehaviour
 {
-    [SerializeField] GameObject[] Panels;
+    [SerializeField] Image image;
+    [SerializeField] Sprite[] sprites;
+
     DefaultInputActions inputActions;
 
-    public int Currentpage = 0;
-    private int Maxpage;
+    public int index = 0;
+    private int Max_index;
 
     [SerializeField] float Cool_time = 0.2f;
     private float Lastmove_Time;
@@ -22,56 +25,45 @@ public class AdvancePage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < Panels.Length; i++)
-        {
-            if (Panels[i] != null)
-            {
-                Panels[i].SetActive(false);
-            }
-        }
 
-        Currentpage = 0;
-        Maxpage = Panels.Length - 1;
+        index = 0;
+        Max_index = sprites.Length - 1;
 
-        Panels[Currentpage]?.SetActive(true);
+        image.sprite = sprites[index];
     }
 
     public void Next_page()
     {
-        Panels[Currentpage]?.SetActive(false);
-
-        if(Currentpage >= Maxpage)
+        if(index >= Max_index)
         {
-            Currentpage = 0;
+            index = 0;
         }
         else
         {
-            Currentpage++;
+            index++;
         }
 
-        Panels[Currentpage]?.SetActive(true);
-
+        image.sprite = sprites[index];
     }
 
     public void Back_page()
     {
-        Panels[Currentpage]?.SetActive(false);
-
-        if (Currentpage <= 0)
+        if (index == 0)
         {
-            Currentpage = Maxpage;
+            index = Max_index;
         }
         else
         {
-            Currentpage--;
+            index--;
         }
 
-        Panels[Currentpage]?.SetActive(true);
+        Debug.Log("sprite num is :" + index);
+        image.sprite = sprites[index];
     }
 
     private void OnSubmit(InputAction.CallbackContext context)
     { 
-        Panels[Currentpage]?.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     private void OnMove(InputAction.CallbackContext context)
@@ -95,8 +87,6 @@ public class AdvancePage : MonoBehaviour
         inputActions.UI.Enable();
         inputActions.UI.Navigate.performed += OnMove;
         inputActions.UI.Submit.performed += OnSubmit;
-
-        Panels[Currentpage]?.SetActive(true);
     }
 
     private void OnDisable()
