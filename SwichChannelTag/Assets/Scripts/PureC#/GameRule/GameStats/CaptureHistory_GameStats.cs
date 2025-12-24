@@ -1,7 +1,7 @@
 using ExitGames.Client.Photon;
-using ExitGames.Client.Photon.StructWrapping;
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +16,8 @@ public class CaptureHistory_GameStats
     private const string CAUGHT_TAGGER_ACTOR_NUM_KEY = "CaughtTaggerActorNum";
 
     List<CaptureRecord> _history;
+
+    public event Action<CaptureRecord> OnCapture;
 
     public CaptureRecord[] GetHistory()//—š—ð‚ÌŽæ“¾
     {
@@ -65,6 +67,8 @@ public class CaptureHistory_GameStats
         if (data == null) return;
         
         _history.Add(data);
+
+        OnCapture?.Invoke(data);
     }
 
     //Hash‚ÆCaptureRecord‚Ì•ÏŠ·Œn
