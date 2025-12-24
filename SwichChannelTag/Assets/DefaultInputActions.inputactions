@@ -182,7 +182,7 @@
                     "name": "Submit",
                     "type": "Button",
                     "id": "1c9ebeb3-5cde-407f-8613-7f0dffd983f5",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -191,7 +191,7 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "d90cfe1e-357b-46ad-b275-c720a216f654",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -255,6 +255,15 @@
                     "type": "PassThrough",
                     "id": "3123486f-949d-4b10-9858-64d2b0d64dc2",
                     "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShowMap",
+                    "type": "Button",
+                    "id": "064f6022-438a-44b2-b698-c7f7a4f211f9",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -676,6 +685,28 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8362fb34-e66d-4933-8fd5-82ba05eff42b",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowMap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26f3edd3-3489-440e-b5f9-5260c13b9a54",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowMap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
