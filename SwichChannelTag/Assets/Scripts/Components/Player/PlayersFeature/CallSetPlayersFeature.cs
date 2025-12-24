@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 //ì¬Ò:™R
@@ -10,13 +11,29 @@ public class CallSetPlayersFeature : MonoBehaviour
     [SerializeField]
     PlayerEntryAndExit _playersEntryAndExit;
 
+    [SerializeField]
+    PhotonView _myPhotonView;
+
     SetPlayersFeature _setPlayersFeature;
 
     private void Awake()
     {
         _setPlayersFeature = GameObject.FindWithTag(TagDictionary.lobbyBehaviour).GetComponent<SetPlayersFeature>();
-        _playersEntryAndExit.OnEntry += SetFeature;
-        _playersEntryAndExit.OnExit += SetFeature;
+        _playersEntryAndExit.OnEntry += OnEntry;
+        _playersEntryAndExit.OnExit += OnExit;
+    }
+
+    void OnEntry()
+    {
+        SetFeature();
+    }
+
+    void OnExit()
+    {
+        //©•ª‚ª‘Şo‚µ‚½‚Ì‚Å‚ ‚ê‚Îˆ—‚ğs‚í‚È‚¢
+        if (_myPhotonView.IsMine) return;
+
+        SetFeature();
     }
 
     void SetFeature()
