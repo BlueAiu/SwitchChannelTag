@@ -6998,11 +6998,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3740a89d1f70fb4ebcbc4b6f2d15ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bannerAnimator: {fileID: 136593594}
   _bannerText: {fileID: 2011354913}
-  _slideInTriggerName: SlideIn
-  _slideOutTriggerName: SlideOut
-  _waitDuration: 3.5
+  _bannerAnimation:
+    _bannerAnimator: {fileID: 136593594}
+    _slideInTriggerName: SlideIn
+    _slideInClip: {fileID: 7400000, guid: 317ce44ad25e557418f3f4e4576a5429, type: 2}
+    _slideOutTriggerName: SlideOut
+    _slideOutClip: {fileID: 7400000, guid: ca1c7e5de675b0f48a4b50d9830e1381, type: 2}
+  _waitToShowDuration: 2
 --- !u!114 &1761820380
 MonoBehaviour:
   m_ObjectHideFlags: 0
