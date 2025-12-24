@@ -20,8 +20,11 @@ public class BannerNoticeManager : MonoBehaviour
     [SerializeField]
     string _slideOutTriggerName;
 
-    [SerializeField]
-    float _waitDuration=3f;
+    [Tooltip("表示のために待つ時間")] [SerializeField]
+    float _waitToShowDuration=3.5f;
+
+    [Tooltip("スライドアウトするのを待つ時間")] [SerializeField]
+    float _waitToSlideOutDuration = 1.5f;
 
     Queue<string> _noticeQueue = new();
     bool _isFinishedToShow=true;//バナー表示が終わったか
@@ -45,9 +48,12 @@ public class BannerNoticeManager : MonoBehaviour
         _bannerText.text = content;
         _bannerAnimator.SetTrigger(_slideInTriggerName);
 
-        yield return new WaitForSeconds(_waitDuration);
+        yield return new WaitForSeconds(_waitToShowDuration);//表示し続ける
 
         _bannerAnimator.SetTrigger(_slideOutTriggerName);
+
+        yield return new WaitForSeconds(_waitToSlideOutDuration);//上がりきるまで待つ
+
         _isFinishedToShow = true;
     }
 }
