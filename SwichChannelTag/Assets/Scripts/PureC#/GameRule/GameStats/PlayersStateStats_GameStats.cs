@@ -22,7 +22,7 @@ public class PlayersStateStats_GameStats
         {
             allPlayersNum++;
 
-            if(playerState.State== EPlayerState.Runner)
+            if(playerState.State == EPlayerState.Runner)
             {
                 runnersNum++;
             }

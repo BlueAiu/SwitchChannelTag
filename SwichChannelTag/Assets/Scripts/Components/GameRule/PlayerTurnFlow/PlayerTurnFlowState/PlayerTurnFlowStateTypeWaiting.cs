@@ -11,9 +11,13 @@ public class PlayerTurnFlowStateTypeWaiting : PlayerTurnFlowStateTypeBase
     [Tooltip("ダイスUIを非表示にする機能")] [SerializeField]
     HideUITypeBase _hideWaitingUI;
 
+    [SerializeField]
+    GamePhaseBGMController _gamePhaseBGMController;
+
     public override void OnEnter()
     {
         _showWaitingUI.Show();
+        _gamePhaseBGMController.UpdateBGM();
     }
 
     public override void OnUpdate()
