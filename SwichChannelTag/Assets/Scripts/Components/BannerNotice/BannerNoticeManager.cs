@@ -9,19 +9,16 @@ using UnityEngine;
 public class BannerNoticeManager : MonoBehaviour
 {
     [SerializeField]
-    Animator _bannerAnimator;
-
-    [SerializeField]
     TextMeshProUGUI _bannerText;
 
-    [SerializeField]
-    string _slideInTriggerName;
+    [Tooltip("バナーのアニメーション関係")] [SerializeField]
+    BannerAnimation _bannerAnimation;
 
-    [SerializeField]
-    string _slideOutTriggerName;
+    [Tooltip("バナーの効果音関係")] [SerializeField]
+    BannerSE _bannerSE;
 
-    [SerializeField]
-    float _waitDuration=3f;
+    [Tooltip("表示のために待つ時間")] [SerializeField]
+    float _waitToShowDuration=2f;
 
     Queue<string> _noticeQueue = new();
     bool _isFinishedToShow=true;//バナー表示が終わったか
@@ -42,12 +39,15 @@ public class BannerNoticeManager : MonoBehaviour
 
     IEnumerator BannerEnterExitCoroutine(string content)
     {
+        _bannerSE.Play();
         _bannerText.text = content;
-        _bannerAnimator.SetTrigger(_slideInTriggerName);
 
-        yield return new WaitForSeconds(_waitDuration);
+        yield return _bannerAnimation.SlideIn();//スライドイン
 
-        _bannerAnimator.SetTrigger(_slideOutTriggerName);
+        yield return new WaitForSeconds(_waitToShowDuration);//表示し続ける
+
+        yield return _bannerAnimation.SlideOut();//スライドアウト
+
         _isFinishedToShow = true;
     }
 }
