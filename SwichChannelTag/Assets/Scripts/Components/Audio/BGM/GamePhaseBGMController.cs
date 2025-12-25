@@ -22,9 +22,9 @@ public class GamePhaseBGMController : MonoBehaviour
     public void UpdateBGM()
     {
         //プレイヤーの人数を取得
-        GameStatsManager.Instance.PlayersStateStats.GetPlayersStats(out int allPlayersNum, out int runnersNum, out int taggersNum);
+        GameStatsManager.Instance.PlayersStateStats.GetPlayersCount(out int allPlayersCount, out int runnersCount, out int taggersCount);
 
-        AudioClip bgm = _gamePhaseBGMs.TryGet(runnersNum);
+        AudioClip bgm = _gamePhaseBGMs.TryGet(runnersCount);
 
         if (bgm == null) return;
         if (bgm == _audioSource.clip) return;
