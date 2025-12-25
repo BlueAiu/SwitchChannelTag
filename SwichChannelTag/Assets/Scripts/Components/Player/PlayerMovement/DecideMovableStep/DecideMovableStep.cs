@@ -20,6 +20,10 @@ public class DecideMovableStep : MonoBehaviour
 
     [SerializeField] bool writeLog = true;
 
+    [SerializeField] SerializableDictionary<EPlayerState, int> lonelyBoost;
+
+    PlayersStateStats_GameStats _playerStates = new();
+
     public void Decide(bool isChangedHierarchy)//動けるマス数を決定(ダイスロールで)、階層移動したかを受け取る
     {
         int result;
@@ -50,6 +54,11 @@ public class DecideMovableStep : MonoBehaviour
                 if (writeLog) Debug.Log("Not found defaultRoulette in " + state);
                 result = 0;
             }
+        }
+
+        if (_playerStates.IsPlayerLonely(state))
+        {
+            result += lonelyBoost[state];
         }
 
         _decidePath.RemainingStep=result;
