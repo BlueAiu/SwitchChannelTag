@@ -15,6 +15,7 @@ public class GameStatsManager : MonoBehaviourPunCallbacks
     Turn_GameStats _turn=new Turn_GameStats();
     Winner_GameStats _winner =new Winner_GameStats();
     CaptureHistory_GameStats _captureHistory = new CaptureHistory_GameStats();
+    PlayersStateStats_GameStats _playersStateStats = new PlayersStateStats_GameStats();
 
     public Turn_GameStats Turn
     {
@@ -29,6 +30,11 @@ public class GameStatsManager : MonoBehaviourPunCallbacks
     public CaptureHistory_GameStats CaptureHistory
     {
         get { return _captureHistory; }
+    }
+
+    public PlayersStateStats_GameStats PlayersStateStats
+    {
+        get { return _playersStateStats; }
     }
 
     void Awake()
