@@ -22,6 +22,8 @@ public class DecideMovableStep : MonoBehaviour
 
     [SerializeField] SerializableDictionary<EPlayerState, int> lonelyBoost;
 
+    PlayersStateStats_GameStats _playerStates = new();
+
     public void Decide(bool isChangedHierarchy)//動けるマス数を決定(ダイスロールで)、階層移動したかを受け取る
     {
         int result;
@@ -53,9 +55,10 @@ public class DecideMovableStep : MonoBehaviour
                 result = 0;
             }
         }
-        if (IsLonely())
+
+        if (_playerStates.IsPlayerLonely(state))
         {
-            result += lonelyBoost[_playerState.State];
+            result += lonelyBoost[state];
         }
 
         _decidePath.RemainingStep=result;
@@ -72,16 +75,5 @@ public class DecideMovableStep : MonoBehaviour
         {
             _playerState = PlayersManager.GetComponentFromMinePlayer<PlayerState>();
         }
-    }
-
-    bool IsLonely()
-    {
-        var players = PlayersManager.GetComponentsFromPlayers<PlayerState>();
-        int cnt = 0;
-        foreach(var player in players)
-        {
-            if(player.State == _playerState.State) cnt++;
-        }
-        return cnt == 1;
     }
 }

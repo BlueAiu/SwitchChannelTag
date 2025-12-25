@@ -4173,10 +4173,10 @@ MonoBehaviour:
         restoreAtEnd: 0
         distribution:
         - {x: 2, y: 1}
-        - {x: 3, y: 3}
-        - {x: 4, y: 6}
-        - {x: 5, y: 3}
-        - {x: 6, y: 1}
+        - {x: 3, y: 2}
+        - {x: 4, y: 3}
+        - {x: 5, y: 6}
+        - {x: 6, y: 3}
   _switchedRoulette:
     _list:
     - key: 0
@@ -4206,7 +4206,7 @@ MonoBehaviour:
     - key: 0
       value: 2
     - key: 1
-      value: 2
+      value: 1
 --- !u!114 &993823715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7994,6 +7994,7 @@ MonoBehaviour:
     - key: 1
       value: 0
   _changeHierarchy: {fileID: 2004796662}
+  lonelyBoost: 2
 --- !u!1 &2011354911
 GameObject:
   m_ObjectHideFlags: 0
@@ -9257,7 +9258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -72.07392
+      value: 31.326082
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.z
