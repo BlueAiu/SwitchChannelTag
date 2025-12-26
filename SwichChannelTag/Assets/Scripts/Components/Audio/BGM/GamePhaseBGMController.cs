@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //作成者:杉山
@@ -7,6 +6,9 @@ using UnityEngine;
 
 public class GamePhaseBGMController : MonoBehaviour
 {
+    [Tooltip("BGMが切り替わる際のフェード時間（秒）")] [SerializeField] 
+    float _fadeDuration = 1f;
+
     [SerializeField]
     GamePhaseBGMs _gamePhaseBGMs;
 
@@ -21,15 +23,50 @@ public class GamePhaseBGMController : MonoBehaviour
     //ターンが終わるごとにBGMの更新処理を行う
     public void UpdateBGM()
     {
-        //プレイヤーの人数を取得
-        GameStatsManager.Instance.PlayersStateStats.GetPlayersCount(out int allPlayersCount, out int runnersCount, out int taggersCount);
+        //逃げの人数を取得
+        int runnersCount = GameStatsManager.Instance.PlayersStateStats.GetPlayersCount(EPlayerState.Runner);
 
-        AudioClip bgm = _gamePhaseBGMs.TryGet(runnersCount);
+        AudioClip nextBgm = _gamePhaseBGMs.TryGet(runnersCount);
 
-        if (bgm == null) return;
-        if (bgm == _audioSource.clip) return;
+        // BGMが存在しない or 既に再生中なら何もしない
+        if (nextBgm == null || nextBgm == _audioSource.clip)
+            return;
 
-        //BGMが変わったら処理
+        StartCoroutine(FadeAndChangeBGM(nextBgm));
+    }
+
+    // フェードアウト → BGM切り替え → フェードイン
+    private IEnumerator FadeAndChangeBGM(AudioClip nextBgm)
+    {
+        float defaultVolume = _audioSource.volume;
+        float halfFadeTime = _fadeDuration * 0.5f;
+
+        // フェードアウト
+        yield return FadeVolume(defaultVolume, 0f, halfFadeTime);
+
+        ChangeBGM(nextBgm);
+
+        // フェードイン
+        yield return FadeVolume(0f, defaultVolume, halfFadeTime);
+    }
+
+    // 指定時間で音量を補間する
+    private IEnumerator FadeVolume(float from, float to, float duration)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            _audioSource.volume = Mathf.Lerp(from, to, elapsed / duration);
+            yield return null;
+        }
+
+        _audioSource.volume = to;
+    }
+
+    private void ChangeBGM(AudioClip bgm)
+    {
         _audioSource.Stop();
         _audioSource.clip = bgm;
         _audioSource.Play();
