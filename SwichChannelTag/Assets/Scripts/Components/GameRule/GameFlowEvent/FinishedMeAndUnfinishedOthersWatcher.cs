@@ -2,19 +2,19 @@ using System;
 using UnityEngine;
 
 //作成者:杉山
-//「自分以外」に未完了のゲームイベントプレイヤーが存在するかを監視する
-public class UnfinishedOtherPlayersWatcher : MonoBehaviour
+//自分が完了状態でなおかつ、他にイベント処理が未完了のプレイヤーが存在するかを監視する
+public class FinishedMeAndUnfinishedOthersWatcher : MonoBehaviour
 {
     [SerializeField]
     private AllPlayersGameEventCompletionWatcher _allPlayersWatcher;
 
     private GameEventReceiver _myReceiver;
 
-    private bool _hasUnfinishedOtherPlayers;
+    private bool _hasUnfinishedOtherPlayers=false;
 
     public event Action OnValueChanged;
 
-    //自分以外に未完了のプレイヤーが存在するか
+    //自分が完了状態でなおかつ、他にイベント処理が未完了のプレイヤーが存在するか
     public bool HasUnfinishedOtherPlayers
     {
         get => _hasUnfinishedOtherPlayers;
