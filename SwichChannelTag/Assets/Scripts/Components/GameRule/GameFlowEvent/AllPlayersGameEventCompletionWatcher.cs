@@ -11,7 +11,7 @@ public class AllPlayersGameEventCompletionWatcher : MonoBehaviour
     private bool _areAllPlayersFinished = true;
 
     //全員の完了状態が変化した時に呼ばれる
-    public event Action<bool> OnAllPlayersFinishedChanged;
+    public event Action OnAllPlayersFinishedChanged;
 
     //全プレイヤーがゲームイベントを完了しているか
     public bool AreAllPlayersFinished
@@ -22,7 +22,7 @@ public class AllPlayersGameEventCompletionWatcher : MonoBehaviour
             if (_areAllPlayersFinished == value) return;
 
             _areAllPlayersFinished = value;
-            OnAllPlayersFinishedChanged?.Invoke(value);
+            OnAllPlayersFinishedChanged?.Invoke();
         }
     }
 
@@ -35,7 +35,7 @@ public class AllPlayersGameEventCompletionWatcher : MonoBehaviour
     {
         foreach (var receiver in _receivers)
         {
-            receiver.OnSetIsFinished += UpdateCompletionState;
+            receiver.OnSetIsFinished += UpdateValue;
         }
     }
 
@@ -43,11 +43,11 @@ public class AllPlayersGameEventCompletionWatcher : MonoBehaviour
     {
         foreach (var receiver in _receivers)
         {
-            receiver.OnSetIsFinished -= UpdateCompletionState;
+            receiver.OnSetIsFinished -= UpdateValue;
         }
     }
 
-    private void UpdateCompletionState()
+    private void UpdateValue()
     {
         foreach (var receiver in _receivers)
         {
