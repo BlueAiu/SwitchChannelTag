@@ -3,8 +3,8 @@
 
 public enum EGameEvent
 {
-    StartEvent,//スタート時のイベント(追加予定)
-    //ゲーム終了時のイベント(追加予定)
+    GameStart,//スタート時のイベント(追加予定)
+    GameFinish,//ゲーム終了時のイベント(追加予定)
 
     Length//長さ(これ以降に値を入れないでください)
 }

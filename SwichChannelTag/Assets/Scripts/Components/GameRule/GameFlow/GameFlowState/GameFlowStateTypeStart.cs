@@ -47,7 +47,7 @@ public class GameFlowStateTypeStart : GameFlowStateTypeBase
         {
             if (receiver == null) continue;
 
-            receiver.SendEventCall(EGameEvent.StartEvent);
+            receiver.SendEventCall(EGameEvent.GameStart);
         }
     }
 }
