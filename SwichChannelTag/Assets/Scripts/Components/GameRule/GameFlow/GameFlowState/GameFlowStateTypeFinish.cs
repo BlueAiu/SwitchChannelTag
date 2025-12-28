@@ -10,13 +10,14 @@ public class GameFlowStateTypeFinish : GameFlowStateTypeBase
 {
     [SerializeField] string resultSceneName = "ResultScene";
 
-    [SerializeField] float _delayDuration = 1f;
+    [SerializeField]
+    AllPlayersGameEventCompletionWatcher _watcher;
+
+    GameEventReceiver[] _receivers;
 
     public override void OnEnter()//ステートの開始処理
     {
-        Debug.Log("ゲーム終了！");
-
-        StartCoroutine(LoadResultScene());
+        StartCoroutine(FinishEventCoroutine());
     }
 
     public override void OnUpdate()//ステートの毎フレーム処理
@@ -29,20 +30,36 @@ public class GameFlowStateTypeFinish : GameFlowStateTypeBase
 
     }
 
-    IEnumerator LoadResultScene()
+    IEnumerator FinishEventCoroutine()
     {
-        yield return new WaitForSeconds(_delayDuration);
+        CallFinishEvent();
 
-        PhotonNetwork.LoadLevel(resultSceneName);
+        yield return null;
+
+        //全員のゲームイベント処理が終わるまで待つ
+        yield return new WaitUntil(()=> _watcher.AreAllPlayersFinished);
+
+        PhotonNetwork.LoadLevel(resultSceneName);//シーン遷移
     }
 
     private void Awake()
     {
         GameStatsManager.Instance.Winner.OnUpdateWinner += LogWinner;
+        _receivers = PlayersManager.GetComponentsFromPlayers<GameEventReceiver>();
     }
 
     void LogWinner(EPlayerState winner)
     {
         Debug.Log("Winner is..." + winner);
+    }
+
+    void CallFinishEvent()
+    {
+        foreach (var receiver in _receivers)
+        {
+            if (receiver == null) continue;
+
+            receiver.SendEventCall(EGameEvent.GameFinish);
+        }
     }
 }
