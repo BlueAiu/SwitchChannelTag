@@ -51,6 +51,8 @@ public class AllPlayersGameEventCompletionWatcher : MonoBehaviour
     {
         foreach (var receiver in _receivers)
         {
+            if (receiver == null) continue;
+
             if (!receiver.IsFinished)
             {
                 AreAllPlayersFinished = false;
