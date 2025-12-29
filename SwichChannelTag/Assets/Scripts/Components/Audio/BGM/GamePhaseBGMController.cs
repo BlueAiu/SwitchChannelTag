@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 //作成者:杉山
-//ゲームの状態(残りの逃げの人数によってBGMを変更する)
+//ゲームの状態(残りの逃げの人数)によってBGMを変更する
 
 public class GamePhaseBGMController : MonoBehaviour
 {

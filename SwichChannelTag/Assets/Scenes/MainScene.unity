@@ -10470,6 +10470,10 @@ PrefabInstance:
       propertyPath: _eventDirecter
       value: 
       objectReference: {fileID: 1318583540}
+    - target: {fileID: 4662737764788561480, guid: 1076442b4eb9a244dac8c9d96725b0cd, type: 3}
+      propertyPath: _gamePhaseBGMController
+      value: 
+      objectReference: {fileID: 432885391}
     - target: {fileID: 6061952756761482783, guid: 1076442b4eb9a244dac8c9d96725b0cd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10514,6 +10518,10 @@ PrefabInstance:
       propertyPath: _eventDirecter
       value: 
       objectReference: {fileID: 314889295}
+    - target: {fileID: 7619350608880891133, guid: 1076442b4eb9a244dac8c9d96725b0cd, type: 3}
+      propertyPath: _gamePhaseBGMController
+      value: 
+      objectReference: {fileID: 432885391}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
