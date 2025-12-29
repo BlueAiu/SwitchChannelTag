@@ -28,9 +28,6 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
     [Tooltip("階層移動のクールダウン")] [SerializeField]
     CoolDown_ChangeHierarchy _coolDown;
 
-    [SerializeField]
-    GamePhaseBGMController _gamePhaseBGMController;
-
     bool _finished = true;
 
     //ダイスステートに移るボタンに登録するメソッド
@@ -70,8 +67,6 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
         {
             _coolDownText.text = string.Empty;
         }
-
-        _gamePhaseBGMController.UpdateBGM();
     }
 
     public override void OnUpdate()
