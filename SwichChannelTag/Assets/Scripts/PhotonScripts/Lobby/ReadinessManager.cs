@@ -11,6 +11,7 @@ public class ReadinessManager : MonoBehaviourPunCallbacks
     [SerializeField] SceneTransition sceneTransition;
     [SerializeField] GameObject startButton;
     [SerializeField] int requiredNum = 4;
+    [SerializeField] AllPlayersGameEventCompletionWatcher _watcher;
 
 
     void FixedUpdate()
@@ -27,10 +28,29 @@ public class ReadinessManager : MonoBehaviourPunCallbacks
 
         if (IsReadyAll())
         {
-            sceneTransition.LoadScene(mainSceneName);
-            GetComponent<JoinControl>().IsRoomOpened = false;
-            enabled = false;
+            StartCoroutine(LoadMainScene());
         }
+    }
+
+    IEnumerator LoadMainScene()
+    {
+        GetComponent<JoinControl>().IsRoomOpened = false;
+
+        //初期化処理
+        InitGameEvent();
+
+        yield return null;
+
+        //フェードアウト演出
+        CallFadeOutEvent();
+
+        yield return null;
+
+        //全員がフェードアウトを完了するまで待つ
+        yield return new WaitUntil(()=>_watcher.AreAllPlayersFinished);
+
+        sceneTransition.LoadScene(mainSceneName);
+        enabled = false;
     }
 
     bool IsReadyAll()
@@ -43,5 +63,27 @@ public class ReadinessManager : MonoBehaviourPunCallbacks
         }
 
         return true;
+    }
+
+    void InitGameEvent()
+    {
+        var gameEventIniters = PlayersManager.GetComponentsFromPlayers<GameEventIniter>();
+
+        foreach (var Initer in gameEventIniters)
+        {
+            Initer.Init();
+        }
+    }
+
+    void CallFadeOutEvent()//フェードアウト演出を行うよう全プレイヤーに命令
+    {
+        var gameEventReceivers = PlayersManager.GetComponentsFromPlayers<GameEventReceiver>();
+
+        foreach(var receiver in gameEventReceivers)
+        {
+            if (receiver == null) continue;
+
+            receiver.SendEventCall(EGameEvent.FromLobbyToGame);
+        }
     }
 }
