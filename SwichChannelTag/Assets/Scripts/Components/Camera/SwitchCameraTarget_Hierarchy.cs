@@ -1,18 +1,21 @@
 using Cinemachine;
-using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 //作成者:杉山
-//階層を移すカメラの切り替え
+//階層を移動時にcinemachineカメラの目標(Follow/LookAt)を変更する
 
-public class SwitchHierarchyCamera : MonoBehaviour
+public class SwitchCameraTarget_Hierarchy : MonoBehaviour
 {
-    [Tooltip("階層ごとのバーチャルカメラ\n0個目から天国->地上->地獄の順に入れてください")] [SerializeField] 
-    CinemachineVirtualCamera[] _mapVCams;
+    [Tooltip("階層ごとの目標(Follow/LookAt)\n0個目から天国->地上->地獄の順に入れてください")]
+    [SerializeField]
+    Transform[] _mapVCamTargets;
 
-    [SerializeField] 
+    [SerializeField]
+    CinemachineVirtualCamera _vCam;
+
+    [SerializeField]
     ChangeHierarchy _changeHierarchy;
 
     [SerializeField]
@@ -22,16 +25,14 @@ public class SwitchHierarchyCamera : MonoBehaviour
     {
         if (!IsValid_VCamLength()) return;
 
-        if(!_maps_Hierarchies.IsInRange(hierarchyIndex))
+        if (!_maps_Hierarchies.IsInRange(hierarchyIndex))
         {
             Debug.Log("範囲外の階層番号です！");
             return;
         }
 
-        for(int i=0; i<_mapVCams.Length ;i++)
-        {
-            _mapVCams[i].enabled = (i == hierarchyIndex);
-        }
+        _vCam.Follow = _mapVCamTargets[hierarchyIndex];
+        _vCam.LookAt = _mapVCamTargets[hierarchyIndex];
     }
 
 
@@ -54,7 +55,7 @@ public class SwitchHierarchyCamera : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(nameof(InitCamera));
+        StartCoroutine(InitCamera());
     }
 
     IEnumerator InitCamera()
@@ -66,9 +67,9 @@ public class SwitchHierarchyCamera : MonoBehaviour
 
     bool IsValid_VCamLength()
     {
-        if(_mapVCams.Length != _maps_Hierarchies.Length)
+        if (_mapVCamTargets.Length != _maps_Hierarchies.Length)
         {
-            Debug.Log("階層の数分、カメラが設定されていません！");
+            Debug.Log("階層の数分、目標(Follow/LookAt)が設定されていません！");
             return false;
         }
 
