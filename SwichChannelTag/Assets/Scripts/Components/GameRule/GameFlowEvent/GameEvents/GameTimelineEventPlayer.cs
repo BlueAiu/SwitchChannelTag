@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 //作成者:杉山
 //タイムラインでのゲームイベントの再生
@@ -16,7 +17,7 @@ public class GameTimelineEventPlayer : GameEventPlayer
     public override void Play()
     {
         _finished = false;
-        _eventDirecter.gameObject.SetActive(true);
+        _eventDirecter.Play();//再生
     }
 
     public override bool IsFinished()
@@ -36,7 +37,6 @@ public class GameTimelineEventPlayer : GameEventPlayer
 
     void SetTimelineFinish(PlayableDirector pd)
     {
-        _eventDirecter.gameObject.SetActive(false);
         _finished = true;
     }
 }
