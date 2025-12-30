@@ -4,4 +4,5 @@
 public static class TagDictionary
 {
     public const string lobbyBehaviour = "LobbyBehaviour";
+    public const string gameEventManager = "GameEventManager";
 }

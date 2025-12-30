@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 //作成者:杉山
@@ -6,6 +7,9 @@ using UnityEngine;
 
 public class AllPlayersGameEventCompletionWatcher : MonoBehaviour
 {
+    [Tooltip("シーン開始時に全プレイヤーのGameEventReceiverを取得するか")] [SerializeField]
+    bool _getReceiversOnEnable=true;
+
     private GameEventReceiver[] _receivers;
 
     private bool _areAllPlayersFinished = true;
@@ -26,21 +30,27 @@ public class AllPlayersGameEventCompletionWatcher : MonoBehaviour
         }
     }
 
-    private void Awake()
+    public void UpdateReceivers()
     {
         _receivers = PlayersManager.GetComponentsFromPlayers<GameEventReceiver>();
-    }
 
-    private void OnEnable()
-    {
+        if (_receivers == null) return;
+
         foreach (var receiver in _receivers)
         {
             receiver.OnSetIsFinished += UpdateValue;
         }
     }
 
+    private void OnEnable()
+    {
+        if(_getReceiversOnEnable) UpdateReceivers();
+    }
+
     private void OnDisable()
     {
+        if(_receivers==null) return;
+
         foreach (var receiver in _receivers)
         {
             receiver.OnSetIsFinished -= UpdateValue;

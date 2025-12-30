@@ -7,23 +7,32 @@ using UnityEngine;
 
 public class GameEventPlayerManager : MonoBehaviour
 {
+    [Tooltip("シーン開始時に自分のGameEventReceiverを取得するか")] [SerializeField]
+    bool _getReceiversOnEnable = true;
+
     [SerializeField]
     SerializableDictionary<EGameEvent, GameEventPlayer> _gameEventPlayers;
 
     GameEventReceiver _myReceiver;
 
-    private void Awake()
+    public void UpdateMyReceiver()
     {
         _myReceiver = PlayersManager.GetComponentFromMinePlayer<GameEventReceiver>();
+
+        if (_myReceiver == null) return;
+
+        _myReceiver.OnReceiveEvent += OnReceiveEvent;
     }
 
     private void OnEnable()
     {
-        _myReceiver.OnReceiveEvent += OnReceiveEvent;
+        if (_getReceiversOnEnable) UpdateMyReceiver();
     }
 
     private void OnDisable()
     {
+        if(_myReceiver==null) return;
+
         _myReceiver.OnReceiveEvent -= OnReceiveEvent;
     }
 
