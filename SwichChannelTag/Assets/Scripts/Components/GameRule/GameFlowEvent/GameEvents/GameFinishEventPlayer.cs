@@ -1,19 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
 //作成者:杉山
-//タイムラインでのゲームイベントの再生
+//ゲーム終了イベントの再生
 
-public class GameTimelineEventPlayer : GameEventPlayer
+public class GameFinishEventPlayer : GameEventPlayer
 {
     [Tooltip("再生するタイムライン")] [SerializeField]
     PlayableDirector _eventDirecter;
+
+    [Tooltip("プレイ中に表示するUIを非表示にする機能")] [SerializeField]
+    HideUITypeBase _hideGameUI;
 
     bool _finished = true;
 
     public override void Play()
     {
         _finished = false;
+        _hideGameUI.Hide();//プレイ中に表示するUIを非表示にする
         _eventDirecter.Play();//再生
     }
 

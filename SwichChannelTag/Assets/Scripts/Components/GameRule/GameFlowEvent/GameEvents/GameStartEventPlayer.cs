@@ -2,10 +2,13 @@ using UnityEngine;
 using UnityEngine.Playables;
 
 //作成者:杉山
-//タイムラインでのゲームイベントの再生
+//ゲーム開始イベントの再生
 
-public class GameTimelineEventPlayer : GameEventPlayer
+public class GameStartEventPlayer : GameEventPlayer
 {
+    [Tooltip("プレイ中に表示するUIを表示する機能")] [SerializeField]
+    ShowUITypeBase _showGameUI;
+
     [Tooltip("再生するタイムライン")] [SerializeField]
     PlayableDirector _eventDirecter;
 
@@ -34,6 +37,7 @@ public class GameTimelineEventPlayer : GameEventPlayer
 
     void SetTimelineFinish(PlayableDirector pd)
     {
+        _showGameUI.Show();//プレイ中に表示するUIを表示する
         _finished = true;
     }
 }
