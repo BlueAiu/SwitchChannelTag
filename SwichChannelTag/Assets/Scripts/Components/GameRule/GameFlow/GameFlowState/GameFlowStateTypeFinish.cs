@@ -44,8 +44,17 @@ public class GameFlowStateTypeFinish : GameFlowStateTypeBase
 
     private void Awake()
     {
-        GameStatsManager.Instance.Winner.OnUpdateWinner += LogWinner;
         _receivers = PlayersManager.GetComponentsFromPlayers<GameEventReceiver>();
+    }
+
+    private void OnEnable()
+    {
+        GameStatsManager.Instance.Winner.OnUpdateWinner += LogWinner;
+    }
+
+    private void OnDisable()
+    {
+        GameStatsManager.Instance.Winner.OnUpdateWinner -= LogWinner;
     }
 
     void LogWinner(EPlayerState winner)
