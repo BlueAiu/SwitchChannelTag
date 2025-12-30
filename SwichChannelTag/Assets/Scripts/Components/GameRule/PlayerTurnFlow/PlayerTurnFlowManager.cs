@@ -47,9 +47,18 @@ public class PlayerTurnFlowManager : MonoBehaviour
     private void Awake()
     {
         _myTurnReceiver = PlayersManager.GetComponentFromMinePlayer<PlayerTurnStateReceiver>();
+    }
 
+    private void OnEnable()
+    {
         _myTurnReceiver.OnStartTurn += StartMyTurn;
         _myTurnReceiver.OnWaiting += SwitchWaiting;
+    }
+
+    private void OnDisable()
+    {
+        _myTurnReceiver.OnStartTurn -= StartMyTurn;
+        _myTurnReceiver.OnWaiting -= SwitchWaiting;
     }
 
     void StartMyTurn()//©•ª‚Ìs“®‚Ì‹–‰Â‚ªo‚½‚ÉŒÄ‚Ño‚·

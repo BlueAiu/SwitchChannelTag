@@ -19,8 +19,18 @@ public class CallSetPlayersFeature : MonoBehaviour
     private void Awake()
     {
         _setPlayersFeature = GameObject.FindWithTag(TagDictionary.lobbyBehaviour).GetComponent<SetPlayersFeature>();
+    }
+
+    private void OnEnable()
+    {
         _playersEntryAndExit.OnEntry += OnEntry;
         _playersEntryAndExit.OnExit += OnExit;
+    }
+
+    private void OnDisable()
+    {
+        _playersEntryAndExit.OnEntry -= OnEntry;
+        _playersEntryAndExit.OnExit -= OnExit;
     }
 
     void OnEntry()
