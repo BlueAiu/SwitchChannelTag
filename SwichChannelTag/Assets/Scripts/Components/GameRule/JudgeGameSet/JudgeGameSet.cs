@@ -12,9 +12,9 @@ public class JudgeGameSet : MonoBehaviour
 
     PlayerState[] _playerStates;
 
-    public bool IsTimeUp(out EPlayerState? winner)//最大ターン数経過したか(時間切れか)、経過ターン数が最大ターン数以上になっていたらゲーム終了
+    public bool IsTimeUp(out EPlayerState winner)//最大ターン数経過したか(時間切れか)、経過ターン数が最大ターン数以上になっていたらゲーム終了
     {
-        winner = null;
+        winner = EPlayerState.None;
 
         bool isGameSet = GameStatsManager.Instance.Turn.GetTurn() >= _maxTurnNum;
 
