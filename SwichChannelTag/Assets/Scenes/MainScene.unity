@@ -2347,9 +2347,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7621511327670819178}
     - target: {fileID: 1520395927591732537, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
+      propertyPath: _watcher
+      value: 
+      objectReference: {fileID: 7621511327670819178}
+    - target: {fileID: 1520395927591732537, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
       propertyPath: _convertCaughtRunnerToTagger
       value: 
       objectReference: {fileID: 317900443}
+    - target: {fileID: 2908243882907033055, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
+      propertyPath: _watcher
+      value: 
+      objectReference: {fileID: 7621511327670819178}
     - target: {fileID: 2908243882907033055, guid: 03f1b5a4eecbad04fa480b6086edaa67, type: 3}
       propertyPath: _convertCaughtRunnerToTagger
       value: 
