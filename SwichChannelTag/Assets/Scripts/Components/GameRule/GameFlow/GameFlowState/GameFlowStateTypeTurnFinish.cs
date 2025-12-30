@@ -18,7 +18,7 @@ public class GameFlowStateTypeTurnFinish : GameFlowStateTypeBase
     public override void OnUpdate()//すぐにステート遷移されるので、実質的にはこのステートに入るたびに1度しか呼ばれない
     {
         //タイムアップでゲーム終了
-        bool isGameSet = _judgeGameSet.IsTimeUp(out EPlayerState? winner);
+        bool isGameSet = _judgeGameSet.IsTimeUp(out EPlayerState winner);
 
         //ゲーム終了であれば終了ステートへ
         if (isGameSet)

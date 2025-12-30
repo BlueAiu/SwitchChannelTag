@@ -7,6 +7,7 @@ using UnityEngine;
 
 public enum EPlayerState
 {
+    None=-1,//–³‚µ(ŽÀŽ¿Null“I‚Èˆµ‚¢)
     Runner,//“¦‚°
     Tagger,//‹S
 

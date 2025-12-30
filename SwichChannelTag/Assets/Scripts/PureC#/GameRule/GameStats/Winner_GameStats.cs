@@ -12,21 +12,21 @@ public class Winner_GameStats
 {
     private const string WINNER_KEY = "Winner";
 
-    public event Action<EPlayerState> OnUpdateWinner;
+    public event Action<EPlayerState> OnUpdateWinner;//勝者更新時に呼ばれるコールバック、注:勝者が決まっていない場合、Noneが返ってくる
 
-    public void SetWinner(EPlayerState? winner)
+    public void SetWinner(EPlayerState winner)
     {
         Hashtable props = new Hashtable();
         props[WINNER_KEY] = winner;
         PhotonNetwork.CurrentRoom.SetCustomProperties(props);
     }
 
-    public EPlayerState? GetWinner()//勝者が決まっていない場合、nullが返ってくる
+    public EPlayerState GetWinner()//注:勝者が決まっていない場合、Noneが返ってくる
     {
         if(PhotonNetwork.CurrentRoom == null)
         {
             Debug.Log("値を正しく取得できませんでした");
-            return null;
+            return EPlayerState.None;
         }
 
 
@@ -36,7 +36,7 @@ public class Winner_GameStats
         }
         else
         {
-            return null;
+            return EPlayerState.None;
         }
     }
 
@@ -58,6 +58,6 @@ public class Winner_GameStats
     {
         if (!PhotonNetwork.IsMasterClient) return;
 
-        SetWinner(null);
+        SetWinner(EPlayerState.None);
     }
 }
