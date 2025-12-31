@@ -1,6 +1,3 @@
-using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
@@ -16,8 +13,12 @@ public class GameStartFadeIn : MonoBehaviour
     [SerializeField]
     Image _fadeScreenImage;
 
+    [Tooltip("プレイ中に表示するUIを非表示にする機能")] [SerializeField]
+    HideUITypeBase _hideGameUI;
+
     void Start()
     {
+        _hideGameUI.Hide();//プレイ中に表示するUIを非表示にする
         _fadeScreenImage.enabled = true;
         _startFadeInDirector.Play();
     }
