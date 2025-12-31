@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 287888356}
   - component: {fileID: 287888355}
   m_Layer: 0
-  m_Name: KemuriParticleVer4
+  m_Name: SmogParticleVer4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15241,7 +15241,7 @@ GameObject:
   - component: {fileID: 682345000}
   - component: {fileID: 682344999}
   m_Layer: 0
-  m_Name: KemuriParticleVer1
+  m_Name: SmogParticleVer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20245,7 +20245,7 @@ GameObject:
   - component: {fileID: 878832588}
   - component: {fileID: 878832587}
   m_Layer: 0
-  m_Name: KemuriParticleVer2
+  m_Name: SmogParticleVer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40428,7 +40428,7 @@ GameObject:
   - component: {fileID: 1898386031}
   - component: {fileID: 1898386030}
   m_Layer: 0
-  m_Name: KemuriParticleVer3
+  m_Name: SmogParticleVer3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
