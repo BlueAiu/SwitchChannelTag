@@ -40,7 +40,16 @@ public class SwitchHierarchyCamera : MonoBehaviour
     private void Awake()
     {
         IsValid_VCamLength();
+    }
+
+    private void OnEnable()
+    {
         _changeHierarchy.OnSwitchHierarchy_NewIndex += Switch;
+    }
+
+    private void OnDisable()
+    {
+        _changeHierarchy.OnSwitchHierarchy_NewIndex -= Switch;
     }
 
     private void Start()
