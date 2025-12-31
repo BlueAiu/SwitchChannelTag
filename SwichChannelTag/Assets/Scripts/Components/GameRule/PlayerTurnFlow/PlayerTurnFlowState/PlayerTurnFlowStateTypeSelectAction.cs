@@ -29,6 +29,7 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
     CoolDown_ChangeHierarchy _coolDown;
 
     bool _finished = true;
+    const int coolDownMin = 1;
 
     //ダイスステートに移るボタンに登録するメソッド
     public void ToDice()
@@ -56,12 +57,14 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
         _showSelectActionUI.Show();
         EventSystem.current.SetSelectedGameObject(_defaultSelectButton.gameObject);
 
-        //階層移動をした直後かつ、階層移動のクールダウン中は、階層移動(選択)が出来ないようにする
-        _selectHierarchyButton.interactable = !(_stateMachine.SharedData.IsChangedHierarchy) & _coolDown.CanChangeHierarchy;
+        //階層移動をした直後または、階層移動のクールダウン中は、階層移動(選択)が出来ないようにする
+        bool canChangeHierarchy =  !(_stateMachine.SharedData.IsChangedHierarchy) & _coolDown.CanChangeHierarchy;
+        _selectHierarchyButton.interactable = canChangeHierarchy;
 
-        if (!_coolDown.CanChangeHierarchy)
+        if (!canChangeHierarchy)
         {
-            _coolDownText.text = _coolDown.CoolDownLeft.ToString() + " turns left";
+            int coolDown = Mathf.Max(coolDownMin, _coolDown.CoolDownLeft);
+            _coolDownText.text = coolDown.ToString() + " turns left";
         }
         else
         {
