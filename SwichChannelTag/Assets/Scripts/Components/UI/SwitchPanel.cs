@@ -24,13 +24,6 @@ public class SwitchPanel : MonoBehaviour
 
     public void SignPanel()
     {
-        if(!Panel.activeSelf) 
-        {
-            Panel.SetActive(true);
-        }
-        else if(Panel.activeSelf)
-        {
-            Panel.SetActive(false);
-        }
+        Panel.SetActive(!Panel.activeSelf);
     }
 }

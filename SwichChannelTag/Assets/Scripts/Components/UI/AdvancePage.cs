@@ -61,11 +61,6 @@ public class AdvancePage : MonoBehaviour
         image.sprite = sprites[index];
     }
 
-    private void OnSubmit(InputAction.CallbackContext context)
-    { 
-        gameObject.SetActive(false);
-    }
-
     private void OnMove(InputAction.CallbackContext context)
     {
         Vector2 move = context.ReadValue<Vector2>();
@@ -86,13 +81,11 @@ public class AdvancePage : MonoBehaviour
     {
         inputActions.UI.Enable();
         inputActions.UI.Navigate.performed += OnMove;
-        inputActions.UI.Submit.performed += OnSubmit;
     }
 
     private void OnDisable()
     {
         inputActions.UI.Navigate.performed -= OnMove;
-        inputActions.UI.Submit.performed -= OnSubmit;
         inputActions.UI.Disable();
     }
 
