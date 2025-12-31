@@ -823,12 +823,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 598832874667037642, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
       propertyPath: sprites.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 598832874667037642, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
       propertyPath: sprites.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: 76124dad1c954ce43b636bbfedccbb7d, type: 3}
+      objectReference: {fileID: 21300000, guid: d3d73992831493a499f5eb1e1d84afdd, type: 3}
     - target: {fileID: 598832874667037642, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
       propertyPath: sprites.Array.data[1]
       value: 
