@@ -37,7 +37,7 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
         if (_finished) return; 
         if (_stateMachine == null) return;
 
-        _stateMachine.ChangeState(EPlayerTurnFlowState.Dice);
+        StartCoroutine(ChangeStateCoroutine(EPlayerTurnFlowState.Dice));
     }
 
     //階層選択ステートに移るボタンに登録するメソッド
@@ -46,7 +46,17 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
         if (_finished) return;
         if (_stateMachine == null) return;
 
-        _stateMachine.ChangeState(EPlayerTurnFlowState.SelectHierarchy);
+        StartCoroutine(ChangeStateCoroutine(EPlayerTurnFlowState.SelectHierarchy));
+    }
+
+    IEnumerator ChangeStateCoroutine(EPlayerTurnFlowState nextState)
+    {
+        _finished = true;
+        _hideSelectActionUI.Hide();
+
+        yield return new WaitUntil(() => _hideSelectActionUI.IsFinishedToHide());//UIの非表示処理が終わるまで待つ
+
+        _stateMachine.ChangeState(nextState);
     }
 
 
@@ -79,8 +89,6 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
 
     public override void OnExit()
     {
-        _finished = true;
-        _hideSelectActionUI.Hide();
         EventSystem.current.SetSelectedGameObject(null);
     }
 

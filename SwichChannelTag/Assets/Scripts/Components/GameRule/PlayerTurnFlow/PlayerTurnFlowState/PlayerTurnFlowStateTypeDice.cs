@@ -30,7 +30,7 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
 
         _decideMovableStep.Decide(_stateMachine.SharedData.IsChangedHierarchy);//ダイスを振る
 
-        _stateMachine.ChangeState(EPlayerTurnFlowState.MoveCursor);
+        StartCoroutine(ChangeStateCoroutine(EPlayerTurnFlowState.MoveCursor));
     }
 
     //行動選択ステートに戻る
@@ -38,7 +38,17 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
     {
         if (_finished) return;
 
-        _stateMachine.ChangeState(EPlayerTurnFlowState.SelectAction);
+        StartCoroutine(ChangeStateCoroutine(EPlayerTurnFlowState.SelectAction));
+    }
+
+    IEnumerator ChangeStateCoroutine(EPlayerTurnFlowState nextState)
+    {
+        _finished = true;
+        _hideDiceUI.Hide();
+
+        yield return new WaitUntil(() => _hideDiceUI.IsFinishedToHide());//UIの非表示処理が終わるまで待つ
+
+        _stateMachine.ChangeState(nextState);
     }
 
     public override void OnEnter()
@@ -56,8 +66,6 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
 
     public override void OnExit()
     {
-        _finished = true;
-       _hideDiceUI.Hide();
         EventSystem.current.SetSelectedGameObject(null);
     }
 

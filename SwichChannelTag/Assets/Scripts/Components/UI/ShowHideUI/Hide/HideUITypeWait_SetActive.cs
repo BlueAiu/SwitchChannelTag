@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 //作成者:杉山
 //命令を受けて少し待ってから、SetActiveでUIを非表示にする
@@ -22,6 +23,8 @@ public class HideUITypeWait_SetActive : HideUITypeBase
 
     public override void Hide()
     {
+        if (!_hideUIObject.activeSelf) return;//既に非アクティブになっていたら処理をしない
+
         StartCoroutine(HideCoroutine());
     }
 
@@ -30,7 +33,7 @@ public class HideUITypeWait_SetActive : HideUITypeBase
         _isFinishedToHide = false;
 
         yield return new WaitForSeconds(_waitDuration);
-
+        
         _hideUIObject.SetActive(false);
         _isFinishedToHide = true;
     }
