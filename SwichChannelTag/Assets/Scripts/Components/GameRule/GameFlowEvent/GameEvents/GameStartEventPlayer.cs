@@ -12,6 +12,9 @@ public class GameStartEventPlayer : GameEventPlayer
     [Tooltip("再生するタイムライン")] [SerializeField]
     PlayableDirector _eventDirecter;
 
+    [Tooltip("BGMを変更する機能")] [SerializeField]
+    GamePhaseBGMController _gamePhaseBGMController;
+
     bool _finished = true;
 
     public override void Play()
@@ -38,6 +41,7 @@ public class GameStartEventPlayer : GameEventPlayer
     void SetTimelineFinish(PlayableDirector pd)
     {
         _showGameUI.Show();//プレイ中に表示するUIを表示する
+        _gamePhaseBGMController.UpdateBGM();
         _finished = true;
     }
 }
