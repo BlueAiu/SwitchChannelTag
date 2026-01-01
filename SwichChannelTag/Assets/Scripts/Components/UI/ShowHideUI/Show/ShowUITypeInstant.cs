@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //作成者:杉山
-//UIの表示(すぐにパッと表示するタイプ)
+//CanvasGroupでUIを即時非表示する
 
 public class ShowUITypeInstant : ShowUITypeBase
 {
@@ -9,6 +9,11 @@ public class ShowUITypeInstant : ShowUITypeBase
     CanvasGroup _showUIGroup;
 
     const float _showAlpha = 1;
+
+    public override bool IsFinishedToShow()
+    {
+        return true;
+    }
 
     public override void Show()
     {

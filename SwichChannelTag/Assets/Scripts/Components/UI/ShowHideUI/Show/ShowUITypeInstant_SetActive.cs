@@ -1,5 +1,5 @@
 //作成者:杉山
-//UIの表示(すぐにパッと表示するタイプ)
+//SetActiveでUIを即時非表示する
 
 using UnityEngine;
 
@@ -7,6 +7,11 @@ public class ShowUITypeInstant_SetActive : ShowUITypeBase
 {
     [Tooltip("表示したいUI群")] [SerializeField]
     GameObject _showUIObject;
+
+    public override bool IsFinishedToShow()
+    {
+        return true;
+    }
 
     public override void Show()
     {
