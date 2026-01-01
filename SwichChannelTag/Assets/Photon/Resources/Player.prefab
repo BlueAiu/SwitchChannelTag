@@ -30,6 +30,8 @@ GameObject:
   - component: {fileID: 2924152856127993218}
   - component: {fileID: 1411331410102481624}
   - component: {fileID: 8015709794959506432}
+  - component: {fileID: 5314424205041772395}
+  - component: {fileID: 1414655607949056246}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -355,6 +357,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myPhotonView: {fileID: 7362638265056822721}
+--- !u!114 &5314424205041772395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074817731734667574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b162ba9a8b831e44a3b9a228a30e4cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myPhotonView: {fileID: 7362638265056822721}
+--- !u!114 &1414655607949056246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074817731734667574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7838d294397b6854eb4fdba554798bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myPhotonView: {fileID: 7362638265056822721}
+  _playerRenderers:
+  - {fileID: 6592463972847393077}
+  - {fileID: 1645157153565134301}
+  _playerCanvas: {fileID: 4210889846531450373}
 --- !u!1 &7349448634761126109
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +785,10 @@ PrefabInstance:
       value: PlayerCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 1425871636048765132, guid: a0a27894dca117f4f8e179d0f3688e4a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1425871636048765132, guid: a0a27894dca117f4f8e179d0f3688e4a, type: 3}
       propertyPath: m_RenderMode
       value: 2
       objectReference: {fileID: 0}
@@ -869,6 +905,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4689285611519127806}
   m_SourcePrefab: {fileID: 100100000, guid: a0a27894dca117f4f8e179d0f3688e4a, type: 3}
+--- !u!223 &4210889846531450373 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1425871636048765132, guid: a0a27894dca117f4f8e179d0f3688e4a, type: 3}
+  m_PrefabInstance: {fileID: 3006610919509952201}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4286671607927723124 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1352471517752677053, guid: a0a27894dca117f4f8e179d0f3688e4a, type: 3}

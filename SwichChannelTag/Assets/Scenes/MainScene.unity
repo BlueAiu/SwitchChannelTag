@@ -3024,7 +3024,7 @@ Transform:
   m_GameObject: {fileID: 543246701}
   serializedVersion: 2
   m_LocalRotation: {x: 0.43444526, y: 0, z: 0, w: 0.9006983}
-  m_LocalPosition: {x: -0.7932491, y: 69.18512, z: -12.637088}
+  m_LocalPosition: {x: -0.7932491, y: 176.68512, z: -12.637087}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3407,7 +3407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 765443688835984041, guid: 4851b0b0ac9a58a48acb3d77d26b7234, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -48.5
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 765443688835984041, guid: 4851b0b0ac9a58a48acb3d77d26b7234, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9156,6 +9156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2004796665}
   - component: {fileID: 2004796662}
+  - component: {fileID: 2004796667}
   - component: {fileID: 2004796664}
   - component: {fileID: 2004796663}
   - component: {fileID: 2004796666}
@@ -9194,13 +9195,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Events:
     m_Signals:
-    - {fileID: 11400000, guid: 340cb5a15ae11c04cbe2fe49e1c8bba6, type: 2}
+    - {fileID: 11400000, guid: 05051098c144dbc47bd343d88d80ccfd, type: 2}
+    - {fileID: 11400000, guid: a3e9d610de80a524e900e4d218a259c7, type: 2}
+    - {fileID: 11400000, guid: 59b6fb25aaab35541ade833de20eef93, type: 2}
+    - {fileID: 11400000, guid: ed63e61bc8d6ff441bf4c7fd50598ba2, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2004796662}
           m_TargetAssemblyTypeName: ChangeHierarchy, Assembly-CSharp
-          m_MethodName: MoveToDestinationHierarchy
+          m_MethodName: EffectOnBeforeChange
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2004796662}
+          m_TargetAssemblyTypeName: ChangeHierarchy, Assembly-CSharp
+          m_MethodName: EffectOnAfterChange
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2004796662}
+          m_TargetAssemblyTypeName: ChangeHierarchy, Assembly-CSharp
+          m_MethodName: MovePlayerToDestination
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2004796662}
+          m_TargetAssemblyTypeName: ChangeHierarchy, Assembly-CSharp
+          m_MethodName: VisiblePlayer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -9268,6 +9314,22 @@ MonoBehaviour:
       value: 0
   _changeHierarchy: {fileID: 2004796662}
   lonelyBoost: 2
+--- !u!114 &2004796667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004796661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a09e933d52f09f4e87af6f05858eb5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectPrefab: {fileID: 1343915390740876675, guid: 1e8c3c0f6b5579741aec87e1fe8c6654, type: 3}
+  _effectSpawnOffset: {x: 0, y: 3, z: -3}
+  _lifeTime: 7
+  _maps_Hierarchies: {fileID: 407807742}
 --- !u!1 &2011354911
 GameObject:
   m_ObjectHideFlags: 0
@@ -10312,11 +10374,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1561130223629050677, guid: 715bdd72bcaf3844493dc62b3e65b9e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 135.00339
+      value: 313.8034
       objectReference: {fileID: 0}
     - target: {fileID: 1561130223629050677, guid: 715bdd72bcaf3844493dc62b3e65b9e5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25.126007
+      value: -25.126009
       objectReference: {fileID: 0}
     - target: {fileID: 2297289017663434274, guid: 715bdd72bcaf3844493dc62b3e65b9e5, type: 3}
       propertyPath: m_IsActive
@@ -10364,11 +10426,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6845223684539969748, guid: 715bdd72bcaf3844493dc62b3e65b9e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 86.50338
+      value: 194.00339
       objectReference: {fileID: 0}
     - target: {fileID: 6845223684539969748, guid: 715bdd72bcaf3844493dc62b3e65b9e5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25.126007
+      value: -25.12601
       objectReference: {fileID: 0}
     - target: {fileID: 7676533586214841200, guid: 715bdd72bcaf3844493dc62b3e65b9e5, type: 3}
       propertyPath: m_Follow
@@ -10581,11 +10643,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -34.492176
+      value: 73.00783
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.236227
+      value: -13.236226
       objectReference: {fileID: 0}
     - target: {fileID: 3428743698195346888, guid: 7ae34f944a43d764596c4a1d6f5e9dda, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11078,7 +11140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 765443688835984041, guid: 4851b0b0ac9a58a48acb3d77d26b7234, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 178.8
       objectReference: {fileID: 0}
     - target: {fileID: 765443688835984041, guid: 4851b0b0ac9a58a48acb3d77d26b7234, type: 3}
       propertyPath: m_LocalPosition.z
