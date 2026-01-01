@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //作成者:杉山
-//UIの非表示(すぐにパッと非表示にするタイプ)
+//SetActiveでUIを即時非表示する
 
 public class HideUITypeInstant_SetActive : HideUITypeBase
 {
     [Tooltip("非表示にしたいUI群")] [SerializeField]
     GameObject _hideUIObject;
+
+    public override bool IsFinishedToHide()
+    {
+        return true;
+    }
 
     public override void Hide()
     {

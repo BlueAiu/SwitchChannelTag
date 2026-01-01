@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //作成者:杉山
-//UIの非表示(すぐにパッと非表示にするタイプ)
+//CanvasGroupでUIを即時非表示する
 
 public class HideUITypeInstant : HideUITypeBase
 {
@@ -9,6 +9,11 @@ public class HideUITypeInstant : HideUITypeBase
     CanvasGroup _hideUIGroup;
 
     const float _hideAlpha = 0;
+
+    public override bool IsFinishedToHide()
+    {
+        return true;
+    }
 
     public override void Hide()
     {
