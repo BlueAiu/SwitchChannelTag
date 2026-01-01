@@ -1,7 +1,5 @@
 using Photon.Pun;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //作成者:杉山
@@ -11,15 +9,14 @@ public class ChangeHierarchyEffectReceiver : MonoBehaviour
 {
     [SerializeField]
     PhotonView _myPhotonView;
-
     public event Action<MapPos> OnReceiveCall;
 
-    public void SendEffectCall(MapPos newPos)//エフェクトを出すよう命令、引数に移動先の座標を入れる
+    public void SendEffectCall(MapPos pos)//エフェクトを出すよう命令、引数にエフェクトを出すマス座標を入れる
     {
         //自分以外であれば命令しない
         if (!_myPhotonView.IsMine) return;
 
-        _myPhotonView.RPC(nameof(SendEffectCallRPC), RpcTarget.All, newPos.hierarchyIndex, newPos.gridPos.x, newPos.gridPos.y);
+        _myPhotonView.RPC(nameof(SendEffectCallRPC), RpcTarget.All, pos.hierarchyIndex, pos.gridPos.x, pos.gridPos.y);
     }
 
     [PunRPC]

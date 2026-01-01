@@ -5,7 +5,7 @@ using UnityEngine;
 //作成者:杉山
 //ChangeHierarchyEffectReceiverから命令を受け取って、指定の位置に階層移動のエフェクトを出す機能
 
-public class ChangeHierarchyEffectManager : MonoBehaviour
+public class ChangeHierarchyEffectPlayer : MonoBehaviour
 {
     [Tooltip("エフェクトのプレハブ")] [SerializeField]
     GameObject _effectPrefab;
@@ -19,20 +19,11 @@ public class ChangeHierarchyEffectManager : MonoBehaviour
     [SerializeField]
     Maps_Hierarchies _maps_Hierarchies;
 
-    [SerializeField]
-    AudioSource _audioSource;
-
-    [SerializeField]
-    AudioClip _effectSE;
-
     ChangeHierarchyEffectReceiver[] _receivers;
-    MapTransform _myMapTrs;
 
     private void Awake()
     {
         _receivers = PlayersManager.GetComponentsFromPlayers<ChangeHierarchyEffectReceiver>();
-
-        _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
     }
 
     private void OnEnable()
@@ -51,21 +42,14 @@ public class ChangeHierarchyEffectManager : MonoBehaviour
         }
     }
 
-    void EffectTrigger(MapPos newPos)
+    void EffectTrigger(MapPos pos)
     {
         //エフェクト関係
-        if(_maps_Hierarchies.IsInRange(newPos))
+        if(_maps_Hierarchies.IsInRange(pos))
         {
-            Vector3 spawnPos = _maps_Hierarchies[newPos.hierarchyIndex].MapToWorld(newPos.gridPos) + _effectSpawnOffset;//エフェクトをスポーンさせる位置
+            Vector3 spawnPos = _maps_Hierarchies[pos.hierarchyIndex].MapToWorld(pos.gridPos) + _effectSpawnOffset;//エフェクトをスポーンさせる位置
             var effectInstance = Instantiate(_effectPrefab, spawnPos, Quaternion.identity);
             Destroy(effectInstance,_lifeTime);
-        }
-
-        //効果音関係
-        //自分と同じ階層であれば効果音を鳴らす
-        if(newPos.hierarchyIndex == _myMapTrs.Pos.hierarchyIndex)
-        {
-            _audioSource.PlayOneShot(_effectSE);
         }
     }
 }
