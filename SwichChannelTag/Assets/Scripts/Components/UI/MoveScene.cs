@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MoveScene : MonoBehaviourPunCallbacks
@@ -30,6 +31,8 @@ public class MoveScene : MonoBehaviourPunCallbacks
 
     private IEnumerator LoadTime(float time, Action action)
     {
+        EventSystem.current.enabled = false;//ƒ{ƒ^ƒ“‚ð‰Ÿ‚¹‚È‚­‚·‚é
+
         yield return new WaitForSeconds(time);
         action?.Invoke();
     }

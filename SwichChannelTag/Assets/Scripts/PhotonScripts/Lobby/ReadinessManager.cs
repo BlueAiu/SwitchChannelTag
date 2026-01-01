@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class ReadinessManager : MonoBehaviourPunCallbacks
 {
@@ -25,6 +26,8 @@ public class ReadinessManager : MonoBehaviourPunCallbacks
     public void TryStartGame()
     {
         if (!PhotonNetwork.IsMasterClient) return;
+
+        EventSystem.current.enabled = false;//ƒ{ƒ^ƒ“‚ð‰Ÿ‚¹‚È‚­‚·‚é
 
         if (IsReadyAll())
         {
