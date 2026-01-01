@@ -15,8 +15,8 @@ MonoBehaviour:
   _bgmTable:
     elements:
     - key: 3
-      value: {fileID: 0}
+      value: {fileID: 8300000, guid: fa8f57f04ecb69e40a405d49ef80c461, type: 3}
     - key: 2
-      value: {fileID: 0}
+      value: {fileID: 8300000, guid: b9e9064a1d3336a4087fe6c45f8f1ee9, type: 3}
     - key: 1
-      value: {fileID: 0}
+      value: {fileID: 8300000, guid: a3e006efc8f34ab4a8f0cd74916b131c, type: 3}

@@ -2677,7 +2677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5d884a74b4b1f45b2ed76aa723512f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fadeDuration: 1
+  _fadeDuration: 3
   _gamePhaseBGMs: {fileID: 11400000, guid: 9432427af3ee7024eb7f61c9732cc09f, type: 2}
   _audioSource: {fileID: 432885393}
 --- !u!4 &432885392
@@ -2707,7 +2707,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 8136003014130782872, guid: a3781a89553cd044c94af2108adcb73b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11233,6 +11233,10 @@ PrefabInstance:
       propertyPath: _showGameUI
       value: 
       objectReference: {fileID: 452790081}
+    - target: {fileID: 5664007871840648266, guid: 1076442b4eb9a244dac8c9d96725b0cd, type: 3}
+      propertyPath: _gamePhaseBGMController
+      value: 
+      objectReference: {fileID: 432885391}
     - target: {fileID: 6061952756761482783, guid: 1076442b4eb9a244dac8c9d96725b0cd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
