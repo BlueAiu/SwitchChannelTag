@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,7 +26,7 @@ public class ConvertCaughtRunnerToTagger : MonoBehaviour
 
             //逃げ→鬼にする
             var runnerState=PlayersManager.ActorNumberPlayerInfo(caughtRunnerActorNum).GetComponent<PlayerState>();
-            runnerState.ChangeState(EPlayerState.Tagger);
+            runnerState.ChangeState(EPlayerState.Tagger,ETransformationPlayerStateType.Effect);//エフェクト付きで変化させる
 
             //履歴に追加
             GameStatsManager.Instance.CaptureHistory.AddHistory(turn, caughtRunnerActorNum, taggerActorNums);
