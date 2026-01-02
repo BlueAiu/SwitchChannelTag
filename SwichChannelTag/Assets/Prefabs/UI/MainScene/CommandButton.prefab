@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5088078919979584729, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
       propertyPath: m_Name
-      value: Button Variant
+      value: CommandButton
       objectReference: {fileID: 0}
     - target: {fileID: 7923598064240400250, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
       propertyPath: m_Type
@@ -103,7 +103,7 @@ PrefabInstance:
     - target: {fileID: 7923598064240400250, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9bd190f67268d0a4996e2261de1c5a39, type: 3}
+      objectReference: {fileID: 21300000, guid: 278ad61db8d3ae54daa45c5fb5eefe81, type: 3}
     - target: {fileID: 7923598064240400250, guid: dfde610374bfc8345bb8f8bd5216a8e6, type: 3}
       propertyPath: m_Color.a
       value: 1
