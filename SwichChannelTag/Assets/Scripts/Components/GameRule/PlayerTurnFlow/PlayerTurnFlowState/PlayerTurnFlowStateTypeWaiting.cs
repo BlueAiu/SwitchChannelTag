@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+
+//作成者:杉山
+//待ち状態
 
 public class PlayerTurnFlowStateTypeWaiting : PlayerTurnFlowStateTypeBase
 {
-    [Tooltip("ダイスUIを表示する機能")] [SerializeField]
+    [Tooltip("待ちUIを表示する機能")] [SerializeField]
     ShowUITypeBase _showWaitingUI;
 
-    [Tooltip("ダイスUIを非表示にする機能")] [SerializeField]
+    [Tooltip("待ちUIを非表示にする機能")] [SerializeField]
     HideUITypeBase _hideWaitingUI;
 
     public override void OnEnter()

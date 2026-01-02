@@ -9,8 +9,8 @@ using UnityEngine.UI;
 
 public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBase
 {
-    [Tooltip("最初に選択状態になる階層番号(のボタン)")] [SerializeField]
-    int _defaultSelectButtonIndex;
+    [Tooltip("最初に選択状態になるボタン")] [SerializeField]
+    Button _firstSelectButton;
 
     [Tooltip("階層移動ボタン\n要素番号が移動先階層番号になる")] [SerializeField]
     Button[] _buttons;
@@ -35,7 +35,7 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
 
         _stateMachine.SharedData.DestinationHierarchyIndex = hierarchyIndex;//移動先階層番号を記録
 
-        _stateMachine.ChangeState(EPlayerTurnFlowState.ChangeHierarchy);
+        StartCoroutine(ChangeStateCoroutine(EPlayerTurnFlowState.ChangeHierarchy));
     }
 
     //行動選択ステートに戻る
@@ -44,7 +44,17 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
         if (_finished) return;
         if (_stateMachine == null) return;
 
-        _stateMachine.ChangeState(EPlayerTurnFlowState.SelectAction);
+        StartCoroutine(ChangeStateCoroutine(EPlayerTurnFlowState.SelectAction));
+    }
+
+    IEnumerator ChangeStateCoroutine(EPlayerTurnFlowState nextState)
+    {
+        _finished = true;
+        _hideSelectHierarchyUI.Hide();
+
+        yield return new WaitUntil(() => _hideSelectHierarchyUI.IsFinishedToHide());//UIの非表示処理が終わるまで待つ
+
+        _stateMachine.ChangeState(nextState);
     }
 
     public override void OnEnter()
@@ -55,15 +65,7 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
 
         _selectHierarchyButtons[_myMapTrs.Pos.hierarchyIndex].Button.interactable = false;
 
-        if(MathfExtension.IsInRange(_defaultSelectButtonIndex,0,_selectHierarchyButtons.Length-1))
-        {
-            EventSystem.current.SetSelectedGameObject(_selectHierarchyButtons[_defaultSelectButtonIndex].Button.gameObject);
-        }
-        else
-        {
-            Debug.Log("最初に選択状態になる階層番号が範囲外です！");
-        }
-        
+        EventSystem.current.SetSelectedGameObject(_firstSelectButton.gameObject);
     }
 
     public override void OnUpdate()
@@ -73,10 +75,6 @@ public class PlayerTurnFlowStateTypeSelectHierarchy : PlayerTurnFlowStateTypeBas
 
     public override void OnExit()
     {
-        _finished=true;
-
-        _hideSelectHierarchyUI.Hide();
-
         _selectHierarchyButtons[_myMapTrs.Pos.hierarchyIndex].Button.interactable = true;
 
         EventSystem.current.SetSelectedGameObject(null);
