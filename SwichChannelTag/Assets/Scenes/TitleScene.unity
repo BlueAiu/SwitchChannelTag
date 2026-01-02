@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66a15c18cb82fb448b354dd960f74a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Waittime: 1
+  Waittime: 0.5
 --- !u!114 &1091383372 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4954734075843820105, guid: 11158d5c75a89da4fb526a830f674ea8, type: 3}
