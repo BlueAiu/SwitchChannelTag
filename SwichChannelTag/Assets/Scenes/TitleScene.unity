@@ -1048,7 +1048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7167764742915887644, guid: 2c9b4caaf6d7c1642b144d5c053a82e9, type: 3}
       propertyPath: m_text
-      value: "\u30D7\u30EC\u30A4\u65B9\u6CD5"
+      value: "\u64CD\u4F5C\u65B9\u6CD5"
       objectReference: {fileID: 0}
     - target: {fileID: 7167764742915887644, guid: 2c9b4caaf6d7c1642b144d5c053a82e9, type: 3}
       propertyPath: m_fontSize
@@ -1060,7 +1060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7167764742915887644, guid: 2c9b4caaf6d7c1642b144d5c053a82e9, type: 3}
       propertyPath: m_characterSpacing
-      value: -18.8
+      value: -6.1
       objectReference: {fileID: 0}
     - target: {fileID: 8105775859234917088, guid: 2c9b4caaf6d7c1642b144d5c053a82e9, type: 3}
       propertyPath: _audioSource
