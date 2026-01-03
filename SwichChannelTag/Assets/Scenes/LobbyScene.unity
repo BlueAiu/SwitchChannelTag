@@ -1975,6 +1975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2fe00a719e1b14585cd98f1b5ca72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomName: room
   join_Text: {fileID: 1057229973}
   writeJoinLog: 1
 --- !u!1001 &678009487471740308
