@@ -2045,9 +2045,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 317900442}
-  - component: {fileID: 317900441}
   - component: {fileID: 317900440}
   - component: {fileID: 317900443}
+  - component: {fileID: 317900444}
   m_Layer: 0
   m_Name: CatchRunnerManager
   m_TagString: Untagged
@@ -2065,19 +2065,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cba91fa247f125f45bb704600ddf046e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _getRunnerInfoOnPath: {fileID: 317900441}
---- !u!114 &317900441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317900439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0899b3df6c2d1ba47837a82e4dc18a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _moveOnPath: {fileID: 993823719}
@@ -2108,6 +2095,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 247e9403d2278ca46a720b12a99b6b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &317900444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317900439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c100729147a3a46a72630b2183b38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &323398155
@@ -6958,7 +6957,7 @@ PrefabInstance:
     - target: {fileID: 4306973834652676575, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _getRunnerInfoOnPath
       value: 
-      objectReference: {fileID: 317900441}
+      objectReference: {fileID: 0}
     - target: {fileID: 4306973834652676575, guid: c17dfa35e442dfe41982ca9b47279d40, type: 3}
       propertyPath: _setCaughtRunnerInfo
       value: 
