@@ -1,8 +1,7 @@
 using Photon.Pun;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 
 //作成者:杉山
 //プレイヤーごとに捕まえた逃げの情報を記録する機能
@@ -12,7 +11,9 @@ public class CaughtRunnerInfo : MonoBehaviour
     [SerializeField] PhotonView _myPhotonView;
 
     List<int> _caughtInfo=new List<int>();//捕まえた逃げのActorNumberリスト
-    
+
+    public event Action<int,int> OnAddCaughtRunner;//第一引数:自分(このコンポーネントの持ち主)のActorNumber、第二引数:捕まえた逃げのActorNumber
+
     public int[] CaughtRunnerActorNumbers { get { return _caughtInfo.ToArray(); } } 
 
     public void ClearRunnerInfo()
@@ -20,25 +21,17 @@ public class CaughtRunnerInfo : MonoBehaviour
         _myPhotonView.RPC(nameof(ClearRunnerInfo_RPC), RpcTarget.All);
     }
 
-    public void SetRunnerInfo(PlayerInfo[] runnerInfos)
+    public void AddRunnerInfo(int runnerActorNumber)
     {
-        int[] runnerActorNumbers = new int[runnerInfos.Length];
-
-        for(int i=0; i<runnerActorNumbers.Length ;i++)
-        {
-            runnerActorNumbers[i] = runnerInfos[i].Player.ActorNumber;
-        }
-
-        _myPhotonView.RPC(nameof(SetRunnerInfo_RPC), RpcTarget.All, runnerActorNumbers);
+        _myPhotonView.RPC(nameof(AddRunnerInfoRPC), RpcTarget.All, runnerActorNumber);
     }
 
     [PunRPC]
-    void SetRunnerInfo_RPC(int[] runnerActorNumbers)
+    void AddRunnerInfoRPC(int runnerActorNumber)
     {
-        for(int i = 0; i < runnerActorNumbers.Length; i++)
-        {
-            _caughtInfo.Add(runnerActorNumbers[i]);
-        }
+        _caughtInfo.Add(runnerActorNumber);
+
+        OnAddCaughtRunner?.Invoke(_myPhotonView.Owner.ActorNumber, runnerActorNumber);
     }
 
     [PunRPC]

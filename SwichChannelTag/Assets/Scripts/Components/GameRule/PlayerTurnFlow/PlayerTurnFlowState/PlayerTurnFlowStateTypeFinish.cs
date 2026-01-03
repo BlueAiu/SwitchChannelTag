@@ -22,8 +22,6 @@ public class PlayerTurnFlowStateTypeFinish : PlayerTurnFlowStateTypeBase
     {
         _showFinishUI.Show();
 
-        _setCaughtRunnerInfo.Set();//©•ª‚ª‹S‚Å‚ ‚éê‡•ß‚Ü‚¦‚½“¦‚°‚Ìî•ñ‚ğ“o˜^
-
         _myTurnCommunicator.FinishedTurn();//s“®I—¹‚µ‚½‚±‚Æ‚ğ’m‚ç‚¹‚é
     }
 
