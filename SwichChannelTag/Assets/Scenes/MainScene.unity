@@ -2048,6 +2048,7 @@ GameObject:
   - component: {fileID: 317900440}
   - component: {fileID: 317900443}
   - component: {fileID: 317900444}
+  - component: {fileID: 317900445}
   m_Layer: 0
   m_Name: CatchRunnerManager
   m_TagString: Untagged
@@ -2109,6 +2110,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c100729147a3a46a72630b2183b38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &317900445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317900439}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed936ad9d762788438173cef2559b263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectSpawnOffset: {x: 0, y: 3, z: -3}
+  _effectPrefab: {fileID: 0}
 --- !u!1 &323398155
 GameObject:
   m_ObjectHideFlags: 0
@@ -11691,6 +11706,10 @@ PrefabInstance:
       value: GameEventManager
       objectReference: {fileID: 0}
     - target: {fileID: 4662737764788561480, guid: 1076442b4eb9a244dac8c9d96725b0cd, type: 3}
+      propertyPath: _caughtEffectManager
+      value: 
+      objectReference: {fileID: 317900445}
+    - target: {fileID: 4662737764788561480, guid: 1076442b4eb9a244dac8c9d96725b0cd, type: 3}
       propertyPath: _gamePhaseBGMController
       value: 
       objectReference: {fileID: 432885391}
@@ -11766,6 +11785,10 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[4].value
       value: 
       objectReference: {fileID: 1536692440}
+    - target: {fileID: 7619350608880891133, guid: 1076442b4eb9a244dac8c9d96725b0cd, type: 3}
+      propertyPath: _caughtEffectManager
+      value: 
+      objectReference: {fileID: 317900445}
     - target: {fileID: 7619350608880891133, guid: 1076442b4eb9a244dac8c9d96725b0cd, type: 3}
       propertyPath: _gamePhaseBGMController
       value: 

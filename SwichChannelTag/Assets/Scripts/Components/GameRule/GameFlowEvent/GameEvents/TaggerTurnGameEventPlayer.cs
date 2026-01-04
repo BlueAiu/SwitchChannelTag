@@ -13,6 +13,9 @@ public class TaggerTurnGameEventPlayer : GameEventPlayer
     [Tooltip("バフエフェクトの表示関係機能")] [SerializeField]
     AllPlayersBuffEffectActivator _allPlayersBuffEffectActivator;
 
+    [Tooltip("捕まった時のエフェクト処理を管理する機能")] [SerializeField]
+    CaughtEffectManager _caughtEffectManager;
+
     bool _finished = true;
 
     public override void Play()
@@ -21,6 +24,7 @@ public class TaggerTurnGameEventPlayer : GameEventPlayer
 
         _gamePhaseBGMController.UpdateBGM();
         _allPlayersBuffEffectActivator.RefreshBuffEffects();
+        _caughtEffectManager.ClearEffect();
 
         _finished = true;
     }
