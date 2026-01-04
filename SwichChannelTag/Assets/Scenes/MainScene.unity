@@ -11706,6 +11706,10 @@ PrefabInstance:
       value: GameEventManager
       objectReference: {fileID: 0}
     - target: {fileID: 4662737764788561480, guid: 1076442b4eb9a244dac8c9d96725b0cd, type: 3}
+      propertyPath: _caughtEffectManager
+      value: 
+      objectReference: {fileID: 317900445}
+    - target: {fileID: 4662737764788561480, guid: 1076442b4eb9a244dac8c9d96725b0cd, type: 3}
       propertyPath: _gamePhaseBGMController
       value: 
       objectReference: {fileID: 432885391}
@@ -11781,6 +11785,10 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[4].value
       value: 
       objectReference: {fileID: 1536692440}
+    - target: {fileID: 7619350608880891133, guid: 1076442b4eb9a244dac8c9d96725b0cd, type: 3}
+      propertyPath: _caughtEffectManager
+      value: 
+      objectReference: {fileID: 317900445}
     - target: {fileID: 7619350608880891133, guid: 1076442b4eb9a244dac8c9d96725b0cd, type: 3}
       propertyPath: _gamePhaseBGMController
       value: 
