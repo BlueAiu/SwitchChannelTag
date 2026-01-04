@@ -10,14 +10,18 @@ public class RunnerTurnGameEventPlayer : GameEventPlayer
     [Tooltip("BGMを変更する機能")] [SerializeField]
     GamePhaseBGMController _gamePhaseBGMController;
 
+    [Tooltip("バフエフェクトの表示関係機能")] [SerializeField]
+    AllPlayersBuffEffectActivator _allPlayersBuffEffectActivator;
+
     bool _finished = true;
 
     public override void Play()
     {
         _finished = false;
-        _gamePhaseBGMController.UpdateBGM();
 
-        //今後何か処理を入れていくかも
+        _gamePhaseBGMController.UpdateBGM();
+        _allPlayersBuffEffectActivator.RefreshBuffEffects();
+
         _finished = true;
     }
 

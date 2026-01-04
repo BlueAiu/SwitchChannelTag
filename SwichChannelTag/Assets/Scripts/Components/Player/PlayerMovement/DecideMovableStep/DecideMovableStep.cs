@@ -16,18 +16,18 @@ public class DecideMovableStep : MonoBehaviour
     [SerializeField] TextMeshProUGUI _rouletteResultText;
 
     [SerializeField] ChangeHierarchy _changeHierarchy;
-    [SerializeField] PlayerState _playerState;
 
     [SerializeField] bool writeLog = true;
 
     [SerializeField] SerializableDictionary<EPlayerState, int> lonelyBoost;
 
-    PlayersStateStats_GameStats _playerStates = new();
+    PlayerState _myplayerState;
+    BuffState _myBuffState;//バフ状態かを判定する機能
 
     public void Decide(bool isChangedHierarchy)//動けるマス数を決定(ダイスロールで)、階層移動したかを受け取る
     {
         int result;
-        var state = _playerState.State;
+        var state = _myplayerState.State;
 
         if (isChangedHierarchy)//階層移動をした場合、ダイス減算をする
         {
@@ -56,7 +56,8 @@ public class DecideMovableStep : MonoBehaviour
             }
         }
 
-        if (_playerStates.IsPlayerLonely(state))
+        //バフ分の加算
+        if (_myBuffState.IsBuff())
         {
             result += lonelyBoost[state];
         }
@@ -71,9 +72,7 @@ public class DecideMovableStep : MonoBehaviour
 
     private void Start()
     {
-        if(_playerState == null)
-        {
-            _playerState = PlayersManager.GetComponentFromMinePlayer<PlayerState>();
-        }
+        _myplayerState = PlayersManager.GetComponentFromMinePlayer<PlayerState>();
+        _myBuffState = PlayersManager.GetComponentFromMinePlayer<BuffState>();
     }
 }
