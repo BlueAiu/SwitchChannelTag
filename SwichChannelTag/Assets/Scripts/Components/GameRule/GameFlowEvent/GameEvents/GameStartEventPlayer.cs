@@ -15,6 +15,9 @@ public class GameStartEventPlayer : GameEventPlayer
     [Tooltip("BGMを変更する機能")] [SerializeField]
     GamePhaseBGMController _gamePhaseBGMController;
 
+    [Tooltip("バフエフェクトの表示関係機能")] [SerializeField]
+    AllPlayersBuffEffectActivator _allPlayersBuffEffectActivator;
+
     bool _finished = true;
 
     public override void Play()
@@ -40,8 +43,12 @@ public class GameStartEventPlayer : GameEventPlayer
 
     void SetTimelineFinish(PlayableDirector pd)
     {
+        //開始イベントが終わった時
+
         _showGameUI.Show();//プレイ中に表示するUIを表示する
         _gamePhaseBGMController.UpdateBGM();
+        _allPlayersBuffEffectActivator.RefreshBuffEffects();
+
         _finished = true;
     }
 }
