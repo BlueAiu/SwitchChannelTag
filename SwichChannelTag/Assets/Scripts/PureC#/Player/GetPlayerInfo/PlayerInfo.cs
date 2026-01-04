@@ -22,5 +22,10 @@ public class PlayerInfo
 
     public GameObject PlayerObject { get { return _playerObject; } }//プレイヤーオブジェクト
     public Player Player { get { return _player; } }//プレイヤーの情報
-    public T GetComponent<T>() where T:Component { return _getPlayerInfo.GetComponent<T>(); }//プレイヤーのコンポーネントの取得
+    public T GetComponent<T>() where T: Component//プレイヤーのコンポーネントの取得
+    {
+        if (_getPlayerInfo == null) return null;
+
+        return _getPlayerInfo.GetComponent<T>(); 
+    }
 }

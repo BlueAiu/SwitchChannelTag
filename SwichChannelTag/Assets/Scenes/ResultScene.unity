@@ -210,20 +210,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4137419117710780081, guid: 90bdac8455841574193639ae95aaa474, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 66110970}
+    - target: {fileID: 4137419117710780081, guid: 90bdac8455841574193639ae95aaa474, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickReturnToTitle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137419117710780081, guid: 90bdac8455841574193639ae95aaa474, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ReturnToTitle, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5461704104973039891, guid: 90bdac8455841574193639ae95aaa474, type: 3}
       propertyPath: m_Name
       value: ToTitleButton
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7141642908977430122, guid: 90bdac8455841574193639ae95aaa474, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5461704104973039891, guid: 90bdac8455841574193639ae95aaa474, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 66110970}
   m_SourcePrefab: {fileID: 100100000, guid: 90bdac8455841574193639ae95aaa474, type: 3}
 --- !u!224 &66110968 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 395623202719393123, guid: 90bdac8455841574193639ae95aaa474, type: 3}
   m_PrefabInstance: {fileID: 66110967}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &66110969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5461704104973039891, guid: 90bdac8455841574193639ae95aaa474, type: 3}
+  m_PrefabInstance: {fileID: 66110967}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &66110970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66110969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c61a32c406c3384a9a183578a09448b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitTime: 0.5
 --- !u!1001 &105207901
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -105,7 +105,7 @@ public static class PlayersManager
     }
 
 
-    // --- Add & Remove --- //
+    // --- Add & Remove &Clear --- //
 
     public static void AddPlayer(GameObject player)
     {
@@ -139,6 +139,13 @@ public static class PlayersManager
         {
             minePlayer = playerInfo;
         }
+    }
+
+    public static void Clear()
+    {
+        players.Clear();
+        _actorNumberPlayresDict.Clear();
+        minePlayer = null;
     }
 
     static void SortByActorNumber()
