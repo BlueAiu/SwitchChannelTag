@@ -6,6 +6,7 @@ using TMPro;
 
 public class JoinGame : MonoBehaviourPunCallbacks
 {
+    [SerializeField] string roomName = "room";
     [SerializeField] TMP_Text join_Text;
     [SerializeField] bool writeJoinLog = true;
 
@@ -22,7 +23,7 @@ public class JoinGame : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         // "room"という名前のルームに参加する（ルームが無ければ作成してから参加する）
-        PhotonNetwork.JoinOrCreateRoom("room", new RoomOptions(), TypedLobby.Default);
+        PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions(), TypedLobby.Default);
         WriteLog("Start Join Room...");
     }
 
