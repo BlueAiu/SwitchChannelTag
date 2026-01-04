@@ -1481,6 +1481,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Joining room ...
       objectReference: {fileID: 0}
+    - target: {fileID: 527310443670948778, guid: 85d8da3298254714cbc4ba3cccf10548, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 702847731287293345, guid: 85d8da3298254714cbc4ba3cccf10548, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
