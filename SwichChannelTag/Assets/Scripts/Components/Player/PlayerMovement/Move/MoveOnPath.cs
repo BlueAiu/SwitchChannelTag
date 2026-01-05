@@ -19,12 +19,12 @@ public class MoveOnPath : MonoBehaviour
 
     MapTransform _myMapTrs;//自分のマップ上の位置情報
     CanShift _myCanShift;
-    bool _isMoving = false;
+    IsMovingState _myIsMovingState;
 
     public event Action<MapPos> OnStartMove;//移動開始時(出発点の位置を伝える)
     public event Action<MapPos> OnFinishMove;//移動完了時(到着点の位置を伝える)
 
-    public bool IsMoving { get => _isMoving; }
+    public bool IsMoving { get => _myIsMovingState.IsMoving; }
 
     public void StartMove(MapVec[] path)//移動開始、pathは移動経路
     {
@@ -35,14 +35,14 @@ public class MoveOnPath : MonoBehaviour
 
     IEnumerator Move(MapVec[] path)
     {
-        _isMoving = true;
+        _myIsMovingState.IsMoving = true;
 
         foreach (var p in path)
         {
             yield return MoveOneStep(p);
         }
 
-        _isMoving = false;
+        _myIsMovingState.IsMoving = false;
     }
 
     IEnumerator MoveOneStep(MapVec newGridPos)//1マス移動
@@ -82,5 +82,6 @@ public class MoveOnPath : MonoBehaviour
     {
         _myCanShift = PlayersManager.GetComponentFromMinePlayer<CanShift>();
         _myMapTrs = PlayersManager.GetComponentFromMinePlayer<MapTransform>();
+        _myIsMovingState = PlayersManager.GetComponentFromMinePlayer<IsMovingState>();
     }
 }
