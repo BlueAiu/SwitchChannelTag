@@ -9778,7 +9778,7 @@ MonoBehaviour:
     - key: 1
       value: 0
   _changeHierarchy: {fileID: 2004796662}
-  lonelyBoost: 2
+  lonelyBoost: 1
 --- !u!114 &2004796667
 MonoBehaviour:
   m_ObjectHideFlags: 0
