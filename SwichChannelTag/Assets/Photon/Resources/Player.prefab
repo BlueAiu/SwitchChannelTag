@@ -1730,8 +1730,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 3901238037691451456}
     m_Modifications:
     - target: {fileID: 906064000671284736, guid: 549fba7e889fac149b01aa725c111579, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 906064000671284736, guid: 549fba7e889fac149b01aa725c111579, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3648561923398288977, guid: 549fba7e889fac149b01aa725c111579, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.673
       objectReference: {fileID: 0}
     - target: {fileID: 3838489872280005667, guid: 549fba7e889fac149b01aa725c111579, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1739,11 +1747,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3838489872280005667, guid: 549fba7e889fac149b01aa725c111579, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.66
+      value: 2.42
       objectReference: {fileID: 0}
     - target: {fileID: 3838489872280005667, guid: 549fba7e889fac149b01aa725c111579, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3838489872280005667, guid: 549fba7e889fac149b01aa725c111579, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1780,6 +1788,14 @@ PrefabInstance:
     - target: {fileID: 4328027623250142265, guid: 549fba7e889fac149b01aa725c111579, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5986176200782229962, guid: 549fba7e889fac149b01aa725c111579, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.631
+      objectReference: {fileID: 0}
+    - target: {fileID: 9160688963780631223, guid: 549fba7e889fac149b01aa725c111579, type: 3}
+      propertyPath: looping
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9160688963780631223, guid: 549fba7e889fac149b01aa725c111579, type: 3}
       propertyPath: playOnAwake
