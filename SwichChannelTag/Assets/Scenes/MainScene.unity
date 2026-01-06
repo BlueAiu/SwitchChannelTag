@@ -13188,7 +13188,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a09e933d52f09f4e87af6f05858eb5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectPrefab: {fileID: 1343915390740876675, guid: 1e8c3c0f6b5579741aec87e1fe8c6654, type: 3}
+  _playerStateEffectPrefabs:
+    _list:
+    - key: 0
+      value: {fileID: 1343915390740876675, guid: 1e8c3c0f6b5579741aec87e1fe8c6654, type: 3}
+    - key: 1
+      value: {fileID: 1343915390740876675, guid: b06f68e595319a34dbc15cf035939087, type: 3}
   _effectSpawnOffset: {x: 0, y: 3, z: -3}
   _lifeTime: 7
   _maps_Hierarchies: {fileID: 407807742}

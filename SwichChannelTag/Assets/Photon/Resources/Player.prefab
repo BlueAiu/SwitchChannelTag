@@ -447,6 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myPhotonView: {fileID: 7362638265056822721}
+  _myPlayerState: {fileID: 1659280601506932932}
 --- !u!114 &1414655607949056246
 MonoBehaviour:
   m_ObjectHideFlags: 0
