@@ -9,7 +9,11 @@ public class ChangeHierarchyEffectReceiver : MonoBehaviour
 {
     [SerializeField]
     PhotonView _myPhotonView;
-    public event Action<MapPos> OnReceiveCall;
+
+    [SerializeField]
+    PlayerState _myPlayerState;
+
+    public event Action<MapPos,EPlayerState> OnReceiveCall;
 
     public void SendEffectCall(MapPos pos)//エフェクトを出すよう命令、引数にエフェクトを出すマス座標を入れる
     {
@@ -26,7 +30,7 @@ public class ChangeHierarchyEffectReceiver : MonoBehaviour
         MapPos pos = new MapPos(hierarchyIndex,gridPos);//MapPosに変換
 
         //コールバックを呼ぶ
-        OnReceiveCall?.Invoke(pos);
+        OnReceiveCall?.Invoke(pos,_myPlayerState.State);
     }
 
 }
