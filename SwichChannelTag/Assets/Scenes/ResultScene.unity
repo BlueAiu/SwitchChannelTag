@@ -543,6 +543,7 @@ MonoBehaviour:
   - {fileID: 1456102617}
   - {fileID: 1488696338}
   - {fileID: 1929965993}
+  _maxTurn: {fileID: 11400000, guid: 87ea6c4a905013549ac5459ce6e50726, type: 2}
   screenWidth: 1920
   widthMargin: 100
 --- !u!114 &292061333
