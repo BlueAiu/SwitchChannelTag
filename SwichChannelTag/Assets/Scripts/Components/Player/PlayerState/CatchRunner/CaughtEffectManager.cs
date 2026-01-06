@@ -6,30 +6,18 @@ using UnityEngine;
 
 public class CaughtEffectManager : MonoBehaviour
 {
-    [Tooltip("マスの中心点からどれくらい離れた位置にエフェクトを生成するか(ワールド基準)")] [SerializeField]
-    private Vector3 _effectSpawnOffset;
-
-    [Tooltip("エフェクトのプレハブ")] [SerializeField]
-    private GameObject _effectPrefab;
-
     private CaughtRunnerInfo[] _caughtRunnerInfos;
-
-    // 既に捕まった演出を出した逃げの ActorNumber
-    private readonly HashSet<int> _caughtRunnerActorNums = new HashSet<int>();
-
-    // 生成したエフェクトのインスタンス
-    private readonly List<GameObject> _effectInstances = new List<GameObject>();
 
     public void ClearEffect()
     {
-        _caughtRunnerActorNums.Clear();
+        var _allCaughtEffects = PlayersManager.GetComponentsFromPlayers<CaughtEffect>();
 
-        foreach (var effect in _effectInstances)
+        foreach(var caughtEffect in _allCaughtEffects)
         {
-            Destroy(effect);
-        }
+            if (caughtEffect == null) continue;
 
-        _effectInstances.Clear();
+            caughtEffect.Clear();
+        }
     }
 
     private void Awake()
@@ -56,25 +44,12 @@ public class CaughtEffectManager : MonoBehaviour
     //逃げが捕まった時に呼ばれる
     private void OnAddCaughtRunner(int taggerActorNum, int caughtRunnerActorNum)
     {
-        // 既にエフェクトを生成済みなら何もしない
-        if (_caughtRunnerActorNums.Contains(caughtRunnerActorNum)) return;
-
-        CreateCaughtEffect(caughtRunnerActorNum);
-    }
-
-    private void CreateCaughtEffect(int caughtRunnerActorNum)//エフェクト生成
-    {
         var caughtRunnerInfo = PlayersManager.ActorNumberPlayerInfo(caughtRunnerActorNum);
+        var caughtEffect = caughtRunnerInfo.GetComponent<CaughtEffect>();
 
-        //捕まった逃げプレイヤーの位置を取得
-        var caughtRunnerTrs = caughtRunnerInfo.GetComponent<Transform>();
-        Vector3 spawnPosition = caughtRunnerTrs.position + _effectSpawnOffset;
+        // 既にエフェクトを生成済みなら何もしない
+        if (caughtEffect.HasPlayedEffect) return;
 
-        //生成
-        var effectInstance = Instantiate(_effectPrefab, spawnPosition, Quaternion.identity);
-
-        //リストへの追加
-        _caughtRunnerActorNums.Add(caughtRunnerActorNum);
-        _effectInstances.Add(effectInstance);
+        caughtEffect.Play();
     }
 }
