@@ -7,6 +7,7 @@ public class TagLogGraph : MonoBehaviour
 {
     [SerializeField] RectTransform[] blueBar;
     [SerializeField] RectTransform[] redBar;
+    [SerializeField] MaxTurnNumConfig _maxTurn;
 
     [SerializeField] int screenWidth = 1920;
     [SerializeField] int widthMargin = 100;
@@ -17,7 +18,7 @@ public class TagLogGraph : MonoBehaviour
         var playerStates = PlayersManager.GetComponentsFromPlayers<PlayerState>();
         var photonPlayer = PlayersManager.PlayersPhotonPlayer;
 
-        int maxTurn = GameStatsManager.Instance.Turn.GetTurn();
+        int maxTurn = _maxTurn.MaxTurnNum;
 
         Dictionary<int, int> runnerTurn = new();
 
