@@ -365,10 +365,10 @@ MonoBehaviour:
   _animator:
     _list:
     - key: 0
-      value: {fileID: 0}
+      value: {fileID: 5080356323953254748}
     - key: 1
-      value: {fileID: 0}
-  _myPhotonView: {fileID: 0}
+      value: {fileID: 7691843903481543812}
+  _myPhotonView: {fileID: 7362638265056822721}
   _state: {fileID: 1659280601506932932}
 --- !u!114 &3826059625345711012
 MonoBehaviour:
@@ -1825,6 +1825,11 @@ GameObject:
 --- !u!4 &4350133721772893950 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d7e62602389e3143b1f99707df0252e, type: 3}
+  m_PrefabInstance: {fileID: 4311210308615389461}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7691843903481543812 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 7d7e62602389e3143b1f99707df0252e, type: 3}
   m_PrefabInstance: {fileID: 4311210308615389461}
   m_PrefabAsset: {fileID: 0}
 --- !u!137 &7992412030189847334 stripped
