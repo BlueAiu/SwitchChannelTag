@@ -35,6 +35,7 @@ public class MoveOnPath : MonoBehaviour
 
     IEnumerator Move(MapVec[] path)
     {
+        _playerMoveAnimation.OnStartMove();
         _myIsMovingState.IsMoving = true;
 
         foreach (var p in path)
@@ -42,6 +43,7 @@ public class MoveOnPath : MonoBehaviour
             yield return MoveOneStep(p);
         }
 
+        _playerMoveAnimation.OnFinishMove();
         _myIsMovingState.IsMoving = false;
     }
 
@@ -55,8 +57,8 @@ public class MoveOnPath : MonoBehaviour
 
         OnStartMove?.Invoke(_myMapTrs.Pos);//移動開始時のコールバックを呼ぶ
 
-        _playerMoveAnimation.StartMove(start, destination);//移動アニメーション開始
-        yield return new WaitUntil(() => !_playerMoveAnimation.IsMoving);//移動アニメーションが終わるまで待つ
+        _playerMoveAnimation.StartMoveOnMass(start, destination);//移動アニメーション開始
+        yield return new WaitUntil(() => !_playerMoveAnimation.IsMovingOnMass);//移動アニメーションが終わるまで待つ
 
         _myCanShift.IsShiftAllowed = true;//自分がずれてもいいようにする
         RewriteMyMapPos(newGridPos);//位置情報の書き換え(移動アニメーションが終わった後に)
