@@ -35,7 +35,7 @@ public class SetPlayersFeature : MonoBehaviour
 
         for(int i=0; i<changeMyColors.Length ;i++)
         {
-            changeMyColors[i].SetColor(_playersFeature.Features[i].color);
+            changeMyColors[i].SetColor(_playersFeature.Features[i].playerModelColor);
         }
     }
 }
