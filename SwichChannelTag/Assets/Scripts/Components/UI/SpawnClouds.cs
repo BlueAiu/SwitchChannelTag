@@ -28,20 +28,15 @@ public class SpawnClouds : MonoBehaviour
     [SerializeField] private Transform Left_SpawnPoint;
     [SerializeField] private Transform Right_SpawnPoint;
 
-    [SerializeField] private float Min_Y_Offset = -2f;
-    [SerializeField] private float Max_Y_Offset = 2f;
-
-
+    private float Min_Y_Offset = -2f;
+    private float Max_Y_Offset = 2f;
 
     private float Max_size = 1.5f;  
     private float Min_size = 0.5f;
-    
 
-    private Camera cam;
     // Start is called before the first frame update
     void Start()
     {
-        cam = Camera.main;
 
         if(Clouds == null || Clouds.Length == 0)
         {
@@ -81,7 +76,6 @@ public class SpawnClouds : MonoBehaviour
         Sprite cloud_prefab = Clouds[Random.Range(0, Clouds.Length)];
 
         GameObject cloud = new GameObject("Cloud");
-        cloud.transform.position = this.transform.position;
 
         SpriteRenderer rend = cloud.AddComponent<SpriteRenderer>();
         rend.sprite = cloud_prefab;
