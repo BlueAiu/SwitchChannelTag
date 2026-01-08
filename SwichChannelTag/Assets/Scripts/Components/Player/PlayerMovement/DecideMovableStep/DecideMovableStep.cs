@@ -24,7 +24,7 @@ public class DecideMovableStep : MonoBehaviour
     PlayerState _myplayerState;
     BuffState _myBuffState;//バフ状態かを判定する機能
 
-    public void Decide(bool isChangedHierarchy)//動けるマス数を決定(ダイスロールで)、階層移動したかを受け取る
+    public int Decide(bool isChangedHierarchy)//動けるマス数を決定(ダイスロールで)、階層移動したかを受け取る
     {
         int result;
         var state = _myplayerState.State;
@@ -62,7 +62,7 @@ public class DecideMovableStep : MonoBehaviour
             result += lonelyBoost[state];
         }
 
-        _decidePath.RemainingStep=result;
+        return _decidePath.RemainingStep=result;
     }
 
     private void Update()

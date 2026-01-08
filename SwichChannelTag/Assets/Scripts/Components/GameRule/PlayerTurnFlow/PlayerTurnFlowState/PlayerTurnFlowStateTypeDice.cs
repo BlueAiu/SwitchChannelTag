@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -21,15 +22,19 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
     [Tooltip("ダイスを振る(動けるマス数を決定する)機能")] [SerializeField]
     DecideMovableStep _decideMovableStep;
 
-    bool _finished = true;
+    [SerializeField] TMP_Text stepText;
+    [SerializeField] float rouletteTime = 1.5f;
+    [SerializeField] float dicideTime = 1f;
 
+    bool _finished = true;
+    int step = 0;
 
     //ダイスを振って、移動ステートに移る
     public void ToMove()
     {
         if (_finished) return;
 
-        _decideMovableStep.Decide(_stateMachine.SharedData.IsChangedHierarchy);//ダイスを振る
+        //_decideMovableStep.Decide(_stateMachine.SharedData.IsChangedHierarchy);//ダイスを振る
 
         StartCoroutine(ChangeStateCoroutine(EPlayerTurnFlowState.MoveCursor));
     }
@@ -58,11 +63,12 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
 
         _showDiceUI.Show();
         //EventSystem.current.SetSelectedGameObject(_diceButton.gameObject);
+        StartCoroutine(RouretteTime());
     }
 
     public override void OnUpdate()
     {
-        ToMove();
+        
     }
 
     public override void OnExit()
@@ -73,5 +79,26 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
     private void Start()
     {
         _hideDiceUI.Hide();//シーン開始時にUIを隠す
+    }
+
+    IEnumerator RouretteTime()
+    {
+        float timer = 0f;
+        while(timer < rouletteTime)
+        {
+            stepText.text = Random.Range(1, 9).ToString();
+            yield return null;
+            timer += Time.deltaTime;
+        }
+
+        yield return StartCoroutine(DicedeStep());
+    }
+
+    IEnumerator DicedeStep()
+    {
+        step = _decideMovableStep.Decide(_stateMachine.SharedData.IsChangedHierarchy);
+        yield return new WaitForSeconds(dicideTime);
+
+        ToMove();
     }
 }
