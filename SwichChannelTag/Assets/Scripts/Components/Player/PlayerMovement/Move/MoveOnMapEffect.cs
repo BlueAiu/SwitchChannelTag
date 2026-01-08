@@ -10,33 +10,38 @@ public class MoveOnMapEffect : MonoBehaviour
     [SerializeField]
     IsMovingState _isMovingState;
 
-    [Tooltip("移動効果音用のAudioSource")] [SerializeField]
-    AudioSource _moveAudioSource;
+    [SerializeField]
+    PlayerState _myPlayerState;
 
-    [Tooltip("移動時のエフェクト(パーティクル)")] [SerializeField]
-    ParticleSystem _moveParticle;
+    [SerializeField]
+    SerializableDictionary<EPlayerState, MoveEffectPlayerOnArrivedTypeBase> _moveEffectOnArrivedPlayers;
+
+    [SerializeField]
+    SerializableDictionary<EPlayerState, MoveEffectPlayerOnSwitchIsMovingTypeBase> _moveEffectOnSwitchIsMovingPlayers;
 
     private void OnEnable()
     {
-        _isMovingState.OnSwitchIsMoving += OnSwitchValue_IsMoving;
+        _isMovingState.OnSwitchIsMoving += OnSwitchIsMoving;
+        _isMovingState.OnArrived += OnArrived;
     }
 
     private void OnDisable()
     {
-        _isMovingState.OnSwitchIsMoving -= OnSwitchValue_IsMoving;
+        _isMovingState.OnSwitchIsMoving -= OnSwitchIsMoving;
+        _isMovingState.OnArrived -= OnArrived;
     }
 
-    void OnSwitchValue_IsMoving(bool isMoving)
+    void OnSwitchIsMoving(bool isMoving)
     {
-        if(isMoving)//歩行開始した時
-        {
-            _moveParticle.Play();
-            _moveAudioSource.Play();
-        }
-        else//歩行をやめた時
-        {
-            _moveParticle.Stop();
-            _moveAudioSource.Stop();
-        }
+        if (!_moveEffectOnSwitchIsMovingPlayers.TryGetValue(_myPlayerState.State, out var player)) return;
+
+        player.Play(isMoving);
+    }
+
+    void OnArrived(MapPos pos)
+    {
+        if (!_moveEffectOnArrivedPlayers.TryGetValue(_myPlayerState.State, out var player)) return;
+
+        player.Play(pos);
     }
 }
