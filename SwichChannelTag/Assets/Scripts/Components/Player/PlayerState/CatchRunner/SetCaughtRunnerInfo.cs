@@ -17,6 +17,7 @@ public class SetCaughtRunnerInfo : MonoBehaviour
         _myCaughtRunnerInfo.ClearRunnerInfo();
     }
 
+    void OnDeparture(MapPos pos) { AddRunnerInfo(); }
     void OnArrived(MapPos newPos) { AddRunnerInfo(); }
     void OnSwitchHierarchy() { AddRunnerInfo(); }
 
@@ -33,6 +34,8 @@ public class SetCaughtRunnerInfo : MonoBehaviour
             if (state == null) continue;
             if (state.State != EPlayerState.Runner) continue;
 
+            //é©ï™Ç™ïﬂÇ‹Ç¶ÇΩì¶Ç∞ÇÃî‘çÜÇí«â¡
+            //Ç‡ÇµîÌÇ¡ÇƒÇ‡_myCaughtRunnerInfoë§Ç≈íeÇ≠ÇÊÇ§Ç…Ç»Ç¡ÇƒÇ¢ÇÈ
             _myCaughtRunnerInfo.AddRunnerInfo(player.Player.ActorNumber);
         }
     }
@@ -47,12 +50,14 @@ public class SetCaughtRunnerInfo : MonoBehaviour
     private void OnEnable()
     {
         _myIsMovingState.OnArrived += OnArrived;
+        _myIsMovingState.OnDeparture += OnDeparture;
         _changeHierarchy.OnSwitchHierarchy += OnSwitchHierarchy;
     }
 
     private void OnDisable()
     {
         _myIsMovingState.OnArrived -= OnArrived;
+        _myIsMovingState.OnDeparture -= OnDeparture;
         _changeHierarchy.OnSwitchHierarchy -= OnSwitchHierarchy;
     }
 }

@@ -29,6 +29,8 @@ public class CaughtRunnerInfo : MonoBehaviour
     [PunRPC]
     void AddRunnerInfoRPC(int runnerActorNumber)
     {
+        if (_caughtInfo.Contains(runnerActorNumber)) return;
+
         _caughtInfo.Add(runnerActorNumber);
 
         OnAddCaughtRunner?.Invoke(_myPhotonView.Owner.ActorNumber, runnerActorNumber);
