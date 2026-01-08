@@ -21,9 +21,6 @@ public class MoveOnPath : MonoBehaviour
     CanShift _myCanShift;
     IsMovingState _myIsMovingState;
 
-    public event Action<MapPos> OnStartMove;//移動開始時(出発点の位置を伝える)
-    public event Action<MapPos> OnFinishMove;//移動完了時(到着点の位置を伝える)
-
     public bool IsMoving { get => _myIsMovingState.IsMoving; }
 
     public void StartMove(MapVec[] path)//移動開始、pathは移動経路
@@ -55,7 +52,8 @@ public class MoveOnPath : MonoBehaviour
         _shiftPlayersPosition.OnExit(_myMapTrs);//ずらす処理
         _myCanShift.IsShiftAllowed = false;//自分がずらされないようにする
 
-        OnStartMove?.Invoke(_myMapTrs.Pos);//移動開始時のコールバックを呼ぶ
+        //マスを出発
+        _myIsMovingState.Departure(_myMapTrs.Pos);
 
         _playerMoveAnimation.StartMoveOnMass(start, destination);//移動アニメーション開始
         yield return new WaitUntil(() => !_playerMoveAnimation.IsMovingOnMass);//移動アニメーションが終わるまで待つ
@@ -65,7 +63,8 @@ public class MoveOnPath : MonoBehaviour
         _shiftPlayersPosition.OnEnter(_myMapTrs);//ずらす処理
         _lookDefaultDirection.LookDefault();//自キャラを元の向きに戻す
 
-        OnFinishMove?.Invoke(_myMapTrs.Pos);//移動終了時のコールバックを呼び出す
+        //マスに到着
+        _myIsMovingState.Arrived(_myMapTrs.Pos);
     }
 
     void RewriteMyMapPos(MapVec newGridPos)

@@ -18,12 +18,12 @@ public class MoveOnMapEffect : MonoBehaviour
 
     private void OnEnable()
     {
-        _isMovingState.OnSwitchValue += OnSwitchValue_IsMoving;
+        _isMovingState.OnSwitchIsMoving += OnSwitchValue_IsMoving;
     }
 
     private void OnDisable()
     {
-        _isMovingState.OnSwitchValue -= OnSwitchValue_IsMoving;
+        _isMovingState.OnSwitchIsMoving -= OnSwitchValue_IsMoving;
     }
 
     void OnSwitchValue_IsMoving(bool isMoving)
