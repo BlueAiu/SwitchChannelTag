@@ -23,6 +23,9 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
     DecideMovableStep _decideMovableStep;
 
     [SerializeField] TMP_Text stepText;
+    [SerializeField] Animator stepAnim;
+    const string stepAnimTrigger = "Decide";
+
     [SerializeField] float rouletteTime = 1.5f;
     [SerializeField] float dicideTime = 1f;
 
@@ -97,6 +100,7 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
     IEnumerator DicedeStep()
     {
         step = _decideMovableStep.Decide(_stateMachine.SharedData.IsChangedHierarchy);
+        stepAnim.SetTrigger(stepAnimTrigger);
         yield return new WaitForSeconds(dicideTime);
 
         ToMove();
