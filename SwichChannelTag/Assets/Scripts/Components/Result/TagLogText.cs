@@ -5,29 +5,46 @@ using UnityEngine;
 
 public class TagLogText : MonoBehaviour
 {
-    [SerializeField] TMP_Text _text;
+    [SerializeField] SerializableDictionary<EPlayerState, GameObject> winnerText;
+    [SerializeField] TMP_Text runnerTurnText;
+    [SerializeField] TMP_Text taggerCaptureText;
 
 
     void Start()
     {
-        var captureHistory = GameStatsManager.Instance.CaptureHistory.GetHistory();
+        var winner = GameStatsManager.Instance.Winner.GetWinner();
+        winnerText[winner].SetActive(true);
 
-        _text.text = string.Empty;
+        int myActorNum = PlayersManager.MinePlayerPhotonPlayer.ActorNumber;
+        int runnerTurn = -1;
+        int captureCnt = 0;
+        string tmp;
 
-        foreach(var capture in captureHistory)
+        foreach(var capture in GameStatsManager.Instance.CaptureHistory.GetHistory())
         {
-            int turn = capture.CaptureTurn;
-            int runnerNum = capture.CaughtRunnerActorNum;
-            var taggerNums = capture.CaughtTaggerActorNum;
+            if(capture.CaughtRunnerActorNum == myActorNum)
+            {
+                runnerTurn = capture.CaptureTurn;
+            }
 
-            string taggerText = "[";
-            foreach (var tagger in taggerNums) taggerText += tagger.ToString() + ", ";
-            taggerText += "]";
-
-            _text.text += string.Format("{0}Turn : {2} => {1} \n", turn, runnerNum, taggerText);
+            foreach(var num in capture.CaughtTaggerActorNum)
+            {
+                if(num == myActorNum) captureCnt++;
+            }
         }
 
-        if (captureHistory.Length == 0)
-            _text.text = "No one was caught.";
+        if (runnerTurn != -1)
+        {
+            tmp = runnerTurn.ToString() + runnerTurnText.text;
+            runnerTurnText.text = tmp;
+        }
+        else runnerTurnText.text = string.Empty;
+
+        if (captureCnt > 0)
+        {
+            tmp = captureCnt.ToString() + taggerCaptureText.text;
+            taggerCaptureText.text = tmp;
+        }
+        else taggerCaptureText.text = string.Empty;
     }
 }
