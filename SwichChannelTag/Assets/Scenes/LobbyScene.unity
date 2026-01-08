@@ -2711,7 +2711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2fe00a719e1b14585cd98f1b5ca72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: room
+  roomName: exhibition_room
   join_Text: {fileID: 1057229973}
   writeJoinLog: 1
 --- !u!1001 &678009487471740308
@@ -2886,7 +2886,7 @@ MonoBehaviour:
   sceneTransition: {fileID: 7878950072891773037}
   startButton: {fileID: 1943700968}
   fallbackButton: {fileID: 1344506876}
-  requiredNum: 1
+  requiredNum: 4
   _watcher: {fileID: 8119550743319087643}
 --- !u!114 &2195521215928513269
 MonoBehaviour:
