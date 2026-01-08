@@ -368,6 +368,7 @@ MonoBehaviour:
       value: {fileID: 0}
     - key: 1
       value: {fileID: 0}
+  _myPhotonView: {fileID: 0}
   _state: {fileID: 1659280601506932932}
 --- !u!114 &3826059625345711012
 MonoBehaviour:
