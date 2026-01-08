@@ -3009,6 +3009,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 649631145}
     m_Modifications:
+    - target: {fileID: 268131743418025774, guid: e871e8d6ae2e3fe43b7ccd28fdfc6819, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 268131743418025774, guid: e871e8d6ae2e3fe43b7ccd28fdfc6819, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 66
+      objectReference: {fileID: 0}
     - target: {fileID: 876895233672535069, guid: e871e8d6ae2e3fe43b7ccd28fdfc6819, type: 3}
       propertyPath: _audioSource
       value: 
@@ -3111,8 +3119,12 @@ PrefabInstance:
       objectReference: {fileID: 1927288347}
     - target: {fileID: 6764514887349454742, guid: e871e8d6ae2e3fe43b7ccd28fdfc6819, type: 3}
       propertyPath: m_text
-      value: "\u4F7F\u7528\u7D20\u6750\n\nOn-Jin \uFF5E\u97F3\u4EBA\uFF5E\nBGMer\nDOVA-SYNDROME\n\u52B9\u679C\u97F3\u30E9\u30DC\n\nThank
+      value: "\u4F7F\u7528\u7D20\u6750\n\nOn-Jin \uFF5E\u97F3\u4EBA\uFF5E\nBGMer\nDOVA-SYNDROME\n\u52B9\u679C\u97F3\u30E9\u30DC\nOtoLogic\n\u7389\u306D\u304E\u6977\u66F8\u300C\u6FC0\u300D\u7121\u6599\u7248\n\nThank
         you for Playing!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764514887349454742, guid: e871e8d6ae2e3fe43b7ccd28fdfc6819, type: 3}
+      propertyPath: m_margin.x
+      value: -194.26929
       objectReference: {fileID: 0}
     - target: {fileID: 8948505790838686662, guid: e871e8d6ae2e3fe43b7ccd28fdfc6819, type: 3}
       propertyPath: _audioSource
