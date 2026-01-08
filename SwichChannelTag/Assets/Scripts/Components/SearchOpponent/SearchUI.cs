@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SearchUI : MonoBehaviour
@@ -17,6 +18,8 @@ public class SearchUI : MonoBehaviour
 
     [SerializeField] [Tooltip("–îˆó‚ÌŒü‚«‚ğ•ªŠ„‚·‚é”i4‚Ì”{”„§j")]
     int angleDivision = 8;
+
+    MapVec _preDirection= MapVec.Zero;
 
     PlayerState mineState;
 
@@ -44,6 +47,16 @@ public class SearchUI : MonoBehaviour
             return;
         }
 
+        if (direction != _preDirection)
+        {
+            RefleshEffect(direction, distance);
+        }        
+
+        _preDirection = direction;
+    }
+
+    void RefleshEffect(MapVec direction,float distance)
+    {
         _changeCompassEffect.RefleshEffect(mineState.State, distance);
 
         if (distance < float.Epsilon)
