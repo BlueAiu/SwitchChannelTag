@@ -2165,7 +2165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba91fa247f125f45bb704600ddf046e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveOnPath: {fileID: 993823719}
   _changeHierarchy: {fileID: 2004796662}
   _getOverlapPlayer: {fileID: 742054143}
 --- !u!4 &317900442
@@ -14421,6 +14420,10 @@ PrefabInstance:
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 286366378}
+    - target: {fileID: 560589949114051833, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1009301062854310031, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -14477,6 +14480,10 @@ PrefabInstance:
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 286366378}
+    - target: {fileID: 5829488475370882290, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5878075973641236930, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
       propertyPath: _audioSource
       value: 
@@ -14501,6 +14508,10 @@ PrefabInstance:
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 286366378}
+    - target: {fileID: 9051922017244921156, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9120207292978192953, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

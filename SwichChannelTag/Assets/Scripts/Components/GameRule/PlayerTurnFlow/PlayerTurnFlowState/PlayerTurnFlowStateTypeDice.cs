@@ -9,8 +9,8 @@ using UnityEngine.UI;
 
 public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
 {
-    [Tooltip("ダイスのボタン")] [SerializeField]
-    Button _diceButton;
+    //[Tooltip("ダイスのボタン")] [SerializeField]
+    //Button _diceButton;
 
     [Tooltip("ダイスUIを表示する機能")] [SerializeField]
     ShowUITypeBase _showDiceUI;
@@ -22,6 +22,7 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
     DecideMovableStep _decideMovableStep;
 
     bool _finished = true;
+
 
     //ダイスを振って、移動ステートに移る
     public void ToMove()
@@ -56,12 +57,12 @@ public class PlayerTurnFlowStateTypeDice : PlayerTurnFlowStateTypeBase
         _finished = false;
 
         _showDiceUI.Show();
-        EventSystem.current.SetSelectedGameObject(_diceButton.gameObject);
+        //EventSystem.current.SetSelectedGameObject(_diceButton.gameObject);
     }
 
     public override void OnUpdate()
     {
-
+        ToMove();
     }
 
     public override void OnExit()
