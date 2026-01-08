@@ -3017,6 +3017,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreditPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 1903940662273754342, guid: e871e8d6ae2e3fe43b7ccd28fdfc6819, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3488277379389467298, guid: e871e8d6ae2e3fe43b7ccd28fdfc6819, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3105,6 +3109,11 @@ PrefabInstance:
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 1927288347}
+    - target: {fileID: 6764514887349454742, guid: e871e8d6ae2e3fe43b7ccd28fdfc6819, type: 3}
+      propertyPath: m_text
+      value: "\u4F7F\u7528\u7D20\u6750\n\nOn-Jin \uFF5E\u97F3\u4EBA\uFF5E\nBGMer\nDOVA-SYNDROME\n\u52B9\u679C\u97F3\u30E9\u30DC\n\nThank
+        you for Playing!"
+      objectReference: {fileID: 0}
     - target: {fileID: 8948505790838686662, guid: e871e8d6ae2e3fe43b7ccd28fdfc6819, type: 3}
       propertyPath: _audioSource
       value: 
