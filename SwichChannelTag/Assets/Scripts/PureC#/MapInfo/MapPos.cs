@@ -17,6 +17,13 @@ public struct MapPos
         this.gridPos = pos;
     }
 
+    public MapPos(int hierarchyIndex, int x,int y)
+    {
+        this.hierarchyIndex = hierarchyIndex;
+        this.gridPos.x = x;
+        this.gridPos.y = y;
+    }
+
 
     //演算子
     public static bool operator ==(MapPos pos1, MapPos pos2)//==演算子オーバーロード

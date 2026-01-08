@@ -68,6 +68,8 @@ MonoBehaviour:
   - SetValue_IsMoving
   - SetBool_RPC
   - SetTrigger_RPC
+  - Arrived_RPC
+  - Departure_RPC
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

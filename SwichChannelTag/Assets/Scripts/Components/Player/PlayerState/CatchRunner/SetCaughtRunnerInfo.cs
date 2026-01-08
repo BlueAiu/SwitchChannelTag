@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //作成者:杉山
@@ -7,19 +5,19 @@ using UnityEngine;
 
 public class SetCaughtRunnerInfo : MonoBehaviour
 {
-    [SerializeField] MoveOnPath _moveOnPath;
     [SerializeField] ChangeHierarchy _changeHierarchy;
     [SerializeField] GetOverlapPlayer _getOverlapPlayer;
-    PlayerState _myPlayerState;
 
+    PlayerState _myPlayerState;
     CaughtRunnerInfo _myCaughtRunnerInfo;
+    IsMovingState _myIsMovingState;
 
     public void Clear()//捕まえた逃げの情報をリセット
     {
         _myCaughtRunnerInfo.ClearRunnerInfo();
     }
 
-    void OnFinishMove(MapPos newPos) { AddRunnerInfo(); }
+    void OnArrived(MapPos newPos) { AddRunnerInfo(); }
     void OnSwitchHierarchy() { AddRunnerInfo(); }
 
     void AddRunnerInfo()//自分が鬼なら、重なった逃げの情報を取得し登録していく
@@ -43,17 +41,18 @@ public class SetCaughtRunnerInfo : MonoBehaviour
     {
         _myCaughtRunnerInfo = PlayersManager.GetComponentFromMinePlayer<CaughtRunnerInfo>();
         _myPlayerState = PlayersManager.GetComponentFromMinePlayer<PlayerState>();
+        _myIsMovingState = PlayersManager.GetComponentFromMinePlayer<IsMovingState>();
     }
 
     private void OnEnable()
     {
-        _moveOnPath.OnFinishMove += OnFinishMove;
+        _myIsMovingState.OnArrived += OnArrived;
         _changeHierarchy.OnSwitchHierarchy += OnSwitchHierarchy;
     }
 
     private void OnDisable()
     {
-        _moveOnPath.OnFinishMove -= OnFinishMove;
+        _myIsMovingState.OnArrived -= OnArrived;
         _changeHierarchy.OnSwitchHierarchy -= OnSwitchHierarchy;
     }
 }
