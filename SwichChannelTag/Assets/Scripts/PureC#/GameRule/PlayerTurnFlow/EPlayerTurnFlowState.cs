@@ -16,8 +16,8 @@ public enum EPlayerTurnFlowState
     SelectHierarchy,//階層選択ステート
     ChangeHierarchy,//階層移動ステート
     Finish,//行動終了ステート
-
     Waiting,//待ち時間ステート
+    DiceAnimation,//ダイスアニメーション
 
     Length
 }

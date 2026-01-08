@@ -49,6 +49,8 @@ MonoBehaviour:
   _playerInput: {fileID: 0}
   _showMoveUI: {fileID: 0}
   _hideMoveUI: {fileID: 0}
+  _submitSE: {fileID: 8300000, guid: ee239b62fd2bf664686c191c06622225, type: 3}
+  _audioSource: {fileID: 0}
 --- !u!1 &225523934903664650
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stateMachine: {fileID: 5064959589472756117}
-  _defaultSelectButtonIndex: 0
+  _firstSelectButton: {fileID: 0}
   _buttons:
   - {fileID: 0}
   - {fileID: 0}
@@ -290,7 +292,6 @@ MonoBehaviour:
   _diceButton: {fileID: 0}
   _showDiceUI: {fileID: 0}
   _hideDiceUI: {fileID: 0}
-  _decideMovableStep: {fileID: 0}
 --- !u!1 &5309601720655006188
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +372,7 @@ Transform:
   m_Children:
   - {fileID: 6096780844590758191}
   - {fileID: 4016928481793590369}
+  - {fileID: 2434308928843891371}
   - {fileID: 358219227852352278}
   - {fileID: 7883960843455765312}
   - {fileID: 8582972705758146715}
@@ -409,6 +411,8 @@ MonoBehaviour:
       value: {fileID: 4306973834652676575}
     - key: 7
       value: {fileID: 7604015475919847619}
+    - key: 8
+      value: {fileID: 5768938160306643339}
 --- !u!1 &7350652950538981657
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,3 +464,170 @@ MonoBehaviour:
   _showSelectActionUI: {fileID: 0}
   _hideSelectActionUI: {fileID: 0}
   _coolDown: {fileID: 0}
+--- !u!1 &8686647467176313784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2434308928843891371}
+  - component: {fileID: 5768938160306643339}
+  - component: {fileID: 8239305171539376285}
+  - component: {fileID: 2273508417553076196}
+  m_Layer: 0
+  m_Name: DiceAnimation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2434308928843891371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686647467176313784}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2815207452123320263}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5768938160306643339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686647467176313784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c53d6502fc68e428eb44921ff9b939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateMachine: {fileID: 5064959589472756117}
+  _showDiceAnimationUI: {fileID: 0}
+  _hideDiceAnimationUI: {fileID: 0}
+  _decideMovableStep: {fileID: 0}
+  _diceAnimation: {fileID: 8239305171539376285}
+--- !u!114 &8239305171539376285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686647467176313784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0990ddc73f17a2c4182fc0b4d197b076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stepText: {fileID: 0}
+  _stepAnim: {fileID: 0}
+  _audioSource: {fileID: 2273508417553076196}
+  _rouletteSE: {fileID: 0}
+  _decideSE: {fileID: 0}
+  _rouletteInterval: 0.1
+  _rouletteTime: 1
+  _dicideTime: 1.2
+--- !u!82 &2273508417553076196
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686647467176313784}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
