@@ -541,6 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507b35e500175c14daffb304d9db342e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graphParent: {fileID: 1176047097}
   blueBar:
   - {fileID: 3558050710720935263}
   - {fileID: 2061591021}
@@ -551,8 +552,10 @@ MonoBehaviour:
   - {fileID: 1456102617}
   - {fileID: 1488696338}
   - {fileID: 1929965993}
+  markPrefab: {fileID: 1471527948597473965, guid: 43d8e148d7600524795ac522f0bfc2f8, type: 3}
+  runnerSprite: {fileID: 21300000, guid: 957baf92c1d4c0540addff537634a903, type: 3}
+  taggerSprite: {fileID: 21300000, guid: e072d03b942da7d49a495c5efb4d0391, type: 3}
   _maxTurn: {fileID: 11400000, guid: 87ea6c4a905013549ac5459ce6e50726, type: 2}
-  screenWidth: 1920
   widthMargin: 100
 --- !u!114 &292061333
 MonoBehaviour:
@@ -1981,7 +1984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -2020
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2017,7 +2020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 910
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2580,7 +2583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -2020
+      value: -1160
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2616,7 +2619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -910
+      value: -480
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2908,7 +2911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -2020
+      value: -1620
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2944,7 +2947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 910
+      value: 710
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3026,7 +3029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -2020
+      value: -1528.9998
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_SizeDelta.y
@@ -3062,7 +3065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -910
+      value: -664.5001
       objectReference: {fileID: 0}
     - target: {fileID: 149779089828407376, guid: 04c6167e9af7e174f8c674dfed717f72, type: 3}
       propertyPath: m_AnchoredPosition.y
