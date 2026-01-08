@@ -62,7 +62,9 @@ public class DecideMovableStep : MonoBehaviour
             result += lonelyBoost[state];
         }
 
-        return _decidePath.RemainingStep=result;
+        _decidePath.RemainingStep=result;
+
+        return result;
     }
 
     private void Update()
