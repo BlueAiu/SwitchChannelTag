@@ -8454,6 +8454,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 656ac959c61b0af4199ecb845304aea2, type: 2}
     - target: {fileID: 527310443670948778, guid: 85d8da3298254714cbc4ba3cccf10548, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 527310443670948778, guid: 85d8da3298254714cbc4ba3cccf10548, type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2546857631572545112, guid: 656ac959c61b0af4199ecb845304aea2, type: 2}
@@ -15362,6 +15366,10 @@ PrefabInstance:
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 286366378}
+    - target: {fileID: 3925313114848176222, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3930433819488511588, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
       propertyPath: m_Type
       value: 0
