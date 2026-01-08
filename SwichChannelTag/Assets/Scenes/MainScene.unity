@@ -950,6 +950,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1749208179}
     m_Modifications:
+    - target: {fileID: 631871076166228743, guid: 22aa15a3711a86a48a0b010dfc87a33c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4eba57b92ddae6746b64934a18938901, type: 2}
     - target: {fileID: 2091693593800448234, guid: 22aa15a3711a86a48a0b010dfc87a33c, type: 3}
       propertyPath: m_Name
       value: LotusPrefab (5)
@@ -4569,6 +4573,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 605344685}
     m_Modifications:
+    - target: {fileID: 631871076166228743, guid: 22aa15a3711a86a48a0b010dfc87a33c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4eba57b92ddae6746b64934a18938901, type: 2}
     - target: {fileID: 2091693593800448234, guid: 22aa15a3711a86a48a0b010dfc87a33c, type: 3}
       propertyPath: m_Name
       value: LotusPrefab
@@ -11846,6 +11854,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 543450653684004368}
     m_Modifications:
+    - target: {fileID: 631871076166228743, guid: 22aa15a3711a86a48a0b010dfc87a33c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4eba57b92ddae6746b64934a18938901, type: 2}
     - target: {fileID: 2091693593800448234, guid: 22aa15a3711a86a48a0b010dfc87a33c, type: 3}
       propertyPath: m_Name
       value: LotusPrefab
@@ -12668,6 +12680,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1749208179}
     m_Modifications:
+    - target: {fileID: 631871076166228743, guid: 22aa15a3711a86a48a0b010dfc87a33c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4eba57b92ddae6746b64934a18938901, type: 2}
     - target: {fileID: 2091693593800448234, guid: 22aa15a3711a86a48a0b010dfc87a33c, type: 3}
       propertyPath: m_Name
       value: LotusPrefab (1)
