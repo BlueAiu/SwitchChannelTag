@@ -175,15 +175,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u97F3\u91CF"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dfb3e3e6da24caf46b0350b941cfe3c6, type: 2}
-  m_sharedMaterial: {fileID: 1420302414684372750, guid: dfb3e3e6da24caf46b0350b941cfe3c6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 656ac959c61b0af4199ecb845304aea2, type: 2}
+  m_sharedMaterial: {fileID: 2546857631572545112, guid: 656ac959c61b0af4199ecb845304aea2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4282532418
+  m_fontColor: {r: 0.2603773, g: 0.2603773, b: 0.2603773, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -256,7 +256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 505114483556517676, guid: c0bdfd9733dcaee40910c27314df927d, type: 3}
       propertyPath: m_characterSpacing
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1878591617493872611, guid: c0bdfd9733dcaee40910c27314df927d, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -413,7 +413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 505114483556517676, guid: c0bdfd9733dcaee40910c27314df927d, type: 3}
       propertyPath: m_characterSpacing
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1878591617493872611, guid: c0bdfd9733dcaee40910c27314df927d, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -564,6 +564,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1570558840020926457}
     m_Modifications:
+    - target: {fileID: 505114483556517676, guid: c0bdfd9733dcaee40910c27314df927d, type: 3}
+      propertyPath: m_characterSpacing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1878591617493872611, guid: c0bdfd9733dcaee40910c27314df927d, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4

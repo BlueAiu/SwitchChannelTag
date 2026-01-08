@@ -8,7 +8,7 @@ using UnityEngine;
 public class JudgeGameSet : MonoBehaviour
 {
     [Tooltip("Å‘åƒ^[ƒ“”")] [SerializeField]
-    int _maxTurnNum=20;
+    MaxTurnNumConfig _maxTurn;
 
     PlayerState[] _playerStates;
 
@@ -16,7 +16,7 @@ public class JudgeGameSet : MonoBehaviour
     {
         winner = EPlayerState.None;
 
-        bool isGameSet = GameStatsManager.Instance.Turn.GetTurn() >= _maxTurnNum;
+        bool isGameSet = GameStatsManager.Instance.Turn.GetTurn() >= _maxTurn.MaxTurnNum;
 
         if(isGameSet)//Œˆ’…‚ª‚Â‚¢‚Ä‚é‚È‚çŸÒ‚ğŒˆ‚ß‚é
         {

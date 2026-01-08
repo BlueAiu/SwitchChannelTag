@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1204793152015680998}
-  - component: {fileID: 6444877769219007503}
   - component: {fileID: 2452990465249816492}
+  - component: {fileID: 6322283754317429690}
   m_Layer: 5
   m_Name: DiceUI
   m_TagString: Untagged
@@ -39,19 +39,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6444877769219007503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82914929541177128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f0996c132a6e8345a04f37b5d112259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hideUIObject: {fileID: 82914929541177128}
 --- !u!114 &2452990465249816492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +52,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showUIObject: {fileID: 82914929541177128}
+--- !u!114 &6322283754317429690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82914929541177128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67202e53ecd1f4d45b2665b588549379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hideUIObject: {fileID: 82914929541177128}
+  _waitDuration: 0.13
 --- !u!1001 &3237109285727326469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 527310443670948778, guid: 85d8da3298254714cbc4ba3cccf10548, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: dfb3e3e6da24caf46b0350b941cfe3c6, type: 2}
+      objectReference: {fileID: 11400000, guid: 656ac959c61b0af4199ecb845304aea2, type: 2}
     - target: {fileID: 527310443670948778, guid: 85d8da3298254714cbc4ba3cccf10548, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
@@ -88,7 +89,7 @@ PrefabInstance:
     - target: {fileID: 527310443670948778, guid: 85d8da3298254714cbc4ba3cccf10548, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 1420302414684372750, guid: dfb3e3e6da24caf46b0350b941cfe3c6, type: 2}
+      objectReference: {fileID: 2546857631572545112, guid: 656ac959c61b0af4199ecb845304aea2, type: 2}
     - target: {fileID: 527310443670948778, guid: 85d8da3298254714cbc4ba3cccf10548, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0

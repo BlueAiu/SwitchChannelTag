@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 //作成者:杉山
 //プレイヤー番号ごとの名前や色
@@ -11,8 +12,14 @@ public class PlayersFeature : ScriptableObject
     [System.Serializable]
     public struct Feature
     {
+        [Tooltip("プレイヤー名")] 
         public string name;
-        public Color color;
+
+        [Tooltip("プレイヤーモデルの色")]
+        public Color playerModelColor;
+
+        [Tooltip("プレイヤーの状態UIに表示する色")]
+        public Color stateUIColor;
     }
 
     [Tooltip("プレイヤー番号ごとのプレイヤーの特徴\nロビーに入った順に0番の要素から順に割り当てられていく")] [SerializeField]

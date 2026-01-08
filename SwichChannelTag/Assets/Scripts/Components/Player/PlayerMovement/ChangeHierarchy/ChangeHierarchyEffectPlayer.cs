@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class ChangeHierarchyEffectPlayer : MonoBehaviour
 {
-    [Tooltip("エフェクトのプレハブ")] [SerializeField]
-    GameObject _effectPrefab;
+    [Tooltip("プレイヤーの状態ごとのエフェクトのプレハブ")] [SerializeField]
+    SerializableDictionary<EPlayerState, GameObject> _playerStateEffectPrefabs;
 
     [Tooltip("移動先のマスの中心点からどれくらい離れた位置にエフェクトを生成するか(ワールド基準)")] [SerializeField]
     Vector3 _effectSpawnOffset;
@@ -42,13 +42,14 @@ public class ChangeHierarchyEffectPlayer : MonoBehaviour
         }
     }
 
-    void EffectTrigger(MapPos pos)
+    void EffectTrigger(MapPos pos,EPlayerState playerState)
     {
         //エフェクト関係
         if(_maps_Hierarchies.IsInRange(pos))
         {
             Vector3 spawnPos = _maps_Hierarchies[pos.hierarchyIndex].MapToWorld(pos.gridPos) + _effectSpawnOffset;//エフェクトをスポーンさせる位置
-            var effectInstance = Instantiate(_effectPrefab, spawnPos, Quaternion.identity);
+            if (!_playerStateEffectPrefabs.TryGetValue(playerState, out var effectPrefab)) return;
+            var effectInstance = Instantiate(effectPrefab, spawnPos, Quaternion.identity);
             Destroy(effectInstance,_lifeTime);
         }
     }

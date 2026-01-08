@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _features:
   - name: 1P
-    color: {r: 1, g: 0, b: 0, a: 0}
+    playerModelColor: {r: 1, g: 0, b: 0, a: 1}
+    stateUIColor: {r: 1, g: 0, b: 0, a: 1}
   - name: 2P
-    color: {r: 0, g: 0.14977837, b: 1, a: 0}
+    playerModelColor: {r: 0, g: 0.1626494, b: 1, a: 1}
+    stateUIColor: {r: 0, g: 0.16078432, b: 1, a: 1}
   - name: 3P
-    color: {r: 1, g: 0.9255589, b: 0, a: 0}
+    playerModelColor: {r: 0.9029851, g: 1, b: 0, a: 1}
+    stateUIColor: {r: 0.90196085, g: 1, b: 0, a: 1}
   - name: 4P
-    color: {r: 0, g: 1, b: 0.12878227, a: 0}
+    playerModelColor: {r: 0.014854193, g: 1, b: 0, a: 1}
+    stateUIColor: {r: 0.015686275, g: 1, b: 0, a: 1}
