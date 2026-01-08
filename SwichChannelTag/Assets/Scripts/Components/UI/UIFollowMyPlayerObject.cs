@@ -11,7 +11,7 @@ public class UIFollowMyPlayerObject : MonoBehaviour
     RectTransform _targetUI;
 
     [SerializeField]
-    Vector3 _offset;
+    Vector2 _offset;
 
     [SerializeField]
     Canvas _canvas;
@@ -30,7 +30,7 @@ public class UIFollowMyPlayerObject : MonoBehaviour
         if (_targetUI == null || _myTrs == null) return;
 
         Vector3 screenPos =
-            Camera.main.WorldToScreenPoint(_myTrs.position + _offset);
+            Camera.main.WorldToScreenPoint(_myTrs.position);
 
         Vector2 localPos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -42,6 +42,6 @@ public class UIFollowMyPlayerObject : MonoBehaviour
             out localPos
         );
 
-        _targetUI.localPosition = localPos;
+        _targetUI.localPosition = localPos + _offset;
     }
 }
