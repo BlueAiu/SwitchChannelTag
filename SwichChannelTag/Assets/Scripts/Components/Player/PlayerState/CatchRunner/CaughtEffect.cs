@@ -14,6 +14,9 @@ public class CaughtEffect : MonoBehaviour
     [SerializeField]
     AudioSource _caughtAudioSource;
 
+    [SerializeField]
+    AnimatorManager _myAnimatorManager;
+
     bool _hasPlayedEffect = false;
 
     public bool HasPlayedEffect { get { return _hasPlayedEffect; } }
@@ -31,6 +34,7 @@ public class CaughtEffect : MonoBehaviour
 
         _caughtParticle.Play();
         _caughtAudioSource.Play();
+        _myAnimatorManager.SetTrigger(PlayerAnimatorParameterNameDictionary.caught);
         _hasPlayedEffect=true;
     }
 }
