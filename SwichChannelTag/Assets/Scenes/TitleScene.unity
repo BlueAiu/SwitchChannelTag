@@ -1358,6 +1358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quit
       objectReference: {fileID: 0}
+    - target: {fileID: 3969081637924811266, guid: 2c9b4caaf6d7c1642b144d5c053a82e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5023145871575018912, guid: 2c9b4caaf6d7c1642b144d5c053a82e9, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 1
