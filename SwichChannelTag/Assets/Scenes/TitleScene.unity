@@ -1787,32 +1787,36 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1016020958868997467, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
       propertyPath: m_fontSize
-      value: 128
+      value: 18.3
       objectReference: {fileID: 0}
     - target: {fileID: 1016020958868997467, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
       propertyPath: m_fontSizeBase
-      value: 128
+      value: 18.3
       objectReference: {fileID: 0}
     - target: {fileID: 1496304336759666997, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1496304336759666997, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 500
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1496304336759666997, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1496304336759666997, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1496304336759666997, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 3.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2097874310018194855, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 1927288347}
     - target: {fileID: 2441851118988223119, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1855,12 +1859,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2633446397894620576, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
       propertyPath: sprites.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2633446397894620576, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 48d408f7932e0194a9db60c15f232fd8, type: 3}
     - target: {fileID: 2633446397894620576, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
       propertyPath: sprites.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 6f85423384ad45443b2f192cfdc25b48, type: 3}
+      objectReference: {fileID: 21300000, guid: 80854265f6e95d54aa72efb0b34742bd, type: 3}
+    - target: {fileID: 2633446397894620576, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: f340f1a7ebd0d9a40a21762265874adb, type: 3}
     - target: {fileID: 3403719624522851241, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1953,6 +1965,18 @@ PrefabInstance:
       propertyPath: _uiProcess._hideObjectOnOpenOption
       value: 
       objectReference: {fileID: 1687132504}
+    - target: {fileID: 4050699139039974654, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050699139039974654, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861319689412199036, guid: 1a9417aa0daa68b4398cf745b31d5f44, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 1927288347}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
