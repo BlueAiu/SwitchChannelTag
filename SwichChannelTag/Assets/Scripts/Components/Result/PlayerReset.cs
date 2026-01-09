@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class PlayerReset : MonoBehaviour
 {
-    [SerializeField] string spritePath = "PlayerCanvas/CompassSprite";
+    [SerializeField] string canvasPath = "PlayerCanvas";
 
     void Start()
     {
-        var compassSprite = PlayersManager.MinePlayerGameObject.transform.Find(spritePath);
-        compassSprite.GetComponent<UnityEngine.UI.Image>().enabled = false;
+        var players = PlayersManager.PlayersGameObject;
+
+        foreach (var p in players)
+        {
+            var canvas = p.transform.Find(canvasPath);
+            if (canvas != null) canvas.gameObject.SetActive(false);
+        }
     }
 }

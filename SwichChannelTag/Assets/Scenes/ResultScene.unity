@@ -779,7 +779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5912d0576595ab248bdccc0ba3ecb67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spritePath: PlayerCanvas/CompassSprite
+  canvasPath: PlayerCanvas
 --- !u!114 &292061334
 MonoBehaviour:
   m_ObjectHideFlags: 0
