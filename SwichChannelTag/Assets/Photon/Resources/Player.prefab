@@ -438,8 +438,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676587f3fda0f7b42a4ab7b15a2392b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _taggerSkin: {fileID: 9052579634659289256}
-  _runnerSkin: {fileID: 1683854589045086618}
+  _taggerSkins:
+  - {fileID: 9052579634659289256}
+  _runnerSkins:
+  - {fileID: 1683854589045086618}
 --- !u!114 &2924152856127993218
 MonoBehaviour:
   m_ObjectHideFlags: 0
