@@ -15,13 +15,37 @@ MonoBehaviour:
   _features:
   - name: 1P
     playerModelColor: {r: 1, g: 0, b: 0, a: 1}
+    runnerModelMaterials:
+    - {fileID: 2100000, guid: 6adbefcc98f766e42b24ec3e1c1176d4, type: 2}
+    taggerModelMaterials:
+    - {fileID: 2100000, guid: fd9a36f4df420614588cc6c1f15b5c9b, type: 2}
+    - {fileID: 2100000, guid: 9a08a8075ea3adf439978d04687aa005, type: 2}
+    - {fileID: 2100000, guid: 91bf52cf1b6333740afd532e16750aae, type: 2}
     stateUIColor: {r: 1, g: 0, b: 0, a: 1}
   - name: 2P
     playerModelColor: {r: 0, g: 0.16078432, b: 1, a: 1}
+    runnerModelMaterials:
+    - {fileID: 2100000, guid: 465c450a749c9f4459655d092251b6cc, type: 2}
+    taggerModelMaterials:
+    - {fileID: 2100000, guid: fde113eef76a486439c66c30f1ae6875, type: 2}
+    - {fileID: 2100000, guid: 52909e64532623d478985588933d9e66, type: 2}
+    - {fileID: 2100000, guid: 8d1e028ee37382a41801e52c450b1d69, type: 2}
     stateUIColor: {r: 0, g: 0.16078432, b: 1, a: 1}
   - name: 3P
     playerModelColor: {r: 0.9029851, g: 1, b: 0, a: 1}
+    runnerModelMaterials:
+    - {fileID: 2100000, guid: 5b65eecfa43088a41bf7b26ae612e33a, type: 2}
+    taggerModelMaterials:
+    - {fileID: 2100000, guid: 52f4b2f66b7b8264882e76fc488bba88, type: 2}
+    - {fileID: 2100000, guid: 9b9fc0d50cf77da4db883d0b66cdf709, type: 2}
+    - {fileID: 2100000, guid: 91266efa17cc4dc47a755bdda3fa991d, type: 2}
     stateUIColor: {r: 0.90196085, g: 1, b: 0, a: 1}
   - name: 4P
     playerModelColor: {r: 0.014854193, g: 1, b: 0, a: 1}
+    runnerModelMaterials:
+    - {fileID: 2100000, guid: 995086e4c757ff5489024209f203ec2f, type: 2}
+    taggerModelMaterials:
+    - {fileID: 2100000, guid: d4eb2b82155d52e4e9eac64ce32caf30, type: 2}
+    - {fileID: 2100000, guid: b6eda054704fc8744b473396023df2f1, type: 2}
+    - {fileID: 2100000, guid: c49a84ba613560e4ea226130fa4b444c, type: 2}
     stateUIColor: {r: 0.015686275, g: 1, b: 0, a: 1}
