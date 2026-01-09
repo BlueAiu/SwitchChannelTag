@@ -14643,6 +14643,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 3825205247
       objectReference: {fileID: 0}
+    - target: {fileID: 2370496728664661764, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
+      propertyPath: m_text
+      value: "Enter or \u4E0B\u30DC\u30BF\u30F3\uFF1A\u6C7A\u5B9A"
+      objectReference: {fileID: 0}
     - target: {fileID: 2379320656853295605, guid: 30495029ebeedbb488cd6756b9040fd6, type: 3}
       propertyPath: m_IsActive
       value: 0
