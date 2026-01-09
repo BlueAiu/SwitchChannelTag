@@ -584,6 +584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _caughtParticle: {fileID: 7350707826038927691}
   _caughtAudioSource: {fileID: 7003729039271249766}
+  _myAnimatorManager: {fileID: 7290278978019891868}
 --- !u!1 &3457508471540965283
 GameObject:
   m_ObjectHideFlags: 0
