@@ -14531,6 +14531,22 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1602273933}
+    - target: {fileID: 2008051574507297572, guid: 2a12a5570c016dc4dbd8988fb9f4a572, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674005500299298313, guid: 2a12a5570c016dc4dbd8988fb9f4a572, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3600532222141338191, guid: 2a12a5570c016dc4dbd8988fb9f4a572, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152481957255790206, guid: 2a12a5570c016dc4dbd8988fb9f4a572, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8783040117525027375, guid: 2a12a5570c016dc4dbd8988fb9f4a572, type: 3}
       propertyPath: m_Name
       value: UIEffectCanvas
