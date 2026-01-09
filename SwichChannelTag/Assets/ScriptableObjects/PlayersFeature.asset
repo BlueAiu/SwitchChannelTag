@@ -17,7 +17,7 @@ MonoBehaviour:
     playerModelColor: {r: 1, g: 0, b: 0, a: 1}
     stateUIColor: {r: 1, g: 0, b: 0, a: 1}
   - name: 2P
-    playerModelColor: {r: 0, g: 0.1626494, b: 1, a: 1}
+    playerModelColor: {r: 0, g: 0.16078432, b: 1, a: 1}
     stateUIColor: {r: 0, g: 0.16078432, b: 1, a: 1}
   - name: 3P
     playerModelColor: {r: 0.9029851, g: 1, b: 0, a: 1}
