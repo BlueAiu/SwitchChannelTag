@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 7290278978019891868}
   - component: {fileID: 3826059625345711012}
   - component: {fileID: 1067911502921128595}
+  - component: {fileID: 6227672614987899553}
   - component: {fileID: 2924152856127993218}
   - component: {fileID: 1411331410102481624}
   - component: {fileID: 8015709794959506432}
@@ -447,6 +448,39 @@ MonoBehaviour:
   _runnerSkins:
   - {fileID: 2580114757219560192}
   - {fileID: 3104600209984864321}
+--- !u!114 &6227672614987899553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074817731734667574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d47c12320808f44aa252284594b771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _taggerSkins:
+  - _renderers:
+    - {fileID: 5707711176965756507}
+    - {fileID: 4263717578998462737}
+    - {fileID: 3768367318942918082}
+    - {fileID: 7368293621565782669}
+  - _renderers:
+    - {fileID: 6213974562531268274}
+    - {fileID: 6069581520859341204}
+  - _renderers:
+    - {fileID: 8843189220688844536}
+    - {fileID: 3208405340904928888}
+    - {fileID: 5423235073244161310}
+    - {fileID: 667191968237154243}
+    - {fileID: 695314071677381096}
+    - {fileID: 6108689075336917079}
+    - {fileID: 2980629891458045250}
+  _runnerSkins:
+  - _renderers:
+    - {fileID: 2580114757219560192}
+    - {fileID: 3104600209984864321}
 --- !u!114 &2924152856127993218
 MonoBehaviour:
   m_ObjectHideFlags: 0

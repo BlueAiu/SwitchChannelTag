@@ -18,6 +18,12 @@ public class PlayersFeature : ScriptableObject
         [Tooltip("プレイヤーモデルの色")]
         public Color playerModelColor;
 
+        [Tooltip("幽霊モデルのマテリアル")]
+        public Material[] runnerModelMaterials;
+
+        [Tooltip("鬼モデルのマテリアル")]
+        public Material[] taggerModelMaterials;
+
         [Tooltip("プレイヤーの状態UIに表示する色")]
         public Color stateUIColor;
     }
