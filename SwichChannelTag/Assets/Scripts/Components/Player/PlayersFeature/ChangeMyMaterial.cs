@@ -7,45 +7,54 @@ using UnityEngine;
 
 public class ChangeMyMaterial : MonoBehaviour
 {
-    [Tooltip("鬼のスキン")]
-    [SerializeField]
-    Renderer[] _taggerSkins;
-
-    [Tooltip("逃げのスキン")]
-    [SerializeField]
-    Renderer[] _runnerSkins;
-
-    Material[] _taggerMats;
-    Material[] _runnerMats;
-
-    private void Awake()
+    [System.Serializable]
+    public class SkinGroup
     {
-        _taggerMats = new Material[_taggerSkins.Length];
-        for (int i = 0; i < _taggerSkins.Length; i++)
-        {
-            _taggerMats[i] = _taggerSkins[i].material;
-        }
+        [Tooltip("色を変更したいレンダラー群（体、顔、服など）")]
+        [SerializeField] private Renderer[] _renderers;
 
-        _runnerMats = new Material[_runnerSkins.Length];
-        for (int i = 0; i < _runnerSkins.Length; i++)
+        //登録された全てのレンダラーのマテリアルを一括変更
+        public void ApplyMaterial(Material material)
         {
-            _runnerMats[i] = _runnerSkins[i].material;
+            if (material == null) return;
+
+            foreach (var r in _renderers)
+            {
+                if (r != null)
+                {
+                    //メモリリーク防止とバッチングのため sharedMaterial を推奨
+                    r.sharedMaterial = material;
+                }
+            }
         }
     }
 
+    [Tooltip("鬼のスキン")]
+    [SerializeField] private SkinGroup[] _taggerSkins;
+
+    [Tooltip("逃げのスキン")]
+    [SerializeField] private SkinGroup[] _runnerSkins;
+
+
     public void SetColorMaterials(Material[] taggerMaterials, Material[] runnerMaterials)
     {
-        //// 鬼の色を変更
-        //foreach (var mat in _taggerMats)
-        //{
-        //    mat.color = color;
-        //}
+        ApplyMaterialsToGroup(_taggerSkins, taggerMaterials);
+        ApplyMaterialsToGroup(_runnerSkins, runnerMaterials);
+    }
 
-        //// 逃げの色を変更
-        //foreach (var mat in _runnerMats)
-        //{
-        //    mat.color = color;
-        //    mat.SetColor("_EmissionColor", color);
-        //}
+    //スキングループの配列に対して、マテリアル配列を順番に適用する
+    private void ApplyMaterialsToGroup(SkinGroup[] skins, Material[] materials)
+    {
+        if (skins == null || materials == null) return;
+
+        int count = Mathf.Min(skins.Length, materials.Length);
+
+        for (int i = 0; i < count; i++)
+        {
+            if (skins[i] != null)
+            {
+                skins[i].ApplyMaterial(materials[i]);
+            }
+        }
     }
 }

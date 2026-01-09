@@ -1,8 +1,4 @@
 using Photon.Pun;
-using Photon.Realtime;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 //ì¬Ò:™R
@@ -31,11 +27,14 @@ public class SetPlayersFeature : MonoBehaviour
 
     void SetPlayersColor()
     {
-        var changeMyColors = PlayersManager.GetComponentsFromPlayers<ChangeMyColor>();
+        var changeMyMaterials = PlayersManager.GetComponentsFromPlayers<ChangeMyMaterial>();
 
-        for(int i=0; i<changeMyColors.Length ;i++)
+        for(int i=0; i< changeMyMaterials.Length ;i++)
         {
-            changeMyColors[i].SetColor(_playersFeature.Features[i].playerModelColor);
+            Material[] tagger = _playersFeature.Features[i].taggerModelMaterials;
+            Material[] runner = _playersFeature.Features[i].runnerModelMaterials;
+
+            changeMyMaterials[i].SetColorMaterials(tagger,runner);
         }
     }
 }
