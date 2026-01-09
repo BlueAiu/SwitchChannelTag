@@ -22,8 +22,15 @@ public class ReadinessManager : MonoBehaviourPunCallbacks
 
         bool canStartGame = num >= requiredNum && IsReadyAll() && PhotonNetwork.IsMasterClient;
         startButton.SetActive(canStartGame);
+
+        SetFallBackButton();
+    }
+
+    void SetFallBackButton()
+    {
+        if (EventSystem.current == null) return;
         var curSeleButton = EventSystem.current.currentSelectedGameObject;
-        if(curSeleButton != null && !curSeleButton.activeSelf)
+        if (curSeleButton != null && !curSeleButton.activeSelf)
         {
             EventSystem.current.SetSelectedGameObject(fallbackButton);
         }
