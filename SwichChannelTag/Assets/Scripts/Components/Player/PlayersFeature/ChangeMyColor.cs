@@ -8,27 +8,42 @@ using UnityEngine;
 public class ChangeMyColor : MonoBehaviour
 {
     [Tooltip("鬼のスキン")] [SerializeField]
-    Renderer _taggerSkin;
+    Renderer[] _taggerSkins;
 
-    [Tooltip("逃げのスキン")] [SerializeField] 
-    Renderer _runnerSkin;
+    [Tooltip("逃げのスキン")] [SerializeField]
+    Renderer[] _runnerSkins;
 
-    Material _taggerMat;
-    Material _runnerMat;
+    Material[] _taggerMats;
+    Material[] _runnerMats;
 
     private void Awake()
     {
-        _taggerMat = _taggerSkin.material;
-        _runnerMat = _runnerSkin.material;
+        _taggerMats = new Material[_taggerSkins.Length];
+        for (int i = 0; i < _taggerSkins.Length; i++)
+        {
+            _taggerMats[i] = _taggerSkins[i].material;
+        }
+
+        _runnerMats = new Material[_runnerSkins.Length];
+        for (int i = 0; i < _runnerSkins.Length; i++)
+        {
+            _runnerMats[i] = _runnerSkins[i].material;
+        }
     }
 
     public void SetColor(Color color)
     {
-        //鬼の色を変更
-        _taggerMat.color = color;
+        // 鬼の色を変更
+        foreach (var mat in _taggerMats)
+        {
+            mat.color = color;
+        }
 
-        //逃げの色を変更
-        _runnerMat.color = color;
-        _runnerMat.SetColor("_EmissionColor", color);
+        // 逃げの色を変更
+        foreach (var mat in _runnerMats)
+        {
+            mat.color = color;
+            mat.SetColor("_EmissionColor", color);
+        }
     }
 }
