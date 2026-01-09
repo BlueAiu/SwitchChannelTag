@@ -2885,6 +2885,7 @@ MonoBehaviour:
   mainSceneName: MainScene
   sceneTransition: {fileID: 7878950072891773037}
   startButton: {fileID: 1943700968}
+  fallbackButton: {fileID: 1344506876}
   requiredNum: 1
   _watcher: {fileID: 8119550743319087643}
 --- !u!114 &2195521215928513269

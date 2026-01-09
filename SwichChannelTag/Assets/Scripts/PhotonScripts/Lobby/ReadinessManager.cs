@@ -11,6 +11,7 @@ public class ReadinessManager : MonoBehaviourPunCallbacks
     [SerializeField] string mainSceneName = "MainScene";
     [SerializeField] SceneTransition sceneTransition;
     [SerializeField] GameObject startButton;
+    [SerializeField] GameObject fallbackButton;
     [SerializeField] int requiredNum = 4;
     [SerializeField] AllPlayersGameEventCompletionWatcher _watcher;
 
@@ -21,6 +22,11 @@ public class ReadinessManager : MonoBehaviourPunCallbacks
 
         bool canStartGame = num >= requiredNum && IsReadyAll() && PhotonNetwork.IsMasterClient;
         startButton.SetActive(canStartGame);
+        var curSeleButton = EventSystem.current.currentSelectedGameObject;
+        if(curSeleButton != null && !curSeleButton.activeSelf)
+        {
+            EventSystem.current.SetSelectedGameObject(fallbackButton);
+        }
     }
 
     public void TryStartGame()
