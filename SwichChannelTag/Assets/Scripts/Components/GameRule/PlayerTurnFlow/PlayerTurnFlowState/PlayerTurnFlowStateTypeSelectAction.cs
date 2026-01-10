@@ -74,7 +74,7 @@ public class PlayerTurnFlowStateTypeSelectAction : PlayerTurnFlowStateTypeBase
         if (!canChangeHierarchy)
         {
             int coolDown = Mathf.Max(coolDownMin, _coolDown.CoolDownLeft);
-            _coolDownText.text = coolDown.ToString() + " turns left";
+            _coolDownText.text = "使用可能まで\n残り" + coolDown.ToString() + "ターン";
         }
         else
         {
