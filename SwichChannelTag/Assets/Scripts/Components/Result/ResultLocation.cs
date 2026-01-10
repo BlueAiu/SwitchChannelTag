@@ -42,7 +42,7 @@ public class ResultLocation : MonoBehaviour
         }
 
         var taggers = players[EPlayerState.Tagger];
-        for (var i = 0; i <= taggers.Count; i++)
+        for (var i = 0; i < taggers.Count; i++)
         {
             taggers[i].position = lowerPoints[i].position;
         }

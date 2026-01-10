@@ -3,5 +3,9 @@
 
 public static class PlayerAnimatorParameterNameDictionary
 {
-    public static string walk = "IsWalking";
+    public static string walk = "IsWalking";//ï‡çs
+    public static string idle = "Idle";//ë“ã@
+    public static string caught = "Caught";//ïﬂÇ‹Ç¡ÇΩ
+    public static string win = "Win";//èüóò
+    public static string lose = "Lose";//îsñk
 }
