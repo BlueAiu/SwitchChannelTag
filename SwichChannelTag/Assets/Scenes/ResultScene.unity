@@ -675,6 +675,7 @@ GameObject:
   - component: {fileID: 292061332}
   - component: {fileID: 292061333}
   - component: {fileID: 292061334}
+  - component: {fileID: 292061335}
   m_Layer: 0
   m_Name: ResultScene_Manager
   m_TagString: Untagged
@@ -796,6 +797,18 @@ MonoBehaviour:
   titleButton: {fileID: 66110969}
   inputAction: {fileID: 408347084362496789, guid: 25ec4fa1968e3454a935e9d33a977e76, type: 3}
   autoTakeTime: 3
+--- !u!114 &292061335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292061328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b052bfdf80bb20478b851c2884e14b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &427044059
 PrefabInstance:
   m_ObjectHideFlags: 0
