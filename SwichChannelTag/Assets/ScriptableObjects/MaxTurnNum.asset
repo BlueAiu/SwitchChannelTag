@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535a13c0b45c0e449a0fc622a5057931, type: 3}
   m_Name: MaxTurnNum
   m_EditorClassIdentifier: 
-  maxTurnNum: 20
+  maxTurnNum: 15
